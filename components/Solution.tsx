@@ -1,0 +1,213 @@
+import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+
+const FlowDiagram: React.FC = () => {
+  const [progress, setProgress] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !started.current) {
+        started.current = true;
+        let p = 0;
+        const id = setInterval(() => {
+          p = Math.min(p + 1, 100);
+          setProgress(p);
+          if (p >= 100) clearInterval(id);
+        }, 25);
+      }
+    }, { threshold: 0.3 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+
+  const nodes = [
+    { id: 'solar', icon: '☀', label: 'Solar', sub: 'Curtailed PV', x: 60, y: 80, color: '#FBBF24' },
+    { id: 'wind',  icon: '⟳', label: 'Wind',  sub: 'Off-peak',    x: 60, y: 200, color: '#94A3B8' },
+    { id: 'hydro', icon: '≋', label: 'Hydro', sub: 'Spill',       x: 60, y: 320, color: '#38BDF8' },
+    { id: 'smhp',  icon: '⬡', label: 'SMHP',  sub: 'Electrolyser', x: 260, y: 200, color: '#3B82F6' },
+    { id: 'h2',    icon: 'H₂', label: 'Green H₂', sub: '£8–12/kg', x: 460, y: 200, color: '#60A5FA' },
+  ];
+
+  const paths = [
+    { from: [60,80],  to: [260,200] },
+    { from: [60,200], to: [260,200] },
+    { from: [60,320], to: [260,200] },
+    { from: [260,200],to: [460,200] },
+  ];
+
+  const pctToOffset = (pct: number, len: number) => len * (1 - pct / 100);
+
+  return (
+    <div ref={ref} className="relative">
+      <svg width="100%" viewBox="0 0 540 400" className="w-full max-w-xl mx-auto overflow-visible">
+        <defs>
+          <marker id="arrowAmber" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(59,130,246,0.6)" />
+          </marker>
+        </defs>
+
+        {/* Connection lines */}
+        {paths.map((p, i) => {
+          const dx = p.to[0] - p.from[0], dy = p.to[1] - p.from[1];
+          const len = Math.sqrt(dx*dx + dy*dy);
+          const delay = i * 18;
+          const localPct = Math.max(0, Math.min(100, (progress - delay) * 1.4));
+          return (
+            <g key={i}>
+              {/* Base line */}
+              <line x1={p.from[0]+30} y1={p.from[1]} x2={p.to[0]-30} y2={p.to[1]}
+                stroke="rgba(59,130,246,0.1)" strokeWidth={1.5} strokeDasharray="4 4" />
+              {/* Animated fill */}
+              <line x1={p.from[0]+30} y1={p.from[1]} x2={p.to[0]-30} y2={p.to[1]}
+                stroke="rgba(59,130,246,0.7)" strokeWidth={1.5}
+                strokeDasharray={len} strokeDashoffset={pctToOffset(localPct, len)}
+                markerEnd="url(#arrowAmber)" />
+            </g>
+          );
+        })}
+
+        {/* Nodes */}
+        {nodes.map(n => {
+          const isSmhp = n.id === 'smhp';
+          const isH2   = n.id === 'h2';
+          const size = isSmhp ? 44 : 32;
+          return (
+            <g key={n.id}>
+              <circle
+                cx={n.x} cy={n.y} r={size}
+                fill={`rgba(${isSmhp ? '59,130,246' : '255,255,255'},0.04)`}
+                stroke={n.color}
+                strokeWidth={isSmhp ? 1.5 : 1}
+                opacity={isSmhp ? 1 : 0.6}
+              />
+              {isSmhp && (
+                <circle cx={n.x} cy={n.y} r={size+12} fill="none"
+                  stroke="rgba(59,130,246,0.08)" strokeWidth={1} strokeDasharray="4 4">
+                  <animateTransform attributeName="transform" type="rotate"
+                    from={`0 ${n.x} ${n.y}`} to={`360 ${n.x} ${n.y}`} dur="20s" repeatCount="indefinite" />
+                </circle>
+              )}
+              <text x={n.x} y={n.y+1} textAnchor="middle" dominantBaseline="middle"
+                fontSize={isSmhp ? 18 : 14} fill={n.color} fontFamily="JetBrains Mono,monospace" fontWeight="700">
+                {n.icon}
+              </text>
+              <text x={n.x} y={n.y+size+14} textAnchor="middle" fontSize={11}
+                fill="#F1F5F9" fontFamily="Barlow Condensed,sans-serif" fontWeight="700" letterSpacing="1">
+                {n.label}
+              </text>
+              <text x={n.x} y={n.y+size+26} textAnchor="middle" fontSize={9}
+                fill="#64748B" fontFamily="JetBrains Mono,monospace">
+                {n.sub}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
+};
+
+const features = [
+  {
+    num: '01',
+    title: 'Behind-the-meter',
+    body: 'SMHPs connect directly to the energy source — no grid connection needed. Bypasses 10–15 year queue for grid upgrades entirely.',
+    color: '#3B82F6',
+  },
+  {
+    num: '02',
+    title: 'Wind, Solar & Hydro ready',
+    body: 'Handles the chaotic voltage profiles of curtailed wind, mismatched solar, and variable hydro head. Standard electrolysers demand steady power — ours don\'t.',
+    color: '#60A5FA',
+  },
+  {
+    num: '03',
+    title: 'Digital-twin first',
+    body: 'Every site gets a physics-based digital twin before anything is built. Real PVGIS irradiance data. Real NOABL wind speeds. Real electrolyser efficiency curves.',
+    color: '#38BDF8',
+  },
+];
+
+export const Solution: React.FC = () => {
+  return (
+    <section id="solution" className="py-28 relative overflow-hidden" style={{ background: '#0F172A' }}>
+      <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-[120px] opacity-10 pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.4) 0%, transparent 70%)' }} />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex items-center gap-4 mb-16">
+          <div className="w-8 h-px" style={{ background: '#3B82F6' }} />
+          <span className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#3B82F6' }}>The Solution</span>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2
+              className="font-display font-black text-cream mb-6"
+              style={{ fontSize: 'clamp(30px, 4vw, 52px)', lineHeight: 0.95 }}
+            >
+              SMALL MODULAR<br />
+              <span className="text-blue-gradient">HYDROGEN PLANTS</span>
+            </h2>
+            <p className="font-body text-mist text-lg leading-relaxed mb-8 font-light">
+              Containerised electrolysis units that plug directly into curtailed wind, solar, and hydro sources.
+              We turn the grid's problem — too much clean energy — into our feedstock.
+            </p>
+            <a href="#tech"
+              className="inline-flex items-center gap-2 font-body font-semibold text-sm tracking-wide group"
+              style={{ color: '#3B82F6' }}>
+              See the design engine
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            style={{
+              background: 'rgba(59,130,246,0.03)',
+              border: '1px solid rgba(59,130,246,0.08)',
+              borderRadius: 16,
+              padding: '32px 24px',
+            }}
+          >
+            <FlowDiagram />
+          </motion.div>
+        </div>
+
+        {/* Feature cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {features.map((f, i) => (
+            <motion.div
+              key={f.num}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              style={{
+                background: '#1E293B',
+                border: '1px solid rgba(255,255,255,0.05)',
+                borderRadius: 12,
+                padding: '32px',
+              }}
+            >
+              <div className="font-mono text-xs text-steel mb-6 tracking-widest">{f.num}</div>
+              <div className="w-8 h-0.5 mb-6 rounded-full" style={{ background: f.color }} />
+              <h4 className="font-display font-bold text-cream text-xl mb-3">{f.title}</h4>
+              <p className="font-body text-mist text-sm leading-relaxed">{f.body}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};

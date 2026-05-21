@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="./logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Fluxero converts curtailed renewable energy into green hydrogen at the source. Small Modular Hydrogen Plants for the UK and beyond." />
+    <meta property="og:title" content="Fluxero — Green Hydrogen from Captured Energy" />
+    <meta property="og:description" content="We capture wasted clean energy and turn it into hydrogen. Before the grid can reject it." />
+    <title>Fluxero — Captured Energy. Green Hydrogen.</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['"Barlow Condensed"', 'sans-serif'],
+              body: ['Barlow', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+            colors: {
+              primary: {
+                DEFAULT: '#3B82F6',
+                dark:    '#2563EB',
+                glow:    'rgba(59,130,246,0.12)',
+                dim:     'rgba(59,130,246,0.06)',
+              },
+              ink: {
+                DEFAULT: '#0F172A',
+                1: '#1E293B',
+                2: '#334155',
+                3: '#475569',
+                4: '#64748B',
+              },
+              steel: '#64748B',
+              mist:  '#94A3B8',
+              cream: '#F1F5F9',
+            },
+          }
+        }
+      }
+    </script>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --primary: #3B82F6;
+        --primary-dark: #2563EB;
+        --primary-glow: rgba(59,130,246,0.12);
+        --primary-dim: rgba(59,130,246,0.06);
+        --ink: #0F172A;
+        --ink1: #1E293B;
+        --ink2: #334155;
+        --ink3: #475569;
+        --cream: #F1F5F9;
+        --mist: #94A3B8;
+        --steel: #64748B;
+        /* Legacy aliases kept for components not yet updated */
+        --amber: #3B82F6;
+        --amber-glow: rgba(59,130,246,0.12);
+      }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        background: var(--ink);
+        color: var(--cream);
+        font-family: 'Barlow', sans-serif;
+        font-weight: 300;
+        overflow-x: hidden;
+        cursor: auto;
+      }
+
+      /* Subtle noise overlay — very light */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 1000;
+        opacity: 0.08;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar { width: 3px; }
+      ::-webkit-scrollbar-track { background: var(--ink); }
+      ::-webkit-scrollbar-thumb { background: var(--ink2); }
+      ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+      ::selection { background: rgba(59,130,246,0.25); color: var(--cream); }
+
+      /* Gradient text */
+      .text-green-gradient, .text-amber-gradient, .text-blue-gradient {
+        background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 50%, #06B6D4 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Glow effects */
+      .amber-glow, .primary-glow { box-shadow: 0 0 40px rgba(59,130,246,0.12), 0 0 80px rgba(59,130,246,0.04); }
+      .amber-glow-text { text-shadow: 0 0 40px rgba(59,130,246,0.35); }
+
+      .mag-btn { transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1); }
+
+      .h-scroll { overflow-x: auto; scrollbar-width: none; }
+      .h-scroll::-webkit-scrollbar { display: none; }
+
+      .fade-up {
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      input[type=range] { accent-color: var(--primary); }
+      select option { background: var(--ink1); }
+      input:focus, select:focus, textarea:focus { outline: none; }
+
+      .counter { font-variant-numeric: tabular-nums; }
+
+      .clip-diagonal {
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 60px), 0 100%);
+      }
+
+      .hr-amber { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--primary), transparent); }
+
+      /* Color utility aliases — blue/slate palette */
+      .text-green  { color: #3B82F6 !important; }
+      .text-amber  { color: #3B82F6 !important; }
+      .text-primary { color: #3B82F6 !important; }
+      .bg-green    { background-color: #3B82F6 !important; }
+      .bg-amber    { background-color: #3B82F6 !important; }
+      .bg-primary  { background-color: #3B82F6 !important; }
+      .border-green { border-color: #3B82F6 !important; }
+      .border-amber { border-color: #3B82F6 !important; }
+      .border-primary { border-color: #3B82F6 !important; }
+      .bg-green-dark { background-color: #2563EB !important; }
+      .bg-amber-dark { background-color: #2563EB !important; }
+      .text-mist   { color: #94A3B8; }
+      .text-steel  { color: #64748B; }
+      .text-cream  { color: #F1F5F9; }
+      .text-ink    { color: #0F172A !important; }
+      .bg-ink-2    { background-color: #334155; }
+      .bg-ink-3    { background-color: #475569; }
+      .border-amber\/20 { border-color: rgba(59,130,246,0.2) !important; }
+      .border-amber\/30 { border-color: rgba(59,130,246,0.3) !important; }
+      .border-white\/5  { border-color: rgba(255,255,255,0.05); }
+      .border-white\/6  { border-color: rgba(255,255,255,0.06); }
+      .border-white\/7  { border-color: rgba(255,255,255,0.07); }
+      .border-white\/10 { border-color: rgba(255,255,255,0.10); }
+
+      /* Mobile-specific fixes */
+      @media (max-width: 640px) {
+        body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+        .hero-content { padding-top: 6rem !important; }
+        .code-block { font-size: 11px !important; }
+        section { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+        .calc-panel { border-left: none !important; }
+      }
+
+      @media (max-width: 768px) {
+        button, a { min-height: 44px; }
+        .roadmap-card { width: 240px !important; }
+      }
+
+      @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        .fixed-bottom { padding-bottom: env(safe-area-inset-bottom); }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
