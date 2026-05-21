@@ -22,7 +22,7 @@ const dailyProfile = [
 const ChartTip: React.FC<any> = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
   return (
-    <div style={{ background: '#1E293B', border: '1px solid rgba(59,130,246,0.15)', borderRadius: 6, padding: '10px 14px' }}>
+    <div style={{ background: '#131116', border: '1px solid rgba(0,214,143,0.15)', borderRadius: 6, padding: '10px 14px' }}>
       <p className="font-mono text-xs text-steel mb-2">{label}</p>
       {payload.map((p: any) => (
         <div key={p.name} className="flex items-center gap-2 font-mono text-xs">
@@ -68,12 +68,12 @@ const CountUp: React.FC<{ to: number; decimals?: number; prefix?: string; suffix
 
 export const Problem: React.FC = () => {
   return (
-    <section id="problem" className="py-28 relative" style={{ background: '#0F172A' }}>
+    <section id="problem" className="py-28 relative" style={{ background: '#0D0C0F' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         <div className="flex items-center gap-4 mb-16">
-          <div className="w-8 h-px" style={{ background: '#3B82F6' }} />
-          <span className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#3B82F6' }}>The Problem</span>
+          <div className="w-8 h-px" style={{ background: '#00D68F' }} />
+          <span className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#00D68F' }}>The Problem</span>
         </div>
 
         {/* Stats grid */}
@@ -95,7 +95,7 @@ export const Problem: React.FC = () => {
               n: 393, d: 0, pre: '£', suf: 'M',
               label: 'Paid to generators to switch off',
               sub: '£310M in 2023 · Electric Insights',
-              color: '#3B82F6',
+              color: '#00D68F',
             },
             {
               n: 95, d: 0, pre: '', suf: '%',
@@ -107,7 +107,7 @@ export const Problem: React.FC = () => {
             <motion.div key={i}
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ delay: i * 0.08, duration: 0.5 }}
-              style={{ background: '#1E293B', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 12, padding: '24px' }}
+              style={{ background: '#131116', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 12, padding: '24px' }}
             >
               <div className="font-display font-black"
                 style={{ fontSize: 'clamp(26px, 6vw, 56px)', lineHeight: 1, color: s.color }}>
@@ -140,10 +140,10 @@ export const Problem: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.08 }}
-            style={{ background: 'rgba(56,189,248,0.04)', border: '1px solid rgba(56,189,248,0.12)', borderRadius: 12, padding: '20px 24px' }}
+            style={{ background: 'rgba(0,208,232,0.04)', border: '1px solid rgba(0,208,232,0.12)', borderRadius: 12, padding: '20px 24px' }}
           >
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-2 h-2 rounded-full" style={{ background: '#38BDF8' }} />
+              <div className="w-2 h-2 rounded-full" style={{ background: '#00D0E8' }} />
               <p className="font-display font-bold text-cream text-base">Hydro Constrained in Wet Spells</p>
             </div>
             <p className="font-body text-mist text-sm leading-relaxed">
@@ -164,7 +164,7 @@ export const Problem: React.FC = () => {
             <h2 className="font-display font-black text-cream mb-8"
               style={{ fontSize: 'clamp(30px, 4vw, 50px)', lineHeight: 0.95 }}>
               THE GRID IS FULL.<br />
-              <span className="text-blue-gradient">THE ENERGY ISN'T.</span>
+              <span className="text-green-gradient">THE ENERGY ISN'T.</span>
             </h2>
 
             <div className="space-y-5 mb-10">
@@ -175,12 +175,12 @@ export const Problem: React.FC = () => {
                   body: 'In 2024 the UK wasted 8.3 TWh of wind power alone — up 91% from 4.3 TWh in 2023. Solar curtailment added another 1.5 TWh. The trend is structural, not cyclical.',
                 },
                 {
-                  color: '#3B82F6',
+                  color: '#00D68F',
                   title: 'The grid can\'t keep up',
                   body: 'Scotland generates 40% of UK wind power but accounts for 95% of curtailment. A single transmission bottleneck at the B6 Scotland–England boundary causes the majority of losses.',
                 },
                 {
-                  color: '#38BDF8',
+                  color: '#00D0E8',
                   title: 'Consumer bills foot the bill',
                   body: 'Wind, solar, and hydro farms are paid constraint payments to switch off — £393M in 2024 alone. That cost is passed directly to consumers. Converting the surplus at source eliminates it.',
                 },
@@ -196,7 +196,7 @@ export const Problem: React.FC = () => {
             </div>
 
             {/* Stacked bar chart — Wind / Solar / Hydro */}
-            <div style={{ background: '#1E293B', border: '1px solid rgba(59,130,246,0.08)', borderRadius: 12, padding: '20px' }}>
+            <div style={{ background: '#131116', border: '1px solid rgba(0,214,143,0.08)', borderRadius: 12, padding: '20px' }}>
               <p className="font-mono text-xs text-steel mb-1 uppercase tracking-widest">UK Renewable Curtailment by Year</p>
               <p className="font-body font-semibold text-cream text-sm mb-4">TWh wasted · Source: Electric Insights, REF, NESO</p>
               <ResponsiveContainer width="100%" height={160}>
@@ -205,18 +205,18 @@ export const Problem: React.FC = () => {
                   <YAxis stroke="none" tick={{ fill: '#64748B', fontSize: 10, fontFamily: 'JetBrains Mono' }} unit=" T" />
                   <Tooltip
                     formatter={(v: any, n: string) => [`${v} TWh`, n]}
-                    contentStyle={{ background: '#1E293B', border: '1px solid rgba(59,130,246,0.15)', borderRadius: 6, fontSize: 11, fontFamily: 'JetBrains Mono' }}
+                    contentStyle={{ background: '#131116', border: '1px solid rgba(0,214,143,0.15)', borderRadius: 6, fontSize: 11, fontFamily: 'JetBrains Mono' }}
                     labelStyle={{ color: '#94A3B8' }}
                   />
-                  <Bar dataKey="wind" name="Wind" stackId="a" fill="rgba(59,130,246,0.7)" radius={[0,0,0,0]} />
+                  <Bar dataKey="wind" name="Wind" stackId="a" fill="rgba(0,214,143,0.7)" radius={[0,0,0,0]} />
                   <Bar dataKey="solar" name="Solar" stackId="a" fill="rgba(251,191,36,0.7)" radius={[0,0,0,0]} />
-                  <Bar dataKey="hydro" name="Hydro" stackId="a" fill="rgba(56,189,248,0.7)" radius={[3,3,0,0]} />
+                  <Bar dataKey="hydro" name="Hydro" stackId="a" fill="rgba(0,208,232,0.7)" radius={[3,3,0,0]} />
                 </BarChart>
               </ResponsiveContainer>
               <div className="flex items-center gap-4 mt-3 flex-wrap">
-                <div className="flex items-center gap-1.5"><span className="w-3 h-2 rounded-sm inline-block" style={{ background: 'rgba(59,130,246,0.7)' }} /><span className="font-mono text-xs text-steel">Wind</span></div>
+                <div className="flex items-center gap-1.5"><span className="w-3 h-2 rounded-sm inline-block" style={{ background: 'rgba(0,214,143,0.7)' }} /><span className="font-mono text-xs text-steel">Wind</span></div>
                 <div className="flex items-center gap-1.5"><span className="w-3 h-2 rounded-sm inline-block" style={{ background: 'rgba(251,191,36,0.7)' }} /><span className="font-mono text-xs text-steel">Solar</span></div>
-                <div className="flex items-center gap-1.5"><span className="w-3 h-2 rounded-sm inline-block" style={{ background: 'rgba(56,189,248,0.7)' }} /><span className="font-mono text-xs text-steel">Hydro</span></div>
+                <div className="flex items-center gap-1.5"><span className="w-3 h-2 rounded-sm inline-block" style={{ background: 'rgba(0,208,232,0.7)' }} /><span className="font-mono text-xs text-steel">Hydro</span></div>
               </div>
             </div>
           </motion.div>
@@ -225,7 +225,7 @@ export const Problem: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.6 }}
-            style={{ background: '#1E293B', border: '1px solid rgba(59,130,246,0.08)', borderRadius: 12, padding: '28px' }}
+            style={{ background: '#131116', border: '1px solid rgba(0,214,143,0.08)', borderRadius: 12, padding: '28px' }}
           >
             <div className="flex items-start justify-between mb-6">
               <div>
@@ -264,14 +264,14 @@ export const Problem: React.FC = () => {
               <span className="font-mono font-bold text-sm" style={{ color: '#EF4444' }}>paid to waste it</span>
             </div>
 
-            <div className="mt-5 p-4 rounded-lg" style={{ background: 'rgba(15,23,42,0.6)', border: '1px solid rgba(255,255,255,0.04)' }}>
+            <div className="mt-5 p-4 rounded-lg" style={{ background: 'rgba(13,12,15,0.6)', border: '1px solid rgba(255,255,255,0.04)' }}>
               <p className="font-mono text-xs text-steel mb-3 uppercase tracking-wider">Why this is getting worse</p>
               <div className="space-y-2">
                 {[
                   { dot: '#EF4444', text: '95% of UK wind curtailment originates in Scotland' },
-                  { dot: '#3B82F6', text: 'B6 boundary cables can\'t carry surplus south' },
+                  { dot: '#00D68F', text: 'B6 boundary cables can\'t carry surplus south' },
                   { dot: '#FBBF24', text: 'Solar curtailment growing fastest — up 36% in 2024' },
-                  { dot: '#38BDF8', text: 'Eastern HVDC link delayed to 2027+ at earliest' },
+                  { dot: '#00D0E8', text: 'Eastern HVDC link delayed to 2027+ at earliest' },
                 ].map((r, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: r.dot }} />

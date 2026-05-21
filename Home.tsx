@@ -1,9 +1,11 @@
 import React from 'react';
 import { Hero }               from './components/Hero';
 import { LiveCurtailmentBar } from './components/LiveCurtailmentBar';
+import { Ticker }             from './components/Ticker';
 import { Partners }           from './components/Partners';
 import { Problem }       from './components/Problem';
 import { CurtailmentMap } from './components/CurtailmentMap';
+import { WastedEnergy }  from './components/WastedEnergy';
 import { Solution }      from './components/Solution';
 import { Technology }    from './components/Technology';
 import { Traction }      from './components/Traction';
@@ -18,9 +20,11 @@ export default function Home() {
     <>
       <Hero />
       <LiveCurtailmentBar />
+      <Ticker />
       <Partners />
       <Problem />
       <CurtailmentMap />
+      <WastedEnergy />
       <Solution />
       <Technology />
       <Traction />

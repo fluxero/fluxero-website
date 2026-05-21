@@ -1,350 +1,546 @@
 import React, { useRef, useEffect } from 'react';
-import * as THREE from 'three';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
-/* â”€â”€â”€ GLSL shaders â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-const VERT = /* glsl */`
-  attribute float aSize;
-  attribute vec3  aColor;
-  attribute float aAlpha;
-  varying vec3    vColor;
-  varying float   vAlpha;
-  void main() {
-    vColor     = aColor;
-    vAlpha     = aAlpha;
-    vec4 mvPos = modelViewMatrix * vec4(position, 1.0);
-    gl_PointSize = aSize * (320.0 / -mvPos.z);
-    gl_Position  = projectionMatrix * mvPos;
-  }
-`;
+/* ─── Particle types ─────────────────────────────────────────────── */
+type ParticlePhase = 'source' | 'waste' | 'captured' | 'h2';
+type EnergyType = 'wind' | 'solar' | 'hydro';
 
-const FRAG = /* glsl */`
-  varying vec3  vColor;
-  varying float vAlpha;
-  void main() {
-    float d = length(gl_PointCoord - vec2(0.5));
-    if (d > 0.5) discard;
-    float a = smoothstep(0.5, 0.04, d) * vAlpha;
-    gl_FragColor = vec4(vColor, a);
-  }
-`;
-
-/* â”€â”€â”€ Particle types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-type Phase = 'source' | 'waste' | 'captured' | 'converting' | 'h2';
-
-interface PState {
-  phase:     Phase;
-  vx:        number;
-  vy:        number;
-  vz:        number;
-  life:      number;
-  maxLife:   number;
-  phaseLife: number;
-  decided:   boolean;
+interface Particle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  life: number;
+  maxLife: number;
+  size: number;
+  type: EnergyType;
+  phase: ParticlePhase;
+  alpha: number;
+  decided: boolean;
+  flashRed: number; // frames of red flash remaining
 }
 
-/* â”€â”€â”€ Constants â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-const ENERGY_COUNT = 5800;
-const STAR_COUNT   = 2200;
-const CAPTURE_RATE = 0.28;
-const BARRIER_X    = -2;
-const NODE_X       =  14;
-const NODE_Y       =  0;
-const CAM_Z        =  60;
-
-/* â”€â”€â”€ Three.js background â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-const ThreeBackground: React.FC = () => {
-  const mountRef = useRef<HTMLDivElement>(null);
+/* ─── EnergyCanvas ───────────────────────────────────────────────── */
+const EnergyCanvas: React.FC = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const mount = mountRef.current;
-    if (!mount) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    const W = mount.clientWidth;
-    const H = mount.clientHeight;
+    /* ── resize ─────────────────────────────────────────────────── */
+    const resize = () => {
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    window.addEventListener('resize', resize);
 
-    /* renderer */
-    const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-    renderer.setSize(W, H);
-    renderer.setClearColor(0x000000, 0);
-    mount.appendChild(renderer.domElement);
+    /* ── animation state ────────────────────────────────────────── */
+    let turbineAngle = 0;
+    let hydroPhase   = 0;
+    let capturedKg   = 0;
+    let wastedMWh    = 0;
 
-    const scene  = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 500);
-    camera.position.set(0, 0, CAM_Z);
+    /* ── particles ───────────────────────────────────────────────── */
+    const PARTICLE_COUNT = 220;
+    const particles: Particle[] = [];
 
-    /* visible world half-extents at z=0 */
-    const halfH = Math.tan(THREE.MathUtils.degToRad(30)) * CAM_Z; // â‰ˆ34.6
-    const halfW = halfH * (W / H);                                 // â‰ˆ61 @16:9
+    const spawnParticle = (scatter = false): Particle => {
+      const W = canvas.width;
+      const H = canvas.height;
+      const type = (['wind', 'solar', 'hydro'] as EnergyType[])[Math.floor(Math.random() * 3)];
 
-    /* â”€ star field â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    {
-      const p = new Float32Array(STAR_COUNT * 3);
-      const c = new Float32Array(STAR_COUNT * 3);
-      const s = new Float32Array(STAR_COUNT);
-      const a = new Float32Array(STAR_COUNT);
-      for (let i = 0; i < STAR_COUNT; i++) {
-        p[i*3]   = (Math.random() - 0.5) * halfW * 2.5;
-        p[i*3+1] = (Math.random() - 0.5) * halfH * 2.5;
-        p[i*3+2] = -12 - Math.random() * 30;
-        const v = 0.35 + Math.random() * 0.65;
-        const isBlue = Math.random() > 0.6;
-        c[i*3]   = v * (isBlue ? 0.60 : 1.0);
-        c[i*3+1] = v * (isBlue ? 0.78 : 1.0);
-        c[i*3+2] = v;
-        s[i] = 0.35 + Math.random() * 0.75;
-        a[i] = 0.06 + Math.random() * 0.20;
-      }
-      const geo = new THREE.BufferGeometry();
-      geo.setAttribute('position', new THREE.BufferAttribute(p, 3));
-      geo.setAttribute('aColor',   new THREE.BufferAttribute(c, 3));
-      geo.setAttribute('aSize',    new THREE.BufferAttribute(s, 1));
-      geo.setAttribute('aAlpha',   new THREE.BufferAttribute(a, 1));
-      scene.add(new THREE.Points(geo, new THREE.ShaderMaterial({
-        vertexShader: VERT, fragmentShader: FRAG,
-        transparent: true, depthWrite: false,
-        blending: THREE.AdditiveBlending,
-      })));
-    }
+      // spawn y depends on energy type – staggered vertically
+      const spawnYMap: Record<EnergyType, number> = {
+        wind:  H * 0.22,
+        solar: H * 0.50,
+        hydro: H * 0.78,
+      };
+      const sy = spawnYMap[type] + (Math.random() - 0.5) * H * 0.12;
+      const sx = scatter ? Math.random() * W * 0.40 : W * 0.02 + Math.random() * W * 0.05;
 
-    /* â”€ energy particles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    const pos   = new Float32Array(ENERGY_COUNT * 3);
-    const col   = new Float32Array(ENERGY_COUNT * 3);
-    const siz   = new Float32Array(ENERGY_COUNT);
-    const alp   = new Float32Array(ENERGY_COUNT);
-    const state: PState[] = [];
-
-    const spawnParticle = (i: number, scatter = false) => {
-      const i3 = i * 3;
-      const sx  = -halfW * 0.90 + Math.random() * halfW * 0.50;
-      const sy  = (Math.random() - 0.5) * halfH * 1.75;
-      const sz  = (Math.random() - 0.5) * 7;
-      pos[i3]   = scatter ? (-halfW * 0.90 + Math.random() * halfW * 1.65) : sx;
-      pos[i3+1] = sy;
-      pos[i3+2] = sz;
-      col[i3]   = 0.98; col[i3+1] = 0.62; col[i3+2] = 0.07; // amber
-      siz[i]    = 1.0 + Math.random() * 1.3;
-      alp[i]    = scatter ? Math.random() * 0.55 : 0;
-      state[i] = {
-        phase:     'source',
-        vx:         0.07 + Math.random() * 0.11,
-        vy:        (Math.random() - 0.5) * 0.04,
-        vz:        (Math.random() - 0.5) * 0.012,
-        life:       scatter ? Math.floor(Math.random() * 200) : 0,
-        maxLife:    260 + Math.random() * 130,
-        phaseLife:  0,
-        decided:    false,
+      return {
+        x:        sx,
+        y:        sy,
+        vx:       0.6 + Math.random() * 0.8,
+        vy:       (Math.random() - 0.5) * 0.4,
+        life:     scatter ? Math.floor(Math.random() * 120) : 0,
+        maxLife:  180 + Math.random() * 120,
+        size:     1.5 + Math.random() * 2,
+        type,
+        phase:    'source',
+        alpha:    scatter ? Math.random() * 0.6 : 0,
+        decided:  false,
+        flashRed: 0,
       };
     };
 
-    for (let i = 0; i < ENERGY_COUNT; i++) spawnParticle(i, true);
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push(spawnParticle(true));
+    }
 
-    const energyGeo = new THREE.BufferGeometry();
-    energyGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-    energyGeo.setAttribute('aColor',   new THREE.BufferAttribute(col, 3));
-    energyGeo.setAttribute('aSize',    new THREE.BufferAttribute(siz, 1));
-    energyGeo.setAttribute('aAlpha',   new THREE.BufferAttribute(alp, 1));
-
-    scene.add(new THREE.Points(energyGeo, new THREE.ShaderMaterial({
-      vertexShader: VERT, fragmentShader: FRAG,
-      transparent: true, depthWrite: false,
-      blending: THREE.AdditiveBlending,
-    })));
-
-    const posAttr = energyGeo.attributes.position as THREE.BufferAttribute;
-    const colAttr = energyGeo.attributes.aColor   as THREE.BufferAttribute;
-    const alpAttr = energyGeo.attributes.aAlpha   as THREE.BufferAttribute;
-    const sizAttr = energyGeo.attributes.aSize    as THREE.BufferAttribute;
-
-    /* â”€ SMHP wireframe node â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    const nodeGroup = new THREE.Group();
-    nodeGroup.position.set(NODE_X, NODE_Y, -5);
-    scene.add(nodeGroup);
-
-    // Inner icosahedron
-    nodeGroup.add(new THREE.Mesh(
-      new THREE.IcosahedronGeometry(5.5, 1),
-      new THREE.MeshBasicMaterial({ color: 0x3B82F6, wireframe: true, opacity: 0.16, transparent: true }),
-    ));
-
-    // Orbital rings
-    nodeGroup.add(new THREE.Mesh(
-      new THREE.TorusGeometry(8.2, 0.06, 4, 80),
-      new THREE.MeshBasicMaterial({ color: 0x60A5FA, opacity: 0.13, transparent: true }),
-    ));
-    nodeGroup.add(new THREE.Mesh(
-      new THREE.TorusGeometry(10.8, 0.04, 4, 80),
-      new THREE.MeshBasicMaterial({ color: 0x38BDF8, opacity: 0.08, transparent: true }),
-    ));
-
-    // Glow sphere
-    const glowMat = new THREE.MeshBasicMaterial({ color: 0x1D4ED8, transparent: true, opacity: 0.03 });
-    nodeGroup.add(new THREE.Mesh(new THREE.SphereGeometry(8, 16, 16), glowMat));
-
-    /* â”€ mouse parallax â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    const mouse    = { x: 0, y: 0 };
-    const camSmooth = { x: 0, y: 0 };
-    const onMouse = (e: MouseEvent) => {
-      mouse.x =  (e.clientX / window.innerWidth  - 0.5);
-      mouse.y = -(e.clientY / window.innerHeight - 0.5);
-    };
-    window.addEventListener('mousemove', onMouse, { passive: true });
-
-    /* â”€ resize â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    const onResize = () => {
-      const nW = mount.clientWidth, nH = mount.clientHeight;
-      renderer.setSize(nW, nH);
-      camera.aspect = nW / nH;
-      camera.updateProjectionMatrix();
-    };
-    window.addEventListener('resize', onResize);
-
-    /* â”€ colour lerp helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    const lerpCol = (i3: number, tr: number, tg: number, tb: number, t: number) => {
-      col[i3]   += (tr - col[i3])   * t;
-      col[i3+1] += (tg - col[i3+1]) * t;
-      col[i3+2] += (tb - col[i3+2]) * t;
+    /* ── colour helpers ──────────────────────────────────────────── */
+    const typeColor: Record<EnergyType, string> = {
+      wind:  'rgba(148,163,184,0.7)',
+      solar: 'rgba(251,191,36,0.8)',
+      hydro: 'rgba(56,189,248,0.8)',
     };
 
-    /* â”€ particle tick â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    const tickParticles = () => {
-      for (let i = 0; i < ENERGY_COUNT; i++) {
-        const s  = state[i];
-        const i3 = i * 3;
-        s.life++;
-        s.phaseLife++;
+    /* ── draw wind turbine ──────────────────────────────────────── */
+    const drawTurbine = (cx: number, cy: number, r: number) => {
+      const W = canvas.width;
+      const showLabels = W >= 600;
+      ctx.save();
 
-        let x = pos[i3], y = pos[i3+1], z = pos[i3+2];
+      // pole
+      ctx.strokeStyle = 'rgba(148,163,184,0.55)';
+      ctx.lineWidth   = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx, cy + r * 1.8);
+      ctx.stroke();
 
-        if (s.phase === 'source') {
-          s.vx += 0.0014;
-          s.vy += Math.sin(s.life * 0.08 + x * 0.09) * 0.004;
-          s.vx  = Math.min(s.vx, 0.22);
-          s.vx *= 0.988; s.vy *= 0.97;
-          alp[i] = Math.min(alp[i] + 0.022, 0.62);
+      // hub
+      ctx.fillStyle   = 'rgba(148,163,184,0.7)';
+      ctx.beginPath();
+      ctx.arc(cx, cy, r * 0.18, 0, Math.PI * 2);
+      ctx.fill();
 
-          if (x >= BARRIER_X && !s.decided) {
-            s.decided = true;
-            if (Math.random() < CAPTURE_RATE) {
-              s.phase = 'captured'; s.phaseLife = 0;
-              const dx = NODE_X - x, dy = NODE_Y - y;
-              const d  = Math.sqrt(dx*dx + dy*dy) || 1;
-              s.vx = (dx / d) * 0.15; s.vy = (dy / d) * 0.15;
+      // 3 blades
+      for (let b = 0; b < 3; b++) {
+        const angle = turbineAngle + (b * Math.PI * 2) / 3;
+        const bx = cx + Math.cos(angle) * r;
+        const by = cy + Math.sin(angle) * r;
+        const perp = angle + Math.PI / 2;
+        ctx.strokeStyle = 'rgba(148,163,184,0.65)';
+        ctx.lineWidth   = 2;
+        ctx.beginPath();
+        ctx.moveTo(
+          cx + Math.cos(perp) * r * 0.08,
+          cy + Math.sin(perp) * r * 0.08,
+        );
+        ctx.quadraticCurveTo(
+          cx + Math.cos(angle) * r * 0.55 + Math.cos(perp) * r * 0.22,
+          cy + Math.sin(angle) * r * 0.55 + Math.sin(perp) * r * 0.22,
+          bx, by,
+        );
+        ctx.stroke();
+      }
+
+      if (showLabels) {
+        ctx.font         = 'bold 9px monospace';
+        ctx.fillStyle    = 'rgba(148,163,184,0.6)';
+        ctx.textAlign    = 'center';
+        ctx.fillText('WIND', cx, cy + r * 2.2);
+      }
+      ctx.restore();
+    };
+
+    /* ── draw solar panel ────────────────────────────────────────── */
+    const drawSolar = (cx: number, cy: number, size: number) => {
+      const W = canvas.width;
+      const showLabels = W >= 600;
+      ctx.save();
+      const cols = 3, rows = 3;
+      const cellW = size / cols;
+      const cellH = size / rows * 0.75;
+      const ox = cx - size / 2;
+      const oy = cy - (size * 0.75) / 2;
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const x = ox + c * cellW + 1;
+          const y = oy + r * cellH + 1;
+          const w = cellW - 2;
+          const h = cellH - 2;
+          ctx.fillStyle   = 'rgba(59,130,246,0.18)';
+          ctx.strokeStyle = 'rgba(251,191,36,0.55)';
+          ctx.lineWidth   = 0.8;
+          ctx.fillRect(x, y, w, h);
+          ctx.strokeRect(x, y, w, h);
+          // internal cross lines
+          ctx.strokeStyle = 'rgba(251,191,36,0.25)';
+          ctx.beginPath();
+          ctx.moveTo(x + w / 2, y);
+          ctx.lineTo(x + w / 2, y + h);
+          ctx.moveTo(x, y + h / 2);
+          ctx.lineTo(x + w, y + h / 2);
+          ctx.stroke();
+        }
+      }
+      if (showLabels) {
+        ctx.font      = 'bold 9px monospace';
+        ctx.fillStyle = 'rgba(251,191,36,0.6)';
+        ctx.textAlign = 'center';
+        ctx.fillText('SOLAR', cx, oy + size * 0.75 + 12);
+      }
+      ctx.restore();
+    };
+
+    /* ── draw hydro waves ────────────────────────────────────────── */
+    const drawHydro = (cx: number, cy: number, w: number) => {
+      const W = canvas.width;
+      const showLabels = W >= 600;
+      ctx.save();
+      const waveColors = [
+        'rgba(56,189,248,0.65)',
+        'rgba(56,189,248,0.45)',
+        'rgba(56,189,248,0.30)',
+      ];
+      for (let wv = 0; wv < 3; wv++) {
+        const yOff = (wv - 1) * 7;
+        ctx.strokeStyle = waveColors[wv];
+        ctx.lineWidth   = 1.5;
+        ctx.beginPath();
+        const steps = 40;
+        for (let s = 0; s <= steps; s++) {
+          const px = cx - w / 2 + (s / steps) * w;
+          const py = cy + yOff + Math.sin(s * 0.5 + hydroPhase + wv * 0.8) * 4;
+          s === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+      }
+      if (showLabels) {
+        ctx.font      = 'bold 9px monospace';
+        ctx.fillStyle = 'rgba(56,189,248,0.6)';
+        ctx.textAlign = 'center';
+        ctx.fillText('HYDRO', cx, cy + 20);
+      }
+      ctx.restore();
+    };
+
+    /* ── draw SMHP box ───────────────────────────────────────────── */
+    const drawSMHP = (
+      cx: number, cy: number, bw: number, bh: number, orbitAngle: number,
+    ) => {
+      ctx.save();
+
+      // dashed border box
+      ctx.strokeStyle = 'rgba(0,214,143,0.55)';
+      ctx.lineWidth   = 1.2;
+      ctx.setLineDash([5, 4]);
+      ctx.strokeRect(cx - bw / 2, cy - bh / 2, bw, bh);
+      ctx.setLineDash([]);
+
+      // corner accent brackets
+      const bl = 8;
+      const bx = cx - bw / 2;
+      const by = cy - bh / 2;
+      ctx.strokeStyle = 'rgba(0,214,143,0.85)';
+      ctx.lineWidth   = 2;
+      const corners: [number, number, number, number][] = [
+        [bx, by, bl, bl],
+        [bx + bw, by, -bl, bl],
+        [bx, by + bh, bl, -bl],
+        [bx + bw, by + bh, -bl, -bl],
+      ];
+      for (const [x, y, dx, dy] of corners) {
+        ctx.beginPath();
+        ctx.moveTo(x + dx, y);
+        ctx.lineTo(x, y);
+        ctx.lineTo(x, y + dy);
+        ctx.stroke();
+      }
+
+      // spinning orbit ring
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(orbitAngle);
+      ctx.strokeStyle = 'rgba(0,214,143,0.30)';
+      ctx.lineWidth   = 1;
+      ctx.setLineDash([4, 6]);
+      ctx.beginPath();
+      ctx.ellipse(0, 0, bw * 0.38, bh * 0.22, 0, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // dot on orbit
+      const dotX = Math.cos(orbitAngle) * bw * 0.38;
+      const dotY = Math.sin(orbitAngle) * bh * 0.22;
+      ctx.fillStyle = 'rgba(0,214,143,0.9)';
+      ctx.beginPath();
+      ctx.arc(dotX, dotY, 2.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // labels
+      ctx.font      = 'bold 10px monospace';
+      ctx.fillStyle = 'rgba(0,214,143,0.9)';
+      ctx.textAlign = 'center';
+      ctx.fillText('SMHP', cx, cy - 3);
+
+      ctx.font      = '8px monospace';
+      ctx.fillStyle = 'rgba(0,214,143,0.55)';
+      ctx.fillText('ELECTROLYSER', cx, cy + 9);
+
+      ctx.restore();
+    };
+
+    /* ── counters ────────────────────────────────────────────────── */
+    const drawCounters = (x: number, y: number) => {
+      ctx.save();
+      ctx.font      = '9px monospace';
+      ctx.textAlign = 'right';
+
+      ctx.fillStyle = 'rgba(0,214,143,0.75)';
+      ctx.fillText(`CAPTURED: ${capturedKg.toFixed(2)} kg H₂`, x, y);
+
+      ctx.fillStyle = 'rgba(255,80,50,0.70)';
+      ctx.fillText(`WASTED: ${wastedMWh.toFixed(3)} MWh`, x, y + 14);
+
+      ctx.restore();
+    };
+
+    /* ── main render loop ────────────────────────────────────────── */
+    let raf = 0;
+    let orbitAngle = 0;
+
+    const animate = () => {
+      raf = requestAnimationFrame(animate);
+
+      const W = canvas.width;
+      const H = canvas.height;
+      const showLabels = W >= 600;
+
+      // layout constants (derived from canvas size each frame)
+      const gridLineX  = W * 0.50;       // dashed "GRID LIMIT" line
+      const smhpCX     = W * 0.57;       // SMHP box centre-x
+      const smhpCY     = H * 0.62;       // SMHP box centre-y (lower half)
+      const smhpW      = W * 0.13;
+      const smhpH      = H * 0.18;
+      const iconZoneX  = W * 0.06;       // icon centre x
+      const iconR      = Math.min(H * 0.07, 22);
+
+      // icon Y centres
+      const windCY  = H * 0.22;
+      const solarCY = H * 0.50;
+      const hydroCY = H * 0.78;
+
+      // animate angles
+      turbineAngle += 0.005;
+      hydroPhase   += 0.05;
+      orbitAngle   += 0.022;
+      capturedKg   += 0.003;
+      wastedMWh    += 0.008;
+
+      /* clear */
+      ctx.clearRect(0, 0, W, H);
+
+      /* ── draw source icons ─────────────────────────────────────── */
+      drawTurbine(iconZoneX, windCY,  iconR);
+      drawSolar  (iconZoneX, solarCY, iconR * 2.2);
+      drawHydro  (iconZoneX, hydroCY, iconR * 2.8);
+
+      /* ── grid limit dashed vertical line ──────────────────────── */
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255,64,32,0.50)';
+      ctx.lineWidth   = 1.2;
+      ctx.setLineDash([6, 5]);
+      ctx.beginPath();
+      ctx.moveTo(gridLineX, 0);
+      ctx.lineTo(gridLineX, H);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      if (showLabels) {
+        ctx.font      = 'bold 9px monospace';
+        ctx.fillStyle = 'rgba(255,64,32,0.70)';
+        ctx.textAlign = 'center';
+        ctx.fillText('GRID LIMIT', gridLineX, 14);
+      }
+      ctx.restore();
+
+      /* ── WASTED label (lower section near waste fall zone) ─────── */
+      if (showLabels) {
+        ctx.save();
+        ctx.font      = '8px monospace';
+        ctx.fillStyle = 'rgba(255,64,32,0.55)';
+        ctx.textAlign = 'center';
+        ctx.fillText('WASTED', gridLineX + 18, H * 0.88);
+        ctx.restore();
+      }
+
+      /* ── draw SMHP box ─────────────────────────────────────────── */
+      drawSMHP(smhpCX, smhpCY, smhpW, smhpH, orbitAngle);
+
+      /* ── H₂ label at far right ─────────────────────────────────── */
+      if (showLabels) {
+        ctx.save();
+        ctx.font      = 'bold 14px monospace';
+        ctx.fillStyle = 'rgba(0,214,143,0.80)';
+        ctx.textAlign = 'right';
+        ctx.fillText('H₂', W - 10, H * 0.50);
+        ctx.restore();
+      }
+
+      /* ── update & draw particles ──────────────────────────────── */
+      for (const p of particles) {
+        p.life++;
+        const W2 = W;
+        const H2 = H;
+
+        /* ── phase: source ────────────────────────────────────────── */
+        if (p.phase === 'source') {
+          p.vx += 0.012;
+          p.vy += Math.sin(p.life * 0.09) * 0.015;
+          p.vx  = Math.min(p.vx, 1.8);
+          p.vx *= 0.992;
+          p.vy *= 0.975;
+          p.alpha = Math.min(p.alpha + 0.025, 0.85);
+
+          // decide fate at grid line
+          if (p.x >= gridLineX && !p.decided) {
+            p.decided = true;
+            if (Math.random() < 0.40) {
+              // 40% wasted: hit grid, fall
+              p.phase    = 'waste';
+              p.flashRed = 12;
+              p.vx       = 0.2 + Math.random() * 0.3;
+              p.vy       = 0.8 + Math.random() * 0.6;
             } else {
-              s.phase = 'waste'; s.phaseLife = 0;
-              s.vx = 0.015 + Math.random() * 0.03;
-              s.vy = -(0.11 + Math.random() * 0.09);
+              // 60% captured: deflect into SMHP
+              p.phase = 'captured';
+              const dx = smhpCX - p.x;
+              const dy = smhpCY - p.y;
+              const d  = Math.sqrt(dx * dx + dy * dy) || 1;
+              p.vx = (dx / d) * 1.6;
+              p.vy = (dy / d) * 1.6;
             }
           }
         }
 
-        else if (s.phase === 'waste') {
-          s.vy -= 0.007; s.vx *= 0.968; s.vy *= 0.982;
-          alp[i] = Math.max(alp[i] - 0.007, 0);
-          lerpCol(i3, 0.94, 0.20, 0.10, 0.055);
-          if (y < -halfH * 1.5 || alp[i] <= 0) spawnParticle(i);
-        }
-
-        else if (s.phase === 'captured') {
-          const dx = NODE_X - x, dy = NODE_Y - y;
-          const d  = Math.sqrt(dx*dx + dy*dy) || 1;
-          s.vx += (dx / d) * 0.014; s.vy += (dy / d) * 0.014;
-          s.vx *= 0.972; s.vy *= 0.972;
-          alp[i] = Math.min(alp[i] + 0.018, 0.85);
-          lerpCol(i3, 0.23, 0.51, 0.97, 0.065);
-          if (d < 4.5) {
-            s.phase = 'converting'; s.phaseLife = 0;
-            s.vx = 0.05 + Math.random() * 0.03;
-            s.vy = (Math.random() - 0.5) * 0.04;
+        /* ── phase: waste ─────────────────────────────────────────── */
+        else if (p.phase === 'waste') {
+          p.vy   += 0.06;   // gravity
+          p.vx   *= 0.970;
+          p.vy   *= 0.985;
+          p.alpha = Math.max(p.alpha - 0.012, 0);
+          if (p.flashRed > 0) p.flashRed--;
+          if (p.y > H2 * 1.05 || p.alpha <= 0) {
+            Object.assign(p, spawnParticle(false));
           }
         }
 
-        else if (s.phase === 'converting') {
-          const dx = x - NODE_X, dy = y - NODE_Y;
-          const d  = Math.sqrt(dx*dx + dy*dy) || 1;
-          const angle = Math.atan2(dy, dx) + 0.065;
-          const nr = Math.max(d - 0.10, 2.5);
-          s.vx = (Math.cos(angle) * nr + NODE_X - x) * 0.16;
-          s.vy = (Math.sin(angle) * nr + NODE_Y - y) * 0.16;
-          alp[i] = Math.min(alp[i] + 0.016, 0.94);
-          siz[i] = Math.min(siz[i] + 0.016, 2.7);
-          lerpCol(i3, 0.20, 0.76, 0.98, 0.078); // → cyan
-          if (s.phaseLife > 55 + Math.random() * 30) {
-            s.phase = 'h2'; s.phaseLife = 0;
-            s.vx = 0.19 + Math.random() * 0.09;
-            s.vy = (Math.random() - 0.5) * 0.04;
+        /* ── phase: captured ──────────────────────────────────────── */
+        else if (p.phase === 'captured') {
+          const dx = smhpCX - p.x;
+          const dy = smhpCY - p.y;
+          const d  = Math.sqrt(dx * dx + dy * dy) || 1;
+          p.vx += (dx / d) * 0.12;
+          p.vy += (dy / d) * 0.12;
+          p.vx *= 0.975;
+          p.vy *= 0.975;
+          p.alpha = Math.min(p.alpha + 0.02, 0.90);
+
+          // inside SMHP box → transition to h2
+          const inBox = Math.abs(p.x - smhpCX) < smhpW / 2
+                     && Math.abs(p.y - smhpCY) < smhpH / 2;
+          if (inBox) {
+            p.phase = 'h2';
+            p.vx    = 1.4 + Math.random() * 0.8;
+            p.vy    = (Math.random() - 0.5) * 0.5;
           }
         }
 
-        else if (s.phase === 'h2') {
-          s.vx  = Math.max(s.vx - 0.0008, 0.16);
-          s.vy += Math.sin(s.life * 0.11) * 0.002; s.vy *= 0.978;
-          if (x > halfW * 0.52) alp[i] = Math.max(alp[i] - 0.009, 0);
-          if (x > halfW * 1.08 || alp[i] <= 0) spawnParticle(i);
+        /* ── phase: h2 ────────────────────────────────────────────── */
+        else if (p.phase === 'h2') {
+          p.vx  = Math.max(p.vx - 0.004, 1.0);
+          p.vy += Math.sin(p.life * 0.12) * 0.018;
+          p.vy *= 0.978;
+          if (p.x > W2 * 0.82) p.alpha = Math.max(p.alpha - 0.016, 0);
+          if (p.x > W2 * 1.05 || p.alpha <= 0) {
+            Object.assign(p, spawnParticle(false));
+          }
         }
 
-        x += s.vx; y += s.vy; z += s.vz;
-        pos[i3] = x; pos[i3+1] = y; pos[i3+2] = z;
+        p.x += p.vx;
+        p.y += p.vy;
+
+        /* ── draw particle ─────────────────────────────────────────── */
+        if (p.alpha <= 0.01) continue;
+
+        let color: string;
+        if (p.flashRed > 0) {
+          color = `rgba(255,60,20,${p.alpha.toFixed(2)})`;
+        } else if (p.phase === 'h2') {
+          color = `rgba(0,214,143,${p.alpha.toFixed(2)})`;
+        } else if (p.phase === 'captured') {
+          // transition from source colour toward green
+          color = `rgba(56,189,248,${p.alpha.toFixed(2)})`;
+        } else if (p.phase === 'waste') {
+          color = `rgba(255,80,40,${p.alpha.toFixed(2)})`;
+        } else {
+          // source colour based on type
+          const base = typeColor[p.type];
+          // bake alpha into the colour string
+          const alphaBase = p.alpha.toFixed(2);
+          if (p.type === 'wind')  color = `rgba(148,163,184,${alphaBase})`;
+          else if (p.type === 'solar') color = `rgba(251,191,36,${alphaBase})`;
+          else                         color = `rgba(56,189,248,${alphaBase})`;
+          void base; // suppress unused warning
+        }
+
+        ctx.save();
+        ctx.fillStyle = color;
+
+        // soft glow for h2 particles
+        if (p.phase === 'h2') {
+          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 2.5);
+          grad.addColorStop(0, `rgba(0,214,143,${p.alpha.toFixed(2)})`);
+          grad.addColorStop(1, 'rgba(0,214,143,0)');
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size * 2.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
       }
 
-      posAttr.needsUpdate = true;
-      colAttr.needsUpdate = true;
-      alpAttr.needsUpdate = true;
-      sizAttr.needsUpdate = true;
+      /* ── counters ─────────────────────────────────────────────── */
+      if (showLabels) {
+        drawCounters(W - 10, H - 28);
+      }
     };
 
-    /* â”€ render loop â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    let raf = 0, frame = 0;
-    const animate = () => {
-      raf = requestAnimationFrame(animate);
-      frame++;
-
-      /* camera parallax */
-      camSmooth.x += (mouse.x * 5   - camSmooth.x) * 0.045;
-      camSmooth.y += (mouse.y * 3   - camSmooth.y) * 0.045;
-      camera.position.x = camSmooth.x;
-      camera.position.y = camSmooth.y;
-      camera.lookAt(5, 0, 0);
-
-      /* node rotation */
-      nodeGroup.rotation.y += 0.004;
-      nodeGroup.rotation.x += 0.002;
-      (nodeGroup.children[1] as THREE.Mesh).rotation.z += 0.0032;
-      (nodeGroup.children[2] as THREE.Mesh).rotation.x += 0.0022;
-      glowMat.opacity = Math.sin(frame * 0.022) * 0.013 + 0.028;
-
-      tickParticles();
-      renderer.render(scene, camera);
-    };
     animate();
 
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener('mousemove', onMouse);
-      window.removeEventListener('resize', onResize);
-      renderer.dispose();
-      if (mount.contains(renderer.domElement)) mount.removeChild(renderer.domElement);
+      window.removeEventListener('resize', resize);
     };
   }, []);
 
-  return <div ref={mountRef} className="absolute inset-0 w-full h-full" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full"
+      style={{ opacity: 0.85 }}
+    />
+  );
 };
 
-/* â”€â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─── Hero ─────────────────────────────────────────────────────────── */
 export const Hero: React.FC = () => {
   const navigate = useNavigate();
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
 
-      {/* WebGL canvas layer */}
+      {/* Canvas layer */}
       <div className="absolute inset-0" style={{ background: '#080E1C' }}>
-        <ThreeBackground />
+        <EnergyCanvas />
       </div>
 
-      {/* Depth vignette â€” keeps left text area readable */}
+      {/* Depth vignette – keeps left text area readable */}
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 58% 68% at 26% 50%, transparent 22%, rgba(8,14,28,0.88) 82%)' }} />
       <div className="absolute bottom-0 inset-x-0 h-52 pointer-events-none"
@@ -384,7 +580,7 @@ export const Hero: React.FC = () => {
           style={{ color: '#94A3B8', maxWidth: '480px' }}
         >
           Fluxero builds Small Modular Hydrogen Plants that convert curtailed wind,
-          solar, and hydro into green hydrogen â€” at the source, before the grid
+          solar, and hydro into green hydrogen — at the source, before the grid
           can reject it.
         </motion.p>
 
@@ -461,4 +657,3 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
-

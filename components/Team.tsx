@@ -8,7 +8,7 @@ const team = [
     role: 'CEO & Co-Founder',
     focus: 'Strategy · Commercial · Investor Relations',
     bio: 'Drives Fluxero\'s go-to-market and commercial strategy. Leads all investor and partnership discussions. Primary contact for developers and energy operators.',
-    color: '#38BDF8',
+    color: '#00D0E8',
     email: 'kieran@fluxero.uk',
   },
   {
@@ -17,7 +17,7 @@ const team = [
     role: 'CIO & Co-Founder',
     focus: 'Digital Twin · Software Architecture · Website',
     bio: 'Built the digital twin frontend in Unity and the H₂ design engine. Leads all software systems, AI integration, and the Fluxero technology platform.',
-    color: '#3B82F6',
+    color: '#00D68F',
     email: 'shiv@fluxero.uk',
   },
   {
@@ -26,7 +26,7 @@ const team = [
     role: 'CTO & Co-Founder',
     focus: 'Renewable Engineering · NGSPICE · Electrolyser',
     bio: 'Renewable engineering specialist. Built the plant simulation backend using NGSPICE. Owns all hardware architecture, electrolyser design, and technical validation.',
-    color: '#60A5FA',
+    color: '#00E5B8',
     email: 'euan@fluxero.uk',
   },
 ];
@@ -53,14 +53,14 @@ const handleTiltLeave = (e: React.MouseEvent<HTMLDivElement>) => {
 
 export const Team: React.FC = () => {
   return (
-    <section id="team" className="py-28 relative" style={{ background: '#0F172A' }}>
+    <section id="team" className="py-28 relative" style={{ background: '#0D0C0F' }}>
       <div className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.15), transparent)' }} />
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(0,214,143,0.15), transparent)' }} />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center gap-4 mb-16">
-          <div className="w-8 h-px" style={{ background: '#3B82F6' }} />
-          <span className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#3B82F6' }}>The Team</span>
+          <div className="w-8 h-px" style={{ background: '#00D68F' }} />
+          <span className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#00D68F' }}>The Team</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-16">
@@ -77,7 +77,7 @@ export const Team: React.FC = () => {
               THREE ENGINEERS.<br />
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #3B82F6 0%, #60A5FA 50%, #06B6D4 100%)',
+                  background: 'linear-gradient(135deg, #00D68F 0%, #00E5B8 50%, #00D0E8 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -110,7 +110,7 @@ export const Team: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.14, duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
               style={{
-                background: 'linear-gradient(160deg, #1E293B 0%, #162035 100%)',
+                background: 'linear-gradient(160deg, #131116 0%, #0f0e12 100%)',
                 border: '1px solid rgba(255,255,255,0.05)',
                 borderRadius: 16,
                 padding: '32px',
@@ -174,4 +174,3 @@ export const Team: React.FC = () => {
     </section>
   );
 };
-

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-const RING_SIZES = [220, 380, 550, 720];
-
 export const Splash: React.FC<{ onDone: () => void }> = ({ onDone }) => {
   const [pct, setPct] = useState(0);
   const [phase, setPhase] = useState<'loading' | 'done'>('loading');
@@ -22,69 +20,102 @@ export const Splash: React.FC<{ onDone: () => void }> = ({ onDone }) => {
     return () => clearInterval(id);
   }, [onDone]);
 
+  const wordmark = 'FLUXERO'.split('');
+
   return (
     <motion.div
-      exit={{ opacity: 0, scale: 1.03 }}
+      exit={{ opacity: 0 }}
       transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1] }}
       className="fixed inset-0 z-[200] flex flex-col items-center justify-center overflow-hidden"
-      style={{ background: '#060B18' }}
+      style={{ background: '#070608' }}
     >
-      {/* Animated concentric rings */}
-      {RING_SIZES.map((size, i) => (
-        <motion.div
-          key={size}
-          className="absolute rounded-full pointer-events-none"
-          style={{
-            width: size,
-            height: size,
-            border: `1px solid rgba(59,130,246,${0.14 - i * 0.025})`,
-          }}
-          animate={{
-            scale:   [1, 1.07, 1],
-            opacity: [0.35, 0.9, 0.35],
-          }}
-          transition={{
-            duration: 3.5 + i * 0.7,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: i * 0.45,
-          }}
-        />
-      ))}
+      {/* Logo + Wordmark row */}
+      <div className="relative z-10 flex flex-row items-center gap-4 mb-10">
 
-      {/* Core radial glow */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          width: 360,
-          height: 360,
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%)',
-        }}
-      />
+        {/* Pulsing glow behind SVG */}
+        <div className="relative flex items-center justify-center">
+          <motion.div
+            className="absolute inset-0 rounded-full blur-2xl"
+            style={{
+              background:
+                'radial-gradient(circle, rgba(0,214,143,0.3) 0%, transparent 70%)',
+            }}
+            animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          />
 
-      {/* Logo */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.88, filter: 'blur(12px)' }}
-        animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-        transition={{ duration: 0.85, ease: [0.23, 1, 0.32, 1] }}
-        className="relative z-10 mb-10"
-      >
-        <img
-          src="./logo.png"
-          alt="Fluxero"
-          className="h-14 w-auto object-contain"
-          onError={e => {
-            const img = e.target as HTMLImageElement;
-            img.style.display = 'none';
-            const el = document.createElement('div');
-            el.style.cssText =
-              'font-family:"Barlow Condensed",sans-serif;font-weight:900;font-size:32px;letter-spacing:0.28em;color:#F0EBE0;';
-            el.textContent = 'FLUXERO';
-            img.parentElement?.appendChild(el);
-          }}
-        />
-      </motion.div>
+          {/* SVG logo mark */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.6 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+          >
+            <svg
+              viewBox="0 0 120 100"
+              width="64"
+              height="54"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ display: 'block' }}
+            >
+              <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#00C97A" />
+                  <stop offset="100%" stopColor="#00BFA5" />
+                </linearGradient>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#00BFA5" />
+                  <stop offset="100%" stopColor="#0055CC" />
+                </linearGradient>
+              </defs>
+
+              {/* Blob 1 — larger, left, green→teal */}
+              <motion.path
+                d="M 20 50 C 20 20, 55 10, 65 35 C 75 55, 60 80, 40 80 C 25 80, 20 70, 20 50 Z"
+                fill="url(#grad1)"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              />
+
+              {/* Blob 2 — smaller, right, teal→blue, overlapping */}
+              <motion.path
+                d="M 50 40 C 55 20, 80 25, 85 45 C 90 60, 75 75, 60 65 C 48 58, 45 55, 50 40 Z"
+                fill="url(#grad2)"
+                fillOpacity={0.85}
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 0.85 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              />
+            </svg>
+          </motion.div>
+        </div>
+
+        {/* Wordmark — letter by letter */}
+        <div
+          className="flex flex-row items-center"
+          style={{ gap: 0 }}
+          aria-label="FLUXERO"
+        >
+          {wordmark.map((letter, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 + index * 0.06, duration: 0.4 }}
+              style={{
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontWeight: 900,
+                fontSize: '32px',
+                letterSpacing: '0.2em',
+                color: '#F0EBE0',
+                display: 'inline-block',
+              }}
+            >
+              {letter}
+            </motion.span>
+          ))}
+        </div>
+      </div>
 
       {/* Status label */}
       <motion.p

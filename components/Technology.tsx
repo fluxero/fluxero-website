@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 
 const features = [
   { icon: '◉', label: 'Every UK postcode',       sub: 'PVGIS & NOABL data baked in' },
@@ -12,18 +11,17 @@ const features = [
 ];
 
 export const Technology: React.FC = () => {
-  const navigate = useNavigate();
 
   return (
-    <section id="tech" className="py-28 relative" style={{ background: '#1E293B' }}>
+    <section id="tech" className="py-28 relative" style={{ background: '#131116' }}>
       {/* Top line accent */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-px pointer-events-none"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.4), transparent)' }} />
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(0,214,143,0.4), transparent)' }} />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center gap-4 mb-16">
-          <div className="w-8 h-px" style={{ background: '#3B82F6' }} />
-          <span className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#3B82F6' }}>Fluxero Design Engine</span>
+          <div className="w-8 h-px" style={{ background: '#00D68F' }} />
+          <span className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#00D68F' }}>Fluxero Design Engine</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-16">
@@ -39,7 +37,7 @@ export const Technology: React.FC = () => {
               style={{ fontSize: 'clamp(30px, 4vw, 52px)', lineHeight: 0.95 }}
             >
               THE DIGITAL TWIN<br />
-              <span className="text-blue-gradient">THAT RUNS FIRST.</span>
+              <span className="text-green-gradient">THAT RUNS FIRST.</span>
             </h2>
             <p className="font-body text-mist text-lg leading-relaxed mb-8 font-light">
               Enter your postcode, energy source (wind, solar, or hydro), panel or turbine specs.
@@ -56,15 +54,15 @@ export const Technology: React.FC = () => {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.06 }}
                   style={{
-                    background: 'rgba(15,23,42,0.6)',
+                    background: 'rgba(13,12,15,0.6)',
                     border: '1px solid rgba(255,255,255,0.05)',
                     borderRadius: 8,
                     padding: '14px 16px',
                     cursor: 'pointer',
                   }}
-                  onClick={() => navigate('/calculator')}
+                  onClick={() => {}}
                 >
-                  <div className="font-mono text-base mb-2" style={{ color: '#3B82F6' }}>{f.icon}</div>
+                  <div className="font-mono text-base mb-2" style={{ color: '#00D68F' }}>{f.icon}</div>
                   <p className="font-display font-bold text-cream text-sm">{f.label}</p>
                   <p className="font-mono text-steel text-xs mt-0.5">{f.sub}</p>
                 </motion.div>
@@ -72,12 +70,12 @@ export const Technology: React.FC = () => {
             </div>
 
             <button
-              onClick={() => navigate('/calculator')}
+              onClick={() => {}}
               className="mag-btn font-body font-semibold px-8 py-4 rounded text-base tracking-wide transition-all hover:scale-105"
               style={{
-                background: 'linear-gradient(135deg, #2563EB, #3B82F6)',
-                color: '#F1F5F9',
-                boxShadow: '0 0 30px rgba(59,130,246,0.2)',
+                background: 'linear-gradient(135deg, #00A86B, #00D68F)',
+                color: '#F0EBE0',
+                boxShadow: '0 0 30px rgba(0,214,143,0.2)',
                 border: 'none',
                 cursor: 'pointer',
               }}
@@ -92,20 +90,20 @@ export const Technology: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            onClick={() => navigate('/calculator')}
+            onClick={() => {}}
             style={{
-              background: '#0F172A',
-              border: '1px solid rgba(59,130,246,0.1)',
+              background: '#0D0C0F',
+              border: '1px solid rgba(0,214,143,0.1)',
               borderRadius: 14,
               overflow: 'hidden',
-              boxShadow: '0 0 60px rgba(59,130,246,0.04)',
+              boxShadow: '0 0 60px rgba(0,214,143,0.04)',
               cursor: 'pointer',
             }}
           >
             {/* Window chrome */}
             <div style={{
-              background: '#1E293B',
-              borderBottom: '1px solid rgba(59,130,246,0.06)',
+              background: '#131116',
+              borderBottom: '1px solid rgba(0,214,143,0.06)',
               padding: '12px 20px',
               display: 'flex',
               alignItems: 'center',
@@ -119,10 +117,10 @@ export const Technology: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <span className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: '#3B82F6' }} />
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5" style={{ background: '#3B82F6' }} />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: '#00D68F' }} />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5" style={{ background: '#00D68F' }} />
                 </span>
-                <span className="font-mono text-xs" style={{ color: '#3B82F6' }}>LIVE</span>
+                <span className="font-mono text-xs" style={{ color: '#00D68F' }}>LIVE</span>
               </div>
             </div>
 
@@ -132,12 +130,12 @@ export const Technology: React.FC = () => {
 
               <div className="grid grid-cols-2 gap-3 mb-5">
                 {[
-                  { l: 'H₂ PER YEAR', v: '4,526 kg',  c: '#3B82F6' },
-                  { l: 'ANNUAL REV',  v: '£38,471',    c: '#3B82F6' },
-                  { l: 'PAYBACK',     v: '8.3 yrs',    c: '#60A5FA' },
-                  { l: 'CO₂ AVOIDED', v: '40.7 t/yr',  c: '#38BDF8' },
+                  { l: 'H₂ PER YEAR', v: '4,526 kg',  c: '#00D68F' },
+                  { l: 'ANNUAL REV',  v: '£38,471',    c: '#00D68F' },
+                  { l: 'PAYBACK',     v: '8.3 yrs',    c: '#00E5B8' },
+                  { l: 'CO₂ AVOIDED', v: '40.7 t/yr',  c: '#00D0E8' },
                 ].map(s => (
-                  <div key={s.l} style={{ background: '#1E293B', borderRadius: 8, padding: '14px 16px', border: '1px solid rgba(255,255,255,0.04)' }}>
+                  <div key={s.l} style={{ background: '#131116', borderRadius: 8, padding: '14px 16px', border: '1px solid rgba(255,255,255,0.04)' }}>
                     <p className="font-mono text-xs text-steel mb-1">{s.l}</p>
                     <p className="font-mono font-bold text-lg" style={{ color: s.c }}>{s.v}</p>
                   </div>
@@ -145,7 +143,7 @@ export const Technology: React.FC = () => {
               </div>
 
               {/* Bar chart mockup */}
-              <div style={{ background: '#1E293B', borderRadius: 8, padding: '16px', border: '1px solid rgba(255,255,255,0.04)' }}>
+              <div style={{ background: '#131116', borderRadius: 8, padding: '16px', border: '1px solid rgba(255,255,255,0.04)' }}>
                 <p className="font-mono text-xs text-steel mb-3">Monthly H₂ Output (kg)</p>
                 <div className="flex items-end gap-1.5 h-16">
                   {[18, 22, 42, 68, 92, 98, 96, 88, 62, 38, 20, 14].map((v, i) => (
@@ -154,7 +152,7 @@ export const Technology: React.FC = () => {
                       className="flex-1 rounded-t"
                       style={{
                         height: `${v}%`,
-                        background: `rgba(59,130,246,${0.25 + (v / 100) * 0.55})`,
+                        background: `rgba(0,214,143,${0.25 + (v / 100) * 0.55})`,
                       }}
                     />
                   ))}
@@ -167,8 +165,8 @@ export const Technology: React.FC = () => {
               </div>
 
               <div className="mt-4 flex items-center justify-center gap-2 py-3 rounded"
-                style={{ border: '1px solid rgba(59,130,246,0.2)', background: 'rgba(59,130,246,0.04)' }}>
-                <span className="font-mono text-xs" style={{ color: '#3B82F6' }}>Click to run for your site →</span>
+                style={{ border: '1px solid rgba(0,214,143,0.2)', background: 'rgba(0,214,143,0.04)' }}>
+                <span className="font-mono text-xs" style={{ color: '#00D68F' }}>Click to run for your site →</span>
               </div>
             </div>
           </motion.div>

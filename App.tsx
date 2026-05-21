@@ -15,8 +15,8 @@ function ScrollProgress() {
       style={{
         scaleX,
         height: 2,
-        background: 'linear-gradient(90deg, #2563EB, #3B82F6, #60A5FA)',
-        boxShadow: '0 0 8px rgba(59,130,246,0.5)',
+        background: 'linear-gradient(90deg, #00A86B, #00D68F, #00E5B8)',
+        boxShadow: '0 0 8px rgba(0,214,143,0.5)',
       }}
     />
   );
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div style={{ background: '#0F172A', color: '#F1F5F9', minHeight: '100vh' }}>
+      <div style={{ background: '#070608', color: '#F0EBE0', minHeight: '100vh' }}>
         <AnimatePresence>
           {!ready && <Splash onDone={() => setReady(true)} />}
         </AnimatePresence>

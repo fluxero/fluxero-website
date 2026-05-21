@@ -25,9 +25,9 @@ const FlowDiagram: React.FC = () => {
   const nodes = [
     { id: 'solar', icon: '☀', label: 'Solar', sub: 'Curtailed PV', x: 60, y: 80, color: '#FBBF24' },
     { id: 'wind',  icon: '⟳', label: 'Wind',  sub: 'Off-peak',    x: 60, y: 200, color: '#94A3B8' },
-    { id: 'hydro', icon: '≋', label: 'Hydro', sub: 'Spill',       x: 60, y: 320, color: '#38BDF8' },
-    { id: 'smhp',  icon: '⬡', label: 'SMHP',  sub: 'Electrolyser', x: 260, y: 200, color: '#3B82F6' },
-    { id: 'h2',    icon: 'H₂', label: 'Green H₂', sub: '£8–12/kg', x: 460, y: 200, color: '#60A5FA' },
+    { id: 'hydro', icon: '≋', label: 'Hydro', sub: 'Spill',       x: 60, y: 320, color: '#00D0E8' },
+    { id: 'smhp',  icon: '⬡', label: 'SMHP',  sub: 'Electrolyser', x: 260, y: 200, color: '#00D68F' },
+    { id: 'h2',    icon: 'H₂', label: 'Green H₂', sub: '£8–12/kg', x: 460, y: 200, color: '#00E5B8' },
   ];
 
   const paths = [
@@ -44,7 +44,7 @@ const FlowDiagram: React.FC = () => {
       <svg width="100%" viewBox="0 0 540 400" className="w-full max-w-xl mx-auto overflow-visible">
         <defs>
           <marker id="arrowAmber" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(59,130,246,0.6)" />
+            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(0,214,143,0.6)" />
           </marker>
         </defs>
 
@@ -58,10 +58,10 @@ const FlowDiagram: React.FC = () => {
             <g key={i}>
               {/* Base line */}
               <line x1={p.from[0]+30} y1={p.from[1]} x2={p.to[0]-30} y2={p.to[1]}
-                stroke="rgba(59,130,246,0.1)" strokeWidth={1.5} strokeDasharray="4 4" />
+                stroke="rgba(0,214,143,0.1)" strokeWidth={1.5} strokeDasharray="4 4" />
               {/* Animated fill */}
               <line x1={p.from[0]+30} y1={p.from[1]} x2={p.to[0]-30} y2={p.to[1]}
-                stroke="rgba(59,130,246,0.7)" strokeWidth={1.5}
+                stroke="rgba(0,214,143,0.7)" strokeWidth={1.5}
                 strokeDasharray={len} strokeDashoffset={pctToOffset(localPct, len)}
                 markerEnd="url(#arrowAmber)" />
             </g>
@@ -77,14 +77,14 @@ const FlowDiagram: React.FC = () => {
             <g key={n.id}>
               <circle
                 cx={n.x} cy={n.y} r={size}
-                fill={`rgba(${isSmhp ? '59,130,246' : '255,255,255'},0.04)`}
+                fill={`rgba(${isSmhp ? '0,214,143' : '255,255,255'},0.04)`}
                 stroke={n.color}
                 strokeWidth={isSmhp ? 1.5 : 1}
                 opacity={isSmhp ? 1 : 0.6}
               />
               {isSmhp && (
                 <circle cx={n.x} cy={n.y} r={size+12} fill="none"
-                  stroke="rgba(59,130,246,0.08)" strokeWidth={1} strokeDasharray="4 4">
+                  stroke="rgba(0,214,143,0.08)" strokeWidth={1} strokeDasharray="4 4">
                   <animateTransform attributeName="transform" type="rotate"
                     from={`0 ${n.x} ${n.y}`} to={`360 ${n.x} ${n.y}`} dur="20s" repeatCount="indefinite" />
                 </circle>
@@ -94,7 +94,7 @@ const FlowDiagram: React.FC = () => {
                 {n.icon}
               </text>
               <text x={n.x} y={n.y+size+14} textAnchor="middle" fontSize={11}
-                fill="#F1F5F9" fontFamily="Barlow Condensed,sans-serif" fontWeight="700" letterSpacing="1">
+                fill="#F0EBE0" fontFamily="Barlow Condensed,sans-serif" fontWeight="700" letterSpacing="1">
                 {n.label}
               </text>
               <text x={n.x} y={n.y+size+26} textAnchor="middle" fontSize={9}
@@ -114,32 +114,32 @@ const features = [
     num: '01',
     title: 'Behind-the-meter',
     body: 'SMHPs connect directly to the energy source — no grid connection needed. Bypasses 10–15 year queue for grid upgrades entirely.',
-    color: '#3B82F6',
+    color: '#00D68F',
   },
   {
     num: '02',
     title: 'Wind, Solar & Hydro ready',
     body: 'Handles the chaotic voltage profiles of curtailed wind, mismatched solar, and variable hydro head. Standard electrolysers demand steady power — ours don\'t.',
-    color: '#60A5FA',
+    color: '#00E5B8',
   },
   {
     num: '03',
     title: 'Digital-twin first',
     body: 'Every site gets a physics-based digital twin before anything is built. Real PVGIS irradiance data. Real NOABL wind speeds. Real electrolyser efficiency curves.',
-    color: '#38BDF8',
+    color: '#00D0E8',
   },
 ];
 
 export const Solution: React.FC = () => {
   return (
-    <section id="solution" className="py-28 relative overflow-hidden" style={{ background: '#0F172A' }}>
+    <section id="solution" className="py-28 relative overflow-hidden" style={{ background: '#0D0C0F' }}>
       <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-[120px] opacity-10 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.4) 0%, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(circle, rgba(0,214,143,0.4) 0%, transparent 70%)' }} />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center gap-4 mb-16">
-          <div className="w-8 h-px" style={{ background: '#3B82F6' }} />
-          <span className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#3B82F6' }}>The Solution</span>
+          <div className="w-8 h-px" style={{ background: '#00D68F' }} />
+          <span className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#00D68F' }}>The Solution</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-24">
@@ -154,7 +154,7 @@ export const Solution: React.FC = () => {
               style={{ fontSize: 'clamp(30px, 4vw, 52px)', lineHeight: 0.95 }}
             >
               SMALL MODULAR<br />
-              <span className="text-blue-gradient">HYDROGEN PLANTS</span>
+              <span className="text-green-gradient">HYDROGEN PLANTS</span>
             </h2>
             <p className="font-body text-mist text-lg leading-relaxed mb-8 font-light">
               Containerised electrolysis units that plug directly into curtailed wind, solar, and hydro sources.
@@ -162,7 +162,7 @@ export const Solution: React.FC = () => {
             </p>
             <a href="#tech"
               className="inline-flex items-center gap-2 font-body font-semibold text-sm tracking-wide group"
-              style={{ color: '#3B82F6' }}>
+              style={{ color: '#00D68F' }}>
               See the design engine
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </a>
@@ -174,8 +174,8 @@ export const Solution: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             style={{
-              background: 'rgba(59,130,246,0.03)',
-              border: '1px solid rgba(59,130,246,0.08)',
+              background: 'rgba(0,214,143,0.03)',
+              border: '1px solid rgba(0,214,143,0.08)',
               borderRadius: 16,
               padding: '32px 24px',
             }}
@@ -194,7 +194,7 @@ export const Solution: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
               style={{
-                background: '#1E293B',
+                background: '#131116',
                 border: '1px solid rgba(255,255,255,0.05)',
                 borderRadius: 12,
                 padding: '32px',

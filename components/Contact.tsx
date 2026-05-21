@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const FOUNDERS = [
-  { name: 'Kieran Purvis',    role: 'CEO',  email: 'kieran@fluxero.uk',  initial: 'KP', color: '#38BDF8' },
-  { name: 'Shivansh Mishra',  role: 'CIO',  email: 'shiv@fluxero.uk',    initial: 'SM', color: '#3B82F6' },
-  { name: 'Euan Thomson',     role: 'CTO',  email: 'euan@fluxero.uk',    initial: 'ET', color: '#60A5FA' },
+  { name: 'Kieran Purvis',    role: 'CEO',  email: 'kieran@fluxero.uk',  initial: 'KP', color: '#00D0E8' },
+  { name: 'Shivansh Mishra',  role: 'CIO',  email: 'shiv@fluxero.uk',    initial: 'SM', color: '#00D68F' },
+  { name: 'Euan Thomson',     role: 'CTO',  email: 'euan@fluxero.uk',    initial: 'ET', color: '#00E5B8' },
 ];
 
 export const Contact: React.FC = () => {
@@ -54,12 +54,12 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <footer id="contact" className="relative overflow-hidden" style={{ background: '#0F172A' }}>
+    <footer id="contact" className="relative overflow-hidden" style={{ background: '#0D0C0F' }}>
       {/* Top glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none"
-        style={{ width: 600, height: 1, background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.4), transparent)', filter: 'blur(1px)' }} />
+        style={{ width: 600, height: 1, background: 'linear-gradient(90deg, transparent, rgba(0,214,143,0.4), transparent)', filter: 'blur(1px)' }} />
       <div className="absolute top-0 left-0 right-0 h-48 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at top center, rgba(59,130,246,0.04) 0%, transparent 60%)' }} />
+        style={{ background: 'radial-gradient(ellipse at top center, rgba(0,214,143,0.04) 0%, transparent 60%)' }} />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-14">
 
@@ -78,7 +78,7 @@ export const Contact: React.FC = () => {
             STOP WASTING<br />
             <span
               style={{
-                background: 'linear-gradient(135deg, #3B82F6 0%, #60A5FA 50%, #06B6D4 100%)',
+                background: 'linear-gradient(135deg, #00D68F 0%, #00E5B8 50%, #00D0E8 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -107,21 +107,21 @@ export const Contact: React.FC = () => {
               href="mailto:founders@fluxero.uk"
               className="group flex items-center gap-4 mb-6 rounded-xl transition-all"
               style={{
-                background: 'rgba(59,130,246,0.06)',
-                border: '1px solid rgba(59,130,246,0.18)',
+                background: 'rgba(0,214,143,0.06)',
+                border: '1px solid rgba(0,214,143,0.18)',
                 padding: '16px 20px',
                 textDecoration: 'none',
               }}
-              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(59,130,246,0.1)')}
-              onMouseLeave={e => (e.currentTarget.style.background = 'rgba(59,130,246,0.06)')}
+              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,214,143,0.1)')}
+              onMouseLeave={e => (e.currentTarget.style.background = 'rgba(0,214,143,0.06)')}
             >
               <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: 'rgba(59,130,246,0.12)', border: '1px solid rgba(59,130,246,0.28)' }}>
-                <span style={{ color: '#60A5FA', fontSize: 15 }}>✉</span>
+                style={{ background: 'rgba(0,214,143,0.12)', border: '1px solid rgba(0,214,143,0.28)' }}>
+                <span style={{ color: '#00E5B8', fontSize: 15 }}>✉</span>
               </div>
               <div className="flex-1">
                 <p className="font-mono text-xs uppercase tracking-[0.2em] mb-0.5" style={{ color: '#475569' }}>General enquiries</p>
-                <p className="font-body font-semibold text-base" style={{ color: '#60A5FA' }}>founders@fluxero.uk</p>
+                <p className="font-body font-semibold text-base" style={{ color: '#00E5B8' }}>founders@fluxero.uk</p>
               </div>
               <span className="font-mono text-xs text-steel opacity-0 group-hover:opacity-100 transition-opacity">→</span>
             </a>
@@ -130,8 +130,8 @@ export const Contact: React.FC = () => {
             <div
               className="mb-10"
               style={{
-                background: 'rgba(30,41,59,0.5)',
-                border: '1px solid rgba(59,130,246,0.1)',
+                background: 'rgba(19,17,22,0.5)',
+                border: '1px solid rgba(0,214,143,0.1)',
                 borderRadius: 14,
                 padding: '24px',
               }}
@@ -144,7 +144,7 @@ export const Contact: React.FC = () => {
                     href={`mailto:${f.email}`}
                     className="flex items-center gap-4 group transition-all rounded-lg p-3 -mx-3"
                     style={{ textDecoration: 'none' }}
-                    onMouseEnter={e => (e.currentTarget.style.background = 'rgba(59,130,246,0.05)')}
+                    onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,214,143,0.05)')}
                     onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
                   >
                     <div
@@ -171,12 +171,12 @@ export const Contact: React.FC = () => {
               style={{ textDecoration: 'none' }}
             >
               <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.15)' }}>
-                <span style={{ color: '#3B82F6', fontSize: 20 }}>◷</span>
+                style={{ background: 'rgba(0,214,143,0.06)', border: '1px solid rgba(0,214,143,0.15)' }}>
+                <span style={{ color: '#00D68F', fontSize: 20 }}>◷</span>
               </div>
               <div>
                 <p className="font-mono text-xs text-steel uppercase tracking-widest mb-1">Book a call</p>
-                <p className="font-body font-semibold text-cream text-lg group-hover:text-blue-400 transition-colors">
+                <p className="font-body font-semibold text-cream text-lg group-hover:text-green transition-colors">
                   Schedule 30 min with the team →
                 </p>
               </div>
@@ -192,8 +192,8 @@ export const Contact: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             style={{
-              background: '#1E293B',
-              border: '1px solid rgba(59,130,246,0.08)',
+              background: '#131116',
+              border: '1px solid rgba(0,214,143,0.08)',
               borderRadius: 14,
               padding: '32px',
             }}
@@ -202,9 +202,9 @@ export const Contact: React.FC = () => {
               <div className="flex flex-col items-center justify-center h-full text-center py-16">
                 <div
                   className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
-                  style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.3)' }}
+                  style={{ background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.3)' }}
                 >
-                  <span style={{ color: '#3B82F6', fontSize: 24 }}>✓</span>
+                  <span style={{ color: '#00D68F', fontSize: 24 }}>✓</span>
                 </div>
                 <h4 className="font-display font-black text-cream text-2xl mb-3">Message sent.</h4>
                 <p className="font-body text-mist text-sm">All three founders have been notified. We'll reply within 24 hours.</p>
@@ -216,16 +216,16 @@ export const Contact: React.FC = () => {
                     <label className="font-mono text-xs text-steel uppercase tracking-widest block mb-2">First name</label>
                     <input type="text" required value={form.firstName}
                       onChange={e => setForm(f => ({ ...f, firstName: e.target.value }))}
-                      className="w-full font-body text-sm text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-blue-500/40 transition-colors"
-                      style={{ background: 'rgba(15,23,42,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F1F5F9' }}
+                      className="w-full font-body text-sm text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-green/40 transition-colors"
+                      style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0' }}
                       placeholder="Kieran" />
                   </div>
                   <div>
                     <label className="font-mono text-xs text-steel uppercase tracking-widest block mb-2">Last name</label>
                     <input type="text" required value={form.lastName}
                       onChange={e => setForm(f => ({ ...f, lastName: e.target.value }))}
-                      className="w-full font-body text-sm text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-blue-500/40 transition-colors"
-                      style={{ background: 'rgba(15,23,42,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F1F5F9' }}
+                      className="w-full font-body text-sm text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-green/40 transition-colors"
+                      style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0' }}
                       placeholder="Purvis" />
                   </div>
                 </div>
@@ -234,16 +234,16 @@ export const Contact: React.FC = () => {
                   <label className="font-mono text-xs text-steel uppercase tracking-widest block mb-2">Email</label>
                   <input type="email" required value={form.email}
                     onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                    className="w-full font-body text-sm text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-blue-500/40 transition-colors"
-                    style={{ background: 'rgba(15,23,42,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F1F5F9' }}
+                    className="w-full font-body text-sm text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-green/40 transition-colors"
+                    style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0' }}
                     placeholder="you@company.com" />
                 </div>
 
                 <div>
                   <label className="font-mono text-xs text-steel uppercase tracking-widest block mb-2">I am a...</label>
                   <select value={type} onChange={e => setType(e.target.value)}
-                    className="w-full font-body text-sm rounded-lg px-4 py-3 border focus:border-blue-500/40 transition-colors cursor-pointer appearance-none"
-                    style={{ background: 'rgba(15,23,42,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F1F5F9' }}>
+                    className="w-full font-body text-sm rounded-lg px-4 py-3 border focus:border-green/40 transition-colors cursor-pointer appearance-none"
+                    style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0' }}>
                     <option value="">Select one</option>
                     <option value="generator">Renewable energy generator</option>
                     <option value="developer">Energy developer / project developer</option>
@@ -257,26 +257,26 @@ export const Contact: React.FC = () => {
                   <label className="font-mono text-xs text-steel uppercase tracking-widest block mb-2">Message</label>
                   <textarea rows={4} required value={form.message}
                     onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                    className="w-full font-body text-sm text-cream rounded-lg px-4 py-3 border focus:border-blue-500/40 transition-colors resize-none placeholder-steel/40"
-                    style={{ background: 'rgba(15,23,42,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F1F5F9' }}
+                    className="w-full font-body text-sm text-cream rounded-lg px-4 py-3 border focus:border-green/40 transition-colors resize-none placeholder-steel/40"
+                    style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0' }}
                     placeholder="Tell us about your site, interest, or project..." />
                 </div>
 
                 {error && (
                   <p className="font-mono text-xs" style={{ color: '#EF4444' }}>
                     {error}{' '}
-                    <a href="mailto:founders@fluxero.uk" style={{ color: '#3B82F6' }}>founders@fluxero.uk</a>
+                    <a href="mailto:founders@fluxero.uk" style={{ color: '#00D68F' }}>founders@fluxero.uk</a>
                   </p>
                 )}
 
                 <button type="submit" disabled={sending}
                   className="w-full font-body font-semibold py-4 rounded-lg transition-all tracking-wide text-sm hover:scale-[1.01]"
                   style={{
-                    background: sending ? 'rgba(59,130,246,0.3)' : 'linear-gradient(135deg, #2563EB, #3B82F6)',
-                    color: '#F1F5F9',
+                    background: sending ? 'rgba(0,214,143,0.3)' : 'linear-gradient(135deg, #00A86B, #00D68F)',
+                    color: '#F0EBE0',
                     border: 'none',
                     cursor: sending ? 'not-allowed' : 'pointer',
-                    boxShadow: sending ? 'none' : '0 0 20px rgba(59,130,246,0.15)',
+                    boxShadow: sending ? 'none' : '0 0 20px rgba(0,214,143,0.15)',
                   }}
                 >
                   {sending ? 'Sending…' : 'Send message →'}
@@ -294,19 +294,19 @@ export const Contact: React.FC = () => {
         <div className="border-t pt-8 flex flex-col md:flex-row items-center justify-between gap-4"
           style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
           <div className="flex items-center gap-3">
-            <img src="./logo.png" alt="Fluxero" className="h-6 w-auto object-contain opacity-60"
+            <img src="/logo.png" alt="Fluxero" className="h-6 w-auto object-contain opacity-60"
               onError={e => ((e.target as HTMLImageElement).style.display = 'none')} />
             <span className="font-mono text-xs text-steel">© 2025 Fluxero Ltd · United Kingdom</span>
           </div>
           <div className="flex items-center gap-4 flex-wrap justify-center">
             <a href="mailto:founders@fluxero.uk"
-              className="font-mono text-xs hover:text-blue-400 transition-colors"
+              className="font-mono text-xs hover:text-green transition-colors"
               style={{ color: '#475569', textDecoration: 'none' }}>
               founders@fluxero.uk
             </a>
             {FOUNDERS.map(f => (
               <a key={f.email} href={`mailto:${f.email}`}
-                className="font-mono text-xs hover:text-blue-400 transition-colors"
+                className="font-mono text-xs hover:text-green transition-colors"
                 style={{ color: '#334155', textDecoration: 'none' }}>
                 {f.email}
               </a>

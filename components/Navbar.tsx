@@ -72,7 +72,7 @@ export const Navbar: React.FC = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group" style={{ textDecoration: 'none' }}>
           <img
-            src="./logo.png"
+            src="/logo.png"
             alt="Fluxero"
             className="h-8 w-auto object-contain transition-opacity duration-300 group-hover:opacity-80"
             onError={e => {
