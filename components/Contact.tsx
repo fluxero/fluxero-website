@@ -73,7 +73,7 @@ export const Contact: React.FC = () => {
         >
           <h2
             className="font-display font-black text-cream mb-6"
-            style={{ fontSize: 'clamp(32px, 7vw, 96px)', lineHeight: 0.9 }}
+            style={{ fontSize: 'clamp(44px, 7vw, 108px)', lineHeight: 0.9 }}
           >
             STOP WASTING<br />
             <span
@@ -195,7 +195,7 @@ export const Contact: React.FC = () => {
               background: '#131116',
               border: '1px solid rgba(0,214,143,0.08)',
               borderRadius: 14,
-              padding: '32px',
+              padding: '40px',
             }}
           >
             {sent ? (
@@ -216,16 +216,16 @@ export const Contact: React.FC = () => {
                     <label className="font-mono text-xs text-steel uppercase tracking-widest block mb-2">First name</label>
                     <input type="text" required value={form.firstName}
                       onChange={e => setForm(f => ({ ...f, firstName: e.target.value }))}
-                      className="w-full font-body text-sm text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-green/40 transition-colors"
-                      style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0' }}
+                      className="w-full font-body text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-green/40 transition-colors"
+                      style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0', fontSize: '1rem' }}
                       placeholder="Kieran" />
                   </div>
                   <div>
                     <label className="font-mono text-xs text-steel uppercase tracking-widest block mb-2">Last name</label>
                     <input type="text" required value={form.lastName}
                       onChange={e => setForm(f => ({ ...f, lastName: e.target.value }))}
-                      className="w-full font-body text-sm text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-green/40 transition-colors"
-                      style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0' }}
+                      className="w-full font-body text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-green/40 transition-colors"
+                      style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0', fontSize: '1rem' }}
                       placeholder="Purvis" />
                   </div>
                 </div>
@@ -234,16 +234,16 @@ export const Contact: React.FC = () => {
                   <label className="font-mono text-xs text-steel uppercase tracking-widest block mb-2">Email</label>
                   <input type="email" required value={form.email}
                     onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                    className="w-full font-body text-sm text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-green/40 transition-colors"
-                    style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0' }}
+                    className="w-full font-body text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-green/40 transition-colors"
+                    style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0', fontSize: '1rem' }}
                     placeholder="you@company.com" />
                 </div>
 
                 <div>
                   <label className="font-mono text-xs text-steel uppercase tracking-widest block mb-2">I am a...</label>
                   <select value={type} onChange={e => setType(e.target.value)}
-                    className="w-full font-body text-sm rounded-lg px-4 py-3 border focus:border-green/40 transition-colors cursor-pointer appearance-none"
-                    style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0' }}>
+                    className="w-full font-body rounded-lg px-4 py-3 border focus:border-green/40 transition-colors cursor-pointer appearance-none"
+                    style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0', fontSize: '1rem' }}>
                     <option value="">Select one</option>
                     <option value="generator">Renewable energy generator</option>
                     <option value="developer">Energy developer / project developer</option>
@@ -257,8 +257,8 @@ export const Contact: React.FC = () => {
                   <label className="font-mono text-xs text-steel uppercase tracking-widest block mb-2">Message</label>
                   <textarea rows={4} required value={form.message}
                     onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                    className="w-full font-body text-sm text-cream rounded-lg px-4 py-3 border focus:border-green/40 transition-colors resize-none placeholder-steel/40"
-                    style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0' }}
+                    className="w-full font-body text-cream rounded-lg px-4 py-3 border focus:border-green/40 transition-colors resize-none placeholder-steel/40"
+                    style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0', fontSize: '1rem' }}
                     placeholder="Tell us about your site, interest, or project..." />
                 </div>
 

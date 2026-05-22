@@ -151,7 +151,7 @@ export const Solution: React.FC = () => {
           >
             <h2
               className="font-display font-black text-cream mb-6"
-              style={{ fontSize: 'clamp(30px, 4vw, 52px)', lineHeight: 0.95 }}
+              style={{ fontSize: 'clamp(40px, 4vw, 64px)', lineHeight: 0.95 }}
             >
               SMALL MODULAR<br />
               <span className="text-green-gradient">HYDROGEN PLANTS</span>
@@ -197,13 +197,13 @@ export const Solution: React.FC = () => {
                 background: '#131116',
                 border: '1px solid rgba(255,255,255,0.05)',
                 borderRadius: 12,
-                padding: '32px',
+                padding: '40px',
               }}
             >
               <div className="font-mono text-xs text-steel mb-6 tracking-widest">{f.num}</div>
               <div className="w-8 h-0.5 mb-6 rounded-full" style={{ background: f.color }} />
               <h4 className="font-display font-bold text-cream text-xl mb-3">{f.title}</h4>
-              <p className="font-body text-mist text-sm leading-relaxed">{f.body}</p>
+              <p className="font-body text-mist text-base leading-relaxed">{f.body}</p>
             </motion.div>
           ))}
         </div>

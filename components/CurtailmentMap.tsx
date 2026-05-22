@@ -386,7 +386,7 @@ export const CurtailmentMap: React.FC = () => {
               style={{
                 fontFamily: '"Barlow Condensed", sans-serif',
                 fontWeight: 900,
-                fontSize: 'clamp(26px, 4vw, 44px)',
+                fontSize: 'clamp(38px, 5vw, 64px)',
                 letterSpacing: '-0.01em',
                 textTransform: 'uppercase',
                 color: C.cream,
@@ -412,7 +412,7 @@ export const CurtailmentMap: React.FC = () => {
               style={{
                 fontFamily: 'Barlow, sans-serif',
                 fontWeight: 300,
-                fontSize: '0.975rem',
+                fontSize: '1.0625rem',
                 color: C.mist,
                 lineHeight: 1.7,
                 margin: 0,
@@ -662,7 +662,7 @@ export const CurtailmentMap: React.FC = () => {
                     background: C.card,
                     border: '1px solid rgba(0,214,143,0.08)',
                     borderRadius: 8,
-                    padding: '14px 16px',
+                    padding: '18px 20px',
                   }}
                 >
                   <p
@@ -679,7 +679,7 @@ export const CurtailmentMap: React.FC = () => {
                   <p
                     style={{
                       fontFamily: 'Barlow, sans-serif',
-                      fontSize: '0.8rem',
+                      fontSize: '0.9rem',
                       fontWeight: 500,
                       color: C.cream,
                       margin: '0 0 2px',
@@ -690,7 +690,7 @@ export const CurtailmentMap: React.FC = () => {
                   <p
                     style={{
                       fontFamily: 'Barlow, sans-serif',
-                      fontSize: '0.7rem',
+                      fontSize: '0.78rem',
                       color: C.steel,
                       margin: 0,
                     }}

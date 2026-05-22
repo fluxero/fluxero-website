@@ -72,7 +72,7 @@ export const Team: React.FC = () => {
           >
             <h2
               className="font-display font-black text-cream"
-              style={{ fontSize: 'clamp(28px, 4vw, 52px)', lineHeight: 0.95 }}
+              style={{ fontSize: 'clamp(38px, 4vw, 64px)', lineHeight: 0.95 }}
             >
               THREE ENGINEERS.<br />
               <span
@@ -113,7 +113,7 @@ export const Team: React.FC = () => {
                 background: 'linear-gradient(160deg, #131116 0%, #0f0e12 100%)',
                 border: '1px solid rgba(255,255,255,0.05)',
                 borderRadius: 16,
-                padding: '32px',
+                padding: '40px',
                 willChange: 'transform',
                 transformStyle: 'preserve-3d',
               }}
@@ -144,12 +144,12 @@ export const Team: React.FC = () => {
                 />
               </div>
 
-              <h4 className="font-display font-black text-cream text-xl mb-1">{m.name}</h4>
+              <h4 className="font-display font-black text-cream text-2xl mb-1">{m.name}</h4>
               <p className="font-mono text-xs mb-2" style={{ color: m.color }}>{m.role}</p>
               <p className="font-mono text-xs text-steel mb-5 leading-relaxed">{m.focus}</p>
 
               <div className="border-t pt-5 mb-5" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
-                <p className="font-body text-mist text-sm leading-relaxed">{m.bio}</p>
+                <p className="font-body text-mist text-base leading-relaxed">{m.bio}</p>
               </div>
 
               <a

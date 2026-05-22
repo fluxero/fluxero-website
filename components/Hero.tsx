@@ -557,7 +557,7 @@ export const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6, ease: [0.23, 1, 0.32, 1] }}
           className="font-display font-black leading-none mb-8"
-          style={{ fontSize: 'clamp(36px, 9vw, 120px)', letterSpacing: '-0.01em', lineHeight: 0.92, color: '#F1F5F9' }}
+          style={{ fontSize: 'clamp(56px, 9vw, 140px)', letterSpacing: '-0.01em', lineHeight: 0.92, color: '#F1F5F9' }}
         >
           ENERGY<br />
           <span style={{
@@ -576,7 +576,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.9 }}
-          className="font-body text-lg md:text-xl font-light leading-relaxed mb-12"
+          className="font-body text-xl md:text-2xl font-light leading-relaxed mb-12"
           style={{ color: '#94A3B8', maxWidth: '480px' }}
         >
           Fluxero builds Small Modular Hydrogen Plants that convert curtailed wind,
@@ -588,6 +588,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1.1 }}
+          className="flex flex-wrap items-center gap-4"
         >
           <button
             onClick={() => navigate('/calculator')}
@@ -610,6 +611,25 @@ export const Hero: React.FC = () => {
           >
             Calculate your site's H₂ potential →
           </button>
+          <a href="#contact"
+            className="font-body font-medium text-xs px-6 py-4 rounded tracking-widest uppercase"
+            style={{ color: '#00D68F', border: '1px solid rgba(0,214,143,0.3)', background: 'rgba(0,214,143,0.05)' }}>
+            Seed Round Open →
+          </a>
+        </motion.div>
+
+        {/* Market size banner */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="inline-flex items-center gap-3 mb-4"
+        >
+          <span className="font-mono text-xs tracking-[0.2em] uppercase" style={{ color: '#A8A3B3' }}>
+            Green H₂ market
+          </span>
+          <span className="font-display font-black text-sm" style={{ color: '#00D68F' }}>£190B by 2034</span>
+          <span className="font-mono text-xs" style={{ color: '#64748B' }}>· 41.4% CAGR · IRENA 2025</span>
         </motion.div>
 
         {/* Stats */}
@@ -617,17 +637,20 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 1.4 }}
-          className="flex flex-wrap gap-6 mt-16 text-sm"
+          className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-16"
         >
           {[
-            { v: '8.3 TWh',  l: 'UK wind curtailed 2024' },
-            { v: '1.5 TWh',  l: 'solar curtailed 2024' },
-            { v: '£393M',    l: 'paid to waste it' },
-            { v: '£8–12/kg', l: 'green H₂ price' },
+            { v: '8.3 TWh',  l: 'UK renewables wasted in 2024', sub: '↑91% year-on-year · REF' },
+            { v: '£393M',    l: 'Paid to switch off clean energy', sub: 'Passed to consumer bills · 2024' },
+            { v: '£190B',    l: 'Global green H₂ market by 2034', sub: '41.4% CAGR · IRENA 2025' },
+            { v: '$7B',      l: 'Raised by H₂ startups in 2024', sub: 'Sector momentum accelerating' },
+            { v: '£8–12',    l: 'Per kg green H₂ market rate', sub: 'UK 2024–25 contract price' },
+            { v: '10yr',     l: 'Grid connection wait time', sub: 'Fluxero bypasses queue entirely' },
           ].map(s => (
-            <div key={s.v} className="flex items-baseline gap-2">
-              <span className="font-mono font-bold text-base" style={{ color: '#3B82F6' }}>{s.v}</span>
-              <span className="font-body text-xs" style={{ color: '#475569' }}>{s.l}</span>
+            <div key={s.v} className="flex flex-col gap-0.5">
+              <span className="font-mono font-bold text-lg" style={{ color: '#00D68F' }}>{s.v}</span>
+              <span className="font-body text-xs leading-snug" style={{ color: '#A8A3B3' }}>{s.l}</span>
+              <span className="font-mono text-xs" style={{ color: '#64748B' }}>{s.sub}</span>
             </div>
           ))}
         </motion.div>

@@ -34,7 +34,7 @@ export const Technology: React.FC = () => {
           >
             <h2
               className="font-display font-black text-cream mb-6"
-              style={{ fontSize: 'clamp(30px, 4vw, 52px)', lineHeight: 0.95 }}
+              style={{ fontSize: 'clamp(40px, 4vw, 64px)', lineHeight: 0.95 }}
             >
               THE DIGITAL TWIN<br />
               <span className="text-green-gradient">THAT RUNS FIRST.</span>
@@ -57,13 +57,13 @@ export const Technology: React.FC = () => {
                     background: 'rgba(13,12,15,0.6)',
                     border: '1px solid rgba(255,255,255,0.05)',
                     borderRadius: 8,
-                    padding: '14px 16px',
+                    padding: '18px 20px',
                     cursor: 'pointer',
                   }}
                   onClick={() => {}}
                 >
                   <div className="font-mono text-base mb-2" style={{ color: '#00D68F' }}>{f.icon}</div>
-                  <p className="font-display font-bold text-cream text-sm">{f.label}</p>
+                  <p className="font-display font-bold text-cream text-base">{f.label}</p>
                   <p className="font-mono text-steel text-xs mt-0.5">{f.sub}</p>
                 </motion.div>
               ))}
@@ -137,7 +137,7 @@ export const Technology: React.FC = () => {
                 ].map(s => (
                   <div key={s.l} style={{ background: '#131116', borderRadius: 8, padding: '14px 16px', border: '1px solid rgba(255,255,255,0.04)' }}>
                     <p className="font-mono text-xs text-steel mb-1">{s.l}</p>
-                    <p className="font-mono font-bold text-lg" style={{ color: s.c }}>{s.v}</p>
+                    <p className="font-mono font-bold text-xl" style={{ color: s.c }}>{s.v}</p>
                   </div>
                 ))}
               </div>

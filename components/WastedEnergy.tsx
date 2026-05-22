@@ -211,7 +211,7 @@ const GlobalCounter: React.FC = () => {
       <div
         className="font-display font-black counter tabular-nums"
         style={{
-          fontSize: 'clamp(40px, 7vw, 72px)',
+          fontSize: 'clamp(50px, 7vw, 84px)',
           lineHeight: 1,
           color: '#00D68F',
           fontVariantNumeric: 'tabular-nums',
@@ -257,7 +257,7 @@ const CountryCard: React.FC<CountryCardProps> = ({ flag, country, stat, descript
         border: `1px solid ${accent}28`,
         borderTop: `3px solid ${accent}`,
         borderRadius: 12,
-        padding: '24px',
+        padding: '32px',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
@@ -272,7 +272,7 @@ const CountryCard: React.FC<CountryCardProps> = ({ flag, country, stat, descript
       >
         {stat}
       </p>
-      <p className="font-body text-sm" style={{ color: '#94A3B8', lineHeight: 1.6 }}>
+      <p className="font-body text-base" style={{ color: '#94A3B8', lineHeight: 1.6 }}>
         {description}
       </p>
     </motion.div>
@@ -312,7 +312,7 @@ export const WastedEnergy: React.FC = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="font-display font-black"
             style={{
-              fontSize: 'clamp(36px, 6vw, 80px)',
+              fontSize: 'clamp(46px, 6vw, 92px)',
               lineHeight: 0.92,
               letterSpacing: '-0.02em',
               marginBottom: 0,
@@ -350,7 +350,7 @@ export const WastedEnergy: React.FC = () => {
           transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="font-body"
           style={{
-            fontSize: 'clamp(15px, 2vw, 19px)',
+            fontSize: 'clamp(18px, 2vw, 22px)',
             color: '#94A3B8',
             maxWidth: 600,
             lineHeight: 1.65,

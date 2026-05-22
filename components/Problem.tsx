@@ -107,13 +107,13 @@ export const Problem: React.FC = () => {
             <motion.div key={i}
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ delay: i * 0.08, duration: 0.5 }}
-              style={{ background: '#131116', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 12, padding: '24px' }}
+              style={{ background: '#131116', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 12, padding: '32px' }}
             >
               <div className="font-display font-black"
-                style={{ fontSize: 'clamp(26px, 6vw, 56px)', lineHeight: 1, color: s.color }}>
+                style={{ fontSize: 'clamp(36px, 7vw, 72px)', lineHeight: 1, color: s.color }}>
                 <CountUp to={s.n} decimals={s.d} prefix={s.pre} suffix={s.suf} />
               </div>
-              <p className="font-body font-medium text-cream text-sm mt-3 mb-1 leading-snug">{s.label}</p>
+              <p className="font-body font-medium text-cream text-base mt-3 mb-1 leading-snug">{s.label}</p>
               <p className="font-mono text-steel text-xs leading-relaxed">{s.sub}</p>
             </motion.div>
           ))}
@@ -130,7 +130,7 @@ export const Problem: React.FC = () => {
               <div className="w-2 h-2 rounded-full" style={{ background: '#FBBF24' }} />
               <p className="font-display font-bold text-cream text-base">Solar Curtailment Rising</p>
             </div>
-            <p className="font-body text-mist text-sm leading-relaxed">
+            <p className="font-body text-mist text-base leading-relaxed">
               Midday solar generation increasingly exceeds grid demand across southern England.
               In 2024, ~1.5 TWh was curtailed — up from near-zero in 2020. Network operators
               instruct solar farms to reduce output on sunny, low-demand days.
@@ -146,13 +146,46 @@ export const Problem: React.FC = () => {
               <div className="w-2 h-2 rounded-full" style={{ background: '#00D0E8' }} />
               <p className="font-display font-bold text-cream text-base">Hydro Constrained in Wet Spells</p>
             </div>
-            <p className="font-body text-mist text-sm leading-relaxed">
+            <p className="font-body text-mist text-base leading-relaxed">
               Scottish hydro schemes face constraint payments during high-rainfall periods
               when reservoirs are full and grid export is restricted. Run-of-river schemes
               are particularly vulnerable to simultaneous wind over-supply.
             </p>
           </motion.div>
         </div>
+
+        {/* Market Opportunity Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }} transition={{ duration: 0.6 }}
+          style={{ background: 'rgba(0,214,143,0.04)', border: '1px solid rgba(0,214,143,0.15)', borderRadius: 14, padding: '28px 32px', marginBottom: '4rem' }}
+        >
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div>
+              <p className="font-mono text-xs tracking-[0.2em] uppercase mb-2" style={{ color: '#00D68F' }}>The Opportunity</p>
+              <h3 className="font-display font-black text-cream mb-2" style={{ fontSize: 'clamp(22px, 3vw, 36px)', lineHeight: 1 }}>
+                THE WASTE IS FLUXERO'S FEEDSTOCK.
+              </h3>
+              <p className="font-body text-mist text-sm leading-relaxed max-w-xl">
+                UK curtailment alone represents £800M+ of green H₂ production opportunity annually.
+                Globally, over 470 TWh of clean energy is wasted every year — enough to power 140 million homes.
+                We convert it at source.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 flex-shrink-0">
+              {[
+                { v: '£800M+', l: 'Annual UK H₂ opportunity from curtailment' },
+                { v: '470 TWh', l: 'Global renewable energy wasted yearly' },
+                { v: '2030', l: "UK's 10 GW green H₂ target deadline" },
+              ].map(s => (
+                <div key={s.v} className="flex items-baseline gap-3">
+                  <span className="font-display font-black" style={{ fontSize: 28, color: '#00D68F', lineHeight: 1 }}>{s.v}</span>
+                  <span className="font-body text-mist text-xs">{s.l}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
 
         {/* Two column charts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
@@ -162,7 +195,7 @@ export const Problem: React.FC = () => {
             viewport={{ once: true }} transition={{ duration: 0.6 }}
           >
             <h2 className="font-display font-black text-cream mb-8"
-              style={{ fontSize: 'clamp(30px, 4vw, 50px)', lineHeight: 0.95 }}>
+              style={{ fontSize: 'clamp(40px, 5vw, 64px)', lineHeight: 0.95 }}>
               THE GRID IS FULL.<br />
               <span className="text-green-gradient">THE ENERGY ISN'T.</span>
             </h2>
@@ -189,7 +222,7 @@ export const Problem: React.FC = () => {
                   <div className="w-1 rounded-full flex-shrink-0 mt-1" style={{ background: item.color, minHeight: 52 }} />
                   <div>
                     <h4 className="font-display font-bold text-cream text-base mb-1">{item.title}</h4>
-                    <p className="font-body text-mist text-sm leading-relaxed">{item.body}</p>
+                    <p className="font-body text-mist text-base leading-relaxed">{item.body}</p>
                   </div>
                 </div>
               ))}
@@ -199,7 +232,7 @@ export const Problem: React.FC = () => {
             <div style={{ background: '#131116', border: '1px solid rgba(0,214,143,0.08)', borderRadius: 12, padding: '20px' }}>
               <p className="font-mono text-xs text-steel mb-1 uppercase tracking-widest">UK Renewable Curtailment by Year</p>
               <p className="font-body font-semibold text-cream text-sm mb-4">TWh wasted · Source: Electric Insights, REF, NESO</p>
-              <ResponsiveContainer width="100%" height={160}>
+              <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={curtailmentHistory} barSize={20}>
                   <XAxis dataKey="year" stroke="none" tick={{ fill: '#64748B', fontSize: 10, fontFamily: 'JetBrains Mono' }} />
                   <YAxis stroke="none" tick={{ fill: '#64748B', fontSize: 10, fontFamily: 'JetBrains Mono' }} unit=" T" />
@@ -238,7 +271,7 @@ export const Problem: React.FC = () => {
               </div>
             </div>
 
-            <ResponsiveContainer width="100%" height={220}>
+            <ResponsiveContainer width="100%" height={260}>
               <AreaChart data={dailyProfile}>
                 <defs>
                   <linearGradient id="gGen" x1="0" y1="0" x2="0" y2="1">
