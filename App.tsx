@@ -2,17 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 
-/* Scroll to top on every route change. Without this the new page opens
-   at whatever scroll position the previous one was at. */
+/* Scroll to top on every route change. Belt-and-braces because mobile
+   browsers (iOS Safari especially) have multiple scroll roots and some
+   buggy timing — we reset all three known scroll surfaces, twice
+   (sync + next animation frame), with smooth-scroll temporarily off. */
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    // disable any "smooth" scroll just for the jump, then restore
     const html = document.documentElement;
-    const prev = html.style.scrollBehavior;
+    const prevBehavior = html.style.scrollBehavior;
     html.style.scrollBehavior = 'auto';
-    window.scrollTo(0, 0);
-    html.style.scrollBehavior = prev;
+
+    const reset = () => {
+      window.scrollTo(0, 0);
+      if (document.body) document.body.scrollTop = 0;
+      html.scrollTop = 0;
+    };
+    reset();
+    // run again on next frame for iOS Safari / momentum scroll
+    const raf = requestAnimationFrame(() => {
+      reset();
+      html.style.scrollBehavior = prevBehavior;
+    });
+    return () => cancelAnimationFrame(raf);
   }, [pathname]);
   return null;
 }
