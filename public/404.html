@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Fluxero</title>
+  <!--
+    SPA fallback for GitHub Pages. When a visitor reloads / direct-loads
+    a route like /team, the GH Pages server has no file there and serves
+    THIS page. We rewrite the URL into `/?/<path>` and redirect to root.
+    index.html has a matching script that decodes it back to /team
+    BEFORE React Router mounts, so the page renders correctly.
+
+    Technique: github.com/rafgraph/spa-github-pages (MIT)
+  -->
+  <script>
+    var pathSegmentsToKeep = 0; // 0 because the site is at the apex domain
+    var l = window.location;
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
+  </script>
+</head>
+<body></body>
+</html>
