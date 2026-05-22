@@ -218,7 +218,7 @@ export const Contact: React.FC = () => {
                       onChange={e => setForm(f => ({ ...f, firstName: e.target.value }))}
                       className="w-full font-body text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-green/40 transition-colors"
                       style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0', fontSize: '1rem' }}
-                      placeholder="Kieran" />
+                      placeholder="First name" />
                   </div>
                   <div>
                     <label className="font-mono text-base text-steel uppercase tracking-widest block mb-2">Last name</label>
@@ -226,7 +226,7 @@ export const Contact: React.FC = () => {
                       onChange={e => setForm(f => ({ ...f, lastName: e.target.value }))}
                       className="w-full font-body text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-green/40 transition-colors"
                       style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0', fontSize: '1rem' }}
-                      placeholder="Purvis" />
+                      placeholder="Last name" />
                   </div>
                 </div>
 
