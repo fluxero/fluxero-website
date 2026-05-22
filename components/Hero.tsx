@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { SmhpScene } from './SmhpScene';
 
 /* ─── Particle types ─────────────────────────────────────────────── */
 type ParticlePhase = 'source' | 'waste' | 'captured' | 'h2';
@@ -535,9 +536,9 @@ export const Hero: React.FC = () => {
   return (
     <section className="relative flex flex-col justify-start overflow-hidden" style={{ minHeight: '72vh' }}>
 
-      {/* Canvas background */}
+      {/* WebGL background (R3F scene) */}
       <div className="absolute inset-0" style={{ background: '#070608' }}>
-        <EnergyCanvas />
+        <SmhpScene />
       </div>
 
       {/* Strong center vignette so text is readable */}

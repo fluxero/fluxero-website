@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Hero }            from './components/Hero';
+import { ProcessChips }    from './components/ProcessChips';
 import { EnergyExplainer } from './components/EnergyExplainer';
 import { Partners }        from './components/Partners';
 import { Contact }         from './components/Contact';
@@ -17,6 +18,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <ProcessChips />
       <EnergyExplainer />
       <Partners />
 

@@ -18,6 +18,8 @@ function ScrollToTop() {
 }
 import { Splash }          from './components/Splash';
 import { Navbar }          from './components/Navbar';
+import { Analytics }       from './components/Analytics';
+import { CookieBanner }    from './components/CookieBanner';
 import Home                from './Home';
 import CalculatorPage      from './CalculatorPage';
 import ProblemPage         from './ProblemPage';
@@ -60,8 +62,10 @@ function App() {
         {ready && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
             <ScrollToTop />
+            <Analytics />
             <ScrollProgress />
             <Navbar />
+            <CookieBanner />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/calculator" element={<CalculatorPage />} />
