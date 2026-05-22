@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Hero }            from './components/Hero';
 import { ProcessChips }    from './components/ProcessChips';
 import { EnergyExplainer } from './components/EnergyExplainer';
+import { Partners }        from './components/Partners';
 import { Contact }         from './components/Contact';
 
 const EXPLORE_CARDS = [
@@ -19,6 +20,7 @@ export default function Home() {
       <Hero />
       <ProcessChips />
       <EnergyExplainer />
+      <Partners />
 
       {/* Explore section */}
       <section style={{ background: '#0D0C0F', padding: '6rem 0' }}>

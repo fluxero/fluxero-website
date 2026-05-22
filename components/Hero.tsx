@@ -665,39 +665,7 @@ export const Hero: React.FC = () => {
           </button>
         </motion.div>
 
-        {/* Partner badges — below buttons */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1.4 }}
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}
-        >
-          <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 12, color: '#475569', letterSpacing: '0.15em', textTransform: 'uppercase', marginRight: 4 }}>Backed by</span>
-
-          {/* NVIDIA Inception */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(118,185,0,0.07)', border: '1px solid rgba(118,185,0,0.22)', borderRadius: 8, padding: '5px 12px' }}>
-            <img src="/partners/nvidia-logo.png" alt="" style={{ width: 54, height: 14, objectFit: 'contain', flexShrink: 0 }} />
-            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 12, color: 'rgba(158,217,0,0.85)', letterSpacing: '0.06em' }}>NVIDIA INCEPTION</span>
-          </div>
-
-          {/* Barclays */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(0,174,239,0.05)', border: '1px solid rgba(0,174,239,0.18)', borderRadius: 8, padding: '5px 12px' }}>
-            <img src="/partners/barclays-logo.png" alt="" style={{ width: 58, height: 14, objectFit: 'contain', flexShrink: 0 }} />
-            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 12, color: 'rgba(0,174,239,0.85)', letterSpacing: '0.06em' }}>BARCLAYS EAGLE LABS</span>
-          </div>
-
-          {/* Google for Startups */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 8, padding: '5px 12px' }}>
-            <img src="/partners/google-logo.png" alt="" style={{ height: 12, width: 'auto', objectFit: 'contain', flexShrink: 0 }} />
-            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 12, color: 'rgba(241,235,224,0.78)', letterSpacing: '0.06em' }}>GOOGLE FOR STARTUPS</span>
-          </div>
-
-          {/* Durham */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(201,168,76,0.05)', border: '1px solid rgba(201,168,76,0.18)', borderRadius: 8, padding: '5px 12px' }}>
-            <img src="/partners/durham-logo.png" alt="" style={{ height: 14, width: 'auto', objectFit: 'contain', flexShrink: 0 }} />
-            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 12, color: 'rgba(201,168,76,0.8)', letterSpacing: '0.06em' }}>DURHAM UNIVERSITY</span>
-          </div>
-        </motion.div>
+        {/* Partner badges removed — shown in dedicated <Partners /> strip below */}
 
       </div>
     </section>
