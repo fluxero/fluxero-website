@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -54,7 +54,7 @@ const milestones = [
   },
   {
     label: 'Q2 2025',
-    text: 'Seed round open. Â£500k target for first commercial SMHP deployment.',
+    text: 'Seed round open. Capital deployed into first commercial SMHP and offtake agreements.',
   },
 ];
 
@@ -80,15 +80,15 @@ const whyNow = [
   },
   {
     title: 'Electrolyser costs hit an inflection',
-    body: 'Stack costs dropped 60% since 2020. Second-life panels at Â£360/kWp vs Â£800/kWp new. The economics only work at this cost level â€” in 5 years competitors will catch up.',
+    body: 'Stack costs dropped 60% since 2020. Second-life panels at £360/kWp vs £800/kWp new. The economics only work at this cost level — in 5 years competitors will catch up.',
   },
   {
     title: 'Policy tailwind is now policy mandate',
-    body: 'UK: 10 GW Hâ‚‚ by 2030. EU: 10 Mt/year by 2030. US IRA: $3/kg tax credit. Binding commitments with real capital attached.',
+    body: 'UK: 10 GW H₂ by 2030. EU: 10 Mt/year by 2030. US IRA: $3/kg tax credit. Binding commitments with real capital attached.',
   },
   {
     title: 'First-mover at curtailment sites',
-    body: 'No competitor is deploying behind-the-meter at curtailment points. The grid-connected Hâ‚‚ hubs they\'re building face the same 10-year queue they\'re trying to avoid.',
+    body: 'No competitor is deploying behind-the-meter at curtailment points. The grid-connected H₂ hubs they\'re building face the same 10-year queue they\'re trying to avoid.',
   },
 ];
 
@@ -103,7 +103,7 @@ export default function TractionPage() {
         paddingTop: 80,
       }}
     >
-      {/* â”€â”€â”€ 1. HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ─── 1. HERO ─────────────────────────────────────────────────────────── */}
       <div data-section
         style={{
           background: COLORS.dark,
@@ -161,7 +161,7 @@ export default function TractionPage() {
         </motion.div>
       </div>
 
-      {/* â”€â”€â”€ 2. PARTNER VALIDATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ─── 2. PARTNER VALIDATION ───────────────────────────────────────────── */}
       <div data-section
         style={{
           background: COLORS.sectionAlt,
@@ -225,18 +225,12 @@ export default function TractionPage() {
               }}
             >
               <div>
-                <div
-                  style={{
-                    fontFamily: FONTS.sans,
-                    fontWeight: 700,
-                    fontSize: 22,
-                    color: COLORS.nvidiaGreen,
-                    letterSpacing: '0.08em',
-                    lineHeight: 1,
-                  }}
-                >
-                  NVIDIA
-                </div>
+                <img
+                  src="/partners/nvidia-logo.png"
+                  alt="NVIDIA"
+                  className="partner-logo"
+                  style={{ width: 160, maxHeight: 32, marginBottom: 8 }}
+                />
                 <div
                   style={{
                     fontFamily: FONTS.mono,
@@ -261,7 +255,7 @@ export default function TractionPage() {
                   flex: 1,
                 }}
               >
-                Selected for Nvidia Inception â€” the programme that accelerates AI-first startups with
+                Selected for Nvidia Inception — the programme that accelerates AI-first startups with
                 deep tech infrastructure, GPU credits, and go-to-market support. Less than 5% of
                 applicants accepted.
               </p>
@@ -298,18 +292,12 @@ export default function TractionPage() {
               }}
             >
               <div>
-                <div
-                  style={{
-                    fontFamily: FONTS.sans,
-                    fontWeight: 700,
-                    fontSize: 22,
-                    color: COLORS.barclaysBlue,
-                    letterSpacing: '0.08em',
-                    lineHeight: 1,
-                  }}
-                >
-                  BARCLAYS
-                </div>
+                <img
+                  src="/partners/barclays-logo.png"
+                  alt="Barclays"
+                  className="partner-logo"
+                  style={{ width: 165, maxHeight: 34, marginBottom: 8 }}
+                />
                 <div
                   style={{
                     fontFamily: FONTS.mono,
@@ -431,7 +419,7 @@ export default function TractionPage() {
         </motion.div>
       </div>
 
-      {/* â”€â”€â”€ 3. MILESTONE TIMELINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ─── 3. MILESTONE TIMELINE ───────────────────────────────────────────── */}
       <div data-section
         style={{
           background: COLORS.dark,
@@ -539,7 +527,7 @@ export default function TractionPage() {
         </motion.div>
       </div>
 
-      {/* â”€â”€â”€ 4. WHAT MAKES US DIFFERENT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ─── 4. WHAT MAKES US DIFFERENT ──────────────────────────────────────── */}
       <div data-section
         style={{
           background: COLORS.sectionAlt,
@@ -630,7 +618,7 @@ export default function TractionPage() {
         </motion.div>
       </div>
 
-      {/* â”€â”€â”€ 5. WHY NOW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ─── 5. WHY NOW ──────────────────────────────────────────────────────── */}
       <div data-section
         style={{
           background: COLORS.dark,
@@ -711,7 +699,7 @@ export default function TractionPage() {
         </motion.div>
       </div>
 
-      {/* â”€â”€â”€ 6. INVESTOR CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ─── 6. INVESTOR CTA ─────────────────────────────────────────────────── */}
       <div data-section
         style={{
           background: COLORS.sectionAlt,
@@ -764,8 +752,8 @@ export default function TractionPage() {
               margin: '0 0 48px',
             }}
           >
-            Â£500k for first commercial SMHP deployment. 12 months of runway. Target outcomes: 3 SMHPs
-            deployed, 3 offtake agreements signed.
+            Capital for our first commercial SMHP deployment and offtake agreements.
+            Target outcomes: 3 SMHPs deployed, 3 offtake agreements signed within 12 months.
           </motion.p>
 
           <motion.div
@@ -790,7 +778,7 @@ export default function TractionPage() {
               onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = '0.85')}
               onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = '1')}
             >
-              Talk to us â†’
+              Talk to us →
             </Link>
 
             <Link
@@ -820,7 +808,7 @@ export default function TractionPage() {
                 el.style.color = COLORS.cream;
               }}
             >
-              Review the numbers â†’
+              Review the numbers →
             </Link>
           </motion.div>
         </motion.div>

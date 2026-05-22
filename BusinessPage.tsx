@@ -1,8 +1,8 @@
-﻿import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-// â”€â”€â”€ Shared style tokens â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Shared style tokens ──────────────────────────────────────────────────────
 const C = {
   dark:    '#070608',
   card:    '#131116',
@@ -19,7 +19,7 @@ const MONO:   React.CSSProperties = { fontFamily: '"IBM Plex Mono", monospace' }
 const SANS:   React.CSSProperties = { fontFamily: '"IBM Plex Sans", sans-serif' };
 const SERIF:  React.CSSProperties = { fontFamily: '"DM Serif Display", serif' };
 
-// â”€â”€â”€ Tiny helper: animated section wrapper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Tiny helper: animated section wrapper ────────────────────────────────────
 function FadeIn({ children, delay = 0, style }: { children: React.ReactNode; delay?: number; style?: React.CSSProperties }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
@@ -36,7 +36,7 @@ function FadeIn({ children, delay = 0, style }: { children: React.ReactNode; del
   );
 }
 
-// â”€â”€â”€ Mono tag + decorative line â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Mono tag + decorative line ───────────────────────────────────────────────
 function MonoTag({ label }: { label: string }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
@@ -48,7 +48,7 @@ function MonoTag({ label }: { label: string }) {
   );
 }
 
-// â”€â”€â”€ Metric box (card) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Metric box (card) ────────────────────────────────────────────────────────
 function MetricBox({ value, label }: { value: string; label: string }) {
   return (
     <div style={{
@@ -69,7 +69,7 @@ function MetricBox({ value, label }: { value: string; label: string }) {
   );
 }
 
-// â”€â”€â”€ Slider row â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Slider row ───────────────────────────────────────────────────────────────
 const sliderThumb = `
   input[type=range].fluxero-slider {
     -webkit-appearance: none;
@@ -147,7 +147,7 @@ function SliderRow({
   );
 }
 
-// â”€â”€â”€ Big output metric card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Big output metric card ───────────────────────────────────────────────────
 function OutputMetric({ label, value, sub }: { label: string; value: string; sub?: string }) {
   return (
     <div style={{
@@ -171,15 +171,15 @@ function OutputMetric({ label, value, sub }: { label: string; value: string; sub
   );
 }
 
-// â”€â”€â”€ Revenue stream tab data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Revenue stream tab data ──────────────────────────────────────────────────
 const REVENUE_STREAMS = [
   {
     id: 'h2',
-    label: 'Hâ‚‚ Offtake',
+    label: 'H₂ Offtake',
     headline: 'Direct hydrogen sales to industrial buyers.',
-    body: 'Green Hâ‚‚ is sold under long-term offtake contracts to industrial operators â€” steel producers, refineries, and fuel cell vehicle fleet operators. Contracts typically run 15 years, providing a locked-in, recurring revenue base from day one of commissioning.',
+    body: 'Green H₂ is sold under long-term offtake contracts to industrial operators — steel producers, refineries, and fuel cell vehicle fleet operators. Contracts typically run 15 years, providing a locked-in, recurring revenue base from day one of commissioning.',
     metrics: [
-      { k: 'Price range', v: 'Â£8 â€“ Â£12 / kg' },
+      { k: 'Price range', v: '£8 – £12 / kg' },
       { k: 'Contract length', v: '15-year offtake' },
       { k: 'Buyers', v: 'Steel, FCEVs, industry' },
     ],
@@ -189,39 +189,39 @@ const REVENUE_STREAMS = [
     id: 'constraint',
     label: 'Constraint Payments',
     headline: 'Turn curtailed energy into free feedstock.',
-    body: 'Grid operators pay generators to curtail output when the grid is congested. Fluxero negotiates to share these constraint payments with landowners in exchange for the curtailed electricity as feedstock â€” meaning our electrolyser input cost can be zero or near-zero on curtailed periods.',
+    body: 'Grid operators pay generators to curtail output when the grid is congested. Fluxero negotiates to share these constraint payments with landowners in exchange for the curtailed electricity as feedstock — meaning our electrolyser input cost can be zero or near-zero on curtailed periods.',
     metrics: [
-      { k: 'Feedstock cost', v: 'Â£0 (curtailed)' },
+      { k: 'Feedstock cost', v: '£0 (curtailed)' },
       { k: 'Mechanism', v: 'Shared constraint fee' },
-      { k: 'UK curtailment', v: 'Â£650M+ paid in 2023' },
+      { k: 'UK curtailment', v: '£650M+ paid in 2023' },
     ],
     accent: '#60A5FA',
   },
   {
     id: 'carbon',
     label: 'Carbon Credits',
-    headline: 'Each kg Hâ‚‚ avoids 9 kg COâ‚‚.',
-    body: 'Green hydrogen produced from renewable electricity displaces grey hydrogen (from natural gas steam methane reforming). Each kg of green Hâ‚‚ avoids approximately 9 kg of COâ‚‚e. At voluntary carbon market prices, this generates an additional revenue layer stacked on top of the base Hâ‚‚ offtake price.',
+    headline: 'Each kg H₂ avoids 9 kg CO₂.',
+    body: 'Green hydrogen produced from renewable electricity displaces grey hydrogen (from natural gas steam methane reforming). Each kg of green H₂ avoids approximately 9 kg of CO₂e. At voluntary carbon market prices, this generates an additional revenue layer stacked on top of the base H₂ offtake price.',
     metrics: [
-      { k: 'COâ‚‚ avoided', v: '~9 kg per kg Hâ‚‚' },
-      { k: 'Carbon price', v: 'Â£35 â€“ Â£50 / tonne' },
-      { k: 'Additional rev', v: 'Â£0.32 â€“ Â£0.45 / kg Hâ‚‚' },
+      { k: 'CO₂ avoided', v: '~9 kg per kg H₂' },
+      { k: 'Carbon price', v: '£35 – £50 / tonne' },
+      { k: 'Additional rev', v: '£0.32 – £0.45 / kg H₂' },
     ],
     accent: '#A78BFA',
   },
 ];
 
-// â”€â”€â”€ Unit economics table data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Unit economics table data ────────────────────────────────────────────────
 const TABLE_ROWS = [
-  { metric: 'CAPEX',         perUnit: 'Â£150k',      per100: 'Â£15M'    },
-  { metric: 'Annual Revenue', perUnit: 'Â£47k',       per100: 'Â£4.7M'   },
-  { metric: 'OpEx',          perUnit: 'Â£8k / yr',   per100: 'Â£800k / yr' },
-  { metric: 'EBITDA',        perUnit: 'Â£39k / yr',  per100: 'Â£3.9M / yr' },
+  { metric: 'CAPEX',         perUnit: '£150k',      per100: '£15M'    },
+  { metric: 'Annual Revenue', perUnit: '£47k',       per100: '£4.7M'   },
+  { metric: 'OpEx',          perUnit: '£8k / yr',   per100: '£800k / yr' },
+  { metric: 'EBITDA',        perUnit: '£39k / yr',  per100: '£3.9M / yr' },
   { metric: 'Payback',       perUnit: '3.2 years',  per100: '3.2 years'  },
-  { metric: '10-yr Net',     perUnit: 'Â£240k',      per100: 'Â£24M'       },
+  { metric: '10-yr Net',     perUnit: '£240k',      per100: '£24M'       },
 ];
 
-// â”€â”€â”€ Main page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Main page ────────────────────────────────────────────────────────────────
 export default function BusinessPage() {
   // Calculator state
   const [panels,     setPanels]     = useState(1000);
@@ -232,7 +232,7 @@ export default function BusinessPage() {
   // Tab state
   const [activeTab, setActiveTab] = useState('h2');
 
-  // â”€â”€ Calculator derived values â”€â”€
+  // ── Calculator derived values ──
   const kwhPerYear      = panels * 0.4 * (sunHours / 1000) * 1000;
   const h2KgPerYear     = (kwhPerYear * efficiency / 100) / 50;
   const annualRevenue   = h2KgPerYear * h2Price;
@@ -246,9 +246,9 @@ export default function BusinessPage() {
   const profitPct       = 100 - capexPct;
 
   const fmtCurrency = (n: number) => {
-    if (n >= 1_000_000) return `Â£${(n / 1_000_000).toFixed(2)}M`;
-    if (n >= 1_000)     return `Â£${(n / 1_000).toFixed(1)}k`;
-    return `Â£${Math.round(n)}`;
+    if (n >= 1_000_000) return `£${(n / 1_000_000).toFixed(2)}M`;
+    if (n >= 1_000)     return `£${(n / 1_000).toFixed(1)}k`;
+    return `£${Math.round(n)}`;
   };
   const fmtKg = (n: number) => {
     if (n >= 1_000) return `${(n / 1_000).toFixed(1)}t`;
@@ -264,9 +264,9 @@ export default function BusinessPage() {
 
       <div style={{ background: C.dark, minHeight: '100vh', paddingTop: 80 }}>
 
-        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-            SECTION 1 â€” HERO
-        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+        {/* SECTION 1 - HERO */}
+
+
         <div data-section style={{
           background: C.dark,
           padding: 'clamp(72px, 10vw, 120px) 0 clamp(64px, 8vw, 96px)',
@@ -308,9 +308,9 @@ export default function BusinessPage() {
           </div>
         </div>
 
-        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-            SECTION 2 â€” THESIS (two-column)
-        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+        {/* SECTION 2 - THESIS */}
+
+
         <div data-section style={{ background: C.alt, padding: 'clamp(64px, 8vw, 112px) 0' }}>
           <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(20px, 5vw, 48px)' }}>
 
@@ -320,7 +320,7 @@ export default function BusinessPage() {
               gap: 'clamp(40px, 6vw, 80px)',
               alignItems: 'start',
             }}>
-              {/* Left â€” text */}
+              {/* Left — text */}
               <FadeIn>
                 <MonoTag label="The Thesis" />
                 <h2 style={{
@@ -336,7 +336,7 @@ export default function BusinessPage() {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
                   {[
-                    'Each SMHP is a discrete, revenue-generating asset â€” identical in manufacture, replicable at scale.',
+                    'Each SMHP is a discrete, revenue-generating asset — identical in manufacture, replicable at scale.',
                     'No grid connection, no bespoke engineering, no complex civil works. Containerised units qualify as permitted development in many jurisdictions.',
                     'We don\'t need planning permission for each new site. We need a flatbed truck.',
                     'Each unit deployed generates recurring hydrogen offtake revenue from day one of commissioning.',
@@ -371,17 +371,17 @@ export default function BusinessPage() {
                 </div>
               </FadeIn>
 
-              {/* Right â€” metric grid */}
+              {/* Right — metric grid */}
               <FadeIn delay={0.15}>
                 <div style={{
                   display: 'grid',
                   gridTemplateColumns: '1fr 1fr',
                   gap: 16,
                 }}>
-                  <MetricBox value="Â£150k"  label="Avg CAPEX per unit" />
-                  <MetricBox value="Â£47k/yr" label="Avg annual revenue" />
+                  <MetricBox value="£150k"  label="Avg CAPEX per unit" />
+                  <MetricBox value="£47k/yr" label="Avg annual revenue" />
                   <MetricBox value="3.2 yr"  label="Average payback" />
-                  <MetricBox value="âˆž"       label="Sites available" />
+                  <MetricBox value="∞"       label="Sites available" />
                 </div>
 
                 <div style={{
@@ -395,7 +395,7 @@ export default function BusinessPage() {
                     Why it compounds
                   </p>
                   <p style={{ ...SANS, fontSize: 14, color: C.muted, fontWeight: 300, lineHeight: 1.7, margin: 0 }}>
-                    Every curtailment point in the UK is a potential location. National Grid paid over Â£650M in constraint payments in 2023 alone. Each of those sites is a potential Fluxero deployment â€” zero land cost, zero feedstock cost.
+                    Every curtailment point in the UK is a potential location. National Grid paid over £650M in constraint payments in 2023 alone. Each of those sites is a potential Fluxero deployment — zero land cost, zero feedstock cost.
                   </p>
                 </div>
               </FadeIn>
@@ -403,9 +403,9 @@ export default function BusinessPage() {
           </div>
         </div>
 
-        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-            SECTION 3 â€” ROI CALCULATOR
-        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+        {/* SECTION 3 - ROI CALCULATOR */}
+
+
         <div data-section style={{ background: C.dark, padding: 'clamp(64px, 8vw, 112px) 0' }}>
           <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(20px, 5vw, 48px)' }}>
             <FadeIn>
@@ -420,7 +420,7 @@ export default function BusinessPage() {
                 Model your site.
               </h2>
               <p style={{ ...SANS, fontSize: 15, color: C.muted, fontWeight: 300, maxWidth: 540, lineHeight: 1.6, marginBottom: 48 }}>
-                Adjust the parameters below. Outputs update live â€” based on the same methodology used in our founder's 1,000-panel example.
+                Adjust the parameters below. Outputs update live — based on the same methodology used in our founder's 1,000-panel example.
               </p>
             </FadeIn>
 
@@ -430,7 +430,7 @@ export default function BusinessPage() {
               gap: 32,
               alignItems: 'start',
             }}>
-              {/* Left â€” sliders */}
+              {/* Left — sliders */}
               <FadeIn delay={0.05}>
                 <div style={{
                   background: C.card,
@@ -461,9 +461,9 @@ export default function BusinessPage() {
                     onChange={setSunHours}
                   />
                   <SliderRow
-                    label="Hâ‚‚ sale price"
+                    label="H₂ sale price"
                     min={6} max={14} step={0.5} value={h2Price}
-                    format={v => `Â£${v}/kg`}
+                    format={v => `£${v}/kg`}
                     onChange={setH2Price}
                   />
 
@@ -478,7 +478,7 @@ export default function BusinessPage() {
                   }}>
                     {[
                       { k: 'kWh captured / yr', v: `${(kwhPerYear / 1000).toFixed(0)}k kWh` },
-                      { k: 'Hâ‚‚ production',     v: fmtKg(h2KgPerYear) },
+                      { k: 'H₂ production',     v: fmtKg(h2KgPerYear) },
                       { k: 'Est. CAPEX',         v: fmtCurrency(capex) },
                       { k: 'Payback period',     v: `${paybackYears.toFixed(1)} yrs` },
                     ].map(item => (
@@ -500,7 +500,7 @@ export default function BusinessPage() {
                 </div>
               </FadeIn>
 
-              {/* Right â€” output metrics + projection bar */}
+              {/* Right — output metrics + projection bar */}
               <FadeIn delay={0.12}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                   {/* 3 big outputs */}
@@ -508,14 +508,14 @@ export default function BusinessPage() {
                     <OutputMetric
                       label="Annual Revenue"
                       value={fmtCurrency(annualRevenue)}
-                      sub={`from ${fmtKg(h2KgPerYear)} Hâ‚‚ / yr`}
+                      sub={`from ${fmtKg(h2KgPerYear)} H₂ / yr`}
                     />
                   </div>
                   <div style={{ display: 'flex', gap: 16 }}>
                     <OutputMetric
-                      label="Hâ‚‚ Production"
+                      label="H₂ Production"
                       value={fmtKg(h2KgPerYear)}
-                      sub={`â‰ˆ ${(kwhPerYear / 1000).toFixed(0)}k kWh input`}
+                      sub={`≈ ${(kwhPerYear / 1000).toFixed(0)}k kWh input`}
                     />
                     <OutputMetric
                       label="Payback Period"
@@ -574,11 +574,11 @@ export default function BusinessPage() {
                     <div style={{ display: 'flex', gap: 24, marginTop: 14 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                         <div style={{ width: 10, height: 10, borderRadius: 2, background: 'rgba(100,116,139,0.45)' }} />
-                        <span style={{ ...MONO, fontSize: 11, color: C.steel }}>CAPEX â€” {fmtCurrency(capex)}</span>
+                        <span style={{ ...MONO, fontSize: 11, color: C.steel }}>CAPEX — {fmtCurrency(capex)}</span>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                         <div style={{ width: 10, height: 10, borderRadius: 2, background: C.green }} />
-                        <span style={{ ...MONO, fontSize: 11, color: C.steel }}>10-yr gross â€” {fmtCurrency(tenYrGross)}</span>
+                        <span style={{ ...MONO, fontSize: 11, color: C.steel }}>10-yr gross — {fmtCurrency(tenYrGross)}</span>
                       </div>
                     </div>
                   </div>
@@ -588,9 +588,9 @@ export default function BusinessPage() {
           </div>
         </div>
 
-        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-            SECTION 4 â€” THREE REVENUE STREAMS
-        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+        {/* SECTION 4 - THREE REVENUE STREAMS */}
+
+
         <div data-section style={{ background: C.alt, padding: 'clamp(64px, 8vw, 112px) 0' }}>
           <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(20px, 5vw, 48px)' }}>
             <FadeIn>
@@ -605,7 +605,7 @@ export default function BusinessPage() {
                 Three layers of revenue.
               </h2>
               <p style={{ ...SANS, fontSize: 15, color: C.muted, fontWeight: 300, maxWidth: 520, lineHeight: 1.6, marginBottom: 44 }}>
-                Every SMHP participates in all three streams. Each one is independent â€” together they materially de-risk the revenue profile.
+                Every SMHP participates in all three streams. Each one is independent — together they materially de-risk the revenue profile.
               </p>
             </FadeIn>
 
@@ -706,9 +706,9 @@ export default function BusinessPage() {
           </div>
         </div>
 
-        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-            SECTION 5 â€” MARKET SIZE
-        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+        {/* SECTION 5 - MARKET SIZE */}
+
+
         <div data-section style={{ background: C.dark, padding: 'clamp(64px, 8vw, 112px) 0' }}>
           <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(20px, 5vw, 48px)' }}>
             <FadeIn>
@@ -720,7 +720,7 @@ export default function BusinessPage() {
                 lineHeight: 1.05,
                 marginBottom: 48,
               }}>
-                A Â£190B market,<br />
+                A £190B market,<br />
                 <span style={{ color: C.green }}>captured from the ground up.</span>
               </h2>
             </FadeIn>
@@ -732,7 +732,7 @@ export default function BusinessPage() {
             }}>
               {[
                 {
-                  num: 'Â£190B',
+                  num: '£190B',
                   label: 'Global green hydrogen market by 2034',
                   sub: 'Source: IRENA 2024',
                   accent: C.green,
@@ -740,12 +740,12 @@ export default function BusinessPage() {
                 {
                   num: '500',
                   label: 'SMHPs target by 2030',
-                  sub: '= Â£23.5M ARR',
+                  sub: '= £23.5M ARR',
                   accent: C.green,
                 },
                 {
-                  num: 'Â£117M',
-                  label: 'Asset value at 5Ã— revenue',
+                  num: '£117M',
+                  label: 'Asset value at 5× revenue',
                   sub: 'Conservative infrastructure multiple',
                   accent: C.green,
                 },
@@ -780,9 +780,9 @@ export default function BusinessPage() {
           </div>
         </div>
 
-        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-            SECTION 6 â€” UNIT ECONOMICS TABLE
-        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+        {/* SECTION 6 - UNIT ECONOMICS TABLE */}
+
+
         <div data-section style={{ background: C.alt, padding: 'clamp(64px, 8vw, 112px) 0' }}>
           <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(20px, 5vw, 48px)' }}>
             <FadeIn>
@@ -883,9 +883,9 @@ export default function BusinessPage() {
           </div>
         </div>
 
-        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-            SECTION 7 â€” CTA
-        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+        {/* SECTION 7 - CTA */}
+
+
         <div data-section style={{ background: C.dark, padding: 'clamp(80px, 10vw, 128px) 0' }}>
           <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(20px, 5vw, 48px)' }}>
             <FadeIn>
@@ -934,10 +934,10 @@ export default function BusinessPage() {
                       Explore the traction
                     </h3>
                     <p style={{ ...SANS, fontSize: 14, color: C.muted, fontWeight: 300, lineHeight: 1.65, marginBottom: 28 }}>
-                      Nvidia Inception, Barclays Eagle Labs, and our proof points â€” see where we are today.
+                      Nvidia Inception, Barclays Eagle Labs, and our proof points — see where we are today.
                     </p>
                     <span style={{ ...MONO, fontSize: 12, color: C.green, letterSpacing: '0.1em' }}>
-                      View traction â†’
+                      View traction →
                     </span>
                   </div>
                 </Link>
@@ -973,10 +973,10 @@ export default function BusinessPage() {
                       Model your site
                     </h3>
                     <p style={{ ...SANS, fontSize: 14, color: C.dark, fontWeight: 400, lineHeight: 1.65, marginBottom: 28, opacity: 0.75 }}>
-                      Run a full projection for your renewable site â€” panels, location, offtake price, and more.
+                      Run a full projection for your renewable site — panels, location, offtake price, and more.
                     </p>
                     <span style={{ ...MONO, fontSize: 12, color: C.dark, letterSpacing: '0.1em' }}>
-                      Open calculator â†’
+                      Open calculator →
                     </span>
                   </div>
                 </Link>

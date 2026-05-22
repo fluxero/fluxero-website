@@ -418,7 +418,7 @@ export const EnergyExplainer: React.FC = () => {
         </h2>
 
         {/* Two-column layout */}
-        <div style={{ display: 'grid', gridTemplateColumns: '3fr 2fr', gap: 48, alignItems: 'start' }}>
+        <div className="energy-explainer-grid" style={{ display: 'grid', gridTemplateColumns: '3fr 2fr', gap: 48, alignItems: 'start' }}>
 
           {/* LEFT: Animation card */}
           <div
@@ -433,7 +433,7 @@ export const EnergyExplainer: React.FC = () => {
             onMouseLeave={() => startPlay()}
           >
             {/* Scene display */}
-            <div style={{ height: 420, position: 'relative', overflow: 'hidden' }}>
+            <div className="energy-scene" style={{ height: 420, position: 'relative', overflow: 'hidden' }}>
               <AnimatePresence mode="wait">
                 <motion.div
                   key={scene}

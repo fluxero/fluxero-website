@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-/* ─────────────────────────────────────────────
-   Types
-───────────────────────────────────────────── */
 interface GenerationMixItem {
   fuel: string;
   perc: number;
@@ -14,9 +11,6 @@ interface LiveGridData {
   generationMix: GenerationMixItem[];
 }
 
-/* ─────────────────────────────────────────────
-   Helpers
-───────────────────────────────────────────── */
 const RENEWABLES = ['wind', 'solar', 'hydro', 'biomass'];
 
 function sumRenewables(mix: GenerationMixItem[]): number {
@@ -37,9 +31,6 @@ function indexColor(index: string): string {
   return '#94A3B8';
 }
 
-/* ─────────────────────────────────────────────
-   Fetch live data
-───────────────────────────────────────────── */
 async function fetchLiveData(): Promise<LiveGridData | null> {
   try {
     const [intensityRes, generationRes] = await Promise.all([
@@ -59,25 +50,19 @@ async function fetchLiveData(): Promise<LiveGridData | null> {
   }
 }
 
-/* ─────────────────────────────────────────────
-   Hardcoded ticker items (existing content)
-───────────────────────────────────────────── */
 const STATIC_ITEMS: string[] = [
-  '⚡ 8.3 TWh of UK wind wasted in 2024 — up 91% YoY',
-  '🔋 Fluxero converts curtailed renewables into green hydrogen at source',
-  '💰 £393M paid in constraint payments to UK generators in 2024',
-  '🌬 Scotland generates 40% of UK wind but accounts for 95% of curtailment',
-  '☀ Solar curtailment up 36% in 2024 — midday demand mismatch growing',
-  '🌍 Global renewable curtailment estimated at 472+ TWh/year — IEA 2024',
-  '⚗ Each tonne of green H₂ displaces ~9 tonnes of CO₂ vs grey hydrogen',
-  '🚂 Scottish wind curtailment peaks when B6 transmission corridor saturates',
-  '🏭 Fluxero modular electrolysers deploy in 90 days, no new grid connection',
-  '📈 Green hydrogen market projected to reach $680B by 2050 — BloombergNEF',
+  '8.3 TWh of UK wind wasted in 2024 - up 91% YoY',
+  'Fluxero converts curtailed renewables into green hydrogen at source',
+  '£393M paid in constraint payments to UK generators in 2024',
+  'Scotland generates 40% of UK wind but accounts for 95% of curtailment',
+  'Solar curtailment up 36% in 2024 - midday demand mismatch growing',
+  'Global renewable curtailment estimated at 472+ TWh/year - IEA 2024',
+  'Each tonne of green H₂ displaces ~9 tonnes of CO₂ vs grey hydrogen',
+  'Scottish wind curtailment peaks when B6 transmission corridor saturates',
+  'Fluxero modular electrolysers deploy in 90 days, no new grid connection',
+  'Green hydrogen market projected to reach $680B by 2050 - BloombergNEF',
 ];
 
-/* ─────────────────────────────────────────────
-   Component
-───────────────────────────────────────────── */
 export const Ticker: React.FC = () => {
   const [liveData, setLiveData] = useState<LiveGridData | null>(null);
   const [offset, setOffset] = useState(0);
@@ -85,35 +70,32 @@ export const Ticker: React.FC = () => {
   const animRef = useRef<number | null>(null);
   const pausedRef = useRef(false);
 
-  /* ── Fetch on mount + every 60 s ── */
   useEffect(() => {
     fetchLiveData().then(setLiveData);
     const id = setInterval(() => fetchLiveData().then(setLiveData), 60_000);
     return () => clearInterval(id);
   }, []);
 
-  /* ── Build items list ── */
   const liveItems: string[] = [];
   if (liveData) {
     if (liveData.intensityActual !== null && liveData.intensityIndex) {
-      liveItems.push(`⚡ UK Grid Now: ${liveData.intensityActual} gCO₂/kWh · ${liveData.intensityIndex}`);
+      liveItems.push(`UK Grid Now: ${liveData.intensityActual} gCO₂/kWh · ${liveData.intensityIndex}`);
     }
     if (liveData.generationMix.length > 0) {
       const renewPct = sumRenewables(liveData.generationMix).toFixed(1);
-      liveItems.push(`♻ Renewables: ${renewPct}%`);
+      liveItems.push(`Renewables: ${renewPct}%`);
       const wind = getByFuel(liveData.generationMix, 'wind').toFixed(1);
       const solar = getByFuel(liveData.generationMix, 'solar').toFixed(1);
       const hydro = getByFuel(liveData.generationMix, 'hydro').toFixed(1);
-      liveItems.push(`🌬 Wind: ${wind}% · ☀ Solar: ${solar}% · 💧 Hydro: ${hydro}%`);
+      liveItems.push(`Wind: ${wind}% · Solar: ${solar}% · Hydro: ${hydro}%`);
     }
   }
+
   const allItems = [...liveItems, ...STATIC_ITEMS];
-  // Duplicate for seamless loop
   const displayItems = [...allItems, ...allItems];
 
-  /* ── Continuous scroll animation ── */
   useEffect(() => {
-    const SPEED = 0.4; // px per frame
+    const SPEED = 0.4;
     const step = () => {
       if (!pausedRef.current && trackRef.current) {
         setOffset(prev => {
@@ -144,7 +126,6 @@ export const Ticker: React.FC = () => {
       onMouseEnter={() => { pausedRef.current = true; }}
       onMouseLeave={() => { pausedRef.current = false; }}
     >
-      {/* Left fade */}
       <div
         style={{
           position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, zIndex: 2,
@@ -152,7 +133,6 @@ export const Ticker: React.FC = () => {
           pointerEvents: 'none',
         }}
       />
-      {/* Right fade */}
       <div
         style={{
           position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, zIndex: 2,
@@ -173,8 +153,7 @@ export const Ticker: React.FC = () => {
         }}
       >
         {displayItems.map((item, i) => {
-          /* Colour the intensity index token for live items */
-          const isIntensityItem = item.startsWith('⚡ UK Grid Now:') && liveData?.intensityIndex;
+          const isIntensityItem = item.startsWith('UK Grid Now:') && liveData?.intensityIndex;
           if (isIntensityItem && liveData?.intensityIndex) {
             const idx = liveData.intensityIndex;
             const parts = item.split(` · ${idx}`);

@@ -36,7 +36,7 @@ export default function CalculatorPage() {
                 textTransform: 'uppercase',
               }}
             >
-              Hâ‚‚ Potential{' '}
+              H₂ Potential{' '}
               <span
                 style={{
                   background: 'linear-gradient(135deg, #00A86B 0%, #00D68F 50%, #00E5B8 100%)',
@@ -75,7 +75,7 @@ export default function CalculatorPage() {
             }}
           >
             Model your site's green hydrogen output using real UK solar, wind, and hydro data.
-            Enter your postcode and energy source details to get annual Hâ‚‚ production estimates,
+            Enter your postcode and energy source details to get annual H₂ production estimates,
             revenue projections, and payback analysis.
           </p>
         </div>
@@ -88,5 +88,4 @@ export default function CalculatorPage() {
     </div>
   );
 }
-
 

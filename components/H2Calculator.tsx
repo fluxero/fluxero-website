@@ -317,8 +317,8 @@ const Sel: React.FC<{value:any;onChange:(v:string)=>void;options:{value:string;l
   </select>
 );
 
-const G2: React.FC<{children:React.ReactNode;gap?:number}> = ({children,gap=12}) => <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap}}>{children}</div>;
-const G3: React.FC<{children:React.ReactNode}> = ({children}) => <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12}}>{children}</div>;
+const G2: React.FC<{children:React.ReactNode;gap?:number}> = ({children,gap=12}) => <div className="h2-grid-2" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap}}>{children}</div>;
+const G3: React.FC<{children:React.ReactNode}> = ({children}) => <div className="h2-grid-3" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12}}>{children}</div>;
 const Field: React.FC<{label:string;hint?:string;req?:boolean;children:React.ReactNode}> = ({label,hint,req,children}) => <div style={{marginBottom:16}}><Lbl req={req} hint={hint}>{label}</Lbl>{children}</div>;
 const Sec: React.FC<{children:React.ReactNode}> = ({children}) => <div style={{fontSize:9,fontWeight:700,letterSpacing:"2px",color:C.greenD,marginBottom:12,marginTop:4,fontFamily:"'IBM Plex Mono',monospace"}}>{children}</div>;
 const Hr = () => <div style={{borderTop:`1px solid ${C.border}`,margin:"20px 0"}}/>;
@@ -368,7 +368,7 @@ function S0_Source({value,onChange}: {value:string;onChange:(v:string)=>void}) {
     <div>
       <h2 style={{fontSize:20,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>What is your energy source?</h2>
       <p style={{fontSize:13,color:C.grey,marginBottom:24}}>Select the primary renewable source powering your hydrogen plant.</p>
-      <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:10}}>
+      <div className="h2-grid-5" style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:10}}>
         {opts.map(o=>(
           <button key={o.id} onClick={()=>onChange(o.id)} style={{padding:"18px 8px",border:`1.5px solid ${value===o.id?C.green:C.border}`,borderRadius:12,background:value===o.id?C.greenGlow:C.bg3,cursor:"pointer",outline:"none",textAlign:"center",transition:"all 0.2s"}}>
             <div style={{fontSize:24,marginBottom:6}}>{o.icon}</div>
@@ -564,7 +564,7 @@ function S6_Revenue({data,onChange}: {data:any;onChange:(v:any)=>void}) {
     <div>
       <h2 style={{fontSize:20,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Revenue Model</h2>
       <p style={{fontSize:13,color:C.grey,marginBottom:20}}>How will the hydrogen be priced? This determines the revenue and payback calculation.</p>
-      <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:10,marginBottom:20}}>
+      <div className="h2-grid-3" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:10,marginBottom:20}}>
         {modes.map(m=>(
           <button key={m.id} onClick={()=>onChange({...data,mode:m.id})} style={{padding:"14px 10px",border:`1.5px solid ${data.mode===m.id?C.green:C.border}`,borderRadius:10,background:data.mode===m.id?C.greenGlow:C.bg3,cursor:"pointer",outline:"none",textAlign:"center",transition:"all 0.2s"}}>
             <div style={{fontSize:12,fontWeight:700,color:data.mode===m.id?C.green:C.white,marginBottom:4,fontFamily:"'Syne',sans-serif"}}>{m.label}</div>
@@ -630,9 +630,9 @@ function ResultsScreen({results,inputs,onBack}: any) {
   };
 
   return (
-    <div style={{display:"flex",height:"100%",overflow:"hidden",background:C.bg0}}>
+    <div className="h2-calc-shell" style={{display:"flex",height:"100%",overflow:"hidden",background:C.bg0}}>
       {/* Sidebar */}
-      <div style={{width:240,background:C.bg1,borderRight:`1px solid ${C.border}`,padding:"24px 20px",display:"flex",flexDirection:"column",flexShrink:0,overflowY:"auto"}}>
+      <div className="h2-calc-sidebar" style={{width:240,background:C.bg1,borderRight:`1px solid ${C.border}`,padding:"24px 20px",display:"flex",flexDirection:"column",flexShrink:0,overflowY:"auto"}}>
         <img src="./logo.png" alt="Fluxero" style={{height:24,objectFit:"contain",marginBottom:24,opacity:0.9}} onError={(e)=>{(e.target as HTMLImageElement).style.display="none";}} />
         <div style={{fontSize:16,fontWeight:800,color:C.white,marginBottom:4,fontFamily:"'Syne',sans-serif"}}>Results</div>
         <div style={{fontSize:11,color:C.grey,marginBottom:16}}>📍 {results.locationLabel}</div>
@@ -659,7 +659,7 @@ function ResultsScreen({results,inputs,onBack}: any) {
       </div>
 
       {/* Main */}
-      <div style={{flex:1,overflowY:"auto",padding:"28px 32px"}}>
+      <div className="h2-calc-main" style={{flex:1,overflowY:"auto",padding:"28px 32px",minWidth:0}}>
         <div style={{fontSize:18,fontWeight:800,color:C.white,marginBottom:4,fontFamily:"'Syne',sans-serif"}}>
           {fmtH2(results.annualH2Kg)} of green hydrogen per year
         </div>
@@ -672,7 +672,7 @@ function ResultsScreen({results,inputs,onBack}: any) {
           </div>
         ))}
 
-        <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:14}}>
+        <div className="h2-grid-4" style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:14}}>
           {[
             {lbl:"H₂ PER DAY",val:fmtH2(results.annualH2Kg/365),ac:C.green},
             {lbl:"H₂ PER YEAR",val:fmtH2(results.annualH2Kg),ac:C.green},
@@ -873,9 +873,9 @@ export const H2Calculator: React.FC = () => {
   if (stage==="results") return <ResultsScreen results={results} inputs={{sourceType:src,postcode:loc.postcode,elect}} onBack={()=>{setStage("steps");setStep(0);}}/>;
 
   return (
-    <div style={{display:"flex",height:"100%",background:C.bg0}}>
+    <div className="h2-calc-shell" style={{display:"flex",height:"100%",background:C.bg0}}>
       {/* Sidebar */}
-      <div style={{width:220,background:C.bg1,borderRight:`1px solid ${C.border}`,padding:"28px 20px",display:"flex",flexDirection:"column",position:"sticky",top:0,height:"100%",flexShrink:0}}>
+      <div className="h2-calc-sidebar" style={{width:220,background:C.bg1,borderRight:`1px solid ${C.border}`,padding:"28px 20px",display:"flex",flexDirection:"column",position:"sticky",top:0,height:"100%",flexShrink:0}}>
         <img src="./logo.png" alt="Fluxero" style={{height:20,objectFit:"contain",marginBottom:4,opacity:0.9}} onError={(e)=>{(e.target as HTMLImageElement).style.display="none";}} />
         <div style={{fontSize:9,color:C.grey,marginBottom:28,fontFamily:"'IBM Plex Mono',monospace"}}>H₂ DESIGN ENGINE</div>
         <div style={{fontSize:13,fontWeight:700,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Site Calculator</div>
@@ -894,7 +894,7 @@ export const H2Calculator: React.FC = () => {
       </div>
 
       {/* Form */}
-      <div style={{flex:1,overflowY:"auto",padding:"36px 44px",maxWidth:740}}>
+      <div className="h2-calc-main" style={{flex:1,overflowY:"auto",padding:"36px 44px",maxWidth:740,minWidth:0}}>
         <StepBar steps={steps} cur={step}/>
         <div style={{minHeight:360}}>{content[step]}</div>
         {Object.keys(errors).length>0&&(

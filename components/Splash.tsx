@@ -20,8 +20,6 @@ export const Splash: React.FC<{ onDone: () => void }> = ({ onDone }) => {
     return () => clearInterval(id);
   }, [onDone]);
 
-  const wordmark = 'FLUXERO'.split('');
-
   return (
     <motion.div
       exit={{ opacity: 0 }}
@@ -29,10 +27,8 @@ export const Splash: React.FC<{ onDone: () => void }> = ({ onDone }) => {
       className="fixed inset-0 z-[200] flex flex-col items-center justify-center overflow-hidden"
       style={{ background: '#070608' }}
     >
-      {/* Logo + Wordmark row */}
+      {/* Logo */}
       <div className="relative z-10 flex flex-row items-center gap-4 mb-10">
-
-        {/* Pulsing glow behind SVG */}
         <div className="relative flex items-center justify-center">
           <motion.div
             className="absolute inset-0 rounded-full blur-2xl"
@@ -43,77 +39,22 @@ export const Splash: React.FC<{ onDone: () => void }> = ({ onDone }) => {
             animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
             transition={{ duration: 3, repeat: Infinity }}
           />
-
-          {/* SVG logo mark */}
           <motion.div
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
           >
-            <svg
-              viewBox="0 0 120 100"
-              width="64"
-              height="54"
-              xmlns="http://www.w3.org/2000/svg"
-              style={{ display: 'block' }}
-            >
-              <defs>
-                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#00C97A" />
-                  <stop offset="100%" stopColor="#00BFA5" />
-                </linearGradient>
-                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#00BFA5" />
-                  <stop offset="100%" stopColor="#0055CC" />
-                </linearGradient>
-              </defs>
-
-              {/* Blob 1 â€” larger, left, greenâ†’teal */}
-              <motion.path
-                d="M 20 50 C 20 20, 55 10, 65 35 C 75 55, 60 80, 40 80 C 25 80, 20 70, 20 50 Z"
-                fill="url(#grad1)"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              />
-
-              {/* Blob 2 â€” smaller, right, tealâ†’blue, overlapping */}
-              <motion.path
-                d="M 50 40 C 55 20, 80 25, 85 45 C 90 60, 75 75, 60 65 C 48 58, 45 55, 50 40 Z"
-                fill="url(#grad2)"
-                fillOpacity={0.85}
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 0.85 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              />
-            </svg>
-          </motion.div>
-        </div>
-
-        {/* Wordmark â€” letter by letter */}
-        <div
-          className="flex flex-row items-center"
-          style={{ gap: 0 }}
-          aria-label="FLUXERO"
-        >
-          {wordmark.map((letter, index) => (
-            <motion.span
-              key={index}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + index * 0.06, duration: 0.4 }}
+            <img
+              src="/logo.png"
+              alt="Fluxero"
               style={{
-                fontFamily: "'IBM Plex Sans Condensed', sans-serif",
-                fontWeight: 900,
-                fontSize: '32px',
-                letterSpacing: '0.2em',
-                color: '#F0EBE0',
-                display: 'inline-block',
+                display: 'block',
+                width: 'min(72vw, 360px)',
+                height: 'auto',
+                objectFit: 'contain',
               }}
-            >
-              {letter}
-            </motion.span>
-          ))}
+            />
+          </motion.div>
         </div>
       </div>
 

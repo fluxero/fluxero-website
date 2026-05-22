@@ -533,7 +533,7 @@ export const Hero: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+    <section className="relative flex flex-col justify-start overflow-hidden" style={{ minHeight: '88vh' }}>
 
       {/* Canvas background */}
       <div className="absolute inset-0" style={{ background: '#070608' }}>
@@ -550,14 +550,14 @@ export const Hero: React.FC = () => {
 
       {/* CENTERED content */}
       <div className="relative z-10 flex flex-col items-center text-center"
-        style={{ maxWidth: 720, margin: '0 auto', padding: 'clamp(100px, 15vw, 140px) 2rem 80px' }}>
+        style={{ maxWidth: 720, margin: '0 auto', padding: 'clamp(96px, 8vw, 120px) 2rem 48px' }}>
 
         {/* Pre-headline tag */}
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 28 }}
+          style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}
         >
           <div style={{ width: 24, height: 1, background: '#00D68F' }} />
           <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#00D68F' }}>
@@ -578,7 +578,7 @@ export const Hero: React.FC = () => {
             lineHeight: 1.1,
             color: '#F0EBE0',
             letterSpacing: '-0.01em',
-            marginBottom: 24,
+            marginBottom: 18,
             textAlign: 'center',
           }}
         >
@@ -605,7 +605,7 @@ export const Hero: React.FC = () => {
             color: '#A8A3B3',
             letterSpacing: '0.01em',
             lineHeight: 1.6,
-            marginBottom: 40,
+            marginBottom: 28,
             maxWidth: 500,
             textAlign: 'center',
           }}
@@ -618,7 +618,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1.1 }}
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, flexWrap: 'wrap', marginBottom: 52 }}
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, flexWrap: 'wrap', marginBottom: 36 }}
         >
           <button
             onClick={() => navigate('/solution')}
@@ -673,24 +673,27 @@ export const Hero: React.FC = () => {
         >
           <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 10, color: '#475569', letterSpacing: '0.15em', textTransform: 'uppercase', marginRight: 4 }}>Backed by</span>
 
-          {/* Nvidia Inception */}
+          {/* NVIDIA Inception */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(118,185,0,0.07)', border: '1px solid rgba(118,185,0,0.22)', borderRadius: 8, padding: '5px 12px' }}>
-            <div style={{ width: 14, height: 14, borderRadius: 3, background: 'linear-gradient(135deg, #76b900, #9ed900)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-              <span style={{ fontSize: 7, color: '#000', fontWeight: 900, lineHeight: 1 }}>N</span>
-            </div>
+            <img src="/partners/nvidia-logo.png" alt="" style={{ width: 54, height: 14, objectFit: 'contain', flexShrink: 0 }} />
             <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 10, color: 'rgba(158,217,0,0.85)', letterSpacing: '0.06em' }}>NVIDIA INCEPTION</span>
           </div>
 
           {/* Barclays */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(0,174,239,0.05)', border: '1px solid rgba(0,174,239,0.18)', borderRadius: 8, padding: '5px 12px' }}>
-            <div style={{ width: 14, height: 14, borderRadius: 3, background: '#00AEEF', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-              <span style={{ fontSize: 7, color: '#fff', fontWeight: 900, lineHeight: 1 }}>B</span>
-            </div>
+            <img src="/partners/barclays-logo.png" alt="" style={{ width: 58, height: 14, objectFit: 'contain', flexShrink: 0 }} />
             <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 10, color: 'rgba(0,174,239,0.85)', letterSpacing: '0.06em' }}>BARCLAYS EAGLE LABS</span>
+          </div>
+
+          {/* Google for Startups */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 8, padding: '5px 12px' }}>
+            <img src="/partners/google-logo.png" alt="" style={{ height: 12, width: 'auto', objectFit: 'contain', flexShrink: 0 }} />
+            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 10, color: 'rgba(241,235,224,0.78)', letterSpacing: '0.06em' }}>GOOGLE FOR STARTUPS</span>
           </div>
 
           {/* Durham */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(201,168,76,0.05)', border: '1px solid rgba(201,168,76,0.18)', borderRadius: 8, padding: '5px 12px' }}>
+            <img src="/partners/durham-logo.png" alt="" style={{ height: 14, width: 'auto', objectFit: 'contain', flexShrink: 0 }} />
             <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 10, color: 'rgba(201,168,76,0.8)', letterSpacing: '0.06em' }}>DURHAM UNIVERSITY</span>
           </div>
         </motion.div>

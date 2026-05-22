@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover, shrink-to-fit=no" />
     <meta name="description" content="Fluxero converts curtailed renewable energy into green hydrogen at the source. Small Modular Hydrogen Plants for the UK and beyond." />
     <meta property="og:title" content="Fluxero — Green Hydrogen from Captured Energy" />
     <meta property="og:description" content="We capture wasted clean energy and turn it into hydrogen. Before the grid can reject it." />
@@ -178,6 +178,55 @@
       @media (max-width: 768px) {
         button, a { min-height: 44px; }
         .roadmap-card { width: 240px !important; }
+      }
+
+      .partner-logo {
+        display: block;
+        height: auto;
+        max-width: 100%;
+        object-fit: contain;
+      }
+
+      @media (max-width: 720px) {
+        .h2-calc-shell {
+          flex-direction: column !important;
+          height: auto !important;
+          min-height: 100% !important;
+          overflow: visible !important;
+        }
+        .h2-calc-sidebar {
+          position: relative !important;
+          top: auto !important;
+          width: 100% !important;
+          height: auto !important;
+          border-right: none !important;
+          border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+          padding: 20px !important;
+        }
+        .h2-calc-main {
+          width: 100% !important;
+          max-width: none !important;
+          overflow-y: visible !important;
+          padding: 24px 18px !important;
+        }
+        .h2-grid-2,
+        .h2-grid-3,
+        .h2-grid-4,
+        .h2-grid-5 {
+          grid-template-columns: 1fr !important;
+        }
+        .energy-explainer-grid {
+          grid-template-columns: 1fr !important;
+          gap: 28px !important;
+        }
+        .energy-scene {
+          height: 340px !important;
+        }
+        input,
+        select,
+        textarea {
+          font-size: 16px !important;
+        }
       }
 
       @supports (padding-bottom: env(safe-area-inset-bottom)) {
