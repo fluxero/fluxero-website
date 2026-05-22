@@ -1,40 +1,40 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 
 const G = '#00D68F';
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
 
-// Countries with curtailment data — map country names to colors
+// Countries with curtailment data â€” map country names to colors
 const CURTAILMENT: Record<string, { color: string; twh: string; note: string }> = {
-  'China': { color: 'rgba(220,38,38,0.75)', twh: '29.7 TWh', note: 'Largest globally · Xinjiang & Inner Mongolia' },
-  'United States of America': { color: 'rgba(239,68,68,0.65)', twh: '14.2 TWh', note: 'CAISO & ERCOT grids · Texas wind curtailment' },
-  'United Kingdom': { color: 'rgba(239,68,68,0.7)', twh: '8.3 TWh', note: '95% from Scotland · B6 bottleneck' },
-  'India': { color: 'rgba(249,115,22,0.65)', twh: '8.1 TWh', note: 'Tamil Nadu & Rajasthan · Rapidly growing' },
-  'Germany': { color: 'rgba(249,115,22,0.6)', twh: '6.1 TWh', note: 'North Sea wind · Grid congestion' },
-  'Spain': { color: 'rgba(234,179,8,0.6)', twh: '3.8 TWh', note: 'Solar & wind · Iberian grid limits' },
-  'Australia': { color: 'rgba(234,179,8,0.55)', twh: '4.2 TWh', note: 'Rooftop solar · AEMO constraints' },
+  'China': { color: 'rgba(220,38,38,0.75)', twh: '29.7 TWh', note: 'Largest globally Â· Xinjiang & Inner Mongolia' },
+  'United States of America': { color: 'rgba(239,68,68,0.65)', twh: '14.2 TWh', note: 'CAISO & ERCOT grids Â· Texas wind curtailment' },
+  'United Kingdom': { color: 'rgba(239,68,68,0.7)', twh: '8.3 TWh', note: '95% from Scotland Â· B6 bottleneck' },
+  'India': { color: 'rgba(249,115,22,0.65)', twh: '8.1 TWh', note: 'Tamil Nadu & Rajasthan Â· Rapidly growing' },
+  'Germany': { color: 'rgba(249,115,22,0.6)', twh: '6.1 TWh', note: 'North Sea wind Â· Grid congestion' },
+  'Spain': { color: 'rgba(234,179,8,0.6)', twh: '3.8 TWh', note: 'Solar & wind Â· Iberian grid limits' },
+  'Australia': { color: 'rgba(234,179,8,0.55)', twh: '4.2 TWh', note: 'Rooftop solar Â· AEMO constraints' },
 };
 
 const STATS = [
   { n: '470 TWh',  label: 'Renewable energy wasted globally per year',  src: 'IRENA 2024' },
-  { n: '£393M',    label: 'Paid to UK generators to switch off in 2024', src: 'Electric Insights' },
+  { n: 'Â£393M',    label: 'Paid to UK generators to switch off in 2024', src: 'Electric Insights' },
   { n: '10 years', label: 'Average grid connection wait in the UK',      src: 'National Grid ESO' },
 ];
 
 const WHY_POINTS = [
   {
-    icon: '⚡',
+    icon: 'âš¡',
     title: 'Generation outpaced transmission',
-    body: 'Solar and wind capacity doubled in a decade. Grid infrastructure moves at government planning pace — 10–15 year lead times. The gap widens every year.',
+    body: 'Solar and wind capacity doubled in a decade. Grid infrastructure moves at government planning pace â€” 10â€“15 year lead times. The gap widens every year.',
   },
   {
-    icon: '🗺',
+    icon: 'ðŸ—º',
     title: 'Energy is generated far from demand',
     body: "Scotland generates 40% of UK wind power. The cable connecting it to England is full. China's best renewables are 2,000km from its cities. Proximity doesn't help.",
   },
   {
-    icon: '🔋',
+    icon: 'ðŸ”‹',
     title: "Storage alone doesn't solve it",
     body: 'Batteries are expensive, site-constrained, and discharge in hours. Pumped hydro takes decades. Only hydrogen stores energy cheaply at scale, for weeks or months.',
   },
@@ -46,16 +46,16 @@ const WHY_NOW = [
     body: 'UK curtailment was 2.1 TWh in 2019. It hit 8.3 TWh in 2024. The Eastern HVDC link meant to fix this is delayed to 2029+. Every year the feedstock gets larger and cheaper.',
   },
   {
-    title: 'Policy has made green H₂ non-negotiable',
-    body: 'UK: 10 GW H₂ by 2030. EU: 10 Mt by 2030. US IRA: $3/kg production credit. These are not aspirations — they are binding policy commitments with capital attached.',
+    title: 'Policy has made green Hâ‚‚ non-negotiable',
+    body: 'UK: 10 GW Hâ‚‚ by 2030. EU: 10 Mt by 2030. US IRA: $3/kg production credit. These are not aspirations â€” they are binding policy commitments with capital attached.',
   },
   {
     title: 'The cost window is open now',
-    body: 'Electrolyser costs fell 60% since 2020. Second-life panels cost £360/kWp vs £800/kWp new. The unit economics only work at current prices. In 5 years the advantage narrows.',
+    body: 'Electrolyser costs fell 60% since 2020. Second-life panels cost Â£360/kWp vs Â£800/kWp new. The unit economics only work at current prices. In 5 years the advantage narrows.',
   },
   {
     title: 'No-one builds where the energy is wasted',
-    body: 'Competitors pursue grid-connected H₂ hubs — fighting for grid connections that take a decade. Fluxero installs behind-the-meter, at curtailment sites, where there is no queue.',
+    body: 'Competitors pursue grid-connected Hâ‚‚ hubs â€” fighting for grid connections that take a decade. Fluxero installs behind-the-meter, at curtailment sites, where there is no queue.',
   },
 ];
 
@@ -72,8 +72,8 @@ export default function ProblemPage() {
   return (
     <div style={{ background: '#070608', minHeight: '100vh', color: '#F0EBE0' }}>
 
-      {/* ── HERO ──────────────────────────────────────────────────── */}
-      <section style={{ padding: 'clamp(120px, 15vw, 160px) 2rem clamp(60px, 8vw, 96px)', textAlign: 'center', background: 'linear-gradient(to bottom, #070608, #0D0C0F)' }}>
+      {/* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <div data-section style={{ padding: 'clamp(100px, 8vw, 120px) 2rem clamp(40px, 4vw, 56px)', textAlign: 'center', background: 'linear-gradient(to bottom, #070608, #0D0C0F)' }}>
         <motion.div {...fade}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 28 }}>
             <div style={{ width: 32, height: 1, background: G }} />
@@ -90,10 +90,10 @@ export default function ProblemPage() {
             Every day, enough renewable electricity to power millions of homes is rejected by the grid. Not because it isn't needed. Because the infrastructure can't carry it.
           </p>
         </motion.div>
-      </section>
+      </div>
 
-      {/* ── THREE STATS ──────────────────────────────────────────── */}
-      <section style={{ background: '#0D0C0F', padding: '4rem 2rem' }}>
+      {/* â”€â”€ THREE STATS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <div data-section style={{ background: '#0D0C0F', padding: '2.5rem 2rem' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
           {STATS.map((s, i) => (
             <motion.div key={i} {...fade} transition={{ duration: 0.5, delay: i * 0.1 }}
@@ -104,10 +104,10 @@ export default function ProblemPage() {
             </motion.div>
           ))}
         </div>
-      </section>
+      </div>
 
-      {/* ── WORLD MAP ─────────────────────────────────────────────── */}
-      <section style={{ background: '#070608', padding: '5rem 2rem' }}>
+      {/* â”€â”€ WORLD MAP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <div data-section style={{ background: '#070608', padding: '3rem 2rem' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <motion.div {...fade} style={{ marginBottom: 40 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
@@ -178,13 +178,13 @@ export default function ProblemPage() {
           </motion.div>
 
           <p style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 10, color: '#334155', marginTop: 12, textAlign: 'right' }}>
-            Source: IEA, IRENA, national grid operators · 2024 data
+            Source: IEA, IRENA, national grid operators Â· 2024 data
           </p>
         </div>
-      </section>
+      </div>
 
-      {/* ── WHY IS THIS HAPPENING ─────────────────────────────────── */}
-      <section style={{ background: '#0D0C0F', padding: '5rem 2rem' }}>
+      {/* â”€â”€ WHY IS THIS HAPPENING â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <div data-section style={{ background: '#0D0C0F', padding: '3rem 2rem' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <motion.div {...fade} style={{ marginBottom: 40 }}>
             <h2 style={{ fontFamily: '"DM Serif Display", serif', fontSize: 'clamp(28px, 4vw, 48px)', color: '#F0EBE0', lineHeight: 1.1 }}>
@@ -202,24 +202,24 @@ export default function ProblemPage() {
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ── WHY HYDROGEN ─────────────────────────────────────────── */}
-      <section style={{ background: '#070608', padding: '5rem 2rem' }}>
+      {/* â”€â”€ WHY HYDROGEN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <div data-section style={{ background: '#070608', padding: '3rem 2rem' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <motion.div {...fade} style={{ marginBottom: 40 }}>
             <h2 style={{ fontFamily: '"DM Serif Display", serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#F0EBE0', lineHeight: 1.1, marginBottom: 12 }}>
               Hydrogen is the answer.
             </h2>
             <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 15, color: '#A8A3B3', fontWeight: 300, maxWidth: 520 }}>
-              It stores energy at scale, travels in existing infrastructure, and commands a market price of £8–12/kg.
+              It stores energy at scale, travels in existing infrastructure, and commands a market price of Â£8â€“12/kg.
             </p>
           </motion.div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
             {[
-              { v: '✓', label: 'Stores indefinitely', sub: 'Unlike electricity, weeks or months' },
-              { v: '£190B', label: 'Global market by 2034', sub: 'IRENA · 41.4% CAGR' },
-              { v: '10 GW', label: 'UK 2030 H₂ target', sub: 'Binding policy mandate' },
+              { v: 'âœ“', label: 'Stores indefinitely', sub: 'Unlike electricity, weeks or months' },
+              { v: 'Â£190B', label: 'Global market by 2034', sub: 'IRENA Â· 41.4% CAGR' },
+              { v: '10 GW', label: 'UK 2030 Hâ‚‚ target', sub: 'Binding policy mandate' },
               { v: '60%', label: 'Electrolyser cost drop since 2020', sub: 'And still falling' },
             ].map((item, i) => (
               <motion.div key={i} {...fade} transition={{ duration: 0.4, delay: i * 0.08 }}
@@ -231,10 +231,10 @@ export default function ProblemPage() {
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ── WHY NOW ──────────────────────────────────────────────── */}
-      <section style={{ background: '#0D0C0F', padding: '5rem 2rem' }}>
+      {/* â”€â”€ WHY NOW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <div data-section style={{ background: '#0D0C0F', padding: '3rem 2rem' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <motion.div {...fade} style={{ marginBottom: 48 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
@@ -255,7 +255,7 @@ export default function ProblemPage() {
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
     </div>
   );

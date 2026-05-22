@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+﻿import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ const fade = {
   transition: { duration: 0.6 },
 };
 
-// ─── Animated SMHP Process SVG ─────────────────────────────────────────────
+// â”€â”€â”€ Animated SMHP Process SVG â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function SMHPDiagram() {
   const svgRef = useRef<HTMLDivElement>(null);
@@ -29,10 +29,10 @@ function SMHPDiagram() {
 
   // Stage positions in viewBox "0 0 900 280"
   const stages = [
-    { id: 'A', x: 60,  cx: 112, label: 'Energy Source',        color: '#FBBF24', desc: 'Wind, solar or hydro — curtailed and otherwise wasted' },
-    { id: 'B', x: 260, cx: 330, label: 'SMHP Container',       color: G,         desc: 'PEM electrolyser stack splits H₂O into H₂ and O₂' },
-    { id: 'C', x: 510, cx: 580, label: 'Compression & Storage', color: '#38BDF8', desc: 'Compressed to 350–700 bar, stored in onsite cylinders' },
-    { id: 'D', x: 720, cx: 796, label: 'Offtake',              color: '#A78BFA', desc: 'Pipeline, truck or on-site use at £8–12/kg' },
+    { id: 'A', x: 60,  cx: 112, label: 'Energy Source',        color: '#FBBF24', desc: 'Wind, solar or hydro â€” curtailed and otherwise wasted' },
+    { id: 'B', x: 260, cx: 330, label: 'SMHP Container',       color: G,         desc: 'PEM electrolyser stack splits Hâ‚‚O into Hâ‚‚ and Oâ‚‚' },
+    { id: 'C', x: 510, cx: 580, label: 'Compression & Storage', color: '#38BDF8', desc: 'Compressed to 350â€“700 bar, stored in onsite cylinders' },
+    { id: 'D', x: 720, cx: 796, label: 'Offtake',              color: '#A78BFA', desc: 'Pipeline, truck or on-site use at Â£8â€“12/kg' },
   ];
 
   // Connector line segments between stage boxes
@@ -65,7 +65,7 @@ function SMHPDiagram() {
           </linearGradient>
         </defs>
 
-        {/* ── Stage boxes ── */}
+        {/* â”€â”€ Stage boxes â”€â”€ */}
         {stages.map((s, i) => (
           <motion.g
             key={s.id}
@@ -124,7 +124,7 @@ function SMHPDiagram() {
           </motion.g>
         ))}
 
-        {/* ── Connector lines ── */}
+        {/* â”€â”€ Connector lines â”€â”€ */}
         {connectors.map((c, i) => (
           <g key={i}>
             {/* Static base line */}
@@ -168,7 +168,7 @@ function SMHPDiagram() {
           </g>
         ))}
 
-        {/* ── Arrow heads on connectors ── */}
+        {/* â”€â”€ Arrow heads on connectors â”€â”€ */}
         {connectors.map((c, i) => (
           <motion.polygon
             key={i}
@@ -181,7 +181,7 @@ function SMHPDiagram() {
           />
         ))}
 
-        {/* ── Price label on stage D ── */}
+        {/* â”€â”€ Price label on stage D â”€â”€ */}
         <motion.g
           initial={{ opacity: 0, scale: 0.8 }}
           animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
@@ -189,7 +189,7 @@ function SMHPDiagram() {
         >
           <rect x={730} y={218} width={76} height={22} rx={5} fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.3)" strokeWidth={0.8} />
           <text x={768} y={233} textAnchor="middle" fill="#A78BFA" fontSize={10} fontFamily={MONO} fontWeight="700">
-            £8–12/kg
+            Â£8â€“12/kg
           </text>
         </motion.g>
       </svg>
@@ -197,7 +197,7 @@ function SMHPDiagram() {
   );
 }
 
-// ─── Per-stage icon renderers ───────────────────────────────────────────────
+// â”€â”€â”€ Per-stage icon renderers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function StageIcon({ stageId, x, color, inView }: { stageId: string; x: number; color: string; inView: boolean }) {
   const cy = 130;
@@ -262,7 +262,7 @@ function StageIcon({ stageId, x, color, inView }: { stageId: string; x: number; 
         ))}
         {/* H2 text */}
         <text x={cx} y={cy + 30} textAnchor="middle" fill={color} fontSize={8} fontFamily={MONO} opacity={0.8}>
-          H₂O→H₂+O₂
+          Hâ‚‚Oâ†’Hâ‚‚+Oâ‚‚
         </text>
       </g>
     );
@@ -333,7 +333,7 @@ function StageIcon({ stageId, x, color, inView }: { stageId: string; x: number; 
   return null;
 }
 
-// ─── Main page ──────────────────────────────────────────────────────────────
+// â”€â”€â”€ Main page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function SolutionPage() {
   const tableRef = useRef<HTMLDivElement>(null);
@@ -343,7 +343,7 @@ export default function SolutionPage() {
     {
       stat: 'Behind-the-meter',
       label: 'No grid queue',
-      desc: 'Direct source connection. No 10–15 year wait for grid upgrades.',
+      desc: 'Direct source connection. No 10â€“15 year wait for grid upgrades.',
       color: G,
       border: `rgba(0,214,143,0.2)`,
     },
@@ -355,9 +355,9 @@ export default function SolutionPage() {
       border: `rgba(56,189,248,0.2)`,
     },
     {
-      stat: '3–5 year',
+      stat: '3â€“5 year',
       label: 'Return on investment',
-      desc: 'At current H₂ prices and curtailment rates across UK sites.',
+      desc: 'At current Hâ‚‚ prices and curtailment rates across UK sites.',
       color: '#A78BFA',
       border: `rgba(167,139,250,0.2)`,
     },
@@ -366,7 +366,7 @@ export default function SolutionPage() {
   const curtailmentPoints = [
     {
       title: 'Variable input tolerance',
-      desc: 'Handles 10–100% of rated power continuously. No damage to the PEM stack from intermittent or fluctuating input.',
+      desc: 'Handles 10â€“100% of rated power continuously. No damage to the PEM stack from intermittent or fluctuating input.',
     },
     {
       title: 'Dynamic load following',
@@ -382,7 +382,7 @@ export default function SolutionPage() {
     {
       num: '01',
       title: 'Physics-based digital twin',
-      body: 'PVGIS irradiance data, NOABL wind speed profiles, and real electrolyser efficiency curves — all modelled before a single piece of steel is ordered.',
+      body: 'PVGIS irradiance data, NOABL wind speed profiles, and real electrolyser efficiency curves â€” all modelled before a single piece of steel is ordered.',
       color: G,
     },
     {
@@ -401,10 +401,10 @@ export default function SolutionPage() {
 
   const tableRows = [
     { attr: 'Grid connection needed', smhp: 'No', grid: 'Yes', grey: 'Yes' },
-    { attr: 'Lead time',              smhp: '72 hours', grid: '5–12 years', grey: '2–4 years' },
-    { attr: 'Min viable scale',       smhp: '0.5 MW', grid: '10–100 MW', grey: '50 MW+' },
-    { attr: 'Input power tolerance',  smhp: '10–100%', grid: '80–100%', grey: 'N/A (gas)' },
-    { attr: 'Curtailment feedstock',  smhp: 'Yes — by design', grid: 'Incompatible', grey: 'No' },
+    { attr: 'Lead time',              smhp: '72 hours', grid: '5â€“12 years', grey: '2â€“4 years' },
+    { attr: 'Min viable scale',       smhp: '0.5 MW', grid: '10â€“100 MW', grey: '50 MW+' },
+    { attr: 'Input power tolerance',  smhp: '10â€“100%', grid: '80â€“100%', grey: 'N/A (gas)' },
+    { attr: 'Curtailment feedstock',  smhp: 'Yes â€” by design', grid: 'Incompatible', grey: 'No' },
     { attr: 'Transport infrastructure', smhp: 'Optional', grid: 'Required', grey: 'Required' },
   ];
 
@@ -432,8 +432,8 @@ export default function SolutionPage() {
   return (
     <div style={{ background: DARK, minHeight: '100vh', color: CREAM }}>
 
-      {/* ── 1. HERO ─────────────────────────────────────────────────────── */}
-      <section style={{
+      {/* â”€â”€ 1. HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <div data-section style={{
         padding: 'clamp(120px, 14vw, 164px) 2rem clamp(64px, 8vw, 100px)',
         background: `linear-gradient(170deg, ${DARK} 60%, ${ALT} 100%)`,
         position: 'relative',
@@ -490,10 +490,10 @@ export default function SolutionPage() {
             </p>
           </motion.div>
         </div>
-      </section>
+      </div>
 
-      {/* ── 2. STAT CARDS ────────────────────────────────────────────────── */}
-      <section style={{ background: ALT, padding: '4rem 2rem' }}>
+      {/* â”€â”€ 2. STAT CARDS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <div data-section style={{ background: ALT, padding: '2.5rem 2rem' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 18 }}>
           {statCards.map((c, i) => (
             <motion.div
@@ -534,10 +534,10 @@ export default function SolutionPage() {
             </motion.div>
           ))}
         </div>
-      </section>
+      </div>
 
-      {/* ── 3. SMHP PROCESS EXPLAINER ────────────────────────────────────── */}
-      <section style={{ background: DARK, padding: '5rem 2rem' }}>
+      {/* â”€â”€ 3. SMHP PROCESS EXPLAINER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <div data-section style={{ background: DARK, padding: '3rem 2rem' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <motion.div {...fade} style={{ marginBottom: 48 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 20 }}>
@@ -574,10 +574,10 @@ export default function SolutionPage() {
           {/* Stage text columns */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16 }}>
             {[
-              { id: 'A', color: '#FBBF24', label: 'Energy Source',          desc: 'Curtailed wind, solar or hydro — behind the meter, zero feedstock cost.' },
+              { id: 'A', color: '#FBBF24', label: 'Energy Source',          desc: 'Curtailed wind, solar or hydro â€” behind the meter, zero feedstock cost.' },
               { id: 'B', color: G,         label: 'SMHP Container',          desc: 'PEM electrolyser splits water molecules using the captured electricity.' },
-              { id: 'C', color: '#38BDF8', label: 'Compression & Storage',   desc: 'H₂ compressed onsite to 350–700 bar. Stored in certified cylinders.' },
-              { id: 'D', color: '#A78BFA', label: 'Offtake at £8–12/kg',     desc: 'Delivered by tube trailer, pipeline, or consumed on-site by industrial users.' },
+              { id: 'C', color: '#38BDF8', label: 'Compression & Storage',   desc: 'Hâ‚‚ compressed onsite to 350â€“700 bar. Stored in certified cylinders.' },
+              { id: 'D', color: '#A78BFA', label: 'Offtake at Â£8â€“12/kg',     desc: 'Delivered by tube trailer, pipeline, or consumed on-site by industrial users.' },
             ].map((s, i) => (
               <motion.div
                 key={s.id}
@@ -603,10 +603,10 @@ export default function SolutionPage() {
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ── 4. VARIABLE POWER ────────────────────────────────────────────── */}
-      <section style={{ background: ALT, padding: '5rem 2rem' }}>
+      {/* â”€â”€ 4. VARIABLE POWER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <div data-section style={{ background: ALT, padding: '3rem 2rem' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <motion.div {...fade} style={{ marginBottom: 44 }}>
             <h2 style={{ fontFamily: SERIF, fontSize: 'clamp(28px, 4vw, 52px)', color: CREAM, lineHeight: 1.1 }}>
@@ -643,10 +643,10 @@ export default function SolutionPage() {
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ── 5. TECHNOLOGY STACK ──────────────────────────────────────────── */}
-      <section style={{ background: DARK, padding: '5rem 2rem' }}>
+      {/* â”€â”€ 5. TECHNOLOGY STACK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <div data-section style={{ background: DARK, padding: '3rem 2rem' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <motion.div {...fade} style={{ marginBottom: 44 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 20 }}>
@@ -689,10 +689,10 @@ export default function SolutionPage() {
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ── 6. COMPARISON TABLE ──────────────────────────────────────────── */}
-      <section style={{ background: ALT, padding: '5rem 2rem' }}>
+      {/* â”€â”€ 6. COMPARISON TABLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <div data-section style={{ background: ALT, padding: '3rem 2rem' }}>
         <div ref={tableRef} style={{ maxWidth: 1100, margin: '0 auto' }}>
           <motion.div {...fade} style={{ marginBottom: 40 }}>
             <h2 style={{ fontFamily: SERIF, fontSize: 'clamp(26px, 3.5vw, 44px)', color: CREAM, lineHeight: 1.15 }}>
@@ -718,11 +718,11 @@ export default function SolutionPage() {
                     <th style={{ ...thStyle, color: STEEL, width: '28%' }}>Attribute</th>
                     <th style={{ ...thStyle, color: G }}>
                       <span style={{ background: `${G}18`, border: `1px solid ${G}40`, borderRadius: 6, padding: '3px 10px', fontFamily: MONO, fontSize: 10, letterSpacing: '0.1em' }}>
-                        SMHP — Fluxero
+                        SMHP â€” Fluxero
                       </span>
                     </th>
                     <th style={{ ...thStyle }}>Grid-connected electrolysis</th>
-                    <th style={{ ...thStyle }}>Grey H₂ (SMR)</th>
+                    <th style={{ ...thStyle }}>Grey Hâ‚‚ (SMR)</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -753,10 +753,10 @@ export default function SolutionPage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </div>
 
-      {/* ── 7. BOTTOM CTA ────────────────────────────────────────────────── */}
-      <section style={{ background: DARK, padding: '5rem 2rem 6rem' }}>
+      {/* â”€â”€ 7. BOTTOM CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <div data-section style={{ background: DARK, padding: '5rem 2rem 6rem' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -808,7 +808,7 @@ export default function SolutionPage() {
                 onMouseEnter={e => (e.currentTarget.style.opacity = '0.88')}
                 onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
               >
-                Business model →
+                Business model â†’
               </Link>
               <Link
                 to="/traction"
@@ -842,7 +842,7 @@ export default function SolutionPage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </div>
 
     </div>
   );
