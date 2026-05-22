@@ -13,6 +13,7 @@ const COLORS = {
   nvidiaGreen: '#76b900',
   barclaysBlue: '#00AEEF',
   durhamGold: '#C9A84C',
+  googleBlue: '#4285F4',
 };
 
 const FONTS = {
@@ -357,30 +358,37 @@ export default function TractionPage() {
                 gap: 20,
               }}
             >
-              <div>
-                <div
-                  style={{
-                    fontFamily: FONTS.sans,
-                    fontWeight: 700,
-                    fontSize: 22,
-                    color: COLORS.durhamGold,
-                    letterSpacing: '0.08em',
-                    lineHeight: 1,
-                  }}
-                >
-                  DURHAM
-                </div>
-                <div
-                  style={{
-                    fontFamily: FONTS.mono,
-                    fontSize: 11,
-                    letterSpacing: '0.2em',
-                    color: COLORS.durhamGold,
-                    opacity: 0.85,
-                    marginTop: 4,
-                  }}
-                >
-                  UNIVERSITY
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                <img
+                  src="/partners/durham-logo.png"
+                  alt="Durham University"
+                  style={{ height: 40, width: 'auto', objectFit: 'contain', flexShrink: 0 }}
+                />
+                <div>
+                  <div
+                    style={{
+                      fontFamily: FONTS.sans,
+                      fontWeight: 700,
+                      fontSize: 18,
+                      color: COLORS.durhamGold,
+                      letterSpacing: '0.08em',
+                      lineHeight: 1,
+                    }}
+                  >
+                    DURHAM
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: FONTS.mono,
+                      fontSize: 10,
+                      letterSpacing: '0.2em',
+                      color: COLORS.durhamGold,
+                      opacity: 0.85,
+                      marginTop: 4,
+                    }}
+                  >
+                    UNIVERSITY
+                  </div>
                 </div>
               </div>
 
@@ -413,6 +421,73 @@ export default function TractionPage() {
                 }}
               >
                 Research Foundation
+              </div>
+            </motion.div>
+
+            {/* Google for Startups */}
+            <motion.div
+              variants={fadeUp}
+              style={{
+                background: COLORS.cardBg,
+                border: `1px solid rgba(66, 133, 244, 0.25)`,
+                borderRadius: 12,
+                padding: 32,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 20,
+              }}
+            >
+              <div>
+                <img
+                  src="/partners/google-logo.png"
+                  alt="Google"
+                  className="partner-logo"
+                  style={{ width: 120, maxHeight: 36, marginBottom: 8 }}
+                />
+                <div
+                  style={{
+                    fontFamily: FONTS.mono,
+                    fontSize: 11,
+                    letterSpacing: '0.2em',
+                    color: COLORS.googleBlue,
+                    opacity: 0.85,
+                    marginTop: 4,
+                  }}
+                >
+                  FOR STARTUPS
+                </div>
+              </div>
+
+              <p
+                style={{
+                  fontFamily: FONTS.sans,
+                  fontSize: 15,
+                  color: COLORS.muted,
+                  lineHeight: 1.7,
+                  margin: 0,
+                  flex: 1,
+                }}
+              >
+                Backed by Google for Startups — cloud credits, ML infrastructure, and access to
+                Google's engineering and go-to-market networks. Supports our digital-twin modelling
+                stack at scale.
+              </p>
+
+              <div
+                style={{
+                  display: 'inline-block',
+                  background: 'rgba(66, 133, 244, 0.1)',
+                  border: '1px solid rgba(66, 133, 244, 0.3)',
+                  borderRadius: 4,
+                  padding: '5px 12px',
+                  fontFamily: FONTS.mono,
+                  fontSize: 11,
+                  letterSpacing: '0.1em',
+                  color: COLORS.googleBlue,
+                  alignSelf: 'flex-start',
+                }}
+              >
+                Cloud + AI Infrastructure
               </div>
             </motion.div>
           </motion.div>

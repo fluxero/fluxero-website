@@ -533,7 +533,7 @@ export const Hero: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="relative flex flex-col justify-start overflow-hidden" style={{ minHeight: '88vh' }}>
+    <section className="relative flex flex-col justify-start overflow-hidden" style={{ minHeight: '72vh' }}>
 
       {/* Canvas background */}
       <div className="absolute inset-0" style={{ background: '#070608' }}>
@@ -550,7 +550,7 @@ export const Hero: React.FC = () => {
 
       {/* CENTERED content */}
       <div className="relative z-10 flex flex-col items-center text-center"
-        style={{ maxWidth: 720, margin: '0 auto', padding: 'clamp(96px, 8vw, 120px) 2rem 48px' }}>
+        style={{ maxWidth: 860, margin: '0 auto', padding: 'clamp(88px, 6.5vw, 108px) 2rem 32px' }}>
 
         {/* Pre-headline tag */}
         <motion.div
@@ -573,9 +573,9 @@ export const Hero: React.FC = () => {
           transition={{ duration: 0.7, delay: 0.6, ease: [0.23, 1, 0.32, 1] }}
           style={{
             fontFamily: '"DM Serif Display", serif',
-            fontSize: 'clamp(36px, 5vw, 72px)',
+            fontSize: 'clamp(52px, 7.5vw, 104px)',
             fontWeight: 400,
-            lineHeight: 1.1,
+            lineHeight: 1.02,
             color: '#F0EBE0',
             letterSpacing: '-0.01em',
             marginBottom: 18,
@@ -600,13 +600,13 @@ export const Hero: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.9 }}
           style={{
             fontFamily: '"IBM Plex Sans", sans-serif',
-            fontSize: 'clamp(14px, 1.6vw, 18px)',
+            fontSize: 'clamp(16px, 1.8vw, 22px)',
             fontWeight: 300,
             color: '#A8A3B3',
             letterSpacing: '0.01em',
-            lineHeight: 1.6,
-            marginBottom: 28,
-            maxWidth: 500,
+            lineHeight: 1.5,
+            marginBottom: 32,
+            maxWidth: 580,
             textAlign: 'center',
           }}
         >
