@@ -12,7 +12,7 @@ import { useLocation } from 'react-router-dom';
 
 /* ─── TODO: paste your real IDs here once you create the accounts ── */
 export const CLARITY_PROJECT_ID = 'wuwrbeairf';                // clarity.microsoft.com
-export const GA_MEASUREMENT_ID  = 'G-XXXXXXXXXX';              // analytics.google.com
+export const GA_MEASUREMENT_ID  = 'G-D1K5HC0ZRW';              // analytics.google.com
 
 const CONSENT_KEY = 'fluxero_cookie_consent';
 
