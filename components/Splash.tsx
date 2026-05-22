@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 export const Splash: React.FC<{ onDone: () => void }> = ({ onDone }) => {
@@ -68,7 +68,7 @@ export const Splash: React.FC<{ onDone: () => void }> = ({ onDone }) => {
                 </linearGradient>
               </defs>
 
-              {/* Blob 1 — larger, left, green→teal */}
+              {/* Blob 1 â€” larger, left, greenâ†’teal */}
               <motion.path
                 d="M 20 50 C 20 20, 55 10, 65 35 C 75 55, 60 80, 40 80 C 25 80, 20 70, 20 50 Z"
                 fill="url(#grad1)"
@@ -77,7 +77,7 @@ export const Splash: React.FC<{ onDone: () => void }> = ({ onDone }) => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               />
 
-              {/* Blob 2 — smaller, right, teal→blue, overlapping */}
+              {/* Blob 2 â€” smaller, right, tealâ†’blue, overlapping */}
               <motion.path
                 d="M 50 40 C 55 20, 80 25, 85 45 C 90 60, 75 75, 60 65 C 48 58, 45 55, 50 40 Z"
                 fill="url(#grad2)"
@@ -90,7 +90,7 @@ export const Splash: React.FC<{ onDone: () => void }> = ({ onDone }) => {
           </motion.div>
         </div>
 
-        {/* Wordmark — letter by letter */}
+        {/* Wordmark â€” letter by letter */}
         <div
           className="flex flex-row items-center"
           style={{ gap: 0 }}
@@ -103,7 +103,7 @@ export const Splash: React.FC<{ onDone: () => void }> = ({ onDone }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 + index * 0.06, duration: 0.4 }}
               style={{
-                fontFamily: "'Barlow Condensed', sans-serif",
+                fontFamily: "'IBM Plex Sans Condensed', sans-serif",
                 fontWeight: 900,
                 fontSize: '32px',
                 letterSpacing: '0.2em',
@@ -146,8 +146,8 @@ export const Splash: React.FC<{ onDone: () => void }> = ({ onDone }) => {
           className="absolute inset-y-0 left-0 rounded-full"
           style={{
             width: `${pct}%`,
-            background: 'linear-gradient(90deg, #1D4ED8, #3B82F6, #60A5FA)',
-            boxShadow: '0 0 14px rgba(96,165,250,0.75)',
+            background: 'linear-gradient(90deg, #00A86B, #00D68F, #00E5B8)',
+            boxShadow: '0 0 14px rgba(0,214,143,0.75)',
             transition: 'width 0.08s ease',
           }}
         />
@@ -173,10 +173,11 @@ export const Splash: React.FC<{ onDone: () => void }> = ({ onDone }) => {
         animate={{ opacity: 0.4 }}
         transition={{ delay: 0.6 }}
         className="relative z-10 font-mono text-[11px] mt-4 tabular-nums"
-        style={{ color: '#60A5FA', letterSpacing: '0.12em' }}
+        style={{ color: '#00D68F', letterSpacing: '0.12em' }}
       >
         {pct}%
       </motion.p>
     </motion.div>
   );
 };
+

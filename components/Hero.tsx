@@ -536,32 +536,46 @@ export const Hero: React.FC = () => {
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
 
       {/* Canvas layer */}
-      <div className="absolute inset-0" style={{ background: '#080E1C' }}>
+      <div className="absolute inset-0" style={{ background: '#070608' }}>
         <EnergyCanvas />
       </div>
 
       {/* Depth vignette – keeps left text area readable */}
       <div className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 58% 68% at 26% 50%, transparent 22%, rgba(8,14,28,0.88) 82%)' }} />
+        style={{ background: 'radial-gradient(ellipse 58% 68% at 26% 50%, transparent 22%, rgba(7,6,8,0.90) 82%)' }} />
       <div className="absolute bottom-0 inset-x-0 h-52 pointer-events-none"
-        style={{ background: 'linear-gradient(to top, #080E1C, transparent)' }} />
+        style={{ background: 'linear-gradient(to top, #070608, transparent)' }} />
       <div className="absolute top-0 inset-x-0 h-36 pointer-events-none"
-        style={{ background: 'linear-gradient(to bottom, #080E1C, transparent)' }} />
+        style={{ background: 'linear-gradient(to bottom, #070608, transparent)' }} />
 
       {/* Text content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-16" style={{ maxWidth: '55%' }}>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-16" style={{ maxWidth: 'min(55%, 720px)' }}>
 
+        {/* Market size banner — above headline */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="inline-flex items-center gap-3 mb-6"
+        >
+          <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#00D68F' }} />
+          <span className="font-mono text-xs tracking-[0.2em] uppercase" style={{ color: '#A8A3B3' }}>
+            Green H₂ market
+          </span>
+          <span className="font-display font-black text-sm" style={{ color: '#00D68F' }}>£190B by 2034</span>
+          <span className="font-mono text-xs" style={{ color: '#64748B' }}>· 41.4% CAGR · IRENA 2025</span>
+        </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6, ease: [0.23, 1, 0.32, 1] }}
           className="font-display font-black leading-none mb-8"
-          style={{ fontSize: 'clamp(56px, 9vw, 140px)', letterSpacing: '-0.01em', lineHeight: 0.92, color: '#F1F5F9' }}
+          style={{ fontSize: 'clamp(56px, 9vw, 140px)', letterSpacing: '-0.01em', lineHeight: 0.92, color: '#F0EBE0' }}
         >
           ENERGY<br />
           <span style={{
-            background: 'linear-gradient(135deg, #3B82F6 0%, #60A5FA 50%, #06B6D4 100%)',
+            background: 'linear-gradient(135deg, #00A86B 0%, #00D68F 50%, #00E5B8 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
@@ -577,7 +591,7 @@ export const Hero: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.9 }}
           className="font-body text-xl md:text-2xl font-light leading-relaxed mb-12"
-          style={{ color: '#94A3B8', maxWidth: '480px' }}
+          style={{ color: '#A8A3B3', maxWidth: '480px' }}
         >
           Fluxero builds Small Modular Hydrogen Plants that convert curtailed wind,
           solar, and hydro into green hydrogen — at the source, before the grid
@@ -594,19 +608,19 @@ export const Hero: React.FC = () => {
             onClick={() => navigate('/calculator')}
             className="font-body font-semibold px-8 py-4 rounded text-base tracking-wide transition-all"
             style={{
-              background: 'linear-gradient(135deg, #2563EB, #3B82F6)',
-              color: '#F1F5F9',
-              boxShadow: '0 0 30px rgba(59,130,246,0.28)',
+              background: 'linear-gradient(135deg, #00A86B, #00D68F)',
+              color: '#0D0C0F',
+              boxShadow: '0 0 30px rgba(0,214,143,0.28)',
               border: 'none',
               cursor: 'pointer',
             }}
             onMouseEnter={e => {
               (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.04)';
-              (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 0 54px rgba(59,130,246,0.50)';
+              (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 0 54px rgba(0,214,143,0.50)';
             }}
             onMouseLeave={e => {
               (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1)';
-              (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 0 30px rgba(59,130,246,0.28)';
+              (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 0 30px rgba(0,214,143,0.28)';
             }}
           >
             Calculate your site's H₂ potential →
@@ -616,20 +630,6 @@ export const Hero: React.FC = () => {
             style={{ color: '#00D68F', border: '1px solid rgba(0,214,143,0.3)', background: 'rgba(0,214,143,0.05)' }}>
             Seed Round Open →
           </a>
-        </motion.div>
-
-        {/* Market size banner */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="inline-flex items-center gap-3 mb-4"
-        >
-          <span className="font-mono text-xs tracking-[0.2em] uppercase" style={{ color: '#A8A3B3' }}>
-            Green H₂ market
-          </span>
-          <span className="font-display font-black text-sm" style={{ color: '#00D68F' }}>£190B by 2034</span>
-          <span className="font-mono text-xs" style={{ color: '#64748B' }}>· 41.4% CAGR · IRENA 2025</span>
         </motion.div>
 
         {/* Stats */}
@@ -665,10 +665,10 @@ export const Hero: React.FC = () => {
         style={{ zIndex: 20 }}
       >
         {[
-          { color: 'rgba(251,160,20,0.75)',  label: 'Curtailed energy (source)' },
-          { color: 'rgba(239,68,68,0.65)',   label: 'Grid-rejected (wasted)'    },
-          { color: 'rgba(59,130,246,0.85)',  label: 'SMHP captured'             },
-          { color: 'rgba(56,189,248,0.75)',  label: 'Green hydrogen output'     },
+          { color: 'rgba(148,163,184,0.75)', label: 'Wind / Solar / Hydro (source)' },
+          { color: 'rgba(255,64,32,0.70)',   label: 'Grid-rejected (wasted)'        },
+          { color: 'rgba(56,189,248,0.85)',  label: 'SMHP captured'                 },
+          { color: 'rgba(0,214,143,0.85)',   label: 'Green hydrogen output'          },
         ].map(l => (
           <div key={l.label} className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: l.color }} />

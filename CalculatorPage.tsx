@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { H2Calculator } from './components/H2Calculator';
@@ -7,7 +7,7 @@ export default function CalculatorPage() {
   return (
     <div style={{ background: '#0F172A', minHeight: '100vh', paddingTop: '5rem' }}>
       {/* Page header */}
-      <div style={{ borderBottom: '1px solid rgba(59,130,246,0.12)', padding: '2rem 0' }}>
+      <div style={{ borderBottom: '1px solid rgba(0,214,143,0.12)', padding: '2rem 0' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
           <Link
             to="/"
@@ -28,7 +28,7 @@ export default function CalculatorPage() {
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem', flexWrap: 'wrap' }}>
             <h1
               style={{
-                fontFamily: '"Barlow Condensed", sans-serif',
+                fontFamily: '"IBM Plex Sans Condensed", sans-serif',
                 fontSize: 'clamp(2rem, 5vw, 3rem)',
                 fontWeight: 800,
                 letterSpacing: '-0.02em',
@@ -36,10 +36,10 @@ export default function CalculatorPage() {
                 textTransform: 'uppercase',
               }}
             >
-              H₂ Potential{' '}
+              Hâ‚‚ Potential{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #3B82F6 0%, #60A5FA 50%, #06B6D4 100%)',
+                  background: 'linear-gradient(135deg, #00A86B 0%, #00D68F 50%, #00E5B8 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -52,12 +52,12 @@ export default function CalculatorPage() {
               style={{
                 fontSize: '0.75rem',
                 letterSpacing: '0.1em',
-                color: '#3B82F6',
-                background: 'rgba(59,130,246,0.1)',
-                border: '1px solid rgba(59,130,246,0.25)',
+                color: '#00D68F',
+                background: 'rgba(0,214,143,0.1)',
+                border: '1px solid rgba(0,214,143,0.25)',
                 borderRadius: '4px',
                 padding: '2px 8px',
-                fontFamily: '"JetBrains Mono", monospace',
+                fontFamily: '"IBM Plex Mono", monospace',
                 textTransform: 'uppercase',
               }}
             >
@@ -75,7 +75,7 @@ export default function CalculatorPage() {
             }}
           >
             Model your site's green hydrogen output using real UK solar, wind, and hydro data.
-            Enter your postcode and energy source details to get annual H₂ production estimates,
+            Enter your postcode and energy source details to get annual Hâ‚‚ production estimates,
             revenue projections, and payback analysis.
           </p>
         </div>
@@ -88,3 +88,5 @@ export default function CalculatorPage() {
     </div>
   );
 }
+
+

@@ -105,7 +105,7 @@ export const LiveCurtailmentBar: React.FC = () => {
             </div>
             <div className="w-px h-6 hidden sm:block" style={{ background: 'rgba(255,255,255,0.05)' }} />
             <div className="text-center">
-              <p className="font-mono font-bold text-sm tabular-nums" style={{ color: '#3B82F6' }}>
+              <p className="font-mono font-bold text-sm tabular-nums" style={{ color: '#00D68F' }}>
                 {h2KgPossible.toLocaleString()} kg
               </p>
               <p className="font-mono text-[9px] uppercase tracking-wider" style={{ color: '#475569' }}>green H₂ uncaptured</p>

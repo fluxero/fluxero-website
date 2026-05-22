@@ -1,9 +1,9 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'framer-motion';
 
-/* ─── Individual Partner Logos (inline SVG wordmarks) ─── */
+/* â”€â”€â”€ Individual Partner Logos (inline SVG wordmarks) â”€â”€â”€ */
 
-// Barclays Eagle Labs — uses Barclays' signature blue (#00AEEF) + eagle motif
+// Barclays Eagle Labs â€” uses Barclays' signature blue (#00AEEF) + eagle motif
 const BarclaysEagleLabs: React.FC = () => (
   <svg viewBox="0 0 220 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Barclays Eagle Labs">
     {/* Eagle simplified icon */}
@@ -16,14 +16,14 @@ const BarclaysEagleLabs: React.FC = () => (
       fill="rgba(0,174,239,0.4)"
     />
     {/* Barclays wordmark */}
-    <text x="40" y="20" fontFamily="'Barlow Condensed', sans-serif" fontWeight="700" fontSize="13" letterSpacing="0.08em" fill="rgba(0,174,239,0.75)">BARCLAYS</text>
-    <text x="40" y="35" fontFamily="'Barlow', sans-serif" fontWeight="400" fontSize="10" letterSpacing="0.12em" fill="rgba(148,163,184,0.6)">EAGLE LABS</text>
+    <text x="40" y="20" fontFamily="'IBM Plex Sans Condensed', sans-serif" fontWeight="700" fontSize="13" letterSpacing="0.08em" fill="rgba(0,174,239,0.75)">BARCLAYS</text>
+    <text x="40" y="35" fontFamily="'IBM Plex Sans', sans-serif" fontWeight="400" fontSize="10" letterSpacing="0.12em" fill="rgba(148,163,184,0.6)">EAGLE LABS</text>
     {/* Divider */}
     <line x1="40" y1="22" x2="170" y2="22" stroke="rgba(0,174,239,0.12)" strokeWidth="0.5" />
   </svg>
 );
 
-// Durham University — uses Durham's deep purple/maroon (#7B1E3D) and gold (#C9A84C)
+// Durham University â€” uses Durham's deep purple/maroon (#7B1E3D) and gold (#C9A84C)
 const DurhamUniversity: React.FC = () => (
   <svg viewBox="0 0 200 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Durham University">
     {/* Simplified castle/cathedral icon representing Durham */}
@@ -38,8 +38,8 @@ const DurhamUniversity: React.FC = () => (
     <rect x="26" y="23" width="2" height="4" rx="0.5" fill="rgba(201,168,76,0.5)" />
     <rect x="30" y="23" width="2" height="4" rx="0.5" fill="rgba(201,168,76,0.5)" />
     {/* Text */}
-    <text x="42" y="24" fontFamily="'Barlow Condensed', sans-serif" fontWeight="700" fontSize="13" letterSpacing="0.08em" fill="rgba(201,168,76,0.75)">DURHAM</text>
-    <text x="42" y="38" fontFamily="'Barlow', sans-serif" fontWeight="400" fontSize="10" letterSpacing="0.12em" fill="rgba(148,163,184,0.6)">UNIVERSITY</text>
+    <text x="42" y="24" fontFamily="'IBM Plex Sans Condensed', sans-serif" fontWeight="700" fontSize="13" letterSpacing="0.08em" fill="rgba(201,168,76,0.75)">DURHAM</text>
+    <text x="42" y="38" fontFamily="'IBM Plex Sans', sans-serif" fontWeight="400" fontSize="10" letterSpacing="0.12em" fill="rgba(148,163,184,0.6)">UNIVERSITY</text>
   </svg>
 );
 
@@ -57,13 +57,13 @@ const DurhamVentureLabs: React.FC = () => (
     />
     <circle cx="20" cy="26" r="3" fill="none" stroke="rgba(201,168,76,0.55)" strokeWidth="1" />
     {/* Text */}
-    <text x="36" y="22" fontFamily="'Barlow Condensed', sans-serif" fontWeight="700" fontSize="12" letterSpacing="0.08em" fill="rgba(201,168,76,0.75)">DURHAM</text>
-    <text x="36" y="33" fontFamily="'Barlow', sans-serif" fontWeight="400" fontSize="9" letterSpacing="0.1em" fill="rgba(148,163,184,0.6)">UNIVERSITY</text>
-    <text x="36" y="43" fontFamily="'Barlow', sans-serif" fontWeight="600" fontSize="9" letterSpacing="0.14em" fill="rgba(148,163,184,0.5)">VENTURE LABS</text>
+    <text x="36" y="22" fontFamily="'IBM Plex Sans Condensed', sans-serif" fontWeight="700" fontSize="12" letterSpacing="0.08em" fill="rgba(201,168,76,0.75)">DURHAM</text>
+    <text x="36" y="33" fontFamily="'IBM Plex Sans', sans-serif" fontWeight="400" fontSize="9" letterSpacing="0.1em" fill="rgba(148,163,184,0.6)">UNIVERSITY</text>
+    <text x="36" y="43" fontFamily="'IBM Plex Sans', sans-serif" fontWeight="600" fontSize="9" letterSpacing="0.14em" fill="rgba(148,163,184,0.5)">VENTURE LABS</text>
   </svg>
 );
 
-/* ─── Partners Strip ────────────────────────────────────── */
+/* â”€â”€â”€ Partners Strip â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 export const Partners: React.FC = () => {
   return (
     <section
@@ -139,3 +139,4 @@ export const Partners: React.FC = () => {
     </section>
   );
 };
+

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ComposableMap,
@@ -7,7 +7,7 @@ import {
   Marker,
 } from 'react-simple-maps';
 
-/* ─── Constants ──────────────────────────────────────────── */
+/* â”€â”€â”€ Constants â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const GEO_URL =
   'https://raw.githubusercontent.com/martinjc/UK-GeoJSON/master/json/administrative/gb/topo_lad.json';
 
@@ -22,7 +22,7 @@ const C = {
   orange:  '#FF8C00',
 };
 
-/* ─── Region data ─────────────────────────────────────────── */
+/* â”€â”€â”€ Region data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 interface Region {
   id: string;
   name: string;
@@ -48,7 +48,7 @@ const regions: Region[] = [
     name: 'Southern Scotland',
     twh: 3.1,
     pct: 37,
-    notes: 'B6 boundary bottleneck — the pinch point between Scotland and England.',
+    notes: 'B6 boundary bottleneck â€” the pinch point between Scotland and England.',
     coords: [-3.8, 55.4],
     severity: 'critical',
   },
@@ -81,7 +81,7 @@ const regions: Region[] = [
   },
 ];
 
-/* ─── GeoJSON region name → fill colour ─────────────────── */
+/* â”€â”€â”€ GeoJSON region name â†’ fill colour â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const CRITICAL_NAMES = new Set([
   'Highland', 'Argyll and Bute', 'Na h-Eileanan Siar',
   'Orkney Islands', 'Shetland Islands', 'Perth and Kinross',
@@ -102,7 +102,7 @@ function geoFill(name: string): { fill: string; stroke: string } {
   return                               { fill: 'rgba(0,214,143,0.12)',  stroke: 'rgba(0,214,143,0.18)' };
 }
 
-/* ─── Marker colours ─────────────────────────────────────── */
+/* â”€â”€â”€ Marker colours â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function markerColor(severity: Region['severity']): string {
   if (severity === 'critical') return C.red;
   if (severity === 'moderate') return C.green;
@@ -113,7 +113,7 @@ function markerLabel(r: Region): string {
   return `${r.twh} TWh`;
 }
 
-/* ─── Severity badge styles ──────────────────────────────── */
+/* â”€â”€â”€ Severity badge styles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function severityStyle(s: Region['severity']): React.CSSProperties {
   const map: Record<Region['severity'], { color: string; bg: string }> = {
     critical: { color: C.red,    bg: 'rgba(255,64,32,0.12)' },
@@ -135,15 +135,15 @@ function barColor(s: Region['severity']): string {
   return C.mist;
 }
 
-/* ─── Bottom stat cards ──────────────────────────────────── */
+/* â”€â”€â”€ Bottom stat cards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const STATS = [
-  { value: '8.3 TWh', label: 'Total curtailed',    sub: '2024 · Elexon' },
-  { value: '£393M',   label: 'Paid to curtail',    sub: 'UK consumer bills' },
+  { value: '8.3 TWh', label: 'Total curtailed',    sub: '2024 Â· Elexon' },
+  { value: 'Â£393M',   label: 'Paid to curtail',    sub: 'UK consumer bills' },
   { value: '95%',     label: 'From Scotland',       sub: 'B6 constraint' },
   { value: '10 GW',   label: 'Constrained capacity',sub: 'Scotland grid limit' },
 ];
 
-/* ─── Pulsing marker component ───────────────────────────── */
+/* â”€â”€â”€ Pulsing marker component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const PulseMarker: React.FC<{
   region: Region;
   hovered: string | null;
@@ -159,7 +159,7 @@ const PulseMarker: React.FC<{
       onMouseEnter={() => onEnter(region.id)}
       onMouseLeave={onLeave}
     >
-      {/* Outer pulse — framer-motion won't animate SVG elements directly,
+      {/* Outer pulse â€” framer-motion won't animate SVG elements directly,
           so we use a CSS animation via style tag inserted once */}
       <motion.circle
         r={12}
@@ -184,7 +184,7 @@ const PulseMarker: React.FC<{
         x={10}
         y={4}
         style={{
-          fontFamily: '"JetBrains Mono", monospace',
+          fontFamily: '"IBM Plex Mono", monospace',
           fontSize: '8px',
           fill: isHovered ? C.cream : color,
           fontWeight: 600,
@@ -198,7 +198,7 @@ const PulseMarker: React.FC<{
   );
 };
 
-/* ─── B6 boundary annotation line ────────────────────────── */
+/* â”€â”€â”€ B6 boundary annotation line â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 /* Rendered as a Marker at mid-point with an SVG line extending left/right */
 const B6BoundaryLine: React.FC = () => (
   <Marker coordinates={[-2.3, 55.05]}>
@@ -213,7 +213,7 @@ const B6BoundaryLine: React.FC = () => (
       x={85}
       y={4}
       style={{
-        fontFamily: '"JetBrains Mono", monospace',
+        fontFamily: '"IBM Plex Mono", monospace',
         fontSize: '7px',
         fill: 'rgba(255,140,0,0.8)',
         fontWeight: 600,
@@ -225,7 +225,7 @@ const B6BoundaryLine: React.FC = () => (
   </Marker>
 );
 
-/* ─── Main component ─────────────────────────────────────── */
+/* â”€â”€â”€ Main component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 export const CurtailmentMap: React.FC = () => {
   const [hovered, setHovered] = useState<string | null>(null);
 
@@ -246,7 +246,7 @@ export const CurtailmentMap: React.FC = () => {
           }}
           className="lg:grid-cols-curtailment"
         >
-          {/* ── Left: Map ───────────────────────────────────── */}
+          {/* â”€â”€ Left: Map â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
           <motion.div
             initial={{ opacity: 0, x: -32 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -343,7 +343,7 @@ export const CurtailmentMap: React.FC = () => {
                   <div style={{ width: 8, height: 8, borderRadius: '50%', background: color, flexShrink: 0 }} />
                   <span
                     style={{
-                      fontFamily: '"JetBrains Mono", monospace',
+                      fontFamily: '"IBM Plex Mono", monospace',
                       fontSize: 10,
                       color: C.steel,
                       textTransform: 'uppercase',
@@ -357,7 +357,7 @@ export const CurtailmentMap: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* ── Right: Panel ────────────────────────────────── */}
+          {/* â”€â”€ Right: Panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
           <motion.div
             initial={{ opacity: 0, x: 32 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -370,7 +370,7 @@ export const CurtailmentMap: React.FC = () => {
               <div style={{ width: 32, height: 1, background: C.green }} />
               <span
                 style={{
-                  fontFamily: '"JetBrains Mono", monospace',
+                  fontFamily: '"IBM Plex Mono", monospace',
                   fontSize: 11,
                   color: C.green,
                   letterSpacing: '0.2em',
@@ -384,7 +384,7 @@ export const CurtailmentMap: React.FC = () => {
             {/* Heading */}
             <h2
               style={{
-                fontFamily: '"Barlow Condensed", sans-serif',
+                fontFamily: '"IBM Plex Sans Condensed", sans-serif',
                 fontWeight: 900,
                 fontSize: 'clamp(38px, 5vw, 64px)',
                 letterSpacing: '-0.01em',
@@ -410,7 +410,7 @@ export const CurtailmentMap: React.FC = () => {
             {/* Description */}
             <p
               style={{
-                fontFamily: 'Barlow, sans-serif',
+                fontFamily: 'IBM Plex Sans, sans-serif',
                 fontWeight: 300,
                 fontSize: '1.0625rem',
                 color: C.mist,
@@ -420,7 +420,7 @@ export const CurtailmentMap: React.FC = () => {
             >
               Scotland alone accounts for 95% of all UK wind curtailment.
               Grid infrastructure built for coal cannot carry the volume of
-              renewables now installed in the north. The energy exists — the
+              renewables now installed in the north. The energy exists â€” the
               wires cannot take it.
             </p>
 
@@ -443,7 +443,7 @@ export const CurtailmentMap: React.FC = () => {
                   <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 10, gap: 10 }}>
                     <p
                       style={{
-                        fontFamily: '"Barlow Condensed", sans-serif',
+                        fontFamily: '"IBM Plex Sans Condensed", sans-serif',
                         fontWeight: 700,
                         fontSize: '1rem',
                         color: C.cream,
@@ -457,7 +457,7 @@ export const CurtailmentMap: React.FC = () => {
                     <span
                       style={{
                         ...severityStyle(hoveredRegion.severity),
-                        fontFamily: '"JetBrains Mono", monospace',
+                        fontFamily: '"IBM Plex Mono", monospace',
                         fontSize: 10,
                         padding: '2px 8px',
                         borderRadius: 4,
@@ -473,7 +473,7 @@ export const CurtailmentMap: React.FC = () => {
                     <div>
                       <span
                         style={{
-                          fontFamily: '"JetBrains Mono", monospace',
+                          fontFamily: '"IBM Plex Mono", monospace',
                           fontSize: '1.25rem',
                           fontWeight: 700,
                           color: barColor(hoveredRegion.severity),
@@ -485,7 +485,7 @@ export const CurtailmentMap: React.FC = () => {
                     <div>
                       <span
                         style={{
-                          fontFamily: '"JetBrains Mono", monospace',
+                          fontFamily: '"IBM Plex Mono", monospace',
                           fontSize: '1.25rem',
                           fontWeight: 700,
                           color: C.mist,
@@ -495,7 +495,7 @@ export const CurtailmentMap: React.FC = () => {
                       </span>
                       <span
                         style={{
-                          fontFamily: 'Barlow, sans-serif',
+                          fontFamily: 'IBM Plex Sans, sans-serif',
                           fontSize: '0.75rem',
                           color: C.steel,
                           marginLeft: 6,
@@ -507,7 +507,7 @@ export const CurtailmentMap: React.FC = () => {
                   </div>
                   <p
                     style={{
-                      fontFamily: 'Barlow, sans-serif',
+                      fontFamily: 'IBM Plex Sans, sans-serif',
                       fontSize: '0.85rem',
                       color: C.mist,
                       lineHeight: 1.6,
@@ -544,7 +544,7 @@ export const CurtailmentMap: React.FC = () => {
                   />
                   <span
                     style={{
-                      fontFamily: '"JetBrains Mono", monospace',
+                      fontFamily: '"IBM Plex Mono", monospace',
                       fontSize: 11,
                       color: C.steel,
                       letterSpacing: '0.08em',
@@ -586,7 +586,7 @@ export const CurtailmentMap: React.FC = () => {
                   >
                     <span
                       style={{
-                        fontFamily: 'Barlow, sans-serif',
+                        fontFamily: 'IBM Plex Sans, sans-serif',
                         fontWeight: 500,
                         fontSize: '0.85rem',
                         color: hovered === r.id ? C.cream : C.mist,
@@ -598,7 +598,7 @@ export const CurtailmentMap: React.FC = () => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                       <span
                         style={{
-                          fontFamily: '"JetBrains Mono", monospace',
+                          fontFamily: '"IBM Plex Mono", monospace',
                           fontSize: 11,
                           color: barColor(r.severity),
                           fontWeight: 600,
@@ -608,7 +608,7 @@ export const CurtailmentMap: React.FC = () => {
                       </span>
                       <span
                         style={{
-                          fontFamily: '"JetBrains Mono", monospace',
+                          fontFamily: '"IBM Plex Mono", monospace',
                           fontSize: 10,
                           color: C.steel,
                         }}
@@ -667,7 +667,7 @@ export const CurtailmentMap: React.FC = () => {
                 >
                   <p
                     style={{
-                      fontFamily: '"JetBrains Mono", monospace',
+                      fontFamily: '"IBM Plex Mono", monospace',
                       fontWeight: 700,
                       fontSize: '1.15rem',
                       color: C.green,
@@ -678,7 +678,7 @@ export const CurtailmentMap: React.FC = () => {
                   </p>
                   <p
                     style={{
-                      fontFamily: 'Barlow, sans-serif',
+                      fontFamily: 'IBM Plex Sans, sans-serif',
                       fontSize: '0.9rem',
                       fontWeight: 500,
                       color: C.cream,
@@ -689,7 +689,7 @@ export const CurtailmentMap: React.FC = () => {
                   </p>
                   <p
                     style={{
-                      fontFamily: 'Barlow, sans-serif',
+                      fontFamily: 'IBM Plex Sans, sans-serif',
                       fontSize: '0.78rem',
                       color: C.steel,
                       margin: 0,
@@ -704,7 +704,7 @@ export const CurtailmentMap: React.FC = () => {
         </div>
       </div>
 
-      {/* Tailwind responsive helper — sets the two-column grid on large screens */}
+      {/* Tailwind responsive helper â€” sets the two-column grid on large screens */}
       <style>{`
         @media (min-width: 1024px) {
           .lg\\:grid-cols-curtailment {
@@ -715,3 +715,4 @@ export const CurtailmentMap: React.FC = () => {
     </section>
   );
 };
+

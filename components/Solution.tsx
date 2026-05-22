@@ -90,15 +90,15 @@ const FlowDiagram: React.FC = () => {
                 </circle>
               )}
               <text x={n.x} y={n.y+1} textAnchor="middle" dominantBaseline="middle"
-                fontSize={isSmhp ? 18 : 14} fill={n.color} fontFamily="JetBrains Mono,monospace" fontWeight="700">
+                fontSize={isSmhp ? 18 : 14} fill={n.color} fontFamily="IBM Plex Mono,monospace" fontWeight="700">
                 {n.icon}
               </text>
               <text x={n.x} y={n.y+size+14} textAnchor="middle" fontSize={11}
-                fill="#F0EBE0" fontFamily="Barlow Condensed,sans-serif" fontWeight="700" letterSpacing="1">
+                fill="#F0EBE0" fontFamily="IBM Plex Sans Condensed,sans-serif" fontWeight="700" letterSpacing="1">
                 {n.label}
               </text>
               <text x={n.x} y={n.y+size+26} textAnchor="middle" fontSize={9}
-                fill="#64748B" fontFamily="JetBrains Mono,monospace">
+                fill="#64748B" fontFamily="IBM Plex Mono,monospace">
                 {n.sub}
               </text>
             </g>
