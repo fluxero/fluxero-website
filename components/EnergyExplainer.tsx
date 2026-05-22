@@ -10,7 +10,7 @@ const HYDRO  = '#38BDF8';
 const WASTE  = '#EF4444';
 const INK2   = '#131116';
 
-const SCENE_DURATION = 3000; // ms
+const SCENE_DURATION = 7000; // ms — gives readers enough time to absorb each scene
 
 // ─── Scene metadata ────────────────────────────────────────────────────────────
 const SCENES = [
