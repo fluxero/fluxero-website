@@ -117,7 +117,7 @@ export const Contact: React.FC = () => {
             >
               <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
                 style={{ background: 'rgba(0,214,143,0.12)', border: '1px solid rgba(0,214,143,0.28)' }}>
-                <span style={{ color: '#00E5B8', fontSize: 19 }}>✉</span>
+                <span style={{ color: '#00E5B8', fontSize: 17 }}>✉</span>
               </div>
               <div className="flex-1">
                 <p className="font-mono text-base uppercase tracking-[0.2em] mb-0.5" style={{ color: '#475569' }}>General enquiries</p>
@@ -172,7 +172,7 @@ export const Contact: React.FC = () => {
             >
               <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                 style={{ background: 'rgba(0,214,143,0.06)', border: '1px solid rgba(0,214,143,0.15)' }}>
-                <span style={{ color: '#00D68F', fontSize: 22 }}>◷</span>
+                <span style={{ color: '#00D68F', fontSize: 20 }}>◷</span>
               </div>
               <div>
                 <p className="font-mono text-base text-steel uppercase tracking-widest mb-1">Book a call</p>
@@ -204,7 +204,7 @@ export const Contact: React.FC = () => {
                   className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
                   style={{ background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.3)' }}
                 >
-                  <span style={{ color: '#00D68F', fontSize: 26 }}>✓</span>
+                  <span style={{ color: '#00D68F', fontSize: 24 }}>✓</span>
                 </div>
                 <h4 className="font-display font-black text-cream text-2xl mb-3">Message sent.</h4>
                 <p className="font-body text-mist text-lg">All three founders have been notified. We'll reply within 24 hours.</p>
@@ -282,7 +282,7 @@ export const Contact: React.FC = () => {
                   {sending ? 'Sending…' : 'Send message →'}
                 </button>
 
-                <p className="font-mono text-[12px] text-center" style={{ color: '#334155' }}>
+                <p className="font-mono text-[10px] text-center" style={{ color: '#334155' }}>
                   Sends to all three founders · Replies within 24 hours
                 </p>
               </form>

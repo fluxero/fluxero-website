@@ -34,7 +34,7 @@ export const Technology: React.FC = () => {
           >
             <h2
               className="font-display font-black text-cream mb-6"
-              style={{ fontSize: 'clamp(38px, 4vw, 64px)', lineHeight: 0.95 }}
+              style={{ fontSize: 'clamp(36px, 4vw, 64px)', lineHeight: 0.95 }}
             >
               THE DIGITAL TWIN<br />
               <span className="text-green-gradient">THAT RUNS FIRST.</span>

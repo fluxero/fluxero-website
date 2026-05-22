@@ -35,12 +35,12 @@ export const ProcessChips: React.FC = () => {
         >
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 14, marginBottom: 18 }}>
             <div style={{ width: 28, height: 1, background: '#00D68F' }} />
-            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 13, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#00D68F' }}>
+            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#00D68F' }}>
               How it works
             </span>
             <div style={{ width: 28, height: 1, background: '#00D68F' }} />
           </div>
-          <h2 style={{ fontFamily: '"DM Serif Display", serif', fontSize: 'clamp(30px, 4vw, 56px)', color: '#F0EBE0', lineHeight: 1.1, fontWeight: 400 }}>
+          <h2 style={{ fontFamily: '"DM Serif Display", serif', fontSize: 'clamp(28px, 4vw, 56px)', color: '#F0EBE0', lineHeight: 1.1, fontWeight: 400 }}>
             Three steps. Zero waste.
           </h2>
         </motion.div>
@@ -88,7 +88,7 @@ export const ProcessChips: React.FC = () => {
                   gap: 6,
                 }}>
                   <div style={{ width: 6, height: 6, borderRadius: 999, background: c.color, boxShadow: `0 0 8px ${c.color}` }} />
-                  <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 11, color: c.color, opacity: 0.7, letterSpacing: '0.12em' }}>
+                  <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 10, color: c.color, opacity: 0.7, letterSpacing: '0.12em' }}>
                     0{i + 1}
                   </span>
                 </div>
@@ -97,7 +97,7 @@ export const ProcessChips: React.FC = () => {
                   <div style={{
                     fontFamily: '"IBM Plex Sans Condensed", sans-serif',
                     fontWeight: 700,
-                    fontSize: 17,
+                    fontSize: 15,
                     color: '#F0EBE0',
                     letterSpacing: '0.04em',
                     lineHeight: 1.2,
@@ -110,7 +110,7 @@ export const ProcessChips: React.FC = () => {
                   <span style={{
                     display: 'inline-block',
                     fontFamily: '"IBM Plex Mono", monospace',
-                    fontSize: 12,
+                    fontSize: 10,
                     letterSpacing: '0.16em',
                     color: c.color,
                     background: `${c.color}14`,
@@ -148,7 +148,7 @@ export const ProcessChips: React.FC = () => {
                     justifyContent: 'center',
                     color: 'rgba(241, 235, 224, 0.55)',
                     fontFamily: '"IBM Plex Mono", monospace',
-                    fontSize: 15,
+                    fontSize: 13,
                     lineHeight: 1,
                   }}>
                     +
@@ -169,7 +169,7 @@ export const ProcessChips: React.FC = () => {
             marginTop: 48,
             textAlign: 'center',
             fontFamily: '"IBM Plex Mono", monospace',
-            fontSize: 12,
+            fontSize: 10,
             letterSpacing: '0.18em',
             color: '#94A3B8',
             textTransform: 'uppercase',

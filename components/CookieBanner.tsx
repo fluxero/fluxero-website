@@ -56,7 +56,7 @@ export const CookieBanner: React.FC = () => {
         >
           <p style={{
             fontFamily: '"IBM Plex Sans", sans-serif',
-            fontSize: 13,
+            fontSize: 11,
             lineHeight: 1.55,
             color: '#A8A3B3',
             margin: 0,
@@ -79,7 +79,7 @@ export const CookieBanner: React.FC = () => {
                 borderRadius: 8,
                 padding: '10px 18px',
                 fontFamily: '"IBM Plex Sans", sans-serif',
-                fontSize: 12,
+                fontSize: 10,
                 fontWeight: 600,
                 letterSpacing: '0.03em',
                 cursor: 'pointer',
@@ -100,7 +100,7 @@ export const CookieBanner: React.FC = () => {
                 borderRadius: 8,
                 padding: '10px 18px',
                 fontFamily: '"IBM Plex Sans", sans-serif',
-                fontSize: 12,
+                fontSize: 10,
                 fontWeight: 500,
                 letterSpacing: '0.03em',
                 cursor: 'pointer',

@@ -87,7 +87,7 @@ export const Traction: React.FC = () => (
 
         {/* Milestones */}
         <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-          <h3 className="font-display font-black text-cream mb-2" style={{ fontSize: 'clamp(32px, 3vw, 42px)', lineHeight: 0.95 }}>
+          <h3 className="font-display font-black text-cream mb-2" style={{ fontSize: 'clamp(30px, 3vw, 42px)', lineHeight: 0.95 }}>
             BUILT.<br/>
             <span style={{ background: 'linear-gradient(135deg,#00A86B,#00D68F)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
               NOT PITCHED.
@@ -101,7 +101,7 @@ export const Traction: React.FC = () => (
                 style={{ background: m.done ? 'rgba(0,214,143,0.05)' : 'transparent', border: `1px solid ${m.done ? 'rgba(0,214,143,0.12)' : 'rgba(255,255,255,0.04)'}` }}>
                 <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
                   style={{ background: m.done ? G : 'transparent', border: `1px solid ${m.done ? G : '#64748B'}` }}>
-                  {m.done && <span style={{ fontSize: 11, color: INK, fontWeight: 800 }}>✓</span>}
+                  {m.done && <span style={{ fontSize: 10, color: INK, fontWeight: 800 }}>✓</span>}
                 </div>
                 <span className="font-body text-xl flex-1" style={{ color: m.done ? '#F0EBE0' : '#64748B' }}>{m.label}</span>
                 {!m.done && (
@@ -117,7 +117,7 @@ export const Traction: React.FC = () => (
 
         {/* Partners */}
         <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-          <h3 className="font-display font-black text-cream mb-2" style={{ fontSize: 'clamp(32px, 3vw, 42px)', lineHeight: 0.95 }}>
+          <h3 className="font-display font-black text-cream mb-2" style={{ fontSize: 'clamp(30px, 3vw, 42px)', lineHeight: 0.95 }}>
             BACKED &<br/>
             <span style={{ background: 'linear-gradient(135deg,#00A86B,#00D68F)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
               SUPPORTED BY.

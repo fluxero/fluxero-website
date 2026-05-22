@@ -84,7 +84,7 @@ export const LiveCurtailmentBar: React.FC = () => {
             <span
               className="font-display font-black counter tabular-nums"
               style={{
-                fontSize: 'clamp(24px, 3vw, 38px)',
+                fontSize: 'clamp(22px, 3vw, 36px)',
                 color: '#EF4444',
                 lineHeight: 1,
                 fontVariantNumeric: 'tabular-nums',
@@ -101,21 +101,21 @@ export const LiveCurtailmentBar: React.FC = () => {
               <p className="font-mono font-bold text-lg tabular-nums" style={{ color: '#FBBF24' }}>
                 {homesWasted.toLocaleString()}
               </p>
-              <p className="font-mono text-[11px] uppercase tracking-wider" style={{ color: '#475569' }}>homes could be powered</p>
+              <p className="font-mono text-[10px] uppercase tracking-wider" style={{ color: '#475569' }}>homes could be powered</p>
             </div>
             <div className="w-px h-6 hidden sm:block" style={{ background: 'rgba(255,255,255,0.05)' }} />
             <div className="text-center">
               <p className="font-mono font-bold text-lg tabular-nums" style={{ color: '#00D68F' }}>
                 {h2KgPossible.toLocaleString()} kg
               </p>
-              <p className="font-mono text-[11px] uppercase tracking-wider" style={{ color: '#475569' }}>green H₂ uncaptured</p>
+              <p className="font-mono text-[10px] uppercase tracking-wider" style={{ color: '#475569' }}>green H₂ uncaptured</p>
             </div>
             <div className="w-px h-6 hidden sm:block" style={{ background: 'rgba(255,255,255,0.05)' }} />
             <div className="text-center">
               <p className="font-mono font-bold text-lg" style={{ color: '#94A3B8' }}>
                 £{Math.floor(mwh * 1000 * 0.01 / 100).toLocaleString()}k
               </p>
-              <p className="font-mono text-[11px] uppercase tracking-wider" style={{ color: '#475569' }}>constraint payments accruing</p>
+              <p className="font-mono text-[10px] uppercase tracking-wider" style={{ color: '#475569' }}>constraint payments accruing</p>
             </div>
           </div>
 

@@ -292,10 +292,10 @@ const C = {
 
 const Lbl: React.FC<{children:React.ReactNode;hint?:string;req?:boolean}> = ({children,hint,req}) => (
   <div style={{marginBottom:hint?3:8}}>
-    <span style={{fontSize:17,fontWeight:600,color:C.white,display:"block",fontFamily:"'Syne',sans-serif"}}>
+    <span style={{fontSize:15,fontWeight:600,color:C.white,display:"block",fontFamily:"'Syne',sans-serif"}}>
       {children}{req&&<span style={{color:C.green,marginLeft:4}}>*</span>}
     </span>
-    {hint&&<div style={{fontSize:15,color:C.grey,marginTop:2,lineHeight:1.5}}>{hint}</div>}
+    {hint&&<div style={{fontSize:13,color:C.grey,marginTop:2,lineHeight:1.5}}>{hint}</div>}
   </div>
 );
 
@@ -303,16 +303,16 @@ const Inp: React.FC<{value:any;onChange:(v:string)=>void;placeholder?:string;uni
   <div>
     <div style={{display:"flex",alignItems:"center",background:C.bg3,border:`1.5px solid ${error?C.red:C.border}`,borderRadius:8,overflow:"hidden"}}>
       <input type={type} value={value} onChange={e=>onChange(e.target.value)} placeholder={placeholder}
-        style={{flex:1,background:"none",border:"none",outline:"none",padding:"11px 14px",fontSize:17,color:C.white,fontFamily:"'IBM Plex Mono',monospace",boxSizing:"border-box"}}/>
-      {unit&&<span style={{padding:"0 12px",color:C.grey,fontSize:15,borderLeft:`1px solid ${C.border}`,whiteSpace:"nowrap"}}>{unit}</span>}
+        style={{flex:1,background:"none",border:"none",outline:"none",padding:"11px 14px",fontSize:15,color:C.white,fontFamily:"'IBM Plex Mono',monospace",boxSizing:"border-box"}}/>
+      {unit&&<span style={{padding:"0 12px",color:C.grey,fontSize:13,borderLeft:`1px solid ${C.border}`,whiteSpace:"nowrap"}}>{unit}</span>}
     </div>
-    {error&&<div style={{fontSize:15,color:C.red,marginTop:3}}>{error}</div>}
+    {error&&<div style={{fontSize:13,color:C.red,marginTop:3}}>{error}</div>}
   </div>
 );
 
 const Sel: React.FC<{value:any;onChange:(v:string)=>void;options:{value:string;label:string}[]}> = ({value,onChange,options}) => (
   <select value={value} onChange={e=>onChange(e.target.value)}
-    style={{width:"100%",background:C.bg3,border:`1.5px solid ${C.border}`,borderRadius:8,padding:"11px 14px",fontSize:17,color:C.white,outline:"none",cursor:"pointer",appearance:"none" as any}}>
+    style={{width:"100%",background:C.bg3,border:`1.5px solid ${C.border}`,borderRadius:8,padding:"11px 14px",fontSize:15,color:C.white,outline:"none",cursor:"pointer",appearance:"none" as any}}>
     {options.map(o=><option key={o.value} value={o.value}>{o.label}</option>)}
   </select>
 );
@@ -320,7 +320,7 @@ const Sel: React.FC<{value:any;onChange:(v:string)=>void;options:{value:string;l
 const G2: React.FC<{children:React.ReactNode;gap?:number}> = ({children,gap=12}) => <div className="h2-grid-2" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap}}>{children}</div>;
 const G3: React.FC<{children:React.ReactNode}> = ({children}) => <div className="h2-grid-3" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12}}>{children}</div>;
 const Field: React.FC<{label:string;hint?:string;req?:boolean;children:React.ReactNode}> = ({label,hint,req,children}) => <div style={{marginBottom:16}}><Lbl req={req} hint={hint}>{label}</Lbl>{children}</div>;
-const Sec: React.FC<{children:React.ReactNode}> = ({children}) => <div style={{fontSize:11,fontWeight:700,letterSpacing:"2px",color:C.greenD,marginBottom:12,marginTop:4,fontFamily:"'IBM Plex Mono',monospace"}}>{children}</div>;
+const Sec: React.FC<{children:React.ReactNode}> = ({children}) => <div style={{fontSize:10,fontWeight:700,letterSpacing:"2px",color:C.greenD,marginBottom:12,marginTop:4,fontFamily:"'IBM Plex Mono',monospace"}}>{children}</div>;
 const Hr = () => <div style={{borderTop:`1px solid ${C.border}`,margin:"20px 0"}}/>;
 
 const InfoTip: React.FC<{text:string}> = ({text}) => {
@@ -331,9 +331,9 @@ const InfoTip: React.FC<{text:string}> = ({text}) => {
         onMouseEnter={()=>setShow(true)}
         onMouseLeave={()=>setShow(false)}
         onClick={()=>setShow(v=>!v)}
-        style={{width:16,height:16,borderRadius:"50%",background:C.bg4,border:`1px solid ${C.border}`,color:C.grey,fontSize:14,cursor:"pointer",display:"inline-flex",alignItems:"center",justifyContent:"center",fontFamily:"serif"}}
+        style={{width:16,height:16,borderRadius:"50%",background:C.bg4,border:`1px solid ${C.border}`,color:C.grey,fontSize:12,cursor:"pointer",display:"inline-flex",alignItems:"center",justifyContent:"center",fontFamily:"serif"}}
       >?</button>
-      {show&&<div style={{position:"absolute",left:"50%",bottom:"calc(100% + 8px)",transform:"translateX(-50%)",background:C.bg4,border:`1px solid ${C.border}`,borderRadius:8,padding:"10px 12px",width:220,fontSize:15,color:C.greyL,lineHeight:1.6,zIndex:100,boxShadow:"0 4px 20px rgba(0,0,0,0.4)"}}>
+      {show&&<div style={{position:"absolute",left:"50%",bottom:"calc(100% + 8px)",transform:"translateX(-50%)",background:C.bg4,border:`1px solid ${C.border}`,borderRadius:8,padding:"10px 12px",width:220,fontSize:13,color:C.greyL,lineHeight:1.6,zIndex:100,boxShadow:"0 4px 20px rgba(0,0,0,0.4)"}}>
         {text}
         <div style={{position:"absolute",bottom:-5,left:"50%",width:8,height:8,background:C.bg4,border:`1px solid ${C.border}`,borderRight:"none",borderTop:"none",transform:"translateX(-50%) rotate(-45deg)"}}/>
       </div>}
@@ -344,8 +344,8 @@ const InfoTip: React.FC<{text:string}> = ({text}) => {
 const Toggle: React.FC<{checked:boolean;onChange:(v:boolean)=>void;label:string;sub?:string}> = ({checked,onChange,label,sub}) => (
   <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",background:C.bg3,border:`1px solid ${C.border}`,borderRadius:10,padding:"14px 16px"}}>
     <div>
-      <div style={{fontSize:17,fontWeight:600,color:C.white}}>{label}</div>
-      {sub&&<div style={{fontSize:15,color:C.grey,marginTop:2}}>{sub}</div>}
+      <div style={{fontSize:15,fontWeight:600,color:C.white}}>{label}</div>
+      {sub&&<div style={{fontSize:13,color:C.grey,marginTop:2}}>{sub}</div>}
     </div>
     <button onClick={()=>onChange(!checked)} style={{width:44,height:24,borderRadius:12,border:"none",background:checked?C.green:C.bg4,cursor:"pointer",position:"relative",transition:"background 0.2s",flexShrink:0,marginLeft:16}}>
       <div style={{position:"absolute",top:3,width:18,height:18,borderRadius:"50%",background:"#fff",transition:"left 0.2s",left:checked?23:3}}/>
@@ -366,14 +366,14 @@ function S0_Source({value,onChange}: {value:string;onChange:(v:string)=>void}) {
   ];
   return (
     <div>
-      <h2 style={{fontSize:22,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>What is your energy source?</h2>
-      <p style={{fontSize:17,color:C.grey,marginBottom:24}}>Select the primary renewable source powering your hydrogen plant.</p>
+      <h2 style={{fontSize:20,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>What is your energy source?</h2>
+      <p style={{fontSize:15,color:C.grey,marginBottom:24}}>Select the primary renewable source powering your hydrogen plant.</p>
       <div className="h2-grid-5" style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:10}}>
         {opts.map(o=>(
           <button key={o.id} onClick={()=>onChange(o.id)} style={{padding:"18px 8px",border:`1.5px solid ${value===o.id?C.green:C.border}`,borderRadius:12,background:value===o.id?C.greenGlow:C.bg3,cursor:"pointer",outline:"none",textAlign:"center",transition:"all 0.2s"}}>
-            <div style={{fontSize:26,marginBottom:6}}>{o.icon}</div>
-            <div style={{fontSize:16,fontWeight:700,color:value===o.id?C.green:C.white,fontFamily:"'Syne',sans-serif"}}>{o.label}</div>
-            <div style={{fontSize:14,color:C.grey,marginTop:2}}>{o.sub}</div>
+            <div style={{fontSize:24,marginBottom:6}}>{o.icon}</div>
+            <div style={{fontSize:14,fontWeight:700,color:value===o.id?C.green:C.white,fontFamily:"'Syne',sans-serif"}}>{o.label}</div>
+            <div style={{fontSize:12,color:C.grey,marginTop:2}}>{o.sub}</div>
           </button>
         ))}
       </div>
@@ -384,14 +384,14 @@ function S0_Source({value,onChange}: {value:string;onChange:(v:string)=>void}) {
 function S1_Location({data,onChange}: {data:any;onChange:(v:any)=>void}) {
   return (
     <div>
-      <h2 style={{fontSize:22,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Where is your site?</h2>
-      <p style={{fontSize:17,color:C.grey,marginBottom:22}}>We have built-in solar irradiance and wind speed data for every UK postcode area — no internet lookup needed.</p>
+      <h2 style={{fontSize:20,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Where is your site?</h2>
+      <p style={{fontSize:15,color:C.grey,marginBottom:22}}>We have built-in solar irradiance and wind speed data for every UK postcode area — no internet lookup needed.</p>
       <Field label="UK Postcode" req hint="e.g. LN1 1AA or DH1 3RG — we use the first 1–2 letters to look up your area data">
         <Inp value={data.postcode||""} onChange={v=>onChange({...data,postcode:v})} placeholder="e.g. LN1 1AA" type="text"/>
       </Field>
       <div style={{background:C.bg2,border:`1px solid ${C.border}`,borderRadius:10,padding:"14px 16px"}}>
-        <div style={{fontSize:15,fontWeight:700,color:C.greenD,marginBottom:8,fontFamily:"'IBM Plex Mono',monospace"}}>WHY POSTCODE MATTERS</div>
-        <div style={{fontSize:15,color:C.grey,lineHeight:1.9}}>
+        <div style={{fontSize:13,fontWeight:700,color:C.greenD,marginBottom:8,fontFamily:"'IBM Plex Mono',monospace"}}>WHY POSTCODE MATTERS</div>
+        <div style={{fontSize:13,color:C.grey,lineHeight:1.9}}>
           <div>• <b style={{color:C.greyL}}>Solar:</b> Cornwall gets ~40% more irradiance than Edinburgh</div>
           <div>• <b style={{color:C.greyL}}>Wind:</b> Shetland averages 9 m/s vs 3.5 m/s in London — a 20x energy difference</div>
           <div>• <b style={{color:C.greyL}}>Accuracy:</b> Postcode data is calibrated against 10-year PVGIS satellite averages</div>
@@ -405,7 +405,7 @@ function S2_Solar({data,onChange}: {data:any;onChange:(v:any)=>void}) {
   const kWp = ((Number(data.numPanels)||0)*(Number(data.panelWatt)||0)/1000).toFixed(2);
   return (
     <div>
-      <h2 style={{fontSize:22,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Solar Panel Configuration</h2>
+      <h2 style={{fontSize:20,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Solar Panel Configuration</h2>
       <Sec>PANEL SPECIFICATION</Sec>
       <G2>
         <Field label={<>Number of panels <InfoTip text="How many solar panels in total? Each panel is counted separately regardless of size."/></>} req>
@@ -415,7 +415,7 @@ function S2_Solar({data,onChange}: {data:any;onChange:(v:any)=>void}) {
           <Inp value={data.panelWatt||""} onChange={v=>onChange({...data,panelWatt:v})} placeholder="e.g. 400" unit="W"/>
         </Field>
       </G2>
-      {Number(kWp)>0&&<div style={{background:C.greenGlow,border:`1px solid rgba(0,229,160,0.2)`,borderRadius:8,padding:"10px 14px",marginBottom:16,fontSize:16,color:C.green,fontWeight:600}}>⚡ System total: {kWp} kWp</div>}
+      {Number(kWp)>0&&<div style={{background:C.greenGlow,border:`1px solid rgba(0,229,160,0.2)`,borderRadius:8,padding:"10px 14px",marginBottom:16,fontSize:14,color:C.green,fontWeight:600}}>⚡ System total: {kWp} kWp</div>}
       <Field label={<>Panel type <InfoTip text="Monocrystalline is most efficient (20–23%). Bifacial panels capture extra light from the ground below. Thin-film works better in cloudy UK conditions."/></>} hint={PANEL_META[data.panelType||"mono"]?.desc}>
         <Sel value={data.panelType||"mono"} onChange={v=>onChange({...data,panelType:v})}
           options={Object.entries(PANEL_META).map(([k,v])=>({value:k,label:v.label}))}/>
@@ -448,8 +448,8 @@ function S2_Solar({data,onChange}: {data:any;onChange:(v:any)=>void}) {
 function S3_Wind({data,onChange}: {data:any;onChange:(v:any)=>void}) {
   return (
     <div>
-      <h2 style={{fontSize:22,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Wind Turbine Configuration</h2>
-      <p style={{fontSize:17,color:C.grey,marginBottom:22}}>We use Weibull k=2 distribution integration across the full wind speed range — not just average speed — for accurate energy estimates.</p>
+      <h2 style={{fontSize:20,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Wind Turbine Configuration</h2>
+      <p style={{fontSize:15,color:C.grey,marginBottom:22}}>We use Weibull k=2 distribution integration across the full wind speed range — not just average speed — for accurate energy estimates.</p>
       <Sec>TURBINE SPECIFICATION</Sec>
       <G2>
         <Field label={<>Number of turbines <InfoTip text="How many turbines at your site? Wake loss modelling applies for 2 or more."/></>} req>
@@ -486,7 +486,7 @@ function S3_Wind({data,onChange}: {data:any;onChange:(v:any)=>void}) {
 function S4_HydroLab({sourceType,hydro,lab,onHydro,onLab}: any) {
   if (sourceType==="hydro") return (
     <div>
-      <h2 style={{fontSize:22,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Hydro Configuration</h2>
+      <h2 style={{fontSize:20,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Hydro Configuration</h2>
       <G2>
         <Field label={<>Installed capacity <InfoTip text="The rated electrical output of your hydro turbine in kilowatts."/></>} req>
           <Inp value={hydro.capacityKW||""} onChange={v=>onHydro({...hydro,capacityKW:v})} placeholder="e.g. 100" unit="kW"/>
@@ -499,7 +499,7 @@ function S4_HydroLab({sourceType,hydro,lab,onHydro,onLab}: any) {
   );
   return (
     <div>
-      <h2 style={{fontSize:22,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Lab / PSU Configuration</h2>
+      <h2 style={{fontSize:20,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Lab / PSU Configuration</h2>
       <G2>
         <Field label={<>PSU output <InfoTip text="The DC power output of your power supply unit, in kilowatts. For small benchtop tests this might be 0.01–1 kW."/></>} req>
           <Inp value={lab.powerKW||""} onChange={v=>onLab({...lab,powerKW:v})} placeholder="0.010" unit="kW"/>
@@ -517,15 +517,15 @@ function S5_Electrolyser({data,onChange,postcode,sourceType,solar,wind,hydro,lab
   const minLoad = (data.type||"alkaline") === "pem" ? 5 : 20;
   return (
     <div>
-      <h2 style={{fontSize:22,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Electrolyser Configuration</h2>
-      <p style={{fontSize:17,color:C.grey,marginBottom:22}}>We apply real published efficiency curves — not a flat number. Part-load behaviour and minimum load thresholds are fully modelled.</p>
+      <h2 style={{fontSize:20,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Electrolyser Configuration</h2>
+      <p style={{fontSize:15,color:C.grey,marginBottom:22}}>We apply real published efficiency curves — not a flat number. Part-load behaviour and minimum load thresholds are fully modelled.</p>
       <Sec>TYPE & RATING</Sec>
       <Field label={<>Electrolyser type <InfoTip text="Alkaline is Fluxero's standard — proven, lower cost, best for stable energy sources. PEM costs more but handles variable wind better as it can operate from just 5% load."/></>} hint={(data.type||"alkaline")==="pem"?"PEM: operates from 5% load, better for variable wind, £1,200/kW":"Alkaline: minimum 20% load, best for stable solar/hydro, £700/kW"}>
         <Sel value={data.type||"alkaline"} onChange={v=>onChange({...data,type:v})}
           options={[{value:"alkaline",label:"Alkaline (AEL) — Fluxero standard · £700/kW · min load 20%"},{value:"pem",label:"PEM — faster response · £1,200/kW · min load 5%"}]}/>
       </Field>
       {suggestedKW&&(
-        <div style={{background:C.greenGlow,border:`1px solid rgba(0,229,160,0.2)`,borderRadius:8,padding:"10px 14px",marginBottom:12,fontSize:16,color:C.green,fontWeight:600,cursor:"pointer"}} onClick={()=>onChange({...data,ratedKW:suggestedKW.toFixed(0)})}>
+        <div style={{background:C.greenGlow,border:`1px solid rgba(0,229,160,0.2)`,borderRadius:8,padding:"10px 14px",marginBottom:12,fontSize:14,color:C.green,fontWeight:600,cursor:"pointer"}} onClick={()=>onChange({...data,ratedKW:suggestedKW.toFixed(0)})}>
           💡 Suggested size for your energy input: <b>{suggestedKW.toFixed(0)} kW</b> — click to use
         </div>
       )}
@@ -534,8 +534,8 @@ function S5_Electrolyser({data,onChange,postcode,sourceType,solar,wind,hydro,lab
       </Field>
       {(data.type||"alkaline")==="alkaline"&&(
         <div style={{background:"rgba(255,184,0,0.07)",border:`1px solid rgba(255,184,0,0.2)`,borderRadius:10,padding:"12px 16px",marginBottom:16}}>
-          <div style={{fontSize:15,fontWeight:700,color:C.amber,marginBottom:6}}>⚠ Alkaline minimum load: 20%</div>
-          <div style={{fontSize:15,color:C.grey,lineHeight:1.7}}>
+          <div style={{fontSize:13,fontWeight:700,color:C.amber,marginBottom:6}}>⚠ Alkaline minimum load: 20%</div>
+          <div style={{fontSize:13,color:C.grey,lineHeight:1.7}}>
             Power below {data.ratedKW?(Number(data.ratedKW)*0.2).toFixed(0):"—"} kW causes shutdown — no H₂ produced.
             For highly variable wind, consider PEM.
           </div>
@@ -562,13 +562,13 @@ function S6_Revenue({data,onChange}: {data:any;onChange:(v:any)=>void}) {
   ];
   return (
     <div>
-      <h2 style={{fontSize:22,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Revenue Model</h2>
-      <p style={{fontSize:17,color:C.grey,marginBottom:20}}>How will the hydrogen be priced? This determines the revenue and payback calculation.</p>
+      <h2 style={{fontSize:20,fontWeight:800,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Revenue Model</h2>
+      <p style={{fontSize:15,color:C.grey,marginBottom:20}}>How will the hydrogen be priced? This determines the revenue and payback calculation.</p>
       <div className="h2-grid-3" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:10,marginBottom:20}}>
         {modes.map(m=>(
           <button key={m.id} onClick={()=>onChange({...data,mode:m.id})} style={{padding:"14px 10px",border:`1.5px solid ${data.mode===m.id?C.green:C.border}`,borderRadius:10,background:data.mode===m.id?C.greenGlow:C.bg3,cursor:"pointer",outline:"none",textAlign:"center",transition:"all 0.2s"}}>
-            <div style={{fontSize:16,fontWeight:700,color:data.mode===m.id?C.green:C.white,marginBottom:4,fontFamily:"'Syne',sans-serif"}}>{m.label}</div>
-            <div style={{fontSize:14,color:C.grey}}>{m.sub}</div>
+            <div style={{fontSize:14,fontWeight:700,color:data.mode===m.id?C.green:C.white,marginBottom:4,fontFamily:"'Syne',sans-serif"}}>{m.label}</div>
+            <div style={{fontSize:12,color:C.grey}}>{m.sub}</div>
           </button>
         ))}
       </div>
@@ -608,8 +608,8 @@ const ChartTip: React.FC<any> = ({active,payload,label}) => {
   if (!active||!payload?.length) return null;
   return (
     <div style={{background:C.bg4,border:`1px solid ${C.border}`,borderRadius:8,padding:"10px 14px"}}>
-      <div style={{fontSize:15,fontWeight:700,color:C.white,marginBottom:4}}>{label}</div>
-      {payload.map((p: any)=><div key={p.name} style={{fontSize:15,color:C.green}}>{p.name}: {fmtH2(p.value)}</div>)}
+      <div style={{fontSize:13,fontWeight:700,color:C.white,marginBottom:4}}>{label}</div>
+      {payload.map((p: any)=><div key={p.name} style={{fontSize:13,color:C.green}}>{p.name}: {fmtH2(p.value)}</div>)}
     </div>
   );
 };
@@ -634,8 +634,8 @@ function ResultsScreen({results,inputs,onBack}: any) {
       {/* Sidebar */}
       <div className="h2-calc-sidebar" style={{width:240,background:C.bg1,borderRight:`1px solid ${C.border}`,padding:"24px 20px",display:"flex",flexDirection:"column",flexShrink:0,overflowY:"auto"}}>
         <img src="./logo.png" alt="Fluxero" style={{height:24,objectFit:"contain",marginBottom:24,opacity:0.9}} onError={(e)=>{(e.target as HTMLImageElement).style.display="none";}} />
-        <div style={{fontSize:20,fontWeight:800,color:C.white,marginBottom:4,fontFamily:"'Syne',sans-serif"}}>Results</div>
-        <div style={{fontSize:15,color:C.grey,marginBottom:16}}>📍 {results.locationLabel}</div>
+        <div style={{fontSize:18,fontWeight:800,color:C.white,marginBottom:4,fontFamily:"'Syne',sans-serif"}}>Results</div>
+        <div style={{fontSize:13,color:C.grey,marginBottom:16}}>📍 {results.locationLabel}</div>
         {[
           {label:"AVG POWER IN",val:`${results.avgPower.toFixed(1)} kW`},
           {label:"ELECTROLYSER",val:`${results.electKW.toFixed(0)} kW ${results.electKWauto?"(auto)":""}`,accent:results.electKWauto?C.amber:undefined},
@@ -643,32 +643,32 @@ function ResultsScreen({results,inputs,onBack}: any) {
           {label:"EST. CAPEX",val:fmtM(results.capex)},
         ].map(d=>(
           <div key={d.label} style={{marginBottom:14}}>
-            <div style={{fontSize:11,fontWeight:700,letterSpacing:"1.5px",color:C.greenD,marginBottom:3,fontFamily:"'IBM Plex Mono',monospace"}}>{d.label}</div>
-            <div style={{fontSize:17,fontWeight:700,color:d.accent||C.white,fontFamily:"'IBM Plex Mono',monospace"}}>{d.val}</div>
+            <div style={{fontSize:10,fontWeight:700,letterSpacing:"1.5px",color:C.greenD,marginBottom:3,fontFamily:"'IBM Plex Mono',monospace"}}>{d.label}</div>
+            <div style={{fontSize:15,fontWeight:700,color:d.accent||C.white,fontFamily:"'IBM Plex Mono',monospace"}}>{d.val}</div>
           </div>
         ))}
         {(results.windCF!==null||results.solarYield!==null)&&(
           <div style={{background:C.bg2,border:`1px solid ${C.border}`,borderRadius:10,padding:"12px 14px",marginBottom:14}}>
-            <div style={{fontSize:11,fontWeight:700,color:C.greenD,letterSpacing:"1px",marginBottom:8,fontFamily:"'IBM Plex Mono',monospace"}}>RESOURCE QUALITY</div>
-            {results.windCF!==null&&<div style={{fontSize:15,color:C.grey,marginBottom:4}}>Wind CF: <b style={{color:C.white}}>{(results.windCF*100).toFixed(1)}%</b></div>}
-            {results.solarYield!==null&&<div style={{fontSize:15,color:C.grey}}>Solar yield: <b style={{color:C.white}}>{results.solarYield.toFixed(0)} kWh/kWp/yr</b></div>}
+            <div style={{fontSize:10,fontWeight:700,color:C.greenD,letterSpacing:"1px",marginBottom:8,fontFamily:"'IBM Plex Mono',monospace"}}>RESOURCE QUALITY</div>
+            {results.windCF!==null&&<div style={{fontSize:13,color:C.grey,marginBottom:4}}>Wind CF: <b style={{color:C.white}}>{(results.windCF*100).toFixed(1)}%</b></div>}
+            {results.solarYield!==null&&<div style={{fontSize:13,color:C.grey}}>Solar yield: <b style={{color:C.white}}>{results.solarYield.toFixed(0)} kWh/kWp/yr</b></div>}
           </div>
         )}
         <div style={{flex:1}}/>
-        <button onClick={onBack} style={{width:"100%",padding:"10px",background:C.bg3,border:`1px solid ${C.border}`,borderRadius:8,color:C.greyL,fontSize:16,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>← Adjust inputs</button>
+        <button onClick={onBack} style={{width:"100%",padding:"10px",background:C.bg3,border:`1px solid ${C.border}`,borderRadius:8,color:C.greyL,fontSize:14,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>← Adjust inputs</button>
       </div>
 
       {/* Main */}
       <div className="h2-calc-main" style={{flex:1,overflowY:"auto",padding:"28px 32px",minWidth:0}}>
-        <div style={{fontSize:20,fontWeight:800,color:C.white,marginBottom:4,fontFamily:"'Syne',sans-serif"}}>
+        <div style={{fontSize:18,fontWeight:800,color:C.white,marginBottom:4,fontFamily:"'Syne',sans-serif"}}>
           {fmtH2(results.annualH2Kg)} of green hydrogen per year
         </div>
-        <div style={{fontSize:16,color:C.grey,marginBottom:16}}>{inputs.sourceType} · {results.locationLabel}</div>
+        <div style={{fontSize:14,color:C.grey,marginBottom:16}}>{inputs.sourceType} · {results.locationLabel}</div>
 
         {results.warnings.map((w: any,i: number)=>(
           <div key={i} style={{padding:"12px 16px",background:"rgba(255,184,0,0.07)",border:`1px solid rgba(255,184,0,0.2)`,borderRadius:10,marginBottom:12,display:"flex",gap:10}}>
-            <span style={{fontSize:18,flexShrink:0}}>⚠</span>
-            <div style={{fontSize:15,color:C.grey,lineHeight:1.6}}>{w.msg}</div>
+            <span style={{fontSize:16,flexShrink:0}}>⚠</span>
+            <div style={{fontSize:13,color:C.grey,lineHeight:1.6}}>{w.msg}</div>
           </div>
         ))}
 
@@ -680,15 +680,15 @@ function ResultsScreen({results,inputs,onBack}: any) {
             {lbl:"PAYBACK",val:results.payback?(results.payback<1?`${(results.payback*12).toFixed(0)}mo`:`${results.payback.toFixed(1)}yr`):"—",ac:C.amber},
           ].map(c=>(
             <div key={c.lbl} style={{background:C.bg3,border:`1px solid ${C.border}`,borderRadius:12,padding:"16px 14px"}}>
-              <div style={{fontSize:11,fontWeight:700,letterSpacing:"1.5px",color:C.grey,marginBottom:8,fontFamily:"'IBM Plex Mono',monospace"}}>{c.lbl}</div>
-              <div style={{fontSize:24,fontWeight:800,color:c.ac,fontFamily:"'IBM Plex Mono',monospace",lineHeight:1}}>{c.val}</div>
+              <div style={{fontSize:10,fontWeight:700,letterSpacing:"1.5px",color:C.grey,marginBottom:8,fontFamily:"'IBM Plex Mono',monospace"}}>{c.lbl}</div>
+              <div style={{fontSize:22,fontWeight:800,color:c.ac,fontFamily:"'IBM Plex Mono',monospace",lineHeight:1}}>{c.val}</div>
             </div>
           ))}
         </div>
 
         <div style={{display:"flex",gap:8,marginBottom:8}}>
           {[{id:"h2",lbl:"H₂ Output (kg)"},{id:"kwh",lbl:"Energy Input (MWh)"}].map(t=>(
-            <button key={t.id} onClick={()=>setTab(t.id)} style={{padding:"6px 14px",border:`1px solid ${tab===t.id?C.green:C.border}`,borderRadius:6,background:tab===t.id?C.greenGlow:C.bg3,cursor:"pointer",color:tab===t.id?C.green:C.grey,fontSize:15,fontWeight:600,outline:"none"}}>
+            <button key={t.id} onClick={()=>setTab(t.id)} style={{padding:"6px 14px",border:`1px solid ${tab===t.id?C.green:C.border}`,borderRadius:6,background:tab===t.id?C.greenGlow:C.bg3,cursor:"pointer",color:tab===t.id?C.green:C.grey,fontSize:13,fontWeight:600,outline:"none"}}>
               {t.lbl}
             </button>
           ))}
@@ -697,8 +697,8 @@ function ResultsScreen({results,inputs,onBack}: any) {
           <ResponsiveContainer width="100%" height={160}>
             <BarChart data={chartData} margin={{top:4,right:4,bottom:0,left:-16}}>
               <CartesianGrid strokeDasharray="3 3" stroke={C.border} vertical={false}/>
-              <XAxis dataKey="month" tick={{fill:C.grey,fontSize:14}} axisLine={false} tickLine={false}/>
-              <YAxis tick={{fill:C.grey,fontSize:14}} axisLine={false} tickLine={false}/>
+              <XAxis dataKey="month" tick={{fill:C.grey,fontSize:12}} axisLine={false} tickLine={false}/>
+              <YAxis tick={{fill:C.grey,fontSize:12}} axisLine={false} tickLine={false}/>
               <Tooltip content={<ChartTip/>}/>
               <Bar dataKey={tab==="h2"?"H2":"MWh"} name={tab==="h2"?"H₂ (kg)":"Energy (MWh)"}
                 fill={C.green} radius={[3,3,0,0]} maxBarSize={28} fillOpacity={0.85}/>
@@ -718,8 +718,8 @@ function ResultsScreen({results,inputs,onBack}: any) {
             ["CO₂ avoided",`${results.co2Saved.toFixed(1)} t/yr vs grey H₂`],
           ].map(([k,v])=>(
             <div key={k} style={{display:"flex",justifyContent:"space-between",padding:"9px 0",borderBottom:`1px solid ${C.border}`}}>
-              <span style={{fontSize:16,color:C.grey}}>{k}</span>
-              <span style={{fontSize:16,fontWeight:600,color:C.white,fontFamily:"'IBM Plex Mono',monospace"}}>{v}</span>
+              <span style={{fontSize:14,color:C.grey}}>{k}</span>
+              <span style={{fontSize:14,fontWeight:600,color:C.white,fontFamily:"'IBM Plex Mono',monospace"}}>{v}</span>
             </div>
           ))}
         </div>
@@ -728,30 +728,30 @@ function ResultsScreen({results,inputs,onBack}: any) {
           <div style={{background:`linear-gradient(135deg,${C.bg3},rgba(0,229,160,0.04))`,border:`1px solid rgba(0,229,160,0.15)`,borderRadius:12,padding:"18px 20px",marginBottom:14}}>
             <Sec>AI SITE ANALYSIS</Sec>
             {results.aiInsights.farmerSummary&&(
-              <div style={{fontSize:16,color:C.greyL,lineHeight:1.8,marginBottom:14,padding:"12px 14px",background:C.bg2,borderRadius:8,fontStyle:"italic"}}>
+              <div style={{fontSize:14,color:C.greyL,lineHeight:1.8,marginBottom:14,padding:"12px 14px",background:C.bg2,borderRadius:8,fontStyle:"italic"}}>
                 "{results.aiInsights.farmerSummary}"
               </div>
             )}
             {results.aiInsights.insights?.map((ins: string,i: number)=>(
               <div key={i} style={{display:"flex",gap:8,marginBottom:8}}>
                 <span style={{color:C.green,flexShrink:0}}>→</span>
-                <span style={{fontSize:15,color:C.greyL,lineHeight:1.6}}>{ins}</span>
+                <span style={{fontSize:13,color:C.greyL,lineHeight:1.6}}>{ins}</span>
               </div>
             ))}
             {results.aiInsights.recommendation&&(
               <div style={{marginTop:8,padding:"10px 12px",background:C.greenGlow,border:`1px solid rgba(0,229,160,0.15)`,borderRadius:8}}>
-                <span style={{fontSize:15,fontWeight:700,color:C.green}}>✓ Recommendation: </span>
-                <span style={{fontSize:15,color:C.grey}}>{results.aiInsights.recommendation}</span>
+                <span style={{fontSize:13,fontWeight:700,color:C.green}}>✓ Recommendation: </span>
+                <span style={{fontSize:13,color:C.grey}}>{results.aiInsights.recommendation}</span>
               </div>
             )}
           </div>
         )}
 
         <div style={{padding:"16px 20px",background:"rgba(0,229,160,0.04)",border:`1px solid rgba(0,229,160,0.14)`,borderRadius:12}}>
-          <div style={{fontSize:16,fontWeight:700,color:C.green,marginBottom:4}}>🗺 Export to Fluxero Site Planner</div>
-          <div style={{fontSize:15,color:C.grey,lineHeight:1.7,marginBottom:12}}>Copy this config JSON to the Unity site planner to visualise your installation on a 3D map.</div>
+          <div style={{fontSize:14,fontWeight:700,color:C.green,marginBottom:4}}>🗺 Export to Fluxero Site Planner</div>
+          <div style={{fontSize:13,color:C.grey,lineHeight:1.7,marginBottom:12}}>Copy this config JSON to the Unity site planner to visualise your installation on a 3D map.</div>
           <button onClick={()=>{navigator.clipboard.writeText(JSON.stringify(unityConfig,null,2));setCopied(true);setTimeout(()=>setCopied(false),2500);}}
-            style={{padding:"9px 18px",background:copied?C.greenD:C.green,border:"none",borderRadius:8,color:C.bg0,fontSize:16,fontWeight:700,cursor:"pointer",transition:"background 0.2s",fontFamily:"inherit"}}>
+            style={{padding:"9px 18px",background:copied?C.greenD:C.green,border:"none",borderRadius:8,color:C.bg0,fontSize:14,fontWeight:700,cursor:"pointer",transition:"background 0.2s",fontFamily:"inherit"}}>
             {copied?"✓ Copied!":"Copy site config →"}
           </button>
         </div>
@@ -767,12 +767,12 @@ function Loading({pct,msg}: {pct:number;msg:string}) {
   return (
     <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",height:"100%",background:C.bg0,padding:40}}>
       <img src="./logo.png" alt="Fluxero" style={{height:22,objectFit:"contain",marginBottom:32,opacity:0.9}} onError={(e)=>{(e.target as HTMLImageElement).style.display="none";}} />
-      <div style={{fontSize:20,fontWeight:700,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Computing your site...</div>
-      <div style={{fontSize:16,color:C.grey,marginBottom:24,textAlign:"center",minHeight:20}}>{msg}</div>
+      <div style={{fontSize:18,fontWeight:700,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Computing your site...</div>
+      <div style={{fontSize:14,color:C.grey,marginBottom:24,textAlign:"center",minHeight:20}}>{msg}</div>
       <div style={{width:280,height:4,background:C.bg3,borderRadius:2,overflow:"hidden"}}>
         <div style={{height:"100%",width:`${pct}%`,background:C.green,borderRadius:2,transition:"width 0.4s ease"}}/>
       </div>
-      <div style={{fontSize:15,color:C.grey,marginTop:8,fontFamily:"'IBM Plex Mono',monospace"}}>{pct}%</div>
+      <div style={{fontSize:13,color:C.grey,marginTop:8,fontFamily:"'IBM Plex Mono',monospace"}}>{pct}%</div>
     </div>
   );
 }
@@ -785,10 +785,10 @@ function StepBar({steps,cur}: {steps:string[];cur:number}) {
           <div style={{display:"flex",alignItems:"center",gap:8}}>
             <div style={{width:24,height:24,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,transition:"all 0.2s",
               background:i<cur?C.green:i===cur?C.bg4:C.bg3,border:`1.5px solid ${i<=cur?C.green:C.border}`,
-              fontSize:14,fontWeight:700,color:i<cur?C.bg0:i===cur?C.green:C.grey,fontFamily:"'IBM Plex Mono',monospace"}}>
+              fontSize:12,fontWeight:700,color:i<cur?C.bg0:i===cur?C.green:C.grey,fontFamily:"'IBM Plex Mono',monospace"}}>
               {i<cur?"✓":i+1}
             </div>
-            {i===cur&&<span style={{fontSize:15,color:C.white,fontWeight:600,fontFamily:"'Syne',sans-serif"}}>{s}</span>}
+            {i===cur&&<span style={{fontSize:13,color:C.white,fontWeight:600,fontFamily:"'Syne',sans-serif"}}>{s}</span>}
           </div>
           {i<steps.length-1&&<div style={{width:16,height:1,background:C.border,margin:"0 6px",flexShrink:0}}/>}
         </div>
@@ -877,17 +877,17 @@ export const H2Calculator: React.FC = () => {
       {/* Sidebar */}
       <div className="h2-calc-sidebar" style={{width:220,background:C.bg1,borderRight:`1px solid ${C.border}`,padding:"28px 20px",display:"flex",flexDirection:"column",position:"sticky",top:0,height:"100%",flexShrink:0}}>
         <img src="./logo.png" alt="Fluxero" style={{height:20,objectFit:"contain",marginBottom:4,opacity:0.9}} onError={(e)=>{(e.target as HTMLImageElement).style.display="none";}} />
-        <div style={{fontSize:11,color:C.grey,marginBottom:28,fontFamily:"'IBM Plex Mono',monospace"}}>H₂ DESIGN ENGINE</div>
-        <div style={{fontSize:17,fontWeight:700,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Site Calculator</div>
-        <div style={{fontSize:15,color:C.grey,lineHeight:1.8,marginBottom:24}}>Postcode-specific UK data. Real physics. No internet required.</div>
+        <div style={{fontSize:10,color:C.grey,marginBottom:28,fontFamily:"'IBM Plex Mono',monospace"}}>H₂ DESIGN ENGINE</div>
+        <div style={{fontSize:15,fontWeight:700,color:C.white,marginBottom:6,fontFamily:"'Syne',sans-serif"}}>Site Calculator</div>
+        <div style={{fontSize:13,color:C.grey,lineHeight:1.8,marginBottom:24}}>Postcode-specific UK data. Real physics. No internet required.</div>
         {["Every UK postcode area","NOABL wind speeds","Weibull k=2 wind model","IEC 61400 power curves","Alkaline/PEM efficiency curves","Auto electrolyser sizing","Oversizing warnings","AI site analysis"].map(f=>(
           <div key={f} style={{display:"flex",gap:8,alignItems:"flex-start",marginBottom:6}}>
             <div style={{width:4,height:4,borderRadius:"50%",background:C.green,marginTop:5,flexShrink:0}}/>
-            <span style={{fontSize:14,color:C.greyL,lineHeight:1.4}}>{f}</span>
+            <span style={{fontSize:12,color:C.greyL,lineHeight:1.4}}>{f}</span>
           </div>
         ))}
         <div style={{flex:1}}/>
-        <div style={{fontSize:11,color:C.grey,marginBottom:4,fontFamily:"'IBM Plex Mono',monospace"}}>Step {step+1} of {content.length}</div>
+        <div style={{fontSize:10,color:C.grey,marginBottom:4,fontFamily:"'IBM Plex Mono',monospace"}}>Step {step+1} of {content.length}</div>
         <div style={{height:3,background:C.bg3,borderRadius:2}}>
           <div style={{height:"100%",borderRadius:2,background:C.green,width:`${((step+1)/content.length)*100}%`,transition:"width 0.3s"}}/>
         </div>
@@ -898,15 +898,15 @@ export const H2Calculator: React.FC = () => {
         <StepBar steps={steps} cur={step}/>
         <div style={{minHeight:360}}>{content[step]}</div>
         {Object.keys(errors).length>0&&(
-          <div style={{background:"rgba(255,64,80,0.08)",border:`1px solid rgba(255,64,80,0.2)`,borderRadius:8,padding:"10px 14px",marginTop:16,fontSize:16,color:C.red}}>
+          <div style={{background:"rgba(255,64,80,0.08)",border:`1px solid rgba(255,64,80,0.2)`,borderRadius:8,padding:"10px 14px",marginTop:16,fontSize:14,color:C.red}}>
             {Object.values(errors).join(" · ")}
           </div>
         )}
         <div style={{display:"flex",justifyContent:"space-between",marginTop:24,paddingTop:18,borderTop:`1px solid ${C.border}`}}>
-          <button onClick={()=>step>0&&setStep(s=>s-1)} style={{padding:"11px 22px",background:step===0?"transparent":C.bg3,border:`1px solid ${step===0?"transparent":C.border}`,borderRadius:8,color:step===0?"transparent":C.greyL,fontSize:17,fontWeight:600,cursor:step===0?"default":"pointer",fontFamily:"inherit"}}>
+          <button onClick={()=>step>0&&setStep(s=>s-1)} style={{padding:"11px 22px",background:step===0?"transparent":C.bg3,border:`1px solid ${step===0?"transparent":C.border}`,borderRadius:8,color:step===0?"transparent":C.greyL,fontSize:15,fontWeight:600,cursor:step===0?"default":"pointer",fontFamily:"inherit"}}>
             ← Back
           </button>
-          <button onClick={()=>{if(!validate())return;isLast?doCalc():setStep(s=>s+1);}} style={{padding:"11px 28px",background:isLast?C.green:C.bg4,border:`1.5px solid ${isLast?C.green:C.border}`,borderRadius:8,color:isLast?C.bg0:C.white,fontSize:17,fontWeight:700,cursor:"pointer",fontFamily:"inherit",boxShadow:isLast?`0 0 20px rgba(0,229,160,0.25)`:"none"}}>
+          <button onClick={()=>{if(!validate())return;isLast?doCalc():setStep(s=>s+1);}} style={{padding:"11px 28px",background:isLast?C.green:C.bg4,border:`1.5px solid ${isLast?C.green:C.border}`,borderRadius:8,color:isLast?C.bg0:C.white,fontSize:15,fontWeight:700,cursor:"pointer",fontFamily:"inherit",boxShadow:isLast?`0 0 20px rgba(0,229,160,0.25)`:"none"}}>
             {isLast?"Calculate →":"Continue →"}
           </button>
         </div>

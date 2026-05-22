@@ -63,7 +63,7 @@ export const Splash: React.FC<{ onDone: () => void }> = ({ onDone }) => {
         initial={{ opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.5 }}
-        className="relative z-10 font-mono uppercase tracking-[0.38em] text-[13px] mb-5"
+        className="relative z-10 font-mono uppercase tracking-[0.38em] text-[11px] mb-5"
         style={{ color: 'rgba(96,165,250,0.5)' }}
       >
         {phase === 'done' ? 'Systems Ready' : 'Initializing'}
@@ -113,7 +113,7 @@ export const Splash: React.FC<{ onDone: () => void }> = ({ onDone }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.4 }}
         transition={{ delay: 0.6 }}
-        className="relative z-10 font-mono text-[13px] mt-4 tabular-nums"
+        className="relative z-10 font-mono text-[11px] mt-4 tabular-nums"
         style={{ color: '#00D68F', letterSpacing: '0.12em' }}
       >
         {pct}%

@@ -410,7 +410,7 @@ export default function SolutionPage() {
 
   const thStyle: React.CSSProperties = {
     fontFamily: MONO,
-    fontSize: 15,
+    fontSize: 13,
     letterSpacing: '0.08em',
     color: MUTED,
     padding: '14px 20px',
@@ -422,7 +422,7 @@ export default function SolutionPage() {
 
   const tdBase: React.CSSProperties = {
     fontFamily: SANS,
-    fontSize: 18,
+    fontSize: 16,
     padding: '14px 20px',
     borderBottom: '1px solid rgba(255,255,255,0.04)',
     verticalAlign: 'top',
@@ -452,7 +452,7 @@ export default function SolutionPage() {
             {/* Mono tag */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
               <div style={{ width: 28, height: 1, background: G }} />
-              <span style={{ fontFamily: MONO, fontSize: 15, letterSpacing: '0.25em', textTransform: 'uppercase', color: G }}>
+              <span style={{ fontFamily: MONO, fontSize: 13, letterSpacing: '0.25em', textTransform: 'uppercase', color: G }}>
                 Our Solution
               </span>
             </div>
@@ -480,7 +480,7 @@ export default function SolutionPage() {
             {/* Sub */}
             <p style={{
               fontFamily: SANS,
-              fontSize: 'clamp(20px, 1.6vw, 21px)',
+              fontSize: 'clamp(18px, 1.6vw, 19px)',
               fontWeight: 300,
               color: MUTED,
               maxWidth: 520,
@@ -511,7 +511,7 @@ export default function SolutionPage() {
             >
               <div style={{
                 fontFamily: SERIF,
-                fontSize: 'clamp(30px, 3vw, 42px)',
+                fontSize: 'clamp(28px, 3vw, 42px)',
                 color: c.color,
                 lineHeight: 1,
                 marginBottom: 6,
@@ -520,7 +520,7 @@ export default function SolutionPage() {
               </div>
               <div style={{
                 fontFamily: MONO,
-                fontSize: 14,
+                fontSize: 12,
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
                 color: MUTED,
@@ -528,7 +528,7 @@ export default function SolutionPage() {
               }}>
                 {c.label}
               </div>
-              <p style={{ fontFamily: SANS, fontSize: 18, color: MUTED, lineHeight: 1.65, fontWeight: 300 }}>
+              <p style={{ fontFamily: SANS, fontSize: 16, color: MUTED, lineHeight: 1.65, fontWeight: 300 }}>
                 {c.desc}
               </p>
             </motion.div>
@@ -542,14 +542,14 @@ export default function SolutionPage() {
           <motion.div {...fade} style={{ marginBottom: 48 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 20 }}>
               <div style={{ width: 28, height: 1, background: G }} />
-              <span style={{ fontFamily: MONO, fontSize: 15, letterSpacing: '0.25em', textTransform: 'uppercase', color: G }}>
+              <span style={{ fontFamily: MONO, fontSize: 13, letterSpacing: '0.25em', textTransform: 'uppercase', color: G }}>
                 How it works
               </span>
             </div>
-            <h2 style={{ fontFamily: SERIF, fontSize: 'clamp(30px, 4vw, 52px)', color: CREAM, lineHeight: 1.1, marginBottom: 12 }}>
+            <h2 style={{ fontFamily: SERIF, fontSize: 'clamp(28px, 4vw, 52px)', color: CREAM, lineHeight: 1.1, marginBottom: 12 }}>
               From wasted electrons<br />to sellable hydrogen.
             </h2>
-            <p style={{ fontFamily: SANS, fontSize: 19, color: MUTED, fontWeight: 300, maxWidth: 500, lineHeight: 1.7 }}>
+            <p style={{ fontFamily: SANS, fontSize: 17, color: MUTED, fontWeight: 300, maxWidth: 500, lineHeight: 1.7 }}>
               Four stages. One containerised unit. No grid connection required at any point.
             </p>
           </motion.div>
@@ -590,13 +590,13 @@ export default function SolutionPage() {
                   paddingTop: 16,
                 }}
               >
-                <div style={{ fontFamily: MONO, fontSize: 14, color: s.color, letterSpacing: '0.2em', marginBottom: 8 }}>
+                <div style={{ fontFamily: MONO, fontSize: 12, color: s.color, letterSpacing: '0.2em', marginBottom: 8 }}>
                   STAGE {s.id}
                 </div>
-                <div style={{ fontFamily: SANS, fontSize: 18, color: CREAM, fontWeight: 600, marginBottom: 8 }}>
+                <div style={{ fontFamily: SANS, fontSize: 16, color: CREAM, fontWeight: 600, marginBottom: 8 }}>
                   {s.label}
                 </div>
-                <p style={{ fontFamily: SANS, fontSize: 17, color: MUTED, lineHeight: 1.65, fontWeight: 300 }}>
+                <p style={{ fontFamily: SANS, fontSize: 15, color: MUTED, lineHeight: 1.65, fontWeight: 300 }}>
                   {s.desc}
                 </p>
               </motion.div>
@@ -609,10 +609,10 @@ export default function SolutionPage() {
       <div data-section style={{ background: ALT, padding: '3rem 2rem' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <motion.div {...fade} style={{ marginBottom: 44 }}>
-            <h2 style={{ fontFamily: SERIF, fontSize: 'clamp(30px, 4vw, 52px)', color: CREAM, lineHeight: 1.1 }}>
+            <h2 style={{ fontFamily: SERIF, fontSize: 'clamp(28px, 4vw, 52px)', color: CREAM, lineHeight: 1.1 }}>
               Built for the chaos<br />of curtailment.
             </h2>
-            <p style={{ fontFamily: SANS, fontSize: 19, color: MUTED, fontWeight: 300, maxWidth: 480, marginTop: 14, lineHeight: 1.7 }}>
+            <p style={{ fontFamily: SANS, fontSize: 17, color: MUTED, fontWeight: 300, maxWidth: 480, marginTop: 14, lineHeight: 1.7 }}>
               Conventional electrolysers demand steady, grid-quality power. SMHPs are designed from the ground up for variable input.
             </p>
           </motion.div>
@@ -633,10 +633,10 @@ export default function SolutionPage() {
                   padding: '28px 28px 28px 24px',
                 }}
               >
-                <h3 style={{ fontFamily: SERIF, fontSize: 22, color: CREAM, marginBottom: 10 }}>
+                <h3 style={{ fontFamily: SERIF, fontSize: 20, color: CREAM, marginBottom: 10 }}>
                   {p.title}
                 </h3>
-                <p style={{ fontFamily: SANS, fontSize: 18, color: MUTED, lineHeight: 1.7, fontWeight: 300 }}>
+                <p style={{ fontFamily: SANS, fontSize: 16, color: MUTED, lineHeight: 1.7, fontWeight: 300 }}>
                   {p.desc}
                 </p>
               </motion.div>
@@ -651,11 +651,11 @@ export default function SolutionPage() {
           <motion.div {...fade} style={{ marginBottom: 44 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 20 }}>
               <div style={{ width: 28, height: 1, background: G }} />
-              <span style={{ fontFamily: MONO, fontSize: 15, letterSpacing: '0.25em', textTransform: 'uppercase', color: G }}>
+              <span style={{ fontFamily: MONO, fontSize: 13, letterSpacing: '0.25em', textTransform: 'uppercase', color: G }}>
                 Technology
               </span>
             </div>
-            <h2 style={{ fontFamily: SERIF, fontSize: 'clamp(30px, 4vw, 52px)', color: CREAM, lineHeight: 1.1 }}>
+            <h2 style={{ fontFamily: SERIF, fontSize: 'clamp(28px, 4vw, 52px)', color: CREAM, lineHeight: 1.1 }}>
               The design engine<br />behind every plant.
             </h2>
           </motion.div>
@@ -675,14 +675,14 @@ export default function SolutionPage() {
                   padding: '36px 32px',
                 }}
               >
-                <div style={{ fontFamily: MONO, fontSize: 14, color: STEEL, marginBottom: 18, letterSpacing: '0.18em' }}>
+                <div style={{ fontFamily: MONO, fontSize: 12, color: STEEL, marginBottom: 18, letterSpacing: '0.18em' }}>
                   {f.num}
                 </div>
                 <div style={{ width: 28, height: 2, background: f.color, borderRadius: 2, marginBottom: 20 }} />
-                <h4 style={{ fontFamily: SERIF, fontSize: 23, color: CREAM, marginBottom: 12, lineHeight: 1.2 }}>
+                <h4 style={{ fontFamily: SERIF, fontSize: 21, color: CREAM, marginBottom: 12, lineHeight: 1.2 }}>
                   {f.title}
                 </h4>
-                <p style={{ fontFamily: SANS, fontSize: 18, color: MUTED, lineHeight: 1.7, fontWeight: 300 }}>
+                <p style={{ fontFamily: SANS, fontSize: 16, color: MUTED, lineHeight: 1.7, fontWeight: 300 }}>
                   {f.body}
                 </p>
               </motion.div>
@@ -695,7 +695,7 @@ export default function SolutionPage() {
       <div data-section style={{ background: ALT, padding: '3rem 2rem' }}>
         <div ref={tableRef} style={{ maxWidth: 1100, margin: '0 auto' }}>
           <motion.div {...fade} style={{ marginBottom: 40 }}>
-            <h2 style={{ fontFamily: SERIF, fontSize: 'clamp(28px, 3.5vw, 44px)', color: CREAM, lineHeight: 1.15 }}>
+            <h2 style={{ fontFamily: SERIF, fontSize: 'clamp(26px, 3.5vw, 44px)', color: CREAM, lineHeight: 1.15 }}>
               SMHP vs conventional<br />hydrogen production.
             </h2>
           </motion.div>
@@ -717,7 +717,7 @@ export default function SolutionPage() {
                   <tr style={{ background: 'rgba(0,214,143,0.04)' }}>
                     <th style={{ ...thStyle, color: STEEL, width: '28%' }}>Attribute</th>
                     <th style={{ ...thStyle, color: G }}>
-                      <span style={{ background: `${G}18`, border: `1px solid ${G}40`, borderRadius: 6, padding: '3px 10px', fontFamily: MONO, fontSize: 14, letterSpacing: '0.1em' }}>
+                      <span style={{ background: `${G}18`, border: `1px solid ${G}40`, borderRadius: 6, padding: '3px 10px', fontFamily: MONO, fontSize: 12, letterSpacing: '0.1em' }}>
                         SMHP — Fluxero
                       </span>
                     </th>
@@ -767,7 +767,7 @@ export default function SolutionPage() {
               background: 'rgba(0,214,143,0.03)',
               border: '1px solid rgba(0,214,143,0.1)',
               borderRadius: 18,
-              padding: 'clamp(38px, 5vw, 60px) clamp(30px, 5vw, 64px)',
+              padding: 'clamp(36px, 5vw, 60px) clamp(28px, 5vw, 64px)',
               display: 'flex',
               flexWrap: 'wrap',
               alignItems: 'center',
@@ -776,13 +776,13 @@ export default function SolutionPage() {
             }}
           >
             <div>
-              <div style={{ fontFamily: MONO, fontSize: 14, color: G, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 12 }}>
+              <div style={{ fontFamily: MONO, fontSize: 12, color: G, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 12 }}>
                 Next steps
               </div>
-              <h2 style={{ fontFamily: SERIF, fontSize: 'clamp(26px, 3vw, 42px)', color: CREAM, lineHeight: 1.15 }}>
+              <h2 style={{ fontFamily: SERIF, fontSize: 'clamp(24px, 3vw, 42px)', color: CREAM, lineHeight: 1.15 }}>
                 Ready to see the numbers?
               </h2>
-              <p style={{ fontFamily: SANS, fontSize: 18, color: MUTED, fontWeight: 300, marginTop: 10, maxWidth: 380, lineHeight: 1.65 }}>
+              <p style={{ fontFamily: SANS, fontSize: 16, color: MUTED, fontWeight: 300, marginTop: 10, maxWidth: 380, lineHeight: 1.65 }}>
                 Explore our unit economics, revenue model, and route to market.
               </p>
             </div>
@@ -797,7 +797,7 @@ export default function SolutionPage() {
                   background: G,
                   color: '#070608',
                   fontFamily: SANS,
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: 700,
                   letterSpacing: '0.04em',
                   padding: '13px 28px',
@@ -819,7 +819,7 @@ export default function SolutionPage() {
                   background: 'transparent',
                   color: CREAM,
                   fontFamily: SANS,
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: 500,
                   letterSpacing: '0.04em',
                   padding: '13px 28px',

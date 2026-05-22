@@ -60,7 +60,7 @@ export const Navbar: React.FC = () => {
             return (
               <Link key={l.to} to={l.to} style={{
                 fontFamily: '"IBM Plex Sans", sans-serif',
-                fontSize: 17,
+                fontSize: 15,
                 fontWeight: 500,
                 letterSpacing: '0.03em',
                 color: isActive ? '#00D68F' : 'rgba(148,163,184,0.85)',
@@ -78,7 +78,7 @@ export const Navbar: React.FC = () => {
 
         {/* Right side */}
         <div className="hidden md:flex items-center gap-4">
-          <Link to="/calculator" style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 17, color: 'rgba(148,163,184,0.7)', textDecoration: 'none', letterSpacing: '0.03em' }}
+          <Link to="/calculator" style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 15, color: 'rgba(148,163,184,0.7)', textDecoration: 'none', letterSpacing: '0.03em' }}
             onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#F0EBE0'}
             onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'rgba(148,163,184,0.7)'}
           >
@@ -89,7 +89,7 @@ export const Navbar: React.FC = () => {
             color: '#0D0C0F',
             borderRadius: 9999,
             padding: '9px 20px',
-            fontSize: 17,
+            fontSize: 15,
             fontWeight: 600,
             fontFamily: '"IBM Plex Sans", sans-serif',
             textDecoration: 'none',
@@ -131,7 +131,7 @@ export const Navbar: React.FC = () => {
                   <Link to={l.to} style={{
                     display: 'block',
                     fontFamily: '"DM Serif Display", serif',
-                    fontSize: 30,
+                    fontSize: 28,
                     color: location.pathname === l.to ? '#00D68F' : '#F0EBE0',
                     textDecoration: 'none',
                     padding: '12px 0',
@@ -142,7 +142,7 @@ export const Navbar: React.FC = () => {
                 </motion.div>
               ))}
               <motion.div initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.22 }}>
-                <Link to="/calculator" style={{ display: 'block', fontFamily: '"DM Serif Display", serif', fontSize: 30, color: '#F0EBE0', textDecoration: 'none', padding: '12px 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                <Link to="/calculator" style={{ display: 'block', fontFamily: '"DM Serif Display", serif', fontSize: 28, color: '#F0EBE0', textDecoration: 'none', padding: '12px 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
                   Calculator
                 </Link>
               </motion.div>
@@ -151,7 +151,7 @@ export const Navbar: React.FC = () => {
                   display: 'block', textAlign: 'center',
                   background: 'linear-gradient(135deg, #00A86B, #00D68F)',
                   color: '#0D0C0F', borderRadius: 12, padding: '16px',
-                  fontFamily: '"IBM Plex Sans", sans-serif', fontWeight: 600, fontSize: 19,
+                  fontFamily: '"IBM Plex Sans", sans-serif', fontWeight: 600, fontSize: 17,
                   textDecoration: 'none',
                 }}>
                   Contact us

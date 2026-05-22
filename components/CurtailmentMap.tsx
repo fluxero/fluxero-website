@@ -344,7 +344,7 @@ export const CurtailmentMap: React.FC = () => {
                   <span
                     style={{
                       fontFamily: '"IBM Plex Mono", monospace',
-                      fontSize: 14,
+                      fontSize: 12,
                       color: C.steel,
                       textTransform: 'uppercase',
                       letterSpacing: '0.1em',
@@ -371,7 +371,7 @@ export const CurtailmentMap: React.FC = () => {
               <span
                 style={{
                   fontFamily: '"IBM Plex Mono", monospace',
-                  fontSize: 15,
+                  fontSize: 13,
                   color: C.green,
                   letterSpacing: '0.2em',
                   textTransform: 'uppercase',
@@ -458,7 +458,7 @@ export const CurtailmentMap: React.FC = () => {
                       style={{
                         ...severityStyle(hoveredRegion.severity),
                         fontFamily: '"IBM Plex Mono", monospace',
-                        fontSize: 14,
+                        fontSize: 12,
                         padding: '2px 8px',
                         borderRadius: 4,
                         textTransform: 'uppercase',
@@ -545,7 +545,7 @@ export const CurtailmentMap: React.FC = () => {
                   <span
                     style={{
                       fontFamily: '"IBM Plex Mono", monospace',
-                      fontSize: 15,
+                      fontSize: 13,
                       color: C.steel,
                       letterSpacing: '0.08em',
                     }}
@@ -599,7 +599,7 @@ export const CurtailmentMap: React.FC = () => {
                       <span
                         style={{
                           fontFamily: '"IBM Plex Mono", monospace',
-                          fontSize: 15,
+                          fontSize: 13,
                           color: barColor(r.severity),
                           fontWeight: 600,
                         }}
@@ -609,7 +609,7 @@ export const CurtailmentMap: React.FC = () => {
                       <span
                         style={{
                           fontFamily: '"IBM Plex Mono", monospace',
-                          fontSize: 14,
+                          fontSize: 12,
                           color: C.steel,
                         }}
                       >

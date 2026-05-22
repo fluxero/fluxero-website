@@ -110,7 +110,7 @@ export const Problem: React.FC = () => {
               style={{ background: '#131116', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 12, padding: '32px' }}
             >
               <div className="font-display font-black"
-                style={{ fontSize: 'clamp(38px, 7vw, 72px)', lineHeight: 1, color: s.color }}>
+                style={{ fontSize: 'clamp(36px, 7vw, 72px)', lineHeight: 1, color: s.color }}>
                 <CountUp to={s.n} decimals={s.d} prefix={s.pre} suffix={s.suf} />
               </div>
               <p className="font-body font-medium text-cream text-xl mt-3 mb-1 leading-snug">{s.label}</p>
@@ -163,7 +163,7 @@ export const Problem: React.FC = () => {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
               <p className="font-mono text-base tracking-[0.2em] uppercase mb-2" style={{ color: '#00D68F' }}>The Opportunity</p>
-              <h3 className="font-display font-black text-cream mb-2" style={{ fontSize: 'clamp(24px, 3vw, 38px)', lineHeight: 1 }}>
+              <h3 className="font-display font-black text-cream mb-2" style={{ fontSize: 'clamp(22px, 3vw, 36px)', lineHeight: 1 }}>
                 THE WASTE IS FLUXERO'S FEEDSTOCK.
               </h3>
               <p className="font-body text-mist text-lg leading-relaxed max-w-xl">
@@ -179,7 +179,7 @@ export const Problem: React.FC = () => {
                 { v: '2030', l: "UK's 10 GW green H₂ target deadline" },
               ].map(s => (
                 <div key={s.v} className="flex items-baseline gap-3">
-                  <span className="font-display font-black" style={{ fontSize: 30, color: '#00D68F', lineHeight: 1 }}>{s.v}</span>
+                  <span className="font-display font-black" style={{ fontSize: 28, color: '#00D68F', lineHeight: 1 }}>{s.v}</span>
                   <span className="font-body text-mist text-base">{s.l}</span>
                 </div>
               ))}
@@ -195,7 +195,7 @@ export const Problem: React.FC = () => {
             viewport={{ once: true }} transition={{ duration: 0.6 }}
           >
             <h2 className="font-display font-black text-cream mb-8"
-              style={{ fontSize: 'clamp(38px, 5vw, 64px)', lineHeight: 0.95 }}>
+              style={{ fontSize: 'clamp(36px, 5vw, 64px)', lineHeight: 0.95 }}>
               THE GRID IS FULL.<br />
               <span className="text-green-gradient">THE ENERGY ISN'T.</span>
             </h2>
@@ -234,11 +234,11 @@ export const Problem: React.FC = () => {
               <p className="font-body font-semibold text-cream text-lg mb-4">TWh wasted · Source: Electric Insights, REF, NESO</p>
               <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={curtailmentHistory} barSize={20}>
-                  <XAxis dataKey="year" stroke="none" tick={{ fill: '#64748B', fontSize: 14, fontFamily: 'IBM Plex Mono' }} />
-                  <YAxis stroke="none" tick={{ fill: '#64748B', fontSize: 14, fontFamily: 'IBM Plex Mono' }} unit=" T" />
+                  <XAxis dataKey="year" stroke="none" tick={{ fill: '#64748B', fontSize: 12, fontFamily: 'IBM Plex Mono' }} />
+                  <YAxis stroke="none" tick={{ fill: '#64748B', fontSize: 12, fontFamily: 'IBM Plex Mono' }} unit=" T" />
                   <Tooltip
                     formatter={(v: any, n: string) => [`${v} TWh`, n]}
-                    contentStyle={{ background: '#131116', border: '1px solid rgba(0,214,143,0.15)', borderRadius: 6, fontSize: 15, fontFamily: 'IBM Plex Mono' }}
+                    contentStyle={{ background: '#131116', border: '1px solid rgba(0,214,143,0.15)', borderRadius: 6, fontSize: 13, fontFamily: 'IBM Plex Mono' }}
                     labelStyle={{ color: '#94A3B8' }}
                   />
                   <Bar dataKey="wind" name="Wind" stackId="a" fill="rgba(0,214,143,0.7)" radius={[0,0,0,0]} />
@@ -283,8 +283,8 @@ export const Problem: React.FC = () => {
                     <stop offset="95%" stopColor="#64748B" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <XAxis dataKey="t" stroke="none" tick={{ fill: '#64748B', fontSize: 14, fontFamily: 'IBM Plex Mono' }} />
-                <YAxis stroke="none" tick={{ fill: '#64748B', fontSize: 14, fontFamily: 'IBM Plex Mono' }} unit="%" />
+                <XAxis dataKey="t" stroke="none" tick={{ fill: '#64748B', fontSize: 12, fontFamily: 'IBM Plex Mono' }} />
+                <YAxis stroke="none" tick={{ fill: '#64748B', fontSize: 12, fontFamily: 'IBM Plex Mono' }} unit="%" />
                 <Tooltip content={<ChartTip />} />
                 <Area type="monotone" dataKey="gen" name="Generation %" stroke="#EF4444" strokeWidth={2} fill="url(#gGen)" />
                 <Area type="monotone" dataKey="cap" name="Grid cap %" stroke="#64748B" strokeWidth={1} fill="url(#gGrid)" strokeDasharray="4 4" />

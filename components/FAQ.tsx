@@ -41,7 +41,7 @@ export const FAQ: React.FC = () => {
 
         <h2
           className="font-display font-black text-cream mb-12"
-          style={{ fontSize: 'clamp(30px, 4vw, 48px)', lineHeight: 0.95 }}
+          style={{ fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 0.95 }}
         >
           COMMON<br />
           <span className="text-green-gradient">QUESTIONS.</span>
@@ -75,7 +75,7 @@ export const FAQ: React.FC = () => {
                     color: open === i ? '#00D68F' : '#64748B',
                   }}
                 >
-                  <span style={{ fontSize: 18, lineHeight: 1, transform: open === i ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s', display: 'block' }}>+</span>
+                  <span style={{ fontSize: 16, lineHeight: 1, transform: open === i ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s', display: 'block' }}>+</span>
                 </div>
               </button>
 
