@@ -41,7 +41,7 @@ function MonoTag({ label }: { label: string }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
       <div style={{ width: 32, height: 1, background: C.green }} />
-      <span style={{ ...MONO, fontSize: 13, letterSpacing: '0.26em', textTransform: 'uppercase', color: C.green }}>
+      <span style={{ ...MONO, fontSize: 17, letterSpacing: '0.26em', textTransform: 'uppercase', color: C.green }}>
         {label}
       </span>
     </div>
@@ -59,10 +59,10 @@ function MetricBox({ value, label }: { value: string; label: string }) {
       padding: '24px 20px',
       textAlign: 'center',
     }}>
-      <div style={{ ...SERIF, fontSize: 'clamp(28px, 3.5vw, 40px)', color: C.green, lineHeight: 1, marginBottom: 8 }}>
+      <div style={{ ...SERIF, fontSize: 'clamp(32px, 3.5vw, 40px)', color: C.green, lineHeight: 1, marginBottom: 8 }}>
         {value}
       </div>
-      <div style={{ ...MONO, fontSize: 13, color: C.muted, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+      <div style={{ ...MONO, fontSize: 17, color: C.muted, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
         {label}
       </div>
     </div>
@@ -118,8 +118,8 @@ function SliderRow({
   return (
     <div style={{ marginBottom: 24 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
-        <span style={{ ...SANS, fontSize: 15, color: C.muted, fontWeight: 400 }}>{label}</span>
-        <span style={{ ...MONO, fontSize: 16, color: C.cream, fontWeight: 600 }}>{format(value)}</span>
+        <span style={{ ...SANS, fontSize: 19, color: C.muted, fontWeight: 400 }}>{label}</span>
+        <span style={{ ...MONO, fontSize: 20, color: C.cream, fontWeight: 600 }}>{format(value)}</span>
       </div>
       <div style={{ position: 'relative' }}>
         {/* Filled track overlay */}
@@ -158,14 +158,14 @@ function OutputMetric({ label, value, sub }: { label: string; value: string; sub
       flex: 1,
       minWidth: 0,
     }}>
-      <div style={{ ...MONO, fontSize: 12, color: C.green, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 12 }}>
+      <div style={{ ...MONO, fontSize: 16, color: C.green, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 12 }}>
         {label}
       </div>
-      <div style={{ ...SERIF, fontSize: 'clamp(26px, 3vw, 38px)', color: C.cream, lineHeight: 1 }}>
+      <div style={{ ...SERIF, fontSize: 'clamp(30px, 3vw, 42px)', color: C.cream, lineHeight: 1 }}>
         {value}
       </div>
       {sub && (
-        <div style={{ ...SANS, fontSize: 14, color: C.muted, marginTop: 8, fontWeight: 300 }}>{sub}</div>
+        <div style={{ ...SANS, fontSize: 18, color: C.muted, marginTop: 8, fontWeight: 300 }}>{sub}</div>
       )}
     </div>
   );
@@ -281,7 +281,7 @@ export default function BusinessPage() {
             pointerEvents: 'none',
           }} />
 
-          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(20px, 5vw, 48px)' }}>
+          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(24px, 5vw, 48px)' }}>
             <FadeIn>
               <MonoTag label="Business Model" />
               <h1 style={{
@@ -296,7 +296,7 @@ export default function BusinessPage() {
               </h1>
               <p style={{
                 ...SANS,
-                fontSize: 'clamp(18px, 1.8vw, 20px)',
+                fontSize: 'clamp(22px, 1.8vw, 24px)',
                 color: C.muted,
                 fontWeight: 300,
                 maxWidth: 600,
@@ -312,7 +312,7 @@ export default function BusinessPage() {
 
 
         <div data-section style={{ background: C.alt, padding: 'clamp(64px, 8vw, 112px) 0' }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(20px, 5vw, 48px)' }}>
+          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(24px, 5vw, 48px)' }}>
 
             <div style={{
               display: 'grid',
@@ -325,7 +325,7 @@ export default function BusinessPage() {
                 <MonoTag label="The Thesis" />
                 <h2 style={{
                   ...SERIF,
-                  fontSize: 'clamp(30px, 4vw, 52px)',
+                  fontSize: 'clamp(34px, 4vw, 52px)',
                   color: C.cream,
                   lineHeight: 1.05,
                   marginBottom: 32,
@@ -347,7 +347,7 @@ export default function BusinessPage() {
                         width: 6, height: 6, borderRadius: '50%', background: C.green,
                         flexShrink: 0, marginTop: 7,
                       }} />
-                      <p style={{ ...SANS, fontSize: 17, color: C.muted, fontWeight: 300, lineHeight: 1.7, margin: 0 }}>
+                      <p style={{ ...SANS, fontSize: 21, color: C.muted, fontWeight: 300, lineHeight: 1.7, margin: 0 }}>
                         {text}
                       </p>
                     </div>
@@ -361,7 +361,7 @@ export default function BusinessPage() {
                 }}>
                   <p style={{
                     ...SERIF,
-                    fontSize: 'clamp(19px, 2vw, 21px)',
+                    fontSize: 'clamp(23px, 2vw, 25px)',
                     color: C.cream,
                     lineHeight: 1.4,
                     margin: 0,
@@ -391,10 +391,10 @@ export default function BusinessPage() {
                   borderRadius: 12,
                   padding: '20px 24px',
                 }}>
-                  <p style={{ ...MONO, fontSize: 13, color: C.steel, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 12 }}>
+                  <p style={{ ...MONO, fontSize: 17, color: C.steel, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 12 }}>
                     Why it compounds
                   </p>
-                  <p style={{ ...SANS, fontSize: 16, color: C.muted, fontWeight: 300, lineHeight: 1.7, margin: 0 }}>
+                  <p style={{ ...SANS, fontSize: 20, color: C.muted, fontWeight: 300, lineHeight: 1.7, margin: 0 }}>
                     Every curtailment point in the UK is a potential location. National Grid paid over £650M in constraint payments in 2023 alone. Each of those sites is a potential Fluxero deployment — zero land cost, zero feedstock cost.
                   </p>
                 </div>
@@ -407,19 +407,19 @@ export default function BusinessPage() {
 
 
         <div data-section style={{ background: C.dark, padding: 'clamp(64px, 8vw, 112px) 0' }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(20px, 5vw, 48px)' }}>
+          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(24px, 5vw, 48px)' }}>
             <FadeIn>
               <MonoTag label="ROI Calculator" />
               <h2 style={{
                 ...SERIF,
-                fontSize: 'clamp(30px, 4vw, 52px)',
+                fontSize: 'clamp(34px, 4vw, 52px)',
                 color: C.cream,
                 lineHeight: 1.05,
                 marginBottom: 12,
               }}>
                 Model your site.
               </h2>
-              <p style={{ ...SANS, fontSize: 17, color: C.muted, fontWeight: 300, maxWidth: 540, lineHeight: 1.6, marginBottom: 48 }}>
+              <p style={{ ...SANS, fontSize: 21, color: C.muted, fontWeight: 300, maxWidth: 540, lineHeight: 1.6, marginBottom: 48 }}>
                 Adjust the parameters below. Outputs update live — based on the same methodology used in our founder's 1,000-panel example.
               </p>
             </FadeIn>
@@ -436,9 +436,9 @@ export default function BusinessPage() {
                   background: C.card,
                   border: `1px solid ${C.gborder}`,
                   borderRadius: 16,
-                  padding: 'clamp(24px, 3vw, 36px)',
+                  padding: 'clamp(28px, 3vw, 40px)',
                 }}>
-                  <p style={{ ...MONO, fontSize: 13, color: C.green, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 28 }}>
+                  <p style={{ ...MONO, fontSize: 17, color: C.green, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 28 }}>
                     Input parameters
                   </p>
 
@@ -488,10 +488,10 @@ export default function BusinessPage() {
                         padding: '12px 14px',
                         border: `1px solid ${C.border}`,
                       }}>
-                        <div style={{ ...MONO, fontSize: 9, color: C.steel, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 6 }}>
+                        <div style={{ ...MONO, fontSize: 13, color: C.steel, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 6 }}>
                           {item.k}
                         </div>
-                        <div style={{ ...MONO, fontSize: 16, color: C.cream, fontWeight: 600 }}>
+                        <div style={{ ...MONO, fontSize: 20, color: C.cream, fontWeight: 600 }}>
                           {item.v}
                         </div>
                       </div>
@@ -532,10 +532,10 @@ export default function BusinessPage() {
                     padding: '24px',
                   }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
-                      <span style={{ ...MONO, fontSize: 13, color: C.green, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+                      <span style={{ ...MONO, fontSize: 17, color: C.green, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
                         10-year projection
                       </span>
-                      <span style={{ ...MONO, fontSize: 15, color: tenYearProfit >= 0 ? C.green : '#F87171' }}>
+                      <span style={{ ...MONO, fontSize: 19, color: tenYearProfit >= 0 ? C.green : '#F87171' }}>
                         {tenYearProfit >= 0 ? '+' : ''}{fmtCurrency(tenYearProfit)} net
                       </span>
                     </div>
@@ -553,7 +553,7 @@ export default function BusinessPage() {
                         }}
                       >
                         {capexPct > 12 && (
-                          <span style={{ ...MONO, fontSize: 12, color: C.steel, whiteSpace: 'nowrap' }}>CAPEX</span>
+                          <span style={{ ...MONO, fontSize: 16, color: C.steel, whiteSpace: 'nowrap' }}>CAPEX</span>
                         )}
                       </motion.div>
                       <motion.div
@@ -566,7 +566,7 @@ export default function BusinessPage() {
                         }}
                       >
                         {profitPct > 20 && (
-                          <span style={{ ...MONO, fontSize: 12, color: C.dark, whiteSpace: 'nowrap' }}>10-yr profit</span>
+                          <span style={{ ...MONO, fontSize: 16, color: C.dark, whiteSpace: 'nowrap' }}>10-yr profit</span>
                         )}
                       </motion.div>
                     </div>
@@ -574,11 +574,11 @@ export default function BusinessPage() {
                     <div style={{ display: 'flex', gap: 24, marginTop: 14 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                         <div style={{ width: 10, height: 10, borderRadius: 2, background: 'rgba(100,116,139,0.45)' }} />
-                        <span style={{ ...MONO, fontSize: 13, color: C.steel }}>CAPEX — {fmtCurrency(capex)}</span>
+                        <span style={{ ...MONO, fontSize: 17, color: C.steel }}>CAPEX — {fmtCurrency(capex)}</span>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                         <div style={{ width: 10, height: 10, borderRadius: 2, background: C.green }} />
-                        <span style={{ ...MONO, fontSize: 13, color: C.steel }}>10-yr gross — {fmtCurrency(tenYrGross)}</span>
+                        <span style={{ ...MONO, fontSize: 17, color: C.steel }}>10-yr gross — {fmtCurrency(tenYrGross)}</span>
                       </div>
                     </div>
                   </div>
@@ -592,19 +592,19 @@ export default function BusinessPage() {
 
 
         <div data-section style={{ background: C.alt, padding: 'clamp(64px, 8vw, 112px) 0' }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(20px, 5vw, 48px)' }}>
+          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(24px, 5vw, 48px)' }}>
             <FadeIn>
               <MonoTag label="Revenue Streams" />
               <h2 style={{
                 ...SERIF,
-                fontSize: 'clamp(30px, 4vw, 52px)',
+                fontSize: 'clamp(34px, 4vw, 52px)',
                 color: C.cream,
                 lineHeight: 1.05,
                 marginBottom: 12,
               }}>
                 Three layers of revenue.
               </h2>
-              <p style={{ ...SANS, fontSize: 17, color: C.muted, fontWeight: 300, maxWidth: 520, lineHeight: 1.6, marginBottom: 44 }}>
+              <p style={{ ...SANS, fontSize: 21, color: C.muted, fontWeight: 300, maxWidth: 520, lineHeight: 1.6, marginBottom: 44 }}>
                 Every SMHP participates in all three streams. Each one is independent — together they materially de-risk the revenue profile.
               </p>
             </FadeIn>
@@ -628,7 +628,7 @@ export default function BusinessPage() {
                     onClick={() => setActiveTab(s.id)}
                     style={{
                       ...MONO,
-                      fontSize: 14,
+                      fontSize: 18,
                       letterSpacing: '0.08em',
                       padding: '10px 20px',
                       borderRadius: 7,
@@ -663,12 +663,12 @@ export default function BusinessPage() {
                   border: `1px solid ${C.gborder}`,
                   borderTop: `2px solid ${activeStream.accent}`,
                   borderRadius: 14,
-                  padding: 'clamp(24px, 3vw, 36px)',
+                  padding: 'clamp(28px, 3vw, 40px)',
                 }}>
-                  <h3 style={{ ...SERIF, fontSize: 'clamp(22px, 2.5vw, 30px)', color: C.cream, marginBottom: 16, lineHeight: 1.2 }}>
+                  <h3 style={{ ...SERIF, fontSize: 'clamp(26px, 2.5vw, 34px)', color: C.cream, marginBottom: 16, lineHeight: 1.2 }}>
                     {activeStream.headline}
                   </h3>
-                  <p style={{ ...SANS, fontSize: 17, color: C.muted, fontWeight: 300, lineHeight: 1.75, margin: 0 }}>
+                  <p style={{ ...SANS, fontSize: 21, color: C.muted, fontWeight: 300, lineHeight: 1.75, margin: 0 }}>
                     {activeStream.body}
                   </p>
                 </div>
@@ -678,12 +678,12 @@ export default function BusinessPage() {
                   background: C.card,
                   border: `1px solid ${C.gborder}`,
                   borderRadius: 14,
-                  padding: 'clamp(24px, 3vw, 36px)',
+                  padding: 'clamp(28px, 3vw, 40px)',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'center',
                 }}>
-                  <p style={{ ...MONO, fontSize: 12, color: activeStream.accent, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 24 }}>
+                  <p style={{ ...MONO, fontSize: 16, color: activeStream.accent, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 24 }}>
                     Key metrics
                   </p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
@@ -695,8 +695,8 @@ export default function BusinessPage() {
                         padding: '16px 0',
                         borderBottom: i < activeStream.metrics.length - 1 ? `1px solid ${C.border}` : 'none',
                       }}>
-                        <span style={{ ...MONO, fontSize: 14, color: C.steel }}>{m.k}</span>
-                        <span style={{ ...SANS, fontSize: 17, color: C.cream, fontWeight: 500 }}>{m.v}</span>
+                        <span style={{ ...MONO, fontSize: 18, color: C.steel }}>{m.k}</span>
+                        <span style={{ ...SANS, fontSize: 21, color: C.cream, fontWeight: 500 }}>{m.v}</span>
                       </div>
                     ))}
                   </div>
@@ -710,12 +710,12 @@ export default function BusinessPage() {
 
 
         <div data-section style={{ background: C.dark, padding: 'clamp(64px, 8vw, 112px) 0' }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(20px, 5vw, 48px)' }}>
+          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(24px, 5vw, 48px)' }}>
             <FadeIn>
               <MonoTag label="Market Opportunity" />
               <h2 style={{
                 ...SERIF,
-                fontSize: 'clamp(30px, 4vw, 52px)',
+                fontSize: 'clamp(34px, 4vw, 52px)',
                 color: C.cream,
                 lineHeight: 1.05,
                 marginBottom: 48,
@@ -755,22 +755,22 @@ export default function BusinessPage() {
                     background: C.card,
                     border: `1px solid ${C.gborder}`,
                     borderRadius: 14,
-                    padding: 'clamp(28px, 3vw, 40px)',
+                    padding: 'clamp(32px, 3vw, 40px)',
                     height: '100%',
                   }}>
                     <div style={{
                       ...SERIF,
-                      fontSize: 'clamp(36px, 5vw, 56px)',
+                      fontSize: 'clamp(40px, 5vw, 56px)',
                       color: item.accent,
                       lineHeight: 1,
                       marginBottom: 16,
                     }}>
                       {item.num}
                     </div>
-                    <div style={{ ...SANS, fontSize: 19, color: C.cream, fontWeight: 500, marginBottom: 8, lineHeight: 1.3 }}>
+                    <div style={{ ...SANS, fontSize: 23, color: C.cream, fontWeight: 500, marginBottom: 8, lineHeight: 1.3 }}>
                       {item.label}
                     </div>
-                    <div style={{ ...MONO, fontSize: 13, color: C.steel, letterSpacing: '0.1em' }}>
+                    <div style={{ ...MONO, fontSize: 17, color: C.steel, letterSpacing: '0.1em' }}>
                       {item.sub}
                     </div>
                   </div>
@@ -784,19 +784,19 @@ export default function BusinessPage() {
 
 
         <div data-section style={{ background: C.alt, padding: 'clamp(64px, 8vw, 112px) 0' }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(20px, 5vw, 48px)' }}>
+          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(24px, 5vw, 48px)' }}>
             <FadeIn>
               <MonoTag label="Unit Economics" />
               <h2 style={{
                 ...SERIF,
-                fontSize: 'clamp(30px, 4vw, 52px)',
+                fontSize: 'clamp(34px, 4vw, 52px)',
                 color: C.cream,
                 lineHeight: 1.05,
                 marginBottom: 12,
               }}>
                 The numbers, unabridged.
               </h2>
-              <p style={{ ...SANS, fontSize: 17, color: C.muted, fontWeight: 300, maxWidth: 520, lineHeight: 1.6, marginBottom: 48 }}>
+              <p style={{ ...SANS, fontSize: 21, color: C.muted, fontWeight: 300, maxWidth: 520, lineHeight: 1.6, marginBottom: 48 }}>
                 Unit economics per SMHP and how they compound across 100 deployed units.
               </p>
             </FadeIn>
@@ -818,7 +818,7 @@ export default function BusinessPage() {
                       {['Metric', 'Per Unit', 'Per 100 Units'].map((h, i) => (
                         <th key={h} style={{
                           ...MONO,
-                          fontSize: 13,
+                          fontSize: 17,
                           color: C.green,
                           letterSpacing: '0.18em',
                           textTransform: 'uppercase',
@@ -843,7 +843,7 @@ export default function BusinessPage() {
                       }}>
                         <td style={{
                           ...SANS,
-                          fontSize: 17,
+                          fontSize: 21,
                           color: C.cream,
                           padding: '18px 24px',
                           fontWeight: 500,
@@ -853,7 +853,7 @@ export default function BusinessPage() {
                         </td>
                         <td style={{
                           ...MONO,
-                          fontSize: 16,
+                          fontSize: 20,
                           color: C.muted,
                           padding: '18px 24px',
                           textAlign: 'right',
@@ -864,7 +864,7 @@ export default function BusinessPage() {
                         </td>
                         <td style={{
                           ...MONO,
-                          fontSize: 16,
+                          fontSize: 20,
                           color: C.green,
                           padding: '18px 24px',
                           textAlign: 'right',
@@ -887,12 +887,12 @@ export default function BusinessPage() {
 
 
         <div data-section style={{ background: C.dark, padding: 'clamp(80px, 10vw, 128px) 0' }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(20px, 5vw, 48px)' }}>
+          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(24px, 5vw, 48px)' }}>
             <FadeIn>
               {/* Divider */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 56 }}>
                 <div style={{ flex: 1, height: 1, background: `linear-gradient(90deg, ${C.green}, transparent)` }} />
-                <span style={{ ...MONO, fontSize: 12, color: C.steel, letterSpacing: '0.25em', textTransform: 'uppercase' }}>
+                <span style={{ ...MONO, fontSize: 16, color: C.steel, letterSpacing: '0.25em', textTransform: 'uppercase' }}>
                   next steps
                 </span>
                 <div style={{ flex: 1, height: 1, background: `linear-gradient(270deg, ${C.green}, transparent)` }} />
@@ -910,7 +910,7 @@ export default function BusinessPage() {
                       background: C.card,
                       border: `1px solid ${C.gborder}`,
                       borderRadius: 14,
-                      padding: 'clamp(28px, 3vw, 40px)',
+                      padding: 'clamp(32px, 3vw, 40px)',
                       cursor: 'pointer',
                       transition: 'transform 0.2s, box-shadow 0.2s, border-color 0.2s',
                     }}
@@ -927,16 +927,16 @@ export default function BusinessPage() {
                       el.style.borderColor = C.gborder;
                     }}
                   >
-                    <div style={{ ...MONO, fontSize: 13, color: C.green, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>
+                    <div style={{ ...MONO, fontSize: 17, color: C.green, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>
                       01
                     </div>
-                    <h3 style={{ ...SERIF, fontSize: 'clamp(22px, 2.5vw, 30px)', color: C.cream, marginBottom: 12, lineHeight: 1.2 }}>
+                    <h3 style={{ ...SERIF, fontSize: 'clamp(26px, 2.5vw, 34px)', color: C.cream, marginBottom: 12, lineHeight: 1.2 }}>
                       Explore the traction
                     </h3>
-                    <p style={{ ...SANS, fontSize: 16, color: C.muted, fontWeight: 300, lineHeight: 1.65, marginBottom: 28 }}>
+                    <p style={{ ...SANS, fontSize: 20, color: C.muted, fontWeight: 300, lineHeight: 1.65, marginBottom: 28 }}>
                       Nvidia Inception, Barclays Eagle Labs, and our proof points — see where we are today.
                     </p>
-                    <span style={{ ...MONO, fontSize: 14, color: C.green, letterSpacing: '0.1em' }}>
+                    <span style={{ ...MONO, fontSize: 18, color: C.green, letterSpacing: '0.1em' }}>
                       View traction →
                     </span>
                   </div>
@@ -949,7 +949,7 @@ export default function BusinessPage() {
                       background: C.green,
                       border: `1px solid ${C.green}`,
                       borderRadius: 14,
-                      padding: 'clamp(28px, 3vw, 40px)',
+                      padding: 'clamp(32px, 3vw, 40px)',
                       cursor: 'pointer',
                       transition: 'transform 0.2s, box-shadow 0.2s, filter 0.2s',
                     }}
@@ -966,16 +966,16 @@ export default function BusinessPage() {
                       el.style.filter = 'none';
                     }}
                   >
-                    <div style={{ ...MONO, fontSize: 13, color: C.dark, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16, opacity: 0.6 }}>
+                    <div style={{ ...MONO, fontSize: 17, color: C.dark, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16, opacity: 0.6 }}>
                       02
                     </div>
-                    <h3 style={{ ...SERIF, fontSize: 'clamp(22px, 2.5vw, 30px)', color: C.dark, marginBottom: 12, lineHeight: 1.2 }}>
+                    <h3 style={{ ...SERIF, fontSize: 'clamp(26px, 2.5vw, 34px)', color: C.dark, marginBottom: 12, lineHeight: 1.2 }}>
                       Model your site
                     </h3>
-                    <p style={{ ...SANS, fontSize: 16, color: C.dark, fontWeight: 400, lineHeight: 1.65, marginBottom: 28, opacity: 0.75 }}>
+                    <p style={{ ...SANS, fontSize: 20, color: C.dark, fontWeight: 400, lineHeight: 1.65, marginBottom: 28, opacity: 0.75 }}>
                       Run a full projection for your renewable site — panels, location, offtake price, and more.
                     </p>
-                    <span style={{ ...MONO, fontSize: 14, color: C.dark, letterSpacing: '0.1em' }}>
+                    <span style={{ ...MONO, fontSize: 18, color: C.dark, letterSpacing: '0.1em' }}>
                       Open calculator →
                     </span>
                   </div>

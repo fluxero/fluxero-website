@@ -117,13 +117,13 @@ export const Contact: React.FC = () => {
             >
               <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
                 style={{ background: 'rgba(0,214,143,0.12)', border: '1px solid rgba(0,214,143,0.28)' }}>
-                <span style={{ color: '#00E5B8', fontSize: 17 }}>✉</span>
+                <span style={{ color: '#00E5B8', fontSize: 21 }}>✉</span>
               </div>
               <div className="flex-1">
-                <p className="font-mono text-xs uppercase tracking-[0.2em] mb-0.5" style={{ color: '#475569' }}>General enquiries</p>
-                <p className="font-body font-semibold text-base" style={{ color: '#00E5B8' }}>founders@fluxero.uk</p>
+                <p className="font-mono text-base uppercase tracking-[0.2em] mb-0.5" style={{ color: '#475569' }}>General enquiries</p>
+                <p className="font-body font-semibold text-xl" style={{ color: '#00E5B8' }}>founders@fluxero.uk</p>
               </div>
-              <span className="font-mono text-xs text-steel opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+              <span className="font-mono text-base text-steel opacity-0 group-hover:opacity-100 transition-opacity">→</span>
             </a>
 
             {/* Individual founder emails */}
@@ -136,7 +136,7 @@ export const Contact: React.FC = () => {
                 padding: '24px',
               }}
             >
-              <p className="font-mono text-xs uppercase tracking-[0.2em] mb-5" style={{ color: '#475569' }}>Reach a founder directly</p>
+              <p className="font-mono text-base uppercase tracking-[0.2em] mb-5" style={{ color: '#475569' }}>Reach a founder directly</p>
               <div className="space-y-3">
                 {FOUNDERS.map(f => (
                   <a
@@ -148,17 +148,17 @@ export const Contact: React.FC = () => {
                     onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
                   >
                     <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 font-mono text-sm font-bold"
+                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 font-mono text-lg font-bold"
                       style={{ background: `${f.color}15`, border: `1px solid ${f.color}30`, color: f.color }}
                     >
                       {f.initial}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-body font-semibold text-cream text-sm">{f.name}</p>
-                      <p className="font-mono text-xs" style={{ color: f.color }}>{f.email}</p>
+                      <p className="font-body font-semibold text-cream text-lg">{f.name}</p>
+                      <p className="font-mono text-base" style={{ color: f.color }}>{f.email}</p>
                     </div>
-                    <span className="font-mono text-xs text-steel flex-shrink-0">{f.role}</span>
-                    <span className="font-mono text-xs text-steel opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                    <span className="font-mono text-base text-steel flex-shrink-0">{f.role}</span>
+                    <span className="font-mono text-base text-steel opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                   </a>
                 ))}
               </div>
@@ -172,11 +172,11 @@ export const Contact: React.FC = () => {
             >
               <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                 style={{ background: 'rgba(0,214,143,0.06)', border: '1px solid rgba(0,214,143,0.15)' }}>
-                <span style={{ color: '#00D68F', fontSize: 20 }}>◷</span>
+                <span style={{ color: '#00D68F', fontSize: 24 }}>◷</span>
               </div>
               <div>
-                <p className="font-mono text-xs text-steel uppercase tracking-widest mb-1">Book a call</p>
-                <p className="font-body font-semibold text-cream text-lg group-hover:text-green transition-colors">
+                <p className="font-mono text-base text-steel uppercase tracking-widest mb-1">Book a call</p>
+                <p className="font-body font-semibold text-cream text-2xl group-hover:text-green transition-colors">
                   Schedule 30 min with the team →
                 </p>
               </div>
@@ -204,16 +204,16 @@ export const Contact: React.FC = () => {
                   className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
                   style={{ background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.3)' }}
                 >
-                  <span style={{ color: '#00D68F', fontSize: 24 }}>✓</span>
+                  <span style={{ color: '#00D68F', fontSize: 28 }}>✓</span>
                 </div>
                 <h4 className="font-display font-black text-cream text-2xl mb-3">Message sent.</h4>
-                <p className="font-body text-mist text-sm">All three founders have been notified. We'll reply within 24 hours.</p>
+                <p className="font-body text-mist text-lg">All three founders have been notified. We'll reply within 24 hours.</p>
               </div>
             ) : (
               <form className="space-y-5" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="font-mono text-xs text-steel uppercase tracking-widest block mb-2">First name</label>
+                    <label className="font-mono text-base text-steel uppercase tracking-widest block mb-2">First name</label>
                     <input type="text" required value={form.firstName}
                       onChange={e => setForm(f => ({ ...f, firstName: e.target.value }))}
                       className="w-full font-body text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-green/40 transition-colors"
@@ -221,7 +221,7 @@ export const Contact: React.FC = () => {
                       placeholder="Kieran" />
                   </div>
                   <div>
-                    <label className="font-mono text-xs text-steel uppercase tracking-widest block mb-2">Last name</label>
+                    <label className="font-mono text-base text-steel uppercase tracking-widest block mb-2">Last name</label>
                     <input type="text" required value={form.lastName}
                       onChange={e => setForm(f => ({ ...f, lastName: e.target.value }))}
                       className="w-full font-body text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-green/40 transition-colors"
@@ -231,7 +231,7 @@ export const Contact: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="font-mono text-xs text-steel uppercase tracking-widest block mb-2">Email</label>
+                  <label className="font-mono text-base text-steel uppercase tracking-widest block mb-2">Email</label>
                   <input type="email" required value={form.email}
                     onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                     className="w-full font-body text-cream rounded-lg px-4 py-3 border placeholder-steel/40 focus:border-green/40 transition-colors"
@@ -240,7 +240,7 @@ export const Contact: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="font-mono text-xs text-steel uppercase tracking-widest block mb-2">I am a...</label>
+                  <label className="font-mono text-base text-steel uppercase tracking-widest block mb-2">I am a...</label>
                   <select value={type} onChange={e => setType(e.target.value)}
                     className="w-full font-body rounded-lg px-4 py-3 border focus:border-green/40 transition-colors cursor-pointer appearance-none"
                     style={{ background: 'rgba(13,12,15,0.8)', border: '1px solid rgba(255,255,255,0.07)', color: '#F0EBE0', fontSize: '1rem' }}>
@@ -254,7 +254,7 @@ export const Contact: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="font-mono text-xs text-steel uppercase tracking-widest block mb-2">Message</label>
+                  <label className="font-mono text-base text-steel uppercase tracking-widest block mb-2">Message</label>
                   <textarea rows={4} required value={form.message}
                     onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                     className="w-full font-body text-cream rounded-lg px-4 py-3 border focus:border-green/40 transition-colors resize-none placeholder-steel/40"
@@ -263,14 +263,14 @@ export const Contact: React.FC = () => {
                 </div>
 
                 {error && (
-                  <p className="font-mono text-xs" style={{ color: '#EF4444' }}>
+                  <p className="font-mono text-base" style={{ color: '#EF4444' }}>
                     {error}{' '}
                     <a href="mailto:founders@fluxero.uk" style={{ color: '#00D68F' }}>founders@fluxero.uk</a>
                   </p>
                 )}
 
                 <button type="submit" disabled={sending}
-                  className="w-full font-body font-semibold py-4 rounded-lg transition-all tracking-wide text-sm hover:scale-[1.01]"
+                  className="w-full font-body font-semibold py-4 rounded-lg transition-all tracking-wide text-lg hover:scale-[1.01]"
                   style={{
                     background: sending ? 'rgba(0,214,143,0.3)' : 'linear-gradient(135deg, #00A86B, #00D68F)',
                     color: '#F0EBE0',
@@ -282,7 +282,7 @@ export const Contact: React.FC = () => {
                   {sending ? 'Sending…' : 'Send message →'}
                 </button>
 
-                <p className="font-mono text-[10px] text-center" style={{ color: '#334155' }}>
+                <p className="font-mono text-[14px] text-center" style={{ color: '#334155' }}>
                   Sends to all three founders · Replies within 24 hours
                 </p>
               </form>
@@ -296,17 +296,17 @@ export const Contact: React.FC = () => {
           <div className="flex items-center gap-3">
             <img src="/logo.png" alt="Fluxero" className="h-6 w-auto object-contain opacity-60"
               onError={e => ((e.target as HTMLImageElement).style.display = 'none')} />
-            <span className="font-mono text-xs text-steel">© 2025 Fluxero Ltd · United Kingdom</span>
+            <span className="font-mono text-base text-steel">© 2025 Fluxero Ltd · United Kingdom</span>
           </div>
           <div className="flex items-center gap-4 flex-wrap justify-center">
             <a href="mailto:founders@fluxero.uk"
-              className="font-mono text-xs hover:text-green transition-colors"
+              className="font-mono text-base hover:text-green transition-colors"
               style={{ color: '#475569', textDecoration: 'none' }}>
               founders@fluxero.uk
             </a>
             {FOUNDERS.map(f => (
               <a key={f.email} href={`mailto:${f.email}`}
-                className="font-mono text-xs hover:text-green transition-colors"
+                className="font-mono text-base hover:text-green transition-colors"
                 style={{ color: '#334155', textDecoration: 'none' }}>
                 {f.email}
               </a>

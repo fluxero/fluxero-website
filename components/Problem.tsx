@@ -23,9 +23,9 @@ const ChartTip: React.FC<any> = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
   return (
     <div style={{ background: '#131116', border: '1px solid rgba(0,214,143,0.15)', borderRadius: 6, padding: '10px 14px' }}>
-      <p className="font-mono text-xs text-steel mb-2">{label}</p>
+      <p className="font-mono text-base text-steel mb-2">{label}</p>
       {payload.map((p: any) => (
-        <div key={p.name} className="flex items-center gap-2 font-mono text-xs">
+        <div key={p.name} className="flex items-center gap-2 font-mono text-base">
           <span className="w-2 h-2 rounded-full" style={{ background: p.color }} />
           <span className="text-mist">{p.name}: </span>
           <span className="text-cream font-bold">{p.value}</span>
@@ -73,7 +73,7 @@ export const Problem: React.FC = () => {
 
         <div className="flex items-center gap-4 mb-16">
           <div className="w-8 h-px" style={{ background: '#00D68F' }} />
-          <span className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#00D68F' }}>The Problem</span>
+          <span className="font-mono text-base tracking-[0.25em] uppercase" style={{ color: '#00D68F' }}>The Problem</span>
         </div>
 
         {/* Stats grid */}
@@ -110,11 +110,11 @@ export const Problem: React.FC = () => {
               style={{ background: '#131116', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 12, padding: '32px' }}
             >
               <div className="font-display font-black"
-                style={{ fontSize: 'clamp(36px, 7vw, 72px)', lineHeight: 1, color: s.color }}>
+                style={{ fontSize: 'clamp(40px, 7vw, 72px)', lineHeight: 1, color: s.color }}>
                 <CountUp to={s.n} decimals={s.d} prefix={s.pre} suffix={s.suf} />
               </div>
-              <p className="font-body font-medium text-cream text-base mt-3 mb-1 leading-snug">{s.label}</p>
-              <p className="font-mono text-steel text-xs leading-relaxed">{s.sub}</p>
+              <p className="font-body font-medium text-cream text-xl mt-3 mb-1 leading-snug">{s.label}</p>
+              <p className="font-mono text-steel text-base leading-relaxed">{s.sub}</p>
             </motion.div>
           ))}
         </div>
@@ -128,9 +128,9 @@ export const Problem: React.FC = () => {
           >
             <div className="flex items-center gap-3 mb-3">
               <div className="w-2 h-2 rounded-full" style={{ background: '#FBBF24' }} />
-              <p className="font-display font-bold text-cream text-base">Solar Curtailment Rising</p>
+              <p className="font-display font-bold text-cream text-xl">Solar Curtailment Rising</p>
             </div>
-            <p className="font-body text-mist text-base leading-relaxed">
+            <p className="font-body text-mist text-xl leading-relaxed">
               Midday solar generation increasingly exceeds grid demand across southern England.
               In 2024, ~1.5 TWh was curtailed — up from near-zero in 2020. Network operators
               instruct solar farms to reduce output on sunny, low-demand days.
@@ -144,9 +144,9 @@ export const Problem: React.FC = () => {
           >
             <div className="flex items-center gap-3 mb-3">
               <div className="w-2 h-2 rounded-full" style={{ background: '#00D0E8' }} />
-              <p className="font-display font-bold text-cream text-base">Hydro Constrained in Wet Spells</p>
+              <p className="font-display font-bold text-cream text-xl">Hydro Constrained in Wet Spells</p>
             </div>
-            <p className="font-body text-mist text-base leading-relaxed">
+            <p className="font-body text-mist text-xl leading-relaxed">
               Scottish hydro schemes face constraint payments during high-rainfall periods
               when reservoirs are full and grid export is restricted. Run-of-river schemes
               are particularly vulnerable to simultaneous wind over-supply.
@@ -162,11 +162,11 @@ export const Problem: React.FC = () => {
         >
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
-              <p className="font-mono text-xs tracking-[0.2em] uppercase mb-2" style={{ color: '#00D68F' }}>The Opportunity</p>
-              <h3 className="font-display font-black text-cream mb-2" style={{ fontSize: 'clamp(22px, 3vw, 36px)', lineHeight: 1 }}>
+              <p className="font-mono text-base tracking-[0.2em] uppercase mb-2" style={{ color: '#00D68F' }}>The Opportunity</p>
+              <h3 className="font-display font-black text-cream mb-2" style={{ fontSize: 'clamp(26px, 3vw, 40px)', lineHeight: 1 }}>
                 THE WASTE IS FLUXERO'S FEEDSTOCK.
               </h3>
-              <p className="font-body text-mist text-sm leading-relaxed max-w-xl">
+              <p className="font-body text-mist text-lg leading-relaxed max-w-xl">
                 UK curtailment alone represents £800M+ of green H₂ production opportunity annually.
                 Globally, over 470 TWh of clean energy is wasted every year — enough to power 140 million homes.
                 We convert it at source.
@@ -179,8 +179,8 @@ export const Problem: React.FC = () => {
                 { v: '2030', l: "UK's 10 GW green H₂ target deadline" },
               ].map(s => (
                 <div key={s.v} className="flex items-baseline gap-3">
-                  <span className="font-display font-black" style={{ fontSize: 28, color: '#00D68F', lineHeight: 1 }}>{s.v}</span>
-                  <span className="font-body text-mist text-xs">{s.l}</span>
+                  <span className="font-display font-black" style={{ fontSize: 32, color: '#00D68F', lineHeight: 1 }}>{s.v}</span>
+                  <span className="font-body text-mist text-base">{s.l}</span>
                 </div>
               ))}
             </div>
@@ -221,8 +221,8 @@ export const Problem: React.FC = () => {
                 <div key={item.title} className="flex gap-5">
                   <div className="w-1 rounded-full flex-shrink-0 mt-1" style={{ background: item.color, minHeight: 52 }} />
                   <div>
-                    <h4 className="font-display font-bold text-cream text-base mb-1">{item.title}</h4>
-                    <p className="font-body text-mist text-base leading-relaxed">{item.body}</p>
+                    <h4 className="font-display font-bold text-cream text-xl mb-1">{item.title}</h4>
+                    <p className="font-body text-mist text-xl leading-relaxed">{item.body}</p>
                   </div>
                 </div>
               ))}
@@ -230,15 +230,15 @@ export const Problem: React.FC = () => {
 
             {/* Stacked bar chart — Wind / Solar / Hydro */}
             <div style={{ background: '#131116', border: '1px solid rgba(0,214,143,0.08)', borderRadius: 12, padding: '20px' }}>
-              <p className="font-mono text-xs text-steel mb-1 uppercase tracking-widest">UK Renewable Curtailment by Year</p>
-              <p className="font-body font-semibold text-cream text-sm mb-4">TWh wasted · Source: Electric Insights, REF, NESO</p>
+              <p className="font-mono text-base text-steel mb-1 uppercase tracking-widest">UK Renewable Curtailment by Year</p>
+              <p className="font-body font-semibold text-cream text-lg mb-4">TWh wasted · Source: Electric Insights, REF, NESO</p>
               <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={curtailmentHistory} barSize={20}>
-                  <XAxis dataKey="year" stroke="none" tick={{ fill: '#64748B', fontSize: 12, fontFamily: 'IBM Plex Mono' }} />
-                  <YAxis stroke="none" tick={{ fill: '#64748B', fontSize: 12, fontFamily: 'IBM Plex Mono' }} unit=" T" />
+                  <XAxis dataKey="year" stroke="none" tick={{ fill: '#64748B', fontSize: 16, fontFamily: 'IBM Plex Mono' }} />
+                  <YAxis stroke="none" tick={{ fill: '#64748B', fontSize: 16, fontFamily: 'IBM Plex Mono' }} unit=" T" />
                   <Tooltip
                     formatter={(v: any, n: string) => [`${v} TWh`, n]}
-                    contentStyle={{ background: '#131116', border: '1px solid rgba(0,214,143,0.15)', borderRadius: 6, fontSize: 13, fontFamily: 'IBM Plex Mono' }}
+                    contentStyle={{ background: '#131116', border: '1px solid rgba(0,214,143,0.15)', borderRadius: 6, fontSize: 17, fontFamily: 'IBM Plex Mono' }}
                     labelStyle={{ color: '#94A3B8' }}
                   />
                   <Bar dataKey="wind" name="Wind" stackId="a" fill="rgba(0,214,143,0.7)" radius={[0,0,0,0]} />
@@ -247,9 +247,9 @@ export const Problem: React.FC = () => {
                 </BarChart>
               </ResponsiveContainer>
               <div className="flex items-center gap-4 mt-3 flex-wrap">
-                <div className="flex items-center gap-1.5"><span className="w-3 h-2 rounded-sm inline-block" style={{ background: 'rgba(0,214,143,0.7)' }} /><span className="font-mono text-xs text-steel">Wind</span></div>
-                <div className="flex items-center gap-1.5"><span className="w-3 h-2 rounded-sm inline-block" style={{ background: 'rgba(251,191,36,0.7)' }} /><span className="font-mono text-xs text-steel">Solar</span></div>
-                <div className="flex items-center gap-1.5"><span className="w-3 h-2 rounded-sm inline-block" style={{ background: 'rgba(0,208,232,0.7)' }} /><span className="font-mono text-xs text-steel">Hydro</span></div>
+                <div className="flex items-center gap-1.5"><span className="w-3 h-2 rounded-sm inline-block" style={{ background: 'rgba(0,214,143,0.7)' }} /><span className="font-mono text-base text-steel">Wind</span></div>
+                <div className="flex items-center gap-1.5"><span className="w-3 h-2 rounded-sm inline-block" style={{ background: 'rgba(251,191,36,0.7)' }} /><span className="font-mono text-base text-steel">Solar</span></div>
+                <div className="flex items-center gap-1.5"><span className="w-3 h-2 rounded-sm inline-block" style={{ background: 'rgba(0,208,232,0.7)' }} /><span className="font-mono text-base text-steel">Hydro</span></div>
               </div>
             </div>
           </motion.div>
@@ -262,10 +262,10 @@ export const Problem: React.FC = () => {
           >
             <div className="flex items-start justify-between mb-6">
               <div>
-                <p className="font-mono text-xs text-steel tracking-widest uppercase mb-1">Illustrative — Scottish Onshore Wind Farm</p>
-                <p className="font-display font-bold text-cream text-lg">Generation vs Grid Capacity</p>
+                <p className="font-mono text-base text-steel tracking-widest uppercase mb-1">Illustrative — Scottish Onshore Wind Farm</p>
+                <p className="font-display font-bold text-cream text-2xl">Generation vs Grid Capacity</p>
               </div>
-              <div className="font-mono text-xs px-3 py-1.5 rounded"
+              <div className="font-mono text-base px-3 py-1.5 rounded"
                 style={{ color: '#EF4444', background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.15)' }}>
                 ▲ WASTED
               </div>
@@ -283,8 +283,8 @@ export const Problem: React.FC = () => {
                     <stop offset="95%" stopColor="#64748B" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <XAxis dataKey="t" stroke="none" tick={{ fill: '#64748B', fontSize: 12, fontFamily: 'IBM Plex Mono' }} />
-                <YAxis stroke="none" tick={{ fill: '#64748B', fontSize: 12, fontFamily: 'IBM Plex Mono' }} unit="%" />
+                <XAxis dataKey="t" stroke="none" tick={{ fill: '#64748B', fontSize: 16, fontFamily: 'IBM Plex Mono' }} />
+                <YAxis stroke="none" tick={{ fill: '#64748B', fontSize: 16, fontFamily: 'IBM Plex Mono' }} unit="%" />
                 <Tooltip content={<ChartTip />} />
                 <Area type="monotone" dataKey="gen" name="Generation %" stroke="#EF4444" strokeWidth={2} fill="url(#gGen)" />
                 <Area type="monotone" dataKey="cap" name="Grid cap %" stroke="#64748B" strokeWidth={1} fill="url(#gGrid)" strokeDasharray="4 4" />
@@ -293,12 +293,12 @@ export const Problem: React.FC = () => {
 
             <div className="mt-4 px-4 py-3 rounded flex items-center justify-between"
               style={{ background: 'rgba(239,68,68,0.05)', border: '1px solid rgba(239,68,68,0.12)' }}>
-              <span className="font-body text-sm text-mist">Gap above grid cap = curtailed energy</span>
-              <span className="font-mono font-bold text-sm" style={{ color: '#EF4444' }}>paid to waste it</span>
+              <span className="font-body text-lg text-mist">Gap above grid cap = curtailed energy</span>
+              <span className="font-mono font-bold text-lg" style={{ color: '#EF4444' }}>paid to waste it</span>
             </div>
 
             <div className="mt-5 p-4 rounded-lg" style={{ background: 'rgba(13,12,15,0.6)', border: '1px solid rgba(255,255,255,0.04)' }}>
-              <p className="font-mono text-xs text-steel mb-3 uppercase tracking-wider">Why this is getting worse</p>
+              <p className="font-mono text-base text-steel mb-3 uppercase tracking-wider">Why this is getting worse</p>
               <div className="space-y-2">
                 {[
                   { dot: '#EF4444', text: '95% of UK wind curtailment originates in Scotland' },
@@ -308,7 +308,7 @@ export const Problem: React.FC = () => {
                 ].map((r, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: r.dot }} />
-                    <p className="font-body text-xs text-mist leading-relaxed">{r.text}</p>
+                    <p className="font-body text-base text-mist leading-relaxed">{r.text}</p>
                   </div>
                 ))}
               </div>

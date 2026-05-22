@@ -60,7 +60,7 @@ export const Team: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center gap-4 mb-16">
           <div className="w-8 h-px" style={{ background: '#00D68F' }} />
-          <span className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#00D68F' }}>The Team</span>
+          <span className="font-mono text-base tracking-[0.25em] uppercase" style={{ color: '#00D68F' }}>The Team</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-16">
@@ -72,7 +72,7 @@ export const Team: React.FC = () => {
           >
             <h2
               className="font-display font-black text-cream"
-              style={{ fontSize: 'clamp(38px, 4vw, 64px)', lineHeight: 0.95 }}
+              style={{ fontSize: 'clamp(42px, 4vw, 64px)', lineHeight: 0.95 }}
             >
               THREE ENGINEERS.<br />
               <span
@@ -93,7 +93,7 @@ export const Team: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <p className="font-body text-mist text-lg leading-relaxed font-light">
+            <p className="font-body text-mist text-2xl leading-relaxed font-light">
               Cross-disciplinary expertise covering all critical areas — renewable engineering,
               software systems, and commercial execution. We've built the simulation engine,
               the digital twin, and the business model from scratch.
@@ -123,7 +123,7 @@ export const Team: React.FC = () => {
               {/* Avatar */}
               <div className="relative mb-7">
                 <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center font-mono font-bold text-lg"
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center font-mono font-bold text-2xl"
                   style={{
                     background: `linear-gradient(135deg, ${m.color}20, ${m.color}08)`,
                     border: `1px solid ${m.color}35`,
@@ -145,16 +145,16 @@ export const Team: React.FC = () => {
               </div>
 
               <h4 className="font-display font-black text-cream text-2xl mb-1">{m.name}</h4>
-              <p className="font-mono text-xs mb-2" style={{ color: m.color }}>{m.role}</p>
-              <p className="font-mono text-xs text-steel mb-5 leading-relaxed">{m.focus}</p>
+              <p className="font-mono text-base mb-2" style={{ color: m.color }}>{m.role}</p>
+              <p className="font-mono text-base text-steel mb-5 leading-relaxed">{m.focus}</p>
 
               <div className="border-t pt-5 mb-5" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
-                <p className="font-body text-mist text-base leading-relaxed">{m.bio}</p>
+                <p className="font-body text-mist text-xl leading-relaxed">{m.bio}</p>
               </div>
 
               <a
                 href={`mailto:${m.email}`}
-                className="inline-flex items-center gap-2 font-mono text-xs transition-all"
+                className="inline-flex items-center gap-2 font-mono text-base transition-all"
                 style={{ color: '#475569', textDecoration: 'none' }}
                 onMouseEnter={e => {
                   e.currentTarget.style.color = m.color;

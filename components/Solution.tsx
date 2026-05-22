@@ -139,7 +139,7 @@ export const Solution: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center gap-4 mb-16">
           <div className="w-8 h-px" style={{ background: '#00D68F' }} />
-          <span className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#00D68F' }}>The Solution</span>
+          <span className="font-mono text-base tracking-[0.25em] uppercase" style={{ color: '#00D68F' }}>The Solution</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-24">
@@ -156,12 +156,12 @@ export const Solution: React.FC = () => {
               SMALL MODULAR<br />
               <span className="text-green-gradient">HYDROGEN PLANTS</span>
             </h2>
-            <p className="font-body text-mist text-lg leading-relaxed mb-8 font-light">
+            <p className="font-body text-mist text-2xl leading-relaxed mb-8 font-light">
               Containerised electrolysis units that plug directly into curtailed wind, solar, and hydro sources.
               We turn the grid's problem — too much clean energy — into our feedstock.
             </p>
             <a href="#tech"
-              className="inline-flex items-center gap-2 font-body font-semibold text-sm tracking-wide group"
+              className="inline-flex items-center gap-2 font-body font-semibold text-lg tracking-wide group"
               style={{ color: '#00D68F' }}>
               See the design engine
               <span className="group-hover:translate-x-1 transition-transform">→</span>
@@ -200,10 +200,10 @@ export const Solution: React.FC = () => {
                 padding: '40px',
               }}
             >
-              <div className="font-mono text-xs text-steel mb-6 tracking-widest">{f.num}</div>
+              <div className="font-mono text-base text-steel mb-6 tracking-widest">{f.num}</div>
               <div className="w-8 h-0.5 mb-6 rounded-full" style={{ background: f.color }} />
               <h4 className="font-display font-bold text-cream text-xl mb-3">{f.title}</h4>
-              <p className="font-body text-mist text-base leading-relaxed">{f.body}</p>
+              <p className="font-body text-mist text-xl leading-relaxed">{f.body}</p>
             </motion.div>
           ))}
         </div>

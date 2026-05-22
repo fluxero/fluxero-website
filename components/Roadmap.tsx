@@ -69,18 +69,18 @@ export const Roadmap: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center gap-4 mb-16">
           <div className="w-8 h-px" style={{ background: "#00D68F" }} />
-          <span className="font-mono text-xs text-green tracking-[0.25em] uppercase">Roadmap</span>
+          <span className="font-mono text-base text-green tracking-[0.25em] uppercase">Roadmap</span>
         </div>
 
         <div className="flex items-start justify-between mb-10">
           <h2
             className="font-display font-black text-cream"
-            style={{ fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 0.95 }}
+            style={{ fontSize: 'clamp(32px, 4vw, 48px)', lineHeight: 0.95 }}
           >
             THE PATH<br />
             <span className="text-green-gradient">TO SCALE.</span>
           </h2>
-          <div className="flex items-center gap-2 text-steel text-sm font-mono">
+          <div className="flex items-center gap-2 text-steel text-lg font-mono">
             <span>← scroll</span>
           </div>
         </div>
@@ -116,7 +116,7 @@ export const Roadmap: React.FC = () => {
               {/* Phase badge */}
               <div className="flex items-center justify-between mb-5">
                 <span
-                  className="font-mono text-xs px-2.5 py-1 rounded tracking-wider"
+                  className="font-mono text-base px-2.5 py-1 rounded tracking-wider"
                   style={{
                     color: p.color,
                     background: `rgba(0,214,143,0.07)`,
@@ -128,7 +128,7 @@ export const Roadmap: React.FC = () => {
                 {p.done && (
                   <div className="w-5 h-5 rounded-full flex items-center justify-center"
                     style={{ background: '#00D68F', boxShadow: '0 0 10px rgba(0,214,143,0.4)' }}>
-                    <span className="font-bold" style={{ fontSize: 12, color: "#070608" }}>✓</span>
+                    <span className="font-bold" style={{ fontSize: 16, color: "#070608" }}>✓</span>
                   </div>
                 )}
                 {p.current && (
@@ -139,7 +139,7 @@ export const Roadmap: React.FC = () => {
                 )}
               </div>
 
-              <div className="font-mono text-xs text-steel mb-2">{p.year}</div>
+              <div className="font-mono text-base text-steel mb-2">{p.year}</div>
               <h4 className="font-display font-black text-cream text-xl mb-1">{p.label}</h4>
               <p className="font-body text-mist font-light mb-6">{p.title}</p>
 
@@ -148,7 +148,7 @@ export const Roadmap: React.FC = () => {
                   <div key={j} className="flex items-start gap-3">
                     <div className="w-1 h-1 rounded-full mt-2 flex-shrink-0"
                       style={{ background: p.done ? p.color : p.current ? p.color : '#64748B' }} />
-                    <span className="font-body text-xs text-mist leading-relaxed">{item}</span>
+                    <span className="font-body text-base text-mist leading-relaxed">{item}</span>
                   </div>
                 ))}
               </div>

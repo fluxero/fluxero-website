@@ -36,12 +36,12 @@ export const FAQ: React.FC = () => {
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <div className="flex items-center gap-4 mb-16">
           <div className="w-8 h-px" style={{ background: "#00D68F" }} />
-          <span className="font-mono text-xs text-green tracking-[0.25em] uppercase">FAQ</span>
+          <span className="font-mono text-base text-green tracking-[0.25em] uppercase">FAQ</span>
         </div>
 
         <h2
           className="font-display font-black text-cream mb-12"
-          style={{ fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 0.95 }}
+          style={{ fontSize: 'clamp(32px, 4vw, 48px)', lineHeight: 0.95 }}
         >
           COMMON<br />
           <span className="text-green-gradient">QUESTIONS.</span>
@@ -67,7 +67,7 @@ export const FAQ: React.FC = () => {
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full flex items-center justify-between px-6 py-5 text-left"
               >
-                <span className="font-body font-semibold text-cream text-base pr-6">{faq.q}</span>
+                <span className="font-body font-semibold text-cream text-xl pr-6">{faq.q}</span>
                 <div
                   className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors"
                   style={{
@@ -75,7 +75,7 @@ export const FAQ: React.FC = () => {
                     color: open === i ? '#00D68F' : '#64748B',
                   }}
                 >
-                  <span style={{ fontSize: 16, lineHeight: 1, transform: open === i ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s', display: 'block' }}>+</span>
+                  <span style={{ fontSize: 20, lineHeight: 1, transform: open === i ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s', display: 'block' }}>+</span>
                 </div>
               </button>
 
@@ -88,7 +88,7 @@ export const FAQ: React.FC = () => {
                     transition={{ duration: 0.25 }}
                   >
                     <div className="px-6 pb-6 border-t border-white/5 pt-4">
-                      <p className="font-body text-mist text-sm leading-relaxed">{faq.a}</p>
+                      <p className="font-body text-mist text-lg leading-relaxed">{faq.a}</p>
                     </div>
                   </motion.div>
                 )}

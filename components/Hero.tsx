@@ -560,7 +560,7 @@ export const Hero: React.FC = () => {
           style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}
         >
           <div style={{ width: 24, height: 1, background: '#00D68F' }} />
-          <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 13, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#00D68F' }}>
+          <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 17, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#00D68F' }}>
             Green Hydrogen · UK
           </span>
           <div style={{ width: 24, height: 1, background: '#00D68F' }} />
@@ -600,7 +600,7 @@ export const Hero: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.9 }}
           style={{
             fontFamily: '"IBM Plex Sans", sans-serif',
-            fontSize: 'clamp(18px, 1.8vw, 22px)',
+            fontSize: 'clamp(22px, 1.8vw, 26px)',
             fontWeight: 300,
             color: '#A8A3B3',
             letterSpacing: '0.01em',
@@ -630,7 +630,7 @@ export const Hero: React.FC = () => {
               padding: '13px 28px',
               fontFamily: '"IBM Plex Sans", sans-serif',
               fontWeight: 600,
-              fontSize: 16,
+              fontSize: 20,
               letterSpacing: '0.02em',
               cursor: 'pointer',
               boxShadow: '0 0 28px rgba(0,214,143,0.25)',
@@ -652,7 +652,7 @@ export const Hero: React.FC = () => {
               padding: '12px 26px',
               fontFamily: '"IBM Plex Sans", sans-serif',
               fontWeight: 500,
-              fontSize: 16,
+              fontSize: 20,
               letterSpacing: '0.02em',
               cursor: 'pointer',
               transition: 'border-color 0.2s, background 0.2s',
@@ -671,30 +671,30 @@ export const Hero: React.FC = () => {
           transition={{ duration: 0.5, delay: 1.4 }}
           style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}
         >
-          <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 12, color: '#475569', letterSpacing: '0.15em', textTransform: 'uppercase', marginRight: 4 }}>Backed by</span>
+          <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 16, color: '#475569', letterSpacing: '0.15em', textTransform: 'uppercase', marginRight: 4 }}>Backed by</span>
 
           {/* NVIDIA Inception */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(118,185,0,0.07)', border: '1px solid rgba(118,185,0,0.22)', borderRadius: 8, padding: '5px 12px' }}>
             <img src="/partners/nvidia-logo.png" alt="" style={{ width: 54, height: 14, objectFit: 'contain', flexShrink: 0 }} />
-            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 12, color: 'rgba(158,217,0,0.85)', letterSpacing: '0.06em' }}>NVIDIA INCEPTION</span>
+            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 16, color: 'rgba(158,217,0,0.85)', letterSpacing: '0.06em' }}>NVIDIA INCEPTION</span>
           </div>
 
           {/* Barclays */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(0,174,239,0.05)', border: '1px solid rgba(0,174,239,0.18)', borderRadius: 8, padding: '5px 12px' }}>
             <img src="/partners/barclays-logo.png" alt="" style={{ width: 58, height: 14, objectFit: 'contain', flexShrink: 0 }} />
-            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 12, color: 'rgba(0,174,239,0.85)', letterSpacing: '0.06em' }}>BARCLAYS EAGLE LABS</span>
+            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 16, color: 'rgba(0,174,239,0.85)', letterSpacing: '0.06em' }}>BARCLAYS EAGLE LABS</span>
           </div>
 
           {/* Google for Startups */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 8, padding: '5px 12px' }}>
             <img src="/partners/google-logo.png" alt="" style={{ height: 12, width: 'auto', objectFit: 'contain', flexShrink: 0 }} />
-            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 12, color: 'rgba(241,235,224,0.78)', letterSpacing: '0.06em' }}>GOOGLE FOR STARTUPS</span>
+            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 16, color: 'rgba(241,235,224,0.78)', letterSpacing: '0.06em' }}>GOOGLE FOR STARTUPS</span>
           </div>
 
           {/* Durham */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(201,168,76,0.05)', border: '1px solid rgba(201,168,76,0.18)', borderRadius: 8, padding: '5px 12px' }}>
             <img src="/partners/durham-logo.png" alt="" style={{ height: 14, width: 'auto', objectFit: 'contain', flexShrink: 0 }} />
-            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 12, color: 'rgba(201,168,76,0.8)', letterSpacing: '0.06em' }}>DURHAM UNIVERSITY</span>
+            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 16, color: 'rgba(201,168,76,0.8)', letterSpacing: '0.06em' }}>DURHAM UNIVERSITY</span>
           </div>
         </motion.div>
 

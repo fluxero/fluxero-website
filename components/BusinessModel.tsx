@@ -52,7 +52,7 @@ export const BusinessModel: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center gap-4 mb-16">
           <div className="w-8 h-px" style={{ background: "#00D68F" }} />
-          <span className="font-mono text-xs text-green tracking-[0.25em] uppercase">Commercial Model</span>
+          <span className="font-mono text-base text-green tracking-[0.25em] uppercase">Commercial Model</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
@@ -66,12 +66,12 @@ export const BusinessModel: React.FC = () => {
           >
             <h2
               className="font-display font-black text-cream mb-4"
-              style={{ fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 0.95 }}
+              style={{ fontSize: 'clamp(32px, 4vw, 48px)', lineHeight: 0.95 }}
             >
               ASSET-LIGHT.<br />
               <span className="text-green-gradient">SCALES LIKE SOFTWARE.</span>
             </h2>
-            <p className="font-body text-mist text-base leading-relaxed mb-10 font-light">
+            <p className="font-body text-mist text-xl leading-relaxed mb-10 font-light">
               Fluxero's core product is intelligence — the digital twin, the simulation engine,
               the deployment playbook. The more sites we license, the better the model gets.
             </p>
@@ -90,13 +90,13 @@ export const BusinessModel: React.FC = () => {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <span className="font-mono text-xs text-steel">{m.num}</span>
-                      <span className={`font-display font-bold text-base ${active === m.id ? 'text-green' : 'text-cream'}`}>
+                      <span className="font-mono text-base text-steel">{m.num}</span>
+                      <span className={`font-display font-bold text-xl ${active === m.id ? 'text-green' : 'text-cream'}`}>
                         {m.title}
                       </span>
                     </div>
                     {m.tag && (
-                      <span className="font-mono text-xs px-2 py-1 rounded"
+                      <span className="font-mono text-base px-2 py-1 rounded"
                         style={{ color: m.tagColor, background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.2)' }}>
                         {m.tag}
                       </span>
@@ -119,12 +119,12 @@ export const BusinessModel: React.FC = () => {
                 padding: '24px',
               }}
             >
-              <p className="font-body text-mist text-sm leading-relaxed mb-5">{model.body}</p>
+              <p className="font-body text-mist text-lg leading-relaxed mb-5">{model.body}</p>
               <div className="space-y-3 border-t border-white/5 pt-5">
                 {model.metrics.map(metric => (
                   <div key={metric.k} className="flex items-center justify-between">
-                    <span className="font-mono text-xs text-steel">{metric.k}</span>
-                    <span className="font-body font-medium text-cream text-sm">{metric.v}</span>
+                    <span className="font-mono text-base text-steel">{metric.k}</span>
+                    <span className="font-body font-medium text-cream text-lg">{metric.v}</span>
                   </div>
                 ))}
               </div>
@@ -156,9 +156,9 @@ export const BusinessModel: React.FC = () => {
                 {['#FF5F57','#FEBC2E','#28C840'].map((c, i) => (
                   <div key={i} className="w-3 h-3 rounded-full" style={{ background: c, opacity: 0.7 }} />
                 ))}
-                <span className="font-mono text-xs text-steel ml-2">fluxero_model.ts</span>
+                <span className="font-mono text-base text-steel ml-2">fluxero_model.ts</span>
               </div>
-              <div className="p-6 font-mono text-sm space-y-2 overflow-x-auto">
+              <div className="p-6 font-mono text-lg space-y-2 overflow-x-auto">
                 {[
                   ['// Fluxero unit economics', 'steel'],
                   ['', ''],
@@ -184,7 +184,7 @@ export const BusinessModel: React.FC = () => {
                     col === 'amber-dark' ? 'text-green/60' :
                     'text-steel'
                   }`} style={{ whiteSpace: 'pre' }}>
-                    <span className="select-none text-steel/30 mr-6 text-xs">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="select-none text-steel/30 mr-6 text-base">{String(i + 1).padStart(2, '0')}</span>
                     {line}
                   </div>
                 ))}
@@ -194,7 +194,7 @@ export const BusinessModel: React.FC = () => {
             {/* Note below */}
             <div className="mt-6 flex items-start gap-4 px-1">
               <div className="w-1 h-12 rounded-full flex-shrink-0 mt-1" style={{ background: "rgba(0,214,143,0.4)" }} />
-              <p className="font-body text-mist text-sm leading-relaxed">
+              <p className="font-body text-mist text-lg leading-relaxed">
                 Each new licensed site improves our digital twin's accuracy. Our dataset compounds
                 — making Fluxero's projections better and our defensibility stronger over time.
               </p>

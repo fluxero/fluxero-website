@@ -14,10 +14,10 @@ const DurhamLockup: React.FC = () => (
   <div style={{ display: 'flex', alignItems: 'center', gap: 12, height: 44 }}>
     <img src="/partners/durham-logo.png" alt="" style={{ height: 40, width: 'auto', objectFit: 'contain' }} />
     <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-      <span style={{ fontFamily: '"IBM Plex Sans Condensed", sans-serif', fontWeight: 700, fontSize: 16, letterSpacing: '0.08em', color: 'rgba(201,168,76,0.85)' }}>
+      <span style={{ fontFamily: '"IBM Plex Sans Condensed", sans-serif', fontWeight: 700, fontSize: 20, letterSpacing: '0.08em', color: 'rgba(201,168,76,0.85)' }}>
         DURHAM
       </span>
-      <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 9, letterSpacing: '0.12em', color: 'rgba(148,163,184,0.65)' }}>
+      <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 13, letterSpacing: '0.12em', color: 'rgba(148,163,184,0.65)' }}>
         UNIVERSITY
       </span>
     </div>
@@ -40,7 +40,7 @@ export const Partners: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="font-mono text-center text-xs tracking-[0.2em] uppercase mb-8"
+          className="font-mono text-center text-base tracking-[0.2em] uppercase mb-8"
           style={{ color: '#475569' }}
         >
           Backed by &amp; in partnership with

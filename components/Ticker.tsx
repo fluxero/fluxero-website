@@ -159,15 +159,15 @@ export const Ticker: React.FC = () => {
             const parts = item.split(` · ${idx}`);
             return (
               <span key={i} style={{ display: 'inline-flex', alignItems: 'center', margin: '0 32px' }}>
-                <span className="font-mono text-xs" style={{ color: '#94A3B8' }}>{parts[0]} · </span>
-                <span className="font-mono text-xs font-bold" style={{ color: indexColor(idx) }}>{idx}</span>
+                <span className="font-mono text-base" style={{ color: '#94A3B8' }}>{parts[0]} · </span>
+                <span className="font-mono text-base font-bold" style={{ color: indexColor(idx) }}>{idx}</span>
               </span>
             );
           }
           return (
             <span
               key={i}
-              className="font-mono text-xs"
+              className="font-mono text-base"
               style={{ color: '#94A3B8', margin: '0 32px', letterSpacing: '0.04em' }}
             >
               {item}

@@ -74,7 +74,7 @@ export const LiveCurtailmentBar: React.FC = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60" style={{ background: '#EF4444' }} />
               <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: '#EF4444' }} />
             </span>
-            <span className="font-mono text-xs tracking-[0.15em] uppercase" style={{ color: '#64748B' }}>
+            <span className="font-mono text-base tracking-[0.15em] uppercase" style={{ color: '#64748B' }}>
               UK renewable curtailment today
             </span>
           </div>
@@ -84,7 +84,7 @@ export const LiveCurtailmentBar: React.FC = () => {
             <span
               className="font-display font-black counter tabular-nums"
               style={{
-                fontSize: 'clamp(22px, 3vw, 36px)',
+                fontSize: 'clamp(26px, 3vw, 40px)',
                 color: '#EF4444',
                 lineHeight: 1,
                 fontVariantNumeric: 'tabular-nums',
@@ -92,37 +92,37 @@ export const LiveCurtailmentBar: React.FC = () => {
             >
               {formatMwh(mwh)}
             </span>
-            <span className="font-mono text-xs" style={{ color: '#475569' }}>wasted since midnight</span>
+            <span className="font-mono text-base" style={{ color: '#475569' }}>wasted since midnight</span>
           </div>
 
           {/* Equivalents */}
           <div className="flex items-center gap-6 flex-wrap justify-center">
             <div className="text-center">
-              <p className="font-mono font-bold text-sm tabular-nums" style={{ color: '#FBBF24' }}>
+              <p className="font-mono font-bold text-lg tabular-nums" style={{ color: '#FBBF24' }}>
                 {homesWasted.toLocaleString()}
               </p>
-              <p className="font-mono text-[9px] uppercase tracking-wider" style={{ color: '#475569' }}>homes could be powered</p>
+              <p className="font-mono text-[13px] uppercase tracking-wider" style={{ color: '#475569' }}>homes could be powered</p>
             </div>
             <div className="w-px h-6 hidden sm:block" style={{ background: 'rgba(255,255,255,0.05)' }} />
             <div className="text-center">
-              <p className="font-mono font-bold text-sm tabular-nums" style={{ color: '#00D68F' }}>
+              <p className="font-mono font-bold text-lg tabular-nums" style={{ color: '#00D68F' }}>
                 {h2KgPossible.toLocaleString()} kg
               </p>
-              <p className="font-mono text-[9px] uppercase tracking-wider" style={{ color: '#475569' }}>green H₂ uncaptured</p>
+              <p className="font-mono text-[13px] uppercase tracking-wider" style={{ color: '#475569' }}>green H₂ uncaptured</p>
             </div>
             <div className="w-px h-6 hidden sm:block" style={{ background: 'rgba(255,255,255,0.05)' }} />
             <div className="text-center">
-              <p className="font-mono font-bold text-sm" style={{ color: '#94A3B8' }}>
+              <p className="font-mono font-bold text-lg" style={{ color: '#94A3B8' }}>
                 £{Math.floor(mwh * 1000 * 0.01 / 100).toLocaleString()}k
               </p>
-              <p className="font-mono text-[9px] uppercase tracking-wider" style={{ color: '#475569' }}>constraint payments accruing</p>
+              <p className="font-mono text-[13px] uppercase tracking-wider" style={{ color: '#475569' }}>constraint payments accruing</p>
             </div>
           </div>
 
           {/* CTA */}
           <a
             href="#problem"
-            className="font-mono text-xs px-3 py-1.5 rounded flex-shrink-0 transition-all hover:scale-105"
+            className="font-mono text-base px-3 py-1.5 rounded flex-shrink-0 transition-all hover:scale-105"
             style={{
               color: '#EF4444',
               background: 'rgba(239,68,68,0.06)',
