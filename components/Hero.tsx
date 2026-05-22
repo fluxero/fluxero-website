@@ -535,148 +535,167 @@ export const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
 
-      {/* Canvas layer */}
+      {/* Canvas background */}
       <div className="absolute inset-0" style={{ background: '#070608' }}>
         <EnergyCanvas />
       </div>
 
-      {/* Depth vignette – keeps left text area readable */}
+      {/* Strong center vignette so text is readable */}
       <div className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 58% 68% at 26% 50%, transparent 22%, rgba(7,6,8,0.90) 82%)' }} />
-      <div className="absolute bottom-0 inset-x-0 h-52 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 90% 90% at 50% 50%, rgba(7,6,8,0.55) 0%, rgba(7,6,8,0.88) 60%, rgba(7,6,8,0.97) 100%)' }} />
+      <div className="absolute bottom-0 inset-x-0 h-48 pointer-events-none"
         style={{ background: 'linear-gradient(to top, #070608, transparent)' }} />
-      <div className="absolute top-0 inset-x-0 h-36 pointer-events-none"
+      <div className="absolute top-0 inset-x-0 h-32 pointer-events-none"
         style={{ background: 'linear-gradient(to bottom, #070608, transparent)' }} />
 
-      {/* Text content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-16" style={{ maxWidth: 'min(55%, 720px)' }}>
+      {/* CENTERED content */}
+      <div className="relative z-10 flex flex-col items-center text-center"
+        style={{ maxWidth: 720, margin: '0 auto', padding: 'clamp(100px, 15vw, 140px) 2rem 80px' }}>
 
-        {/* Market size banner — above headline */}
+        {/* Pre-headline tag */}
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          className="inline-flex items-center gap-3 mb-6"
+          transition={{ duration: 0.5, delay: 0.4 }}
+          style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 28 }}
         >
-          <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#00D68F' }} />
-          <span className="font-mono text-xs tracking-[0.2em] uppercase" style={{ color: '#A8A3B3' }}>
-            Green H₂ market
+          <div style={{ width: 24, height: 1, background: '#00D68F' }} />
+          <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#00D68F' }}>
+            Green Hydrogen · UK
           </span>
-          <span className="font-display font-black text-sm" style={{ color: '#00D68F' }}>£190B by 2034</span>
-          <span className="font-mono text-xs" style={{ color: '#64748B' }}>· 41.4% CAGR · IRENA 2025</span>
+          <div style={{ width: 24, height: 1, background: '#00D68F' }} />
         </motion.div>
 
+        {/* HEADLINE — DM Serif Display, much smaller than before */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6, ease: [0.23, 1, 0.32, 1] }}
-          className="font-display font-black leading-none mb-8"
-          style={{ fontSize: 'clamp(56px, 9vw, 140px)', letterSpacing: '-0.01em', lineHeight: 0.92, color: '#F0EBE0' }}
+          style={{
+            fontFamily: '"DM Serif Display", serif',
+            fontSize: 'clamp(36px, 5vw, 72px)',
+            fontWeight: 400,
+            lineHeight: 1.1,
+            color: '#F0EBE0',
+            letterSpacing: '-0.01em',
+            marginBottom: 24,
+            textAlign: 'center',
+          }}
         >
-          ENERGY<br />
+          Clean energy,<br />
           <span style={{
             background: 'linear-gradient(135deg, #00A86B 0%, #00D68F 50%, #00E5B8 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
           }}>
-            GETS WASTED.
+            captured.
           </span>
-          <br />
-          WE CAPTURE IT.
         </motion.h1>
 
+        {/* ONE LINE tagline only — no long paragraph */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.9 }}
-          className="font-body text-xl md:text-2xl font-light leading-relaxed mb-12"
-          style={{ color: '#A8A3B3', maxWidth: '480px' }}
+          style={{
+            fontFamily: '"IBM Plex Sans", sans-serif',
+            fontSize: 'clamp(14px, 1.6vw, 18px)',
+            fontWeight: 300,
+            color: '#A8A3B3',
+            letterSpacing: '0.01em',
+            lineHeight: 1.6,
+            marginBottom: 40,
+            maxWidth: 500,
+            textAlign: 'center',
+          }}
         >
-          Fluxero builds Small Modular Hydrogen Plants that convert curtailed wind,
-          solar, and hydro into green hydrogen — at the source, before the grid
-          can reject it.
+          We capture curtailed wind, solar and hydro — and convert it to green hydrogen at the source.
         </motion.p>
 
+        {/* Two CTA buttons — centered row */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1.1 }}
-          className="flex flex-wrap items-center gap-4"
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, flexWrap: 'wrap', marginBottom: 52 }}
         >
           <button
-            onClick={() => navigate('/calculator')}
-            className="font-body font-semibold px-8 py-4 rounded text-base tracking-wide transition-all"
+            onClick={() => navigate('/solution')}
             style={{
               background: 'linear-gradient(135deg, #00A86B, #00D68F)',
               color: '#0D0C0F',
-              boxShadow: '0 0 30px rgba(0,214,143,0.28)',
               border: 'none',
+              borderRadius: 9999,
+              padding: '13px 28px',
+              fontFamily: '"IBM Plex Sans", sans-serif',
+              fontWeight: 600,
+              fontSize: 14,
+              letterSpacing: '0.02em',
               cursor: 'pointer',
+              boxShadow: '0 0 28px rgba(0,214,143,0.25)',
+              transition: 'transform 0.2s, box-shadow 0.2s',
             }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.04)';
-              (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 0 54px rgba(0,214,143,0.50)';
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1)';
-              (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 0 30px rgba(0,214,143,0.28)';
-            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.04)'; (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 0 48px rgba(0,214,143,0.45)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1)'; (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 0 28px rgba(0,214,143,0.25)'; }}
           >
-            Calculate your site's H₂ potential →
+            See how it works →
           </button>
-          <a href="#contact"
-            className="font-body font-medium text-xs px-6 py-4 rounded tracking-widest uppercase"
-            style={{ color: '#00D68F', border: '1px solid rgba(0,214,143,0.3)', background: 'rgba(0,214,143,0.05)' }}>
-            Seed Round Open →
-          </a>
+
+          <button
+            onClick={() => navigate('/contact')}
+            style={{
+              background: 'transparent',
+              color: '#00D68F',
+              border: '1px solid rgba(0,214,143,0.35)',
+              borderRadius: 9999,
+              padding: '12px 26px',
+              fontFamily: '"IBM Plex Sans", sans-serif',
+              fontWeight: 500,
+              fontSize: 14,
+              letterSpacing: '0.02em',
+              cursor: 'pointer',
+              transition: 'border-color 0.2s, background 0.2s',
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(0,214,143,0.6)'; (e.currentTarget as HTMLButtonElement).style.background = 'rgba(0,214,143,0.06)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(0,214,143,0.35)'; (e.currentTarget as HTMLButtonElement).style.background = 'transparent'; }}
+          >
+            Get in touch
+          </button>
         </motion.div>
 
-        {/* Stats */}
+        {/* Partner badges — below buttons */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.4 }}
-          className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-16"
+          transition={{ duration: 0.5, delay: 1.4 }}
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}
         >
-          {[
-            { v: '8.3 TWh',  l: 'UK renewables wasted in 2024', sub: '↑91% year-on-year · REF' },
-            { v: '£393M',    l: 'Paid to switch off clean energy', sub: 'Passed to consumer bills · 2024' },
-            { v: '£190B',    l: 'Global green H₂ market by 2034', sub: '41.4% CAGR · IRENA 2025' },
-            { v: '$7B',      l: 'Raised by H₂ startups in 2024', sub: 'Sector momentum accelerating' },
-            { v: '£8–12',    l: 'Per kg green H₂ market rate', sub: 'UK 2024–25 contract price' },
-            { v: '10yr',     l: 'Grid connection wait time', sub: 'Fluxero bypasses queue entirely' },
-          ].map(s => (
-            <div key={s.v} className="flex flex-col gap-0.5">
-              <span className="font-mono font-bold text-lg" style={{ color: '#00D68F' }}>{s.v}</span>
-              <span className="font-body text-xs leading-snug" style={{ color: '#A8A3B3' }}>{s.l}</span>
-              <span className="font-mono text-xs" style={{ color: '#64748B' }}>{s.sub}</span>
+          <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 10, color: '#475569', letterSpacing: '0.15em', textTransform: 'uppercase', marginRight: 4 }}>Backed by</span>
+
+          {/* Nvidia Inception */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(118,185,0,0.07)', border: '1px solid rgba(118,185,0,0.22)', borderRadius: 8, padding: '5px 12px' }}>
+            <div style={{ width: 14, height: 14, borderRadius: 3, background: 'linear-gradient(135deg, #76b900, #9ed900)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <span style={{ fontSize: 7, color: '#000', fontWeight: 900, lineHeight: 1 }}>N</span>
             </div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* Desktop legend */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.8 }}
-        className="absolute bottom-12 right-8 hidden lg:flex flex-col gap-2"
-        style={{ zIndex: 20 }}
-      >
-        {[
-          { color: 'rgba(148,163,184,0.75)', label: 'Wind / Solar / Hydro (source)' },
-          { color: 'rgba(255,64,32,0.70)',   label: 'Grid-rejected (wasted)'        },
-          { color: 'rgba(56,189,248,0.85)',  label: 'SMHP captured'                 },
-          { color: 'rgba(0,214,143,0.85)',   label: 'Green hydrogen output'          },
-        ].map(l => (
-          <div key={l.label} className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: l.color }} />
-            <span className="font-mono text-[9px] uppercase tracking-wider" style={{ color: '#475569' }}>{l.label}</span>
+            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 10, color: 'rgba(158,217,0,0.85)', letterSpacing: '0.06em' }}>NVIDIA INCEPTION</span>
           </div>
-        ))}
-      </motion.div>
 
+          {/* Barclays */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(0,174,239,0.05)', border: '1px solid rgba(0,174,239,0.18)', borderRadius: 8, padding: '5px 12px' }}>
+            <div style={{ width: 14, height: 14, borderRadius: 3, background: '#00AEEF', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <span style={{ fontSize: 7, color: '#fff', fontWeight: 900, lineHeight: 1 }}>B</span>
+            </div>
+            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 10, color: 'rgba(0,174,239,0.85)', letterSpacing: '0.06em' }}>BARCLAYS EAGLE LABS</span>
+          </div>
+
+          {/* Durham */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(201,168,76,0.05)', border: '1px solid rgba(201,168,76,0.18)', borderRadius: 8, padding: '5px 12px' }}>
+            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 10, color: 'rgba(201,168,76,0.8)', letterSpacing: '0.06em' }}>DURHAM UNIVERSITY</span>
+          </div>
+        </motion.div>
+
+      </div>
     </section>
   );
 };

@@ -5,6 +5,12 @@ import { Splash }          from './components/Splash';
 import { Navbar }          from './components/Navbar';
 import Home                from './Home';
 import CalculatorPage      from './CalculatorPage';
+import ProblemPage         from './ProblemPage';
+import SolutionPage        from './SolutionPage';
+import BusinessPage        from './BusinessPage';
+import TractionPage        from './TractionPage';
+import TeamPage            from './TeamPage';
+import ContactPage         from './ContactPage';
 
 function ScrollProgress() {
   const { scrollYProgress } = useScroll();
@@ -43,6 +49,12 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/calculator" element={<CalculatorPage />} />
+              <Route path="/problem" element={<ProblemPage />} />
+              <Route path="/solution" element={<SolutionPage />} />
+              <Route path="/business" element={<BusinessPage />} />
+              <Route path="/traction" element={<TractionPage />} />
+              <Route path="/team" element={<TeamPage />} />
+              <Route path="/contact" element={<ContactPage />} />
             </Routes>
           </motion.div>
         )}
