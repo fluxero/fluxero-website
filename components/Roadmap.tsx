@@ -75,7 +75,7 @@ export const Roadmap: React.FC = () => {
         <div className="flex items-start justify-between mb-10">
           <h2
             className="font-display font-black text-cream"
-            style={{ fontSize: 'clamp(32px, 4vw, 48px)', lineHeight: 0.95 }}
+            style={{ fontSize: 'clamp(30px, 4vw, 48px)', lineHeight: 0.95 }}
           >
             THE PATH<br />
             <span className="text-green-gradient">TO SCALE.</span>
@@ -128,7 +128,7 @@ export const Roadmap: React.FC = () => {
                 {p.done && (
                   <div className="w-5 h-5 rounded-full flex items-center justify-center"
                     style={{ background: '#00D68F', boxShadow: '0 0 10px rgba(0,214,143,0.4)' }}>
-                    <span className="font-bold" style={{ fontSize: 16, color: "#070608" }}>✓</span>
+                    <span className="font-bold" style={{ fontSize: 14, color: "#070608" }}>✓</span>
                   </div>
                 )}
                 {p.current && (

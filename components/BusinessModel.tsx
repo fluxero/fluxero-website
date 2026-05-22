@@ -66,7 +66,7 @@ export const BusinessModel: React.FC = () => {
           >
             <h2
               className="font-display font-black text-cream mb-4"
-              style={{ fontSize: 'clamp(32px, 4vw, 48px)', lineHeight: 0.95 }}
+              style={{ fontSize: 'clamp(30px, 4vw, 48px)', lineHeight: 0.95 }}
             >
               ASSET-LIGHT.<br />
               <span className="text-green-gradient">SCALES LIKE SOFTWARE.</span>

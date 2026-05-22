@@ -405,12 +405,12 @@ export const EnergyExplainer: React.FC = () => {
         {/* Section header */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 48 }}>
           <div style={{ width: 32, height: 1, background: G }} />
-          <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 17, letterSpacing: '0.25em', textTransform: 'uppercase', color: G }}>
+          <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 15, letterSpacing: '0.25em', textTransform: 'uppercase', color: G }}>
             How it works
           </span>
         </div>
 
-        <h2 style={{ fontFamily: '"DM Serif Display", serif', fontSize: 'clamp(32px, 4vw, 52px)', color: '#F0EBE0', marginBottom: 56, lineHeight: 1.1 }}>
+        <h2 style={{ fontFamily: '"DM Serif Display", serif', fontSize: 'clamp(30px, 4vw, 52px)', color: '#F0EBE0', marginBottom: 56, lineHeight: 1.1 }}>
           From wasted megawatts<br />
           <span style={{ background: 'linear-gradient(135deg, #00A86B, #00D68F)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
             to green hydrogen.
@@ -470,13 +470,13 @@ export const EnergyExplainer: React.FC = () => {
                 exit={{ opacity: 0, x: -16 }}
                 transition={{ duration: 0.4 }}
               >
-                <div style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 17, color: G, letterSpacing: '0.2em', marginBottom: 16 }}>
+                <div style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 15, color: G, letterSpacing: '0.2em', marginBottom: 16 }}>
                   {SCENES[scene].label} / {SCENES.length.toString().padStart(2, '0')}
                 </div>
-                <h3 style={{ fontFamily: '"DM Serif Display", serif', fontSize: 'clamp(26px, 2.5vw, 36px)', color: '#F0EBE0', marginBottom: 16, lineHeight: 1.2 }}>
+                <h3 style={{ fontFamily: '"DM Serif Display", serif', fontSize: 'clamp(24px, 2.5vw, 34px)', color: '#F0EBE0', marginBottom: 16, lineHeight: 1.2 }}>
                   {SCENES[scene].title}
                 </h3>
-                <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 21, color: '#A8A3B3', lineHeight: 1.7, fontWeight: 300, marginBottom: 32 }}>
+                <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 19, color: '#A8A3B3', lineHeight: 1.7, fontWeight: 300, marginBottom: 32 }}>
                   {SCENES[scene].desc}
                 </p>
               </motion.div>
@@ -513,7 +513,7 @@ export const EnergyExplainer: React.FC = () => {
                   padding: '8px 16px',
                   color: '#A8A3B3',
                   fontFamily: '"IBM Plex Mono", monospace',
-                  fontSize: 18,
+                  fontSize: 16,
                   cursor: 'pointer',
                 }}
               >
@@ -528,7 +528,7 @@ export const EnergyExplainer: React.FC = () => {
                   padding: '8px 16px',
                   color: G,
                   fontFamily: '"IBM Plex Mono", monospace',
-                  fontSize: 18,
+                  fontSize: 16,
                   cursor: 'pointer',
                 }}
               >
