@@ -1,6 +1,21 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
+
+/* Scroll to top on every route change. Without this the new page opens
+   at whatever scroll position the previous one was at. */
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    // disable any "smooth" scroll just for the jump, then restore
+    const html = document.documentElement;
+    const prev = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    html.style.scrollBehavior = prev;
+  }, [pathname]);
+  return null;
+}
 import { Splash }          from './components/Splash';
 import { Navbar }          from './components/Navbar';
 import Home                from './Home';
@@ -44,6 +59,7 @@ function App() {
 
         {ready && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
+            <ScrollToTop />
             <ScrollProgress />
             <Navbar />
             <Routes>
