@@ -75,7 +75,7 @@ export const FAQ: React.FC = () => {
                     color: open === i ? '#00D68F' : '#64748B',
                   }}
                 >
-                  <span style={{ fontSize: 14, lineHeight: 1, transform: open === i ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s', display: 'block' }}>+</span>
+                  <span style={{ fontSize: 16, lineHeight: 1, transform: open === i ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s', display: 'block' }}>+</span>
                 </div>
               </button>
 

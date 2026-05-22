@@ -103,7 +103,7 @@ export default function ProblemPage() {
         <motion.div {...fade}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 22 }}>
             <div style={{ width: 28, height: 1, background: G }} />
-            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: G }}>The Problem</span>
+            <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 13, letterSpacing: '0.25em', textTransform: 'uppercase', color: G }}>The Problem</span>
             <div style={{ width: 28, height: 1, background: G }} />
           </div>
           <h1 style={{ fontFamily: '"DM Serif Display", serif', fontSize: 'clamp(36px, 6vw, 80px)', fontWeight: 400, lineHeight: 1.05, marginBottom: 18, color: '#F0EBE0' }}>
@@ -112,7 +112,7 @@ export default function ProblemPage() {
               thrown away.
             </span>
           </h1>
-          <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 'clamp(15px, 1.4vw, 17px)', fontWeight: 300, color: '#A8A3B3', maxWidth: 520, margin: '0 auto', lineHeight: 1.6 }}>
+          <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 'clamp(17px, 1.4vw, 19px)', fontWeight: 300, color: '#A8A3B3', maxWidth: 520, margin: '0 auto', lineHeight: 1.6 }}>
             Enough renewable electricity to power millions of homes is rejected by the grid — every single day.
           </p>
         </motion.div>
@@ -125,8 +125,8 @@ export default function ProblemPage() {
             <motion.div key={i} {...fade} transition={{ duration: 0.5, delay: i * 0.08 }}
               style={{ background: '#131116', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 14, padding: '28px 24px' }}>
               <div style={{ fontFamily: '"DM Serif Display", serif', fontSize: 'clamp(34px, 3.6vw, 48px)', color: G, lineHeight: 1, marginBottom: 10 }}>{s.n}</div>
-              <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 14, color: '#F0EBE0', fontWeight: 500, marginBottom: 6, lineHeight: 1.4 }}>{s.label}</p>
-              <p style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 10, color: '#64748B', letterSpacing: '0.08em' }}>Source: {s.src}</p>
+              <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 16, color: '#F0EBE0', fontWeight: 500, marginBottom: 6, lineHeight: 1.4 }}>{s.label}</p>
+              <p style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 12, color: '#64748B', letterSpacing: '0.08em' }}>Source: {s.src}</p>
             </motion.div>
           ))}
         </div>
@@ -140,14 +140,14 @@ export default function ProblemPage() {
           <motion.div {...fade} style={{ marginBottom: 28 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 16 }}>
               <div style={{ width: 28, height: 1, background: G }} />
-              <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: G }}>
+              <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 13, letterSpacing: '0.25em', textTransform: 'uppercase', color: G }}>
                 Global curtailment · {COUNTRIES.length} countries · {TOTAL_TWH.toFixed(1)} TWh tracked
               </span>
             </div>
             <h2 style={{ fontFamily: '"DM Serif Display", serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#F0EBE0', marginBottom: 10, lineHeight: 1.1 }}>
               The waste is everywhere.
             </h2>
-            <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 15, color: '#A8A3B3', fontWeight: 300, maxWidth: 620 }}>
+            <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 17, color: '#A8A3B3', fontWeight: 300, maxWidth: 620 }}>
               Some countries waste wind. Others waste sun. The pattern is structural — every grid built for fossil generation chokes on renewables.
             </p>
           </motion.div>
@@ -164,7 +164,7 @@ export default function ProblemPage() {
                   onClick={() => setFilter(k)}
                   style={{
                     fontFamily: '"IBM Plex Mono", monospace',
-                    fontSize: 11,
+                    fontSize: 13,
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
                     padding: '7px 14px',
@@ -231,25 +231,25 @@ export default function ProblemPage() {
                 <div style={{ position: 'absolute', bottom: 16, left: 16, background: '#131116', border: `1px solid rgba(${r},${g},${b},0.35)`, borderRadius: 10, padding: '12px 16px', maxWidth: 280, boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
                     <div style={{ width: 8, height: 8, borderRadius: 999, background: `rgb(${r},${g},${b})` }} />
-                    <p style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 10, color: `rgba(${r},${g},${b},0.9)`, letterSpacing: '0.12em', textTransform: 'uppercase' }}>{KIND_LABEL[c.kind]}</p>
+                    <p style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 12, color: `rgba(${r},${g},${b},0.9)`, letterSpacing: '0.12em', textTransform: 'uppercase' }}>{KIND_LABEL[c.kind]}</p>
                   </div>
-                  <p style={{ fontFamily: '"IBM Plex Sans Condensed", sans-serif', fontWeight: 700, fontSize: 13, color: '#F0EBE0', letterSpacing: '0.04em', marginBottom: 4 }}>{hovered}</p>
+                  <p style={{ fontFamily: '"IBM Plex Sans Condensed", sans-serif', fontWeight: 700, fontSize: 15, color: '#F0EBE0', letterSpacing: '0.04em', marginBottom: 4 }}>{hovered}</p>
                   <p style={{ fontFamily: '"DM Serif Display", serif', fontSize: 24, color: '#F0EBE0', lineHeight: 1, marginBottom: 6 }}>{c.twh} TWh</p>
-                  <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 12, color: '#94A3B8', lineHeight: 1.4 }}>{c.note}</p>
+                  <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 14, color: '#94A3B8', lineHeight: 1.4 }}>{c.note}</p>
                 </div>
               );
             })()}
           </motion.div>
 
           {/* Source line */}
-          <p style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 10, color: '#334155', marginTop: 10, textAlign: 'right' }}>
+          <p style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 12, color: '#334155', marginTop: 10, textAlign: 'right' }}>
             Source: IEA · IRENA · Ember · national grid operators · 2023–24 data
           </p>
 
           {/* Top-12 ranked list with bars */}
           <motion.div {...fade} transition={{ duration: 0.5, delay: 0.15 }}
             style={{ marginTop: 32, background: '#0D0C0F', border: '1px solid rgba(255,255,255,0.04)', borderRadius: 14, padding: '24px 8px' }}>
-            <p style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 10, color: '#64748B', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '0 16px', marginBottom: 18 }}>
+            <p style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 12, color: '#64748B', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '0 16px', marginBottom: 18 }}>
               {filter === 'all' ? 'Top 12 by curtailment volume' : `Top ${ranked.length} ${KIND_LABEL[filter as Kind].toLowerCase()} curtailment`}
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -273,8 +273,8 @@ export default function ProblemPage() {
                       cursor: 'default',
                     }}
                   >
-                    <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 11, color: '#475569', textAlign: 'right' }}>{String(i + 1).padStart(2, '0')}</span>
-                    <span style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 14, color: '#F0EBE0', fontWeight: 400, letterSpacing: '0.01em' }}>{c.name}</span>
+                    <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 13, color: '#475569', textAlign: 'right' }}>{String(i + 1).padStart(2, '0')}</span>
+                    <span style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 16, color: '#F0EBE0', fontWeight: 400, letterSpacing: '0.01em' }}>{c.name}</span>
                     <div style={{ position: 'relative', height: 6, background: 'rgba(255,255,255,0.04)', borderRadius: 3, overflow: 'hidden' }}>
                       <motion.div
                         initial={{ width: 0 }}
@@ -293,7 +293,7 @@ export default function ProblemPage() {
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'flex-end' }}>
                       <span style={{ width: 6, height: 6, borderRadius: 999, background: `rgb(${r},${g},${b})` }} />
-                      <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 12, color: '#F0EBE0', fontVariantNumeric: 'tabular-nums' }}>{c.twh} TWh</span>
+                      <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 14, color: '#F0EBE0', fontVariantNumeric: 'tabular-nums' }}>{c.twh} TWh</span>
                     </div>
                   </div>
                 );
@@ -310,7 +310,7 @@ export default function ProblemPage() {
             <h2 style={{ fontFamily: '"DM Serif Display", serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#F0EBE0', lineHeight: 1.1, marginBottom: 10 }}>
               Hydrogen is the answer.
             </h2>
-            <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 15, color: '#A8A3B3', fontWeight: 300, maxWidth: 520 }}>
+            <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 17, color: '#A8A3B3', fontWeight: 300, maxWidth: 520 }}>
               Storable for months. Travels in existing pipes. Sells at £8–12/kg.
             </p>
           </motion.div>
@@ -324,8 +324,8 @@ export default function ProblemPage() {
               <motion.div key={i} {...fade} transition={{ duration: 0.4, delay: i * 0.07 }}
                 style={{ background: 'rgba(0,214,143,0.04)', border: '1px solid rgba(0,214,143,0.1)', borderRadius: 12, padding: '18px 16px' }}>
                 <div style={{ fontFamily: '"DM Serif Display", serif', fontSize: 26, color: G, marginBottom: 6, lineHeight: 1 }}>{item.v}</div>
-                <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 13, color: '#F0EBE0', fontWeight: 500, marginBottom: 4 }}>{item.l}</p>
-                <p style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 10, color: '#64748B' }}>{item.s}</p>
+                <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 15, color: '#F0EBE0', fontWeight: 500, marginBottom: 4 }}>{item.l}</p>
+                <p style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 12, color: '#64748B' }}>{item.s}</p>
               </motion.div>
             ))}
           </div>
@@ -338,7 +338,7 @@ export default function ProblemPage() {
           <motion.div {...fade} style={{ marginBottom: 32 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 12 }}>
               <div style={{ width: 28, height: 1, background: G }} />
-              <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: G }}>Timing</span>
+              <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 13, letterSpacing: '0.25em', textTransform: 'uppercase', color: G }}>Timing</span>
             </div>
             <h2 style={{ fontFamily: '"DM Serif Display", serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#F0EBE0', lineHeight: 1.1 }}>
               Why now.
@@ -353,7 +353,7 @@ export default function ProblemPage() {
               <motion.div key={i} {...fade} transition={{ duration: 0.5, delay: i * 0.08 }}
                 style={{ borderLeft: `2px solid ${G}`, paddingLeft: 18 }}>
                 <h3 style={{ fontFamily: '"DM Serif Display", serif', fontSize: 18, color: '#F0EBE0', marginBottom: 8 }}>{w.h}</h3>
-                <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 13.5, color: '#A8A3B3', lineHeight: 1.6, fontWeight: 300 }}>{w.s}</p>
+                <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 15.5, color: '#A8A3B3', lineHeight: 1.6, fontWeight: 300 }}>{w.s}</p>
               </motion.div>
             ))}
           </div>

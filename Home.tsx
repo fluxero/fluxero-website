@@ -26,7 +26,7 @@ export default function Home() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 32 }}>
               <div style={{ width: 32, height: 1, background: '#00D68F' }} />
-              <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#00D68F' }}>Explore</span>
+              <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 13, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#00D68F' }}>Explore</span>
             </div>
             <h2 style={{ fontFamily: '"DM Serif Display", serif', fontSize: 'clamp(28px, 3.5vw, 48px)', color: '#F0EBE0', marginBottom: 48, lineHeight: 1.1 }}>
               Everything you need to know.
@@ -58,8 +58,8 @@ export default function Home() {
                   }}
                   >
                     <h3 style={{ fontFamily: '"DM Serif Display", serif', fontSize: 22, color: '#F0EBE0', marginBottom: 10, lineHeight: 1.2 }}>{card.title}</h3>
-                    <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 14, color: '#A8A3B3', lineHeight: 1.6, fontWeight: 300, marginBottom: 20 }}>{card.desc}</p>
-                    <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 11, color: '#00D68F', letterSpacing: '0.1em' }}>Explore →</span>
+                    <p style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 16, color: '#A8A3B3', lineHeight: 1.6, fontWeight: 300, marginBottom: 20 }}>{card.desc}</p>
+                    <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: 13, color: '#00D68F', letterSpacing: '0.1em' }}>Explore →</span>
                   </div>
                 </Link>
               </motion.div>

@@ -117,7 +117,7 @@ export const Contact: React.FC = () => {
             >
               <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
                 style={{ background: 'rgba(0,214,143,0.12)', border: '1px solid rgba(0,214,143,0.28)' }}>
-                <span style={{ color: '#00E5B8', fontSize: 15 }}>✉</span>
+                <span style={{ color: '#00E5B8', fontSize: 17 }}>✉</span>
               </div>
               <div className="flex-1">
                 <p className="font-mono text-xs uppercase tracking-[0.2em] mb-0.5" style={{ color: '#475569' }}>General enquiries</p>

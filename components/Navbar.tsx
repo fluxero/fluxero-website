@@ -42,7 +42,7 @@ export const Navbar: React.FC = () => {
 
         {/* Logo */}
         <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-          <img src="/logo.png" alt="Fluxero" style={{ height: 32, width: 'auto', objectFit: 'contain' }}
+          <img src="/logo.png" alt="Fluxero" style={{ height: 40, width: 'auto', objectFit: 'contain' }}
             onError={e => {
               (e.target as HTMLImageElement).style.display = 'none';
               const span = document.createElement('span');
@@ -60,7 +60,7 @@ export const Navbar: React.FC = () => {
             return (
               <Link key={l.to} to={l.to} style={{
                 fontFamily: '"IBM Plex Sans", sans-serif',
-                fontSize: 13,
+                fontSize: 15,
                 fontWeight: 500,
                 letterSpacing: '0.03em',
                 color: isActive ? '#00D68F' : 'rgba(148,163,184,0.85)',
@@ -78,7 +78,7 @@ export const Navbar: React.FC = () => {
 
         {/* Right side */}
         <div className="hidden md:flex items-center gap-4">
-          <Link to="/calculator" style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 13, color: 'rgba(148,163,184,0.7)', textDecoration: 'none', letterSpacing: '0.03em' }}
+          <Link to="/calculator" style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 15, color: 'rgba(148,163,184,0.7)', textDecoration: 'none', letterSpacing: '0.03em' }}
             onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#F0EBE0'}
             onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'rgba(148,163,184,0.7)'}
           >
@@ -89,7 +89,7 @@ export const Navbar: React.FC = () => {
             color: '#0D0C0F',
             borderRadius: 9999,
             padding: '9px 20px',
-            fontSize: 13,
+            fontSize: 15,
             fontWeight: 600,
             fontFamily: '"IBM Plex Sans", sans-serif',
             textDecoration: 'none',
@@ -151,7 +151,7 @@ export const Navbar: React.FC = () => {
                   display: 'block', textAlign: 'center',
                   background: 'linear-gradient(135deg, #00A86B, #00D68F)',
                   color: '#0D0C0F', borderRadius: 12, padding: '16px',
-                  fontFamily: '"IBM Plex Sans", sans-serif', fontWeight: 600, fontSize: 15,
+                  fontFamily: '"IBM Plex Sans", sans-serif', fontWeight: 600, fontSize: 17,
                   textDecoration: 'none',
                 }}>
                   Contact us

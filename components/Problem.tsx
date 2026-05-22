@@ -234,11 +234,11 @@ export const Problem: React.FC = () => {
               <p className="font-body font-semibold text-cream text-sm mb-4">TWh wasted · Source: Electric Insights, REF, NESO</p>
               <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={curtailmentHistory} barSize={20}>
-                  <XAxis dataKey="year" stroke="none" tick={{ fill: '#64748B', fontSize: 10, fontFamily: 'IBM Plex Mono' }} />
-                  <YAxis stroke="none" tick={{ fill: '#64748B', fontSize: 10, fontFamily: 'IBM Plex Mono' }} unit=" T" />
+                  <XAxis dataKey="year" stroke="none" tick={{ fill: '#64748B', fontSize: 12, fontFamily: 'IBM Plex Mono' }} />
+                  <YAxis stroke="none" tick={{ fill: '#64748B', fontSize: 12, fontFamily: 'IBM Plex Mono' }} unit=" T" />
                   <Tooltip
                     formatter={(v: any, n: string) => [`${v} TWh`, n]}
-                    contentStyle={{ background: '#131116', border: '1px solid rgba(0,214,143,0.15)', borderRadius: 6, fontSize: 11, fontFamily: 'IBM Plex Mono' }}
+                    contentStyle={{ background: '#131116', border: '1px solid rgba(0,214,143,0.15)', borderRadius: 6, fontSize: 13, fontFamily: 'IBM Plex Mono' }}
                     labelStyle={{ color: '#94A3B8' }}
                   />
                   <Bar dataKey="wind" name="Wind" stackId="a" fill="rgba(0,214,143,0.7)" radius={[0,0,0,0]} />
@@ -283,8 +283,8 @@ export const Problem: React.FC = () => {
                     <stop offset="95%" stopColor="#64748B" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <XAxis dataKey="t" stroke="none" tick={{ fill: '#64748B', fontSize: 10, fontFamily: 'IBM Plex Mono' }} />
-                <YAxis stroke="none" tick={{ fill: '#64748B', fontSize: 10, fontFamily: 'IBM Plex Mono' }} unit="%" />
+                <XAxis dataKey="t" stroke="none" tick={{ fill: '#64748B', fontSize: 12, fontFamily: 'IBM Plex Mono' }} />
+                <YAxis stroke="none" tick={{ fill: '#64748B', fontSize: 12, fontFamily: 'IBM Plex Mono' }} unit="%" />
                 <Tooltip content={<ChartTip />} />
                 <Area type="monotone" dataKey="gen" name="Generation %" stroke="#EF4444" strokeWidth={2} fill="url(#gGen)" />
                 <Area type="monotone" dataKey="cap" name="Grid cap %" stroke="#64748B" strokeWidth={1} fill="url(#gGrid)" strokeDasharray="4 4" />

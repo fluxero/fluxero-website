@@ -157,7 +157,7 @@ const CircularGauge: React.FC<GaugeProps> = ({ label, value, max, color, index }
         <p className="font-display font-bold text-sm" style={{ color: '#F1F5F9', marginBottom: 2 }}>
           {label}
         </p>
-        <p className="font-mono" style={{ fontSize: 10, color: '#64748B', letterSpacing: '0.08em' }}>
+        <p className="font-mono" style={{ fontSize: 12, color: '#64748B', letterSpacing: '0.08em' }}>
           wasted annually
         </p>
       </div>
@@ -204,7 +204,7 @@ const GlobalCounter: React.FC = () => {
     >
       <p
         className="font-mono uppercase tracking-widest"
-        style={{ fontSize: 11, color: '#00D68F', marginBottom: 16, letterSpacing: '0.2em' }}
+        style={{ fontSize: 13, color: '#00D68F', marginBottom: 16, letterSpacing: '0.2em' }}
       >
         Energy wasted globally this year
       </p>
@@ -222,7 +222,7 @@ const GlobalCounter: React.FC = () => {
         {totalTWh.toFixed(3)}
         <span style={{ fontSize: '0.4em', color: '#94A3B8', marginLeft: 8, fontWeight: 700 }}>TWh</span>
       </div>
-      <p className="font-mono" style={{ fontSize: 11, color: '#475569', marginTop: 16 }}>
+      <p className="font-mono" style={{ fontSize: 13, color: '#475569', marginTop: 16 }}>
         Based on IEA &amp; IRENA 2024 estimates. Growing 15% year-on-year.
       </p>
     </motion.div>
@@ -262,13 +262,13 @@ const CountryCard: React.FC<CountryCardProps> = ({ flag, country, stat, descript
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
         <span style={{ fontSize: 24 }}>{flag}</span>
-        <span className="font-display font-bold" style={{ fontSize: 15, color: '#F1F5F9' }}>
+        <span className="font-display font-bold" style={{ fontSize: 17, color: '#F1F5F9' }}>
           {country}
         </span>
       </div>
       <p
         className="font-display font-black"
-        style={{ fontSize: 13, color: accent, marginBottom: 10, lineHeight: 1.3 }}
+        style={{ fontSize: 15, color: accent, marginBottom: 10, lineHeight: 1.3 }}
       >
         {stat}
       </p>
@@ -298,7 +298,7 @@ export const WastedEnergy: React.FC = () => {
           <div style={{ width: 32, height: 1, background: '#00D68F' }} />
           <span
             className="font-mono uppercase"
-            style={{ fontSize: 11, letterSpacing: '0.25em', color: '#00D68F' }}
+            style={{ fontSize: 13, letterSpacing: '0.25em', color: '#00D68F' }}
           >
             Global Waste
           </span>

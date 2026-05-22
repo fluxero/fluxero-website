@@ -122,7 +122,7 @@ export default function TractionPage() {
             variants={fadeUp}
             style={{
               fontFamily: FONTS.mono,
-              fontSize: 13,
+              fontSize: 15,
               letterSpacing: '0.18em',
               color: COLORS.primary,
               textTransform: 'uppercase',
@@ -150,7 +150,7 @@ export default function TractionPage() {
             variants={fadeUp}
             style={{
               fontFamily: FONTS.sans,
-              fontSize: 'clamp(16px, 2vw, 20px)',
+              fontSize: 'clamp(18px, 2vw, 20px)',
               color: COLORS.muted,
               maxWidth: 560,
               margin: '0 auto',
@@ -180,7 +180,7 @@ export default function TractionPage() {
             variants={fadeUp}
             style={{
               fontFamily: FONTS.mono,
-              fontSize: 12,
+              fontSize: 14,
               letterSpacing: '0.16em',
               color: COLORS.primary,
               textTransform: 'uppercase',
@@ -208,7 +208,7 @@ export default function TractionPage() {
             variants={staggerContainer}
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
               gap: 24,
             }}
           >
@@ -235,7 +235,7 @@ export default function TractionPage() {
                 <div
                   style={{
                     fontFamily: FONTS.mono,
-                    fontSize: 11,
+                    fontSize: 13,
                     letterSpacing: '0.2em',
                     color: COLORS.nvidiaGreen,
                     opacity: 0.85,
@@ -249,7 +249,7 @@ export default function TractionPage() {
               <p
                 style={{
                   fontFamily: FONTS.sans,
-                  fontSize: 15,
+                  fontSize: 17,
                   color: COLORS.muted,
                   lineHeight: 1.7,
                   margin: 0,
@@ -269,7 +269,7 @@ export default function TractionPage() {
                   borderRadius: 4,
                   padding: '5px 12px',
                   fontFamily: FONTS.mono,
-                  fontSize: 11,
+                  fontSize: 13,
                   letterSpacing: '0.1em',
                   color: COLORS.nvidiaGreen,
                   alignSelf: 'flex-start',
@@ -302,7 +302,7 @@ export default function TractionPage() {
                 <div
                   style={{
                     fontFamily: FONTS.mono,
-                    fontSize: 11,
+                    fontSize: 13,
                     letterSpacing: '0.2em',
                     color: COLORS.barclaysBlue,
                     opacity: 0.85,
@@ -316,7 +316,7 @@ export default function TractionPage() {
               <p
                 style={{
                   fontFamily: FONTS.sans,
-                  fontSize: 15,
+                  fontSize: 17,
                   color: COLORS.muted,
                   lineHeight: 1.7,
                   margin: 0,
@@ -335,7 +335,7 @@ export default function TractionPage() {
                   borderRadius: 4,
                   padding: '5px 12px',
                   fontFamily: FONTS.mono,
-                  fontSize: 11,
+                  fontSize: 13,
                   letterSpacing: '0.1em',
                   color: COLORS.barclaysBlue,
                   alignSelf: 'flex-start',
@@ -380,7 +380,7 @@ export default function TractionPage() {
                   <div
                     style={{
                       fontFamily: FONTS.mono,
-                      fontSize: 10,
+                      fontSize: 12,
                       letterSpacing: '0.2em',
                       color: COLORS.durhamGold,
                       opacity: 0.85,
@@ -395,7 +395,7 @@ export default function TractionPage() {
               <p
                 style={{
                   fontFamily: FONTS.sans,
-                  fontSize: 15,
+                  fontSize: 17,
                   color: COLORS.muted,
                   lineHeight: 1.7,
                   margin: 0,
@@ -414,7 +414,7 @@ export default function TractionPage() {
                   borderRadius: 4,
                   padding: '5px 12px',
                   fontFamily: FONTS.mono,
-                  fontSize: 11,
+                  fontSize: 13,
                   letterSpacing: '0.1em',
                   color: COLORS.durhamGold,
                   alignSelf: 'flex-start',
@@ -447,7 +447,7 @@ export default function TractionPage() {
                 <div
                   style={{
                     fontFamily: FONTS.mono,
-                    fontSize: 11,
+                    fontSize: 13,
                     letterSpacing: '0.2em',
                     color: COLORS.googleBlue,
                     opacity: 0.85,
@@ -461,7 +461,7 @@ export default function TractionPage() {
               <p
                 style={{
                   fontFamily: FONTS.sans,
-                  fontSize: 15,
+                  fontSize: 17,
                   color: COLORS.muted,
                   lineHeight: 1.7,
                   margin: 0,
@@ -481,7 +481,7 @@ export default function TractionPage() {
                   borderRadius: 4,
                   padding: '5px 12px',
                   fontFamily: FONTS.mono,
-                  fontSize: 11,
+                  fontSize: 13,
                   letterSpacing: '0.1em',
                   color: COLORS.googleBlue,
                   alignSelf: 'flex-start',
@@ -512,7 +512,7 @@ export default function TractionPage() {
             variants={fadeUp}
             style={{
               fontFamily: FONTS.mono,
-              fontSize: 12,
+              fontSize: 14,
               letterSpacing: '0.16em',
               color: COLORS.primary,
               textTransform: 'uppercase',
@@ -575,7 +575,7 @@ export default function TractionPage() {
                   <div
                     style={{
                       fontFamily: FONTS.mono,
-                      fontSize: 12,
+                      fontSize: 14,
                       letterSpacing: '0.14em',
                       color: COLORS.primary,
                       textTransform: 'uppercase',
@@ -587,7 +587,7 @@ export default function TractionPage() {
                   <p
                     style={{
                       fontFamily: FONTS.sans,
-                      fontSize: 16,
+                      fontSize: 18,
                       color: COLORS.cream,
                       lineHeight: 1.65,
                       margin: 0,
@@ -620,7 +620,7 @@ export default function TractionPage() {
             variants={fadeUp}
             style={{
               fontFamily: FONTS.mono,
-              fontSize: 12,
+              fontSize: 14,
               letterSpacing: '0.16em',
               color: COLORS.primary,
               textTransform: 'uppercase',
@@ -679,7 +679,7 @@ export default function TractionPage() {
                 <p
                   style={{
                     fontFamily: FONTS.sans,
-                    fontSize: 15,
+                    fontSize: 17,
                     color: COLORS.muted,
                     lineHeight: 1.7,
                     margin: 0,
@@ -711,7 +711,7 @@ export default function TractionPage() {
             variants={fadeUp}
             style={{
               fontFamily: FONTS.mono,
-              fontSize: 12,
+              fontSize: 14,
               letterSpacing: '0.16em',
               color: COLORS.primary,
               textTransform: 'uppercase',
@@ -749,7 +749,7 @@ export default function TractionPage() {
                   style={{
                     fontFamily: FONTS.sans,
                     fontWeight: 600,
-                    fontSize: 17,
+                    fontSize: 19,
                     color: COLORS.cream,
                     margin: '0 0 10px',
                     lineHeight: 1.4,
@@ -760,7 +760,7 @@ export default function TractionPage() {
                 <p
                   style={{
                     fontFamily: FONTS.sans,
-                    fontSize: 15,
+                    fontSize: 17,
                     color: COLORS.muted,
                     lineHeight: 1.7,
                     margin: 0,
@@ -793,7 +793,7 @@ export default function TractionPage() {
             variants={fadeUp}
             style={{
               fontFamily: FONTS.mono,
-              fontSize: 12,
+              fontSize: 14,
               letterSpacing: '0.16em',
               color: COLORS.primary,
               textTransform: 'uppercase',
@@ -821,7 +821,7 @@ export default function TractionPage() {
             variants={fadeUp}
             style={{
               fontFamily: FONTS.sans,
-              fontSize: 16,
+              fontSize: 18,
               color: COLORS.muted,
               lineHeight: 1.75,
               margin: '0 0 48px',
@@ -843,7 +843,7 @@ export default function TractionPage() {
                 color: COLORS.dark,
                 fontFamily: FONTS.sans,
                 fontWeight: 600,
-                fontSize: 15,
+                fontSize: 17,
                 letterSpacing: '0.03em',
                 padding: '14px 32px',
                 borderRadius: 8,
@@ -864,7 +864,7 @@ export default function TractionPage() {
                 color: COLORS.cream,
                 fontFamily: FONTS.sans,
                 fontWeight: 500,
-                fontSize: 15,
+                fontSize: 17,
                 letterSpacing: '0.03em',
                 padding: '14px 32px',
                 borderRadius: 8,

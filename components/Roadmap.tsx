@@ -128,7 +128,7 @@ export const Roadmap: React.FC = () => {
                 {p.done && (
                   <div className="w-5 h-5 rounded-full flex items-center justify-center"
                     style={{ background: '#00D68F', boxShadow: '0 0 10px rgba(0,214,143,0.4)' }}>
-                    <span className="font-bold" style={{ fontSize: 10, color: "#070608" }}>✓</span>
+                    <span className="font-bold" style={{ fontSize: 12, color: "#070608" }}>✓</span>
                   </div>
                 )}
                 {p.current && (
